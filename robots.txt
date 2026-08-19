@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://visione.one/sitemap.xml
+Sitemap: https://visione.one/news/news-sitemap.xml

@@ -14,7 +14,7 @@
       </head>
       <body>
         <main class="wrap">
-          <a class="brand" href="https://visione.one/news/"><img src="https://visione.one/visione-logo.webp" alt="VISIONE"/><span>VISIONE WIRE</span></a>
+          <a class="brand" href="https://visione.one/"><img src="https://visione.one/visione-logo.webp" alt="VISIONE"/><span>VISIONE WIRE</span></a>
           <p class="eyebrow">RSS FEED</p>
           <h1><xsl:value-of select="rss/channel/title"/></h1>
           <p class="intro"><xsl:value-of select="rss/channel/description"/></p>
@@ -29,7 +29,7 @@
               </a>
             </xsl:for-each>
           </section>
-          <a class="back" href="https://visione.one/news/">← Back to VISIONE Wire</a>
+          <a class="back" href="https://visione.one/">← Back to VISIONE Wire</a>
           <footer>RSS 2.0 · VISIONE Wire</footer>
         </main>
       </body>

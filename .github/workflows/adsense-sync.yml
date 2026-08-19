@@ -1,0 +1,77 @@
+name: AdSense sync
+
+on:
+  push:
+    paths:
+      - '.github/workflows/adsense-sync.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add AdSense to VISIONE Wire pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054712908852183" crossorigin="anonymous"></script>'
+          changed = []
+
+          for path in sorted(Path('news').glob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              original = text
+              if 'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054712908852183' not in text:
+                  m = re.search(r'<meta\s+name=["\']viewport["\'][^>]*>', text, flags=re.I)
+                  if m:
+                      text = text[:m.end()] + snippet + text[m.end():]
+                  else:
+                      text = text.replace('<head>', '<head>' + snippet, 1)
+
+              if path.name == 'privacy.html':
+                  text = text.replace(
+                      'VISIONE Wire is preparing for advertising monetization but does not intentionally activate advertising cookies or personalized advertising until the relevant advertising and consent systems are configured. If Google AdSense or another advertising provider is enabled, this policy will be updated as necessary and a consent-management flow will be used where required.',
+                      'VISIONE Wire uses Google AdSense to support the publication. Google and its advertising partners may use cookies, local storage, device identifiers or similar technologies for ad delivery, fraud prevention, frequency capping, measurement and, where consent permits, personalization.'
+                  )
+                  text = text.replace(
+                      'Where required for visitors in the European Economic Area, the United Kingdom or Switzerland, consent for advertising technologies will be collected through a consent management platform compatible with the requirements of the advertising services in use.',
+                      'For visitors in the European Economic Area, the United Kingdom and Switzerland, VISIONE Wire uses Google’s certified consent management platform to collect and communicate applicable advertising consent choices.'
+                  )
+
+              if path.name == 'cookie-policy.html':
+                  text = text.replace(
+                      'VISIONE Wire is currently a lightweight static publication. We do not intentionally deploy advertising cookies until monetization and the required consent tools are activated.',
+                      'VISIONE Wire uses Google AdSense and related advertising technologies. Cookies or similar technologies may be used for ad delivery, measurement, fraud prevention, frequency capping and, where consent permits, personalization.'
+                  )
+                  text = text.replace(
+                      'If Google AdSense or another advertising service is enabled, cookies or similar technologies may be used for advertising, measurement, fraud prevention and frequency capping. Personalized advertising will only be used where the applicable consent requirements are satisfied.',
+                      'Google AdSense and advertising partners may use cookies or similar technologies for advertising, measurement, fraud prevention and frequency capping. Personalized advertising is used only where the applicable consent requirements are satisfied.'
+                  )
+                  text = text.replace(
+                      'Before personalized advertising is served to users in regions where consent is required, VISIONE Wire intends to use a Google-certified consent management platform integrated with the relevant advertising framework.',
+                      'VISIONE Wire uses Google’s certified consent management platform for applicable European privacy and advertising consent requirements.'
+                  )
+
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path))
+
+          print('Updated files:')
+          print('\n'.join(changed) if changed else 'none')
+          PY
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "VISIONE automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add news/*.html
+          git commit -m "Add AdSense across VISIONE Wire"
+          git push origin HEAD:main

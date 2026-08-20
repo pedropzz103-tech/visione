@@ -1,4 +1,5 @@
 import {describe, expect, it} from 'vitest';
+import {ProductManifestSchema} from '../../src/contracts/index.js';
 import {runQualityGate} from '../../src/quality/quality-gate.js';
 import {
   makeLayoutEvidence,
@@ -9,6 +10,29 @@ import {
 } from '../helpers/factories.js';
 
 describe('runQualityGate', () => {
+  it('allows the explicitly non-publishable fixture to use its zero demonstration price', () => {
+    const production = makeProductionManifest();
+    const manifest = ProductManifestSchema.parse({
+      ...production,
+      purpose: 'fixture',
+      currentPriceMinor: 0,
+      previousPriceMinor: undefined,
+      assets: [{
+        id: 'fixture-card', kind: 'image', file: 'assets/card.svg',
+        provenance: {sourceType: 'repository-created', source: 'test fixture'}
+      }]
+    });
+    const variant = {...makeTikTokVariant(), priceText: 'R$ 0,00'};
+
+    const result = runQualityGate({
+      manifest, variant, render: makeRenderResult(), probe: makeValidProbe(),
+      layout: makeLayoutEvidence(), fatalDiagnostics: []
+    });
+
+    expect(result.checks.find((check) => check.code === 'PRICE')?.passed).toBe(true);
+    expect(result.passed).toBe(true);
+  });
+
   it('returns evidence for every mandatory publication check', () => {
     const result = runQualityGate({
       manifest: makeProductionManifest(),

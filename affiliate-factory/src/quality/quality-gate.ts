@@ -34,7 +34,9 @@ export function runQualityGate(input: QualityGateInput): QualityGateResult {
   const expectedAspect = 9 / 16;
   const actualAspect = probe.video.width / probe.video.height;
   const hasHash = /^[0-9a-f]{64}$/i.test(render.contentHash) && !/^0{64}$/.test(render.contentHash);
-  const hasPrice = manifest.currentPriceMinor > 0 && variant.priceText.trim().length > 0;
+  const hasPrice = variant.priceText.trim().length > 0 && (
+    manifest.purpose === 'fixture' || manifest.currentPriceMinor > 0
+  );
 
   const checks: Check[] = [
     check('FILE_NON_EMPTY', render.sizeBytes > 0 && probe.format.sizeBytes > 0,

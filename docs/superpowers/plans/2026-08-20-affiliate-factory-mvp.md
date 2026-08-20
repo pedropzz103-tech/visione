@@ -6,7 +6,7 @@
 
 **Architecture:** A standalone TypeScript package under affiliate-factory owns versioned contracts, deterministic planning, Remotion rendering, FFmpeg validation, R2 storage, publishing, receipts, and reporting. Ports isolate storage and external publishers; the runner persists monotonic state and idempotency records in a private R2 bucket while exposing only approved videos from a separate public bucket.
 
-**Tech Stack:** Node.js 22+, npm, TypeScript 7.0.2, Zod 4.4.3, Vitest 4.1.11, Remotion 4.0.514, React 19.2.8, FFmpeg/FFprobe, AWS SDK S3 client 3.1115.0, Execa 10.0.1, YAML 2.9.0, tsx 4.23.12.
+**Tech Stack:** Node.js 22+, npm, TypeScript 7.0.2, Zod 4.4.3, Vitest 4.1.11, Remotion 4.0.514, React 19.2.8, ffmpeg-static 5.3.0, ffprobe-static 3.1.0, AWS SDK S3 client 3.1115.0, Execa 10.0.1, YAML 2.9.0, tsx 4.23.12.
 
 **Spec:** docs/superpowers/specs/2026-08-20-affiliate-factory-mvp-design.md
 
@@ -99,6 +99,8 @@ Write affiliate-factory/package.json:
     "@remotion/bundler": "4.0.514",
     "@remotion/renderer": "4.0.514",
     "execa": "10.0.1",
+    "ffmpeg-static": "5.3.0",
+    "ffprobe-static": "3.1.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "remotion": "4.0.514",
@@ -107,6 +109,7 @@ Write affiliate-factory/package.json:
   "devDependencies": {
     "@types/node": "26.2.0",
     "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "tsx": "4.23.12",
     "typescript": "7.0.2",
     "vitest": "4.1.11",
@@ -585,6 +588,7 @@ git commit -m "feat: add commercial vertical Remotion renderer"
 
 **Files:**
 - Create: affiliate-factory/src/render/ffmpeg-normalizer.ts
+- Create: affiliate-factory/src/render/media-binaries.ts
 - Create: affiliate-factory/src/quality/ffprobe.ts
 - Create: affiliate-factory/src/quality/safe-zones.ts
 - Create: affiliate-factory/src/quality/quality-gate.ts
@@ -613,7 +617,7 @@ it('normalizes rational FPS and extracts required codecs', () => {
 
 - [ ] **Step 2: Implement FFprobe execution and parsing**
 
-Call ffprobe with -v error -show_streams -show_format -of json. Parse output with Zod. Require one video stream and one audio stream. Convert avg_frame_rate safely and reject a zero denominator.
+Resolve binaries from FFMPEG_PATH and FFPROBE_PATH when set, otherwise use ffmpeg-static and ffprobe-static. Call ffprobe with -v error -show_streams -show_format -of json. Parse output with Zod. Require one video stream and one audio stream. Convert avg_frame_rate safely and reject a zero denominator.
 
 - [ ] **Step 3: Write failing quality-gate tests**
 

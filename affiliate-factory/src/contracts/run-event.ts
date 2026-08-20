@@ -40,6 +40,8 @@ export const RunSummarySchema = z.object({
   r2: StageStatusSchema,
   buffer: StageStatusSchema,
   tiktokStatus: z.string().min(1),
+  xStatus: z.string().min(1),
+  threadsStatus: z.string().min(1),
   publicUrl: z.url().optional(),
   errorCode: z.string().min(1).optional()
 });

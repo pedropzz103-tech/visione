@@ -156,6 +156,8 @@ export function makeRunSummary(): RunSummary {
     r2: 'OK',
     buffer: 'OK',
     tiktokStatus: 'confirmado',
+    xStatus: 'confirmado',
+    threadsStatus: 'confirmado',
     publicUrl: 'https://media.visione.one/final/publication/vid_operator/video.mp4'
   };
 }

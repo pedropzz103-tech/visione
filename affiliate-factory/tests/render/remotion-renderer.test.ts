@@ -5,6 +5,8 @@ import {describe, expect, it} from 'vitest';
 import {createBaseCreativePlan} from '../../src/creative/base-plan.js';
 import {createTikTokVariant} from '../../src/creative/tiktok-variant.js';
 import {loadManualBundle} from '../../src/intake/manual-bundle.js';
+import {probeMedia} from '../../src/quality/ffprobe.js';
+import {normalizeMedia} from '../../src/render/ffmpeg-normalizer.js';
 import {RemotionRenderer} from '../../src/render/remotion-renderer.js';
 
 describe('RemotionRenderer', () => {
@@ -12,6 +14,7 @@ describe('RemotionRenderer', () => {
     const bundleDir = resolve('fixtures/product-test');
     const outputDir = await mkdtemp(join(tmpdir(), 'affiliate-render-'));
     const outputPath = join(outputDir, 'fixture.mp4');
+    const normalizedPath = join(outputDir, 'fixture-normalized.mp4');
     const manifest = await loadManualBundle(bundleDir);
     const variant = createTikTokVariant(
       manifest,
@@ -35,5 +38,21 @@ describe('RemotionRenderer', () => {
     expect(result.frameCount).toBe(360);
     expect(result.contentHash).toMatch(/^[a-f0-9]{64}$/);
     expect((await stat(outputPath)).size).toBeGreaterThan(1000);
+
+    const normalized = await normalizeMedia({
+      render: result,
+      outputPath: normalizedPath
+    });
+    const probe = await probeMedia(normalized.outputPath);
+
+    expect(normalized.audioCodec).toBe('aac');
+    expect(probe.video).toMatchObject({
+      codec: 'h264',
+      width: 1080,
+      height: 1920,
+      fps: 30
+    });
+    expect(probe.audio?.codec).toBe('aac');
+    expect(probe.format.durationSeconds).toBeCloseTo(12, 1);
   }, 180_000);
 });

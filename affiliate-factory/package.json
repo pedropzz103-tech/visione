@@ -11,8 +11,9 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "tsc -p tsconfig.build.json",
-    "render:fixture": "tsx src/cli.ts render --bundle fixtures/product-test",
+    "render:fixture": "tsx src/cli.ts render --bundle fixtures/product-test --output artifacts/fixture.mp4",
     "dry-run": "tsx src/cli.ts run --bundle fixtures/product-test --mode dry-run",
+    "telegram:poll": "tsx src/cli.ts telegram-poll --output .tmp/telegram-inbox",
     "start": "node dist/cli.js"
   },
   "dependencies": {

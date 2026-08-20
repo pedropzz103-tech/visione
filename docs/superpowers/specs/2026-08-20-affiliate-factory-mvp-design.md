@@ -194,23 +194,29 @@ submission.
 with least-privilege credentials. `MemoryMediaStore` and a filesystem adapter
 support tests and local dry-runs.
 
-Logical R2 prefixes are:
+R2 is split physically because a custom domain exposes its bucket. The private
+operations bucket uses these prefixes:
 
 ```text
 input/original/
 temporary/
 rejected/
-final/publication/
 diagnostics/
 state/runs/
 state/idempotency/
 state/receipts/
 ```
 
-Only approved publication media is exposed through the configured public media
-base URL. Operational state, receipts, original inputs, and diagnostics remain
-private. Public objects use content-addressed keys and a validity policy long
-enough for Buffer to fetch them.
+The public media bucket contains only:
+
+```text
+final/publication/
+```
+
+Only the public media bucket is exposed through the configured custom domain.
+Operational state, receipts, original inputs, rejected media, and diagnostics
+remain in the separate private bucket. Public objects use content-addressed
+keys and a retention policy long enough for Buffer to fetch them.
 
 ### Publishing
 
@@ -311,7 +317,8 @@ in chat. Required names are validated without exposing their values:
 - `CLOUDFLARE_ACCOUNT_ID`
 - `R2_ACCESS_KEY_ID`
 - `R2_SECRET_ACCESS_KEY`
-- `R2_BUCKET`
+- `R2_PRIVATE_BUCKET`
+- `R2_PUBLIC_BUCKET`
 - `R2_PUBLIC_BASE_URL`
 - `BUFFER_API_KEY`
 - `BUFFER_ORGANIZATION_ID`
@@ -320,9 +327,11 @@ in chat. Required names are validated without exposing their values:
 - `TELEGRAM_CHAT_ID`
 
 The repository already references the first three R2 credential names and uses
-the `visione-media` bucket in its existing R2 workflow. The Affiliate Factory
-does not assume that the remaining secrets exist. Missing configuration
-produces named, redacted errors.
+the public `visione-media` bucket in its existing R2 workflow. That bucket may
+be configured as `R2_PUBLIC_BUCKET`; it must not be used for private operational
+objects. The Affiliate Factory does not assume that a private bucket or the
+remaining secrets exist. Missing configuration produces named, redacted
+errors.
 
 ## 12. Failure handling
 

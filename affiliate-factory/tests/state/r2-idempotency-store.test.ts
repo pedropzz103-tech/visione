@@ -35,7 +35,7 @@ describe('R2IdempotencyStore', () => {
       schemaVersion: '1.0.0', publicationKey: request.publicationKey,
       provider: 'buffer', channel: 'tiktok', status: 'confirmed',
       providerPostId: 'buffer-1', message: 'created',
-      createdAt: '2026-08-20T12:00:00.000Z', mediaUrl: request.mediaUrl
+      createdAt: '2026-08-20T12:00:00.000Z', mediaUrls: request.assets.map((asset) => asset.url)
     });
 
     await store.markSubmitting(request.publicationKey, request);

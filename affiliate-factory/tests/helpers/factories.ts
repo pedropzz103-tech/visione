@@ -123,16 +123,21 @@ export function makeValidProbe(): MediaProbe {
   };
 }
 
-export function makePublishRequest(): PublishRequest {
+export function makePublishRequest(
+  channel: 'tiktok' | 'x' | 'threads' = 'tiktok'
+): PublishRequest {
+  const assets = channel === 'tiktok'
+    ? [{kind: 'video' as const, url: 'https://media.visione.one/final/publication/vid_operator/video.mp4'}]
+    : [{kind: 'image' as const, url: 'https://media.visione.one/final/publication/vid_operator/product.jpg'}];
   return {
     schemaVersion: '1.0.0',
     purpose: 'production',
-    channel: 'tiktok',
+    channel,
     productId: 'operator-product',
     videoId: 'vid_operator',
     contentHash: 'a'.repeat(64),
     publicationKey: 'b'.repeat(64),
-    mediaUrl: 'https://media.visione.one/final/publication/vid_operator/video.mp4',
+    assets,
     caption: 'Publicidade. Consulte o link de afiliado.',
     affiliateUrl: 'https://s.shopee.com.br/operator-link',
     thumbnailOffsetMs: 2000

@@ -76,6 +76,23 @@ describe('versioned contracts', () => {
     })).toThrow();
   });
 
+  it.each(['x', 'threads'] as const)('accepts a production %s image request', (channel) => {
+    const parsed = PublishRequestSchema.parse({
+      schemaVersion: '1.0.0',
+      purpose: 'production',
+      channel,
+      productId: 'operator-product',
+      videoId: 'vid_operator',
+      contentHash: 'a'.repeat(64),
+      publicationKey: 'b'.repeat(64),
+      assets: [{kind: 'image', url: 'https://media.example.test/final/publication/p/image.jpg'}],
+      caption: 'Publicidade. Produto fornecido pelo operador.',
+      affiliateUrl: 'https://s.shopee.com.br/operator-link'
+    });
+
+    expect(parsed.channel).toBe(channel);
+  });
+
   it('validates every required downstream contract', () => {
     expect(BaseCreativePlanSchema.shape.schemaVersion.value).toBe('1.0.0');
     expect(ChannelCreativeVariantSchema.shape.schemaVersion.value).toBe('1.0.0');

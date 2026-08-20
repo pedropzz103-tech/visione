@@ -24,7 +24,7 @@ describe('InMemoryIdempotencyStore', () => {
       providerPostId: 'post-1',
       message: 'Confirmed by Buffer',
       createdAt: '2026-08-20T12:00:00.000Z',
-      mediaUrl: request.mediaUrl
+      mediaUrls: request.assets.map((asset) => asset.url)
     } as const;
     await store.markSubmitting(request.publicationKey, request);
     await store.saveReceipt(request.publicationKey, receipt);

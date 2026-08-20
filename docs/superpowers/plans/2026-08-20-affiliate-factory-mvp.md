@@ -738,7 +738,13 @@ Stage only Task 7 files and commit:
 git commit -m "feat: add private and public R2 storage"
 ~~~
 
-### Task 8: Official Buffer TikTok publisher and safe retry classification
+### Task 8: Official Buffer multichannel publisher and safe retry classification
+
+**Approved amendment:** implement `BufferPublisher` for TikTok, X (`twitter` in
+Buffer), and Threads. TikTok maps the final MP4 to a video asset; X and Threads
+map operator images to ordered image assets. Append the Shopee affiliate URL to
+every post. The amended filenames are `buffer-publisher.ts` and
+`buffer-publisher.test.ts`; these replace the TikTok-only names below.
 
 **Files:**
 - Create: affiliate-factory/src/publish/publisher.ts
@@ -851,7 +857,13 @@ Stage only Task 8 files and commit:
 git commit -m "feat: add official Buffer TikTok publisher"
 ~~~
 
-### Task 9: Telegram reporting with secret-safe errors
+### Task 9: Telegram manual intake, MP4 delivery, and secret-safe reporting
+
+**Approved amendment:** also create `telegram-intake.ts` and tests. Poll
+`getUpdates`, accept only `TELEGRAM_ALLOWED_CHAT_ID`, parse a structured product
+caption, group albums by `media_group_id`, download photos through `getFile`,
+and persist the offset privately. Add `sendVideo` multipart delivery for the
+quality-gated MP4 before sending the final TikTok/X/Threads result summary.
 
 **Files:**
 - Create: affiliate-factory/src/reporting/telegram-reporter.ts

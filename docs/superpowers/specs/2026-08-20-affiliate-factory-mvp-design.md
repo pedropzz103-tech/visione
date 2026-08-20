@@ -426,3 +426,23 @@ tests, generated media evidence, codecs, duration, R2 result, Buffer/TikTok
 result, receipt, Telegram result, required secret names, problems, limitations,
 and next steps. A real TikTok publication is reported only if it actually
 occurred and its status was verified.
+
+## 17. Approved multichannel and Telegram intake amendment
+
+This section supersedes earlier TikTok-only and notification-only statements.
+The operator connected TikTok, X, and Threads to Buffer and approved automatic
+publication to all three services. TikTok receives the quality-gated MP4. X and
+Threads receive the operator-supplied product images in their original order,
+subject to each channel's media limit. Every post includes the supplied Shopee
+affiliate URL and advertising disclosure.
+
+Manual intake remains the only product source. In addition to a local bundle,
+the operator may send one structured product package to the Telegram bot with
+the affiliate URL, product facts, and a photo or photo album. The workflow uses
+Telegram `getUpdates`, downloads only operator-sent files, persists the offset
+privately, and never crawls Shopee. Inbound updates are retained by Telegram for
+at most 24 hours, so the workflow must be dispatched each morning after input.
+
+After QA, the bot sends the final MP4 back to the authorized operator chat and
+then sends the multichannel publication summary. No inbound chat other than the
+configured `TELEGRAM_ALLOWED_CHAT_ID` is accepted.

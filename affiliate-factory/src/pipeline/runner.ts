@@ -2,6 +2,8 @@ import {mkdir} from 'node:fs/promises';
 import {extname, join, resolve} from 'node:path';
 import {
   PublishRequestSchema,
+  RenderResultSchema,
+  RunEventSchema,
   RunSummarySchema,
   type ChannelCreativeVariant,
   type MediaProbe,
@@ -9,12 +11,13 @@ import {
   type PublishReceipt,
   type QualityGateResult,
   type RenderResult,
+  type RunEvent,
   type RunSummary
 } from '../contracts/index.js';
 import {createBaseCreativePlan} from '../creative/base-plan.js';
 import {createTikTokVariant} from '../creative/tiktok-variant.js';
 import {
-  createContentHash,
+  createBundleContentHash,
   createPublicationKey,
   createVideoId
 } from '../identity/content-identity.js';
@@ -26,6 +29,7 @@ import type {RemotionRenderInput} from '../render/remotion-renderer.js';
 import type {IdempotencyStore} from '../state/idempotency-store.js';
 import {
   publicationObjectKey,
+  privateObjectKey,
   type MediaStore,
   type PublicationContentType
 } from '../storage/media-store.js';
@@ -49,6 +53,7 @@ export type PipelineDependencies = {
     sendVideo(path: string, caption: string): Promise<void>;
     sendSummary(summary: RunSummary): Promise<void>;
   };
+  recordEvent?: (event: RunEvent) => Promise<void>;
   now: () => Date;
 };
 
@@ -89,7 +94,7 @@ export async function runPipeline(
   if (input.publish && manifest.purpose !== 'production') {
     throw new Error('FIXTURE_PUBLICATION_FORBIDDEN');
   }
-  const contentHash = createContentHash(manifest);
+  const contentHash = await createBundleContentHash(manifest, input.bundleDir);
   const videoId = createVideoId({
     productId: manifest.productId,
     contentHash,
@@ -98,19 +103,80 @@ export async function runPipeline(
   });
   const runId = `run-${videoId}-${dependencies.now().toISOString().replace(/[^0-9]/g, '')}`;
   const base = summaryBase({runId, productName: manifest.productName, videoId});
+  const emit = async (
+    state: RunSummary['state'],
+    stage: string,
+    event: string,
+    details: Record<string, unknown> = {}
+  ): Promise<void> => {
+    if (!dependencies.recordEvent) return;
+    await dependencies.recordEvent(RunEventSchema.parse({
+      schemaVersion: '1.0.0', runId, videoId, state, stage, event,
+      occurredAt: dependencies.now().toISOString(), details
+    }));
+  };
+  await emit('received', 'intake', 'MANUAL_BUNDLE_RECEIVED', {
+    productId: manifest.productId,
+    purpose: manifest.purpose
+  });
+  await emit('validated', 'validation', 'BUNDLE_VALIDATED', {contentHash});
   const plan = createBaseCreativePlan(manifest);
   const variant: ChannelCreativeVariant = createTikTokVariant(manifest, plan);
+  await emit('planned', 'planning', 'CREATIVE_PLANNED', {
+    durationSeconds: variant.durationSeconds,
+    channel: variant.channel
+  });
   const runOutputDir = join(input.outputDir, runId);
   await mkdir(runOutputDir, {recursive: true});
   const rawPath = join(runOutputDir, `${videoId}-raw.mp4`);
   const finalPath = join(runOutputDir, `${videoId}.mp4`);
-  const raw = await dependencies.renderer.render({
-    variant,
-    bundleDir: resolve(input.bundleDir),
-    outputPath: rawPath,
-    videoId
+  if (input.mode === 'production') {
+    await dependencies.mediaStore.putPrivateJson(
+      privateObjectKey(`input/original/${contentHash}/manifest.json`),
+      manifest
+    );
+    for (const asset of manifest.assets) {
+      await dependencies.mediaStore.putPrivateFile(
+        privateObjectKey(`input/original/${contentHash}/${asset.file}`),
+        resolve(input.bundleDir, asset.file),
+        asset.kind === 'image' ? imageContentType(asset.file) : 'application/octet-stream'
+      );
+    }
+  }
+  const renderMetadataKey = privateObjectKey(`state/renders/${videoId}.json`);
+  const renderMediaKey = privateObjectKey(`temporary/renders/${videoId}.mp4`);
+  let normalized: RenderResult | null = null;
+  let reusedRender = false;
+  if (input.mode === 'production') {
+    const cached = await dependencies.mediaStore.getPrivateJson(
+      renderMetadataKey,
+      RenderResultSchema
+    );
+    if (cached) {
+      const restored = await dependencies.mediaStore.getPrivateFile(renderMediaKey, finalPath);
+      if (restored) {
+        normalized = RenderResultSchema.parse({
+          ...cached,
+          outputPath: finalPath,
+          sizeBytes: restored.sizeBytes
+        });
+        reusedRender = true;
+      }
+    }
+  }
+  if (!normalized) {
+    const raw = await dependencies.renderer.render({
+      variant,
+      bundleDir: resolve(input.bundleDir),
+      outputPath: rawPath,
+      videoId
+    });
+    normalized = await dependencies.normalize({render: raw, outputPath: finalPath});
+  }
+  await emit('rendered', 'render', 'VIDEO_READY', {
+    reused: reusedRender,
+    sizeBytes: normalized.sizeBytes
   });
-  const normalized = await dependencies.normalize({render: raw, outputPath: finalPath});
   const probe = await dependencies.probe(normalized.outputPath);
   const qa = dependencies.qualityGate({
     manifest,
@@ -121,11 +187,42 @@ export async function runPipeline(
     fatalDiagnostics: []
   });
   if (!qa.passed) {
+    await emit('rejected', 'quality', 'QUALITY_GATE_REJECTED', {
+      failedChecks: qa.checks.filter((item) => !item.passed).map((item) => item.code)
+    });
+    if (input.mode === 'production') {
+      await dependencies.mediaStore.putPrivateFile(
+        privateObjectKey(`rejected/${runId}/${videoId}.mp4`),
+        normalized.outputPath,
+        'video/mp4'
+      );
+      await dependencies.mediaStore.putPrivateJson(
+        privateObjectKey(`diagnostics/${runId}/quality-gate.json`),
+        qa
+      );
+    }
     return RunSummarySchema.parse({
       ...base, state: 'rejected', render: 'OK', qa: 'ERRO', r2: 'PULADO',
       buffer: 'PULADO', tiktokStatus: 'não publicado', xStatus: 'não publicado',
       threadsStatus: 'não publicado', errorCode: 'QUALITY_GATE_FAILED'
     });
+  }
+
+  await emit('qa_passed', 'quality', 'QUALITY_GATE_PASSED', {
+    checks: qa.checks.length
+  });
+
+  if (input.mode === 'production') {
+    await dependencies.mediaStore.putPrivateFile(
+      renderMediaKey,
+      normalized.outputPath,
+      'video/mp4'
+    );
+    await dependencies.mediaStore.putPrivateJson(renderMetadataKey, normalized);
+    await dependencies.mediaStore.putPrivateJson(
+      privateObjectKey(`diagnostics/${runId}/quality-gate.json`),
+      qa
+    );
   }
 
   if (manifest.purpose === 'production' && dependencies.reporter) {
@@ -143,6 +240,7 @@ export async function runPipeline(
     if (dependencies.reporter && manifest.purpose === 'production') {
       await dependencies.reporter.sendSummary(result);
     }
+    await emit('qa_passed', 'complete', 'DRY_RUN_COMPLETED');
     return result;
   }
 
@@ -171,6 +269,9 @@ export async function runPipeline(
   if (imageUrls.length === 0) {
     throw new Error('PUBLICATION_IMAGE_MISSING');
   }
+  await emit('uploaded', 'upload', 'PUBLIC_MEDIA_UPLOADED', {
+    imageCount: imageUrls.length
+  });
 
   if (!input.publish) {
     const result = RunSummarySchema.parse({
@@ -179,6 +280,7 @@ export async function runPipeline(
       threadsStatus: 'não solicitado', publicUrl: videoStored.publicUrl
     });
     if (dependencies.reporter) await dependencies.reporter.sendSummary(result);
+    await emit('uploaded', 'complete', 'UPLOAD_ONLY_COMPLETED');
     return result;
   }
 
@@ -206,8 +308,16 @@ export async function runPipeline(
       continue;
     }
     await dependencies.idempotency.markSubmitting(publicationKey, request);
+    await emit('submitting', 'publish', 'BUFFER_SUBMISSION_STARTED', {channel});
     const receipt = await dependencies.publishers[channel].publish(request);
     await dependencies.idempotency.saveReceipt(publicationKey, receipt);
+    await emit(
+      receipt.status === 'confirmed' ? 'published'
+        : receipt.status === 'ambiguous' ? 'needs_reconciliation' : 'rejected',
+      'publish',
+      'BUFFER_SUBMISSION_RECEIPT',
+      {channel, status: receipt.status, publicationKey}
+    );
     receipts.set(channel, receipt);
   }
 
@@ -238,5 +348,10 @@ export async function runPipeline(
     ...(hasAmbiguous ? {errorCode: 'PUBLICATION_NEEDS_RECONCILIATION'} : {})
   });
   if (dependencies.reporter) await dependencies.reporter.sendSummary(result);
+  await emit(result.state, 'complete', 'PIPELINE_COMPLETED', {
+    tiktok: result.tiktokStatus,
+    x: result.xStatus,
+    threads: result.threadsStatus
+  });
   return result;
 }

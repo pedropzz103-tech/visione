@@ -78,6 +78,23 @@ export class FilesystemMediaStore implements MediaStore {
     return this.#stored(path, key, null);
   }
 
+  public async getPrivateFile(
+    key: PrivateObjectKey,
+    destination: string
+  ): Promise<StoredObject | null> {
+    const source = this.#path('private', key);
+    try {
+      await mkdir(dirname(destination), {recursive: true});
+      await copyFile(source, destination);
+      return await this.#stored(destination, key, null);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return null;
+      }
+      throw error;
+    }
+  }
+
   public async putPublicFile(
     key: PublicationObjectKey,
     file: string,

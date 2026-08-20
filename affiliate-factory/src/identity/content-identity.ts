@@ -1,4 +1,6 @@
 import {createHash} from 'node:crypto';
+import {readFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
 import type {ProductManifest} from '../contracts/index.js';
 import {canonicalJson} from './canonical-json.js';
 
@@ -10,6 +12,18 @@ export function sha256Hex(value: string | Uint8Array): string {
 
 export function createContentHash(manifest: ProductManifest): string {
   return sha256Hex(canonicalJson(manifest));
+}
+
+export async function createBundleContentHash(
+  manifest: ProductManifest,
+  bundleDir: string
+): Promise<string> {
+  const assets = await Promise.all(manifest.assets.map(async (asset) => ({
+    id: asset.id,
+    file: asset.file,
+    sha256: sha256Hex(await readFile(resolve(bundleDir, asset.file)))
+  })));
+  return sha256Hex(canonicalJson({manifest, assets}));
 }
 
 export function createVideoId(input: {

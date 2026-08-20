@@ -23,8 +23,9 @@ Todos os textos recebem o link de afiliado e `#publicidade`.
    download a 20 MB.
 
 Mensagens de outros chats são ignoradas. Álbuns são agrupados pelo
-`media_group_id`. O offset é salvo no bucket privado, portanto uma mensagem já
-processada não volta em uma execução futura. O Telegram conserva updates
+`media_group_id`. O offset só é salvo no bucket privado depois que todos os
+produtos terminam com sucesso, portanto uma falha pode ser retomada sem perder
+entrada e uma mensagem concluída não volta em uma execução futura. O Telegram conserva updates
 pendentes por até 24 horas; execute o workflow na mesma manhã.
 
 ## Recursos Cloudflare R2

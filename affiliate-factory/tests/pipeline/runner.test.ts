@@ -2,7 +2,8 @@ import {mkdtemp, mkdir, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {describe, expect, it, vi} from 'vitest';
-import type {PublishReceipt, PublishRequest} from '../../src/contracts/index.js';
+import type {PublishReceipt, PublishRequest, RunEvent} from '../../src/contracts/index.js';
+import type {StoredObject} from '../../src/storage/media-store.js';
 import {runPipeline, type PipelineDependencies} from '../../src/pipeline/runner.js';
 import {
   makeProductionManifest,
@@ -32,7 +33,8 @@ function dependencies(qaPassed: boolean, existingReceipt: PublishReceipt | null 
   }))};
   const mediaStore = {
     putPrivateJson: vi.fn(), putPrivateJsonIfAbsent: vi.fn(), getPrivateJson: vi.fn(),
-    putPrivateFile: vi.fn(), headPublic: vi.fn(async () => null),
+    putPrivateFile: vi.fn(), getPrivateFile: vi.fn(async () => null as StoredObject | null),
+    headPublic: vi.fn(async () => null),
     putPublicFile: vi.fn(async (key, _file, _type) => ({
       key, sizeBytes: 100, etag: 'etag', publicUrl: `https://media.example.test/${key}`
     }))
@@ -43,6 +45,7 @@ function dependencies(qaPassed: boolean, existingReceipt: PublishReceipt | null 
     markSubmitting: vi.fn(async () => undefined),
     saveReceipt: vi.fn(async () => undefined)
   };
+  const recordEvent = vi.fn(async (_event: RunEvent) => undefined);
   const deps: PipelineDependencies = {
     renderer: {render: vi.fn(async () => makeRenderResult())},
     normalize: vi.fn(async (input) => ({...input.render, outputPath: input.outputPath, audioCodec: 'aac'})),
@@ -54,9 +57,10 @@ function dependencies(qaPassed: boolean, existingReceipt: PublishReceipt | null 
     mediaStore,
     idempotency,
     publishers: {tiktok: publisher, x: publisher, threads: publisher},
+    recordEvent,
     now: () => new Date('2026-08-20T12:00:00.000Z')
   };
-  return {deps, publisher, mediaStore, idempotency};
+  return {deps, publisher, mediaStore, idempotency, recordEvent};
 }
 
 describe('runPipeline', () => {
@@ -93,7 +97,7 @@ describe('runPipeline', () => {
 
   it('publishes one channel request per Buffer connection with the right media', async () => {
     const bundleDir = await productionBundle();
-    const {deps, publisher} = dependencies(true);
+    const {deps, publisher, recordEvent} = dependencies(true);
 
     const summary = await runPipeline({
       bundleDir, outputDir: join(bundleDir, 'output'), mode: 'production', publish: true
@@ -105,5 +109,27 @@ describe('runPipeline', () => {
     expect(requests.find((request) => request.channel === 'tiktok')?.assets[0]?.kind).toBe('video');
     expect(requests.find((request) => request.channel === 'x')?.assets[0]?.kind).toBe('image');
     expect(requests.find((request) => request.channel === 'threads')?.assets[0]?.kind).toBe('image');
+    expect(recordEvent).toHaveBeenCalled();
+    expect(recordEvent.mock.calls.map((call) => call[0].stage)).toEqual(
+      expect.arrayContaining(['intake', 'render', 'quality', 'upload', 'publish'])
+    );
+  });
+
+  it('reuses an approved hash-addressed render after an external failure', async () => {
+    const bundleDir = await productionBundle();
+    const {deps, mediaStore} = dependencies(true);
+    mediaStore.getPrivateJson.mockResolvedValueOnce(makeRenderResult());
+    mediaStore.getPrivateFile.mockResolvedValueOnce({
+      key: 'temporary/renders/vid-approved.mp4', sizeBytes: 1024,
+      etag: 'etag', publicUrl: null
+    });
+
+    const summary = await runPipeline({
+      bundleDir, outputDir: join(bundleDir, 'output'), mode: 'production', publish: false
+    }, deps);
+
+    expect(summary.state).toBe('uploaded');
+    expect(deps.renderer.render).not.toHaveBeenCalled();
+    expect(deps.normalize).not.toHaveBeenCalled();
   });
 });

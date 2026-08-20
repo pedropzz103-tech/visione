@@ -14,6 +14,9 @@ describe('parseCliArgs', () => {
     expect(parseCliArgs(['telegram-poll', '--output', 'inbox'])).toEqual({
       command: 'telegram-poll', outputDir: 'inbox'
     });
+    expect(parseCliArgs(['telegram-commit', '--offset', '203'])).toEqual({
+      command: 'telegram-commit', offset: 203
+    });
   });
 
   it('rejects unsafe or unknown combinations', () => {

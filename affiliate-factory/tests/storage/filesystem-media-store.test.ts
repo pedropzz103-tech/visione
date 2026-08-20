@@ -1,4 +1,4 @@
-import {mkdtemp, writeFile} from 'node:fs/promises';
+import {mkdtemp, readFile, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {z} from 'zod';
@@ -44,5 +44,20 @@ describe('FilesystemMediaStore', () => {
     await store.putPrivateJsonIfAbsent(key, {attempt: 1});
     await expect(store.putPrivateJsonIfAbsent(key, {attempt: 2}))
       .rejects.toThrow('OBJECT_ALREADY_EXISTS');
+  });
+
+  it('restores an approved private render without exposing a URL', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'affiliate-store-'));
+    const source = join(root, 'approved.mp4');
+    const destination = join(root, 'restored.mp4');
+    await writeFile(source, Buffer.from('approved-video'));
+    const store = new FilesystemMediaStore({root, publicBaseUrl: 'https://media.example.test'});
+    const key = privateObjectKey('temporary/renders/vid-approved.mp4');
+
+    await store.putPrivateFile(key, source, 'video/mp4');
+    const restored = await store.getPrivateFile(key, destination);
+
+    expect(restored).toMatchObject({publicUrl: null, sizeBytes: 14});
+    await expect(readFile(destination, 'utf8')).resolves.toBe('approved-video');
   });
 });

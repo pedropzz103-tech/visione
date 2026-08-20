@@ -1,4 +1,4 @@
-import {mkdtemp, writeFile} from 'node:fs/promises';
+import {mkdtemp, readFile, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {describe, expect, it, vi} from 'vitest';
@@ -71,5 +71,30 @@ describe('R2MediaStore', () => {
       .rejects.toThrow('R2_PUT_PRIVATE_FAILED');
     await expect(store.putPrivateJson(privateObjectKey('state/runs/y.json'), {ok: false}))
       .rejects.not.toThrow(/secret-access-key|Authorization/);
+  });
+
+  it('streams a cached private render to a local destination', async () => {
+    const client = {send: vi.fn(async (command: {constructor: {name: string}}) => {
+      if (command.constructor.name === 'GetObjectCommand') {
+        return {
+          ContentLength: 6,
+          ETag: 'etag',
+          Body: {transformToByteArray: async () => new Uint8Array(Buffer.from('cached'))}
+        };
+      }
+      throw new Error('unexpected command');
+    })};
+    const store = new R2MediaStore({
+      client, privateBucket: 'private', publicBucket: 'public',
+      publicBaseUrl: 'https://media.example.test'
+    });
+    const target = join(await mkdtemp(join(tmpdir(), 'affiliate-r2-get-')), 'cached.mp4');
+
+    const stored = await store.getPrivateFile(
+      privateObjectKey('temporary/renders/cached.mp4'), target
+    );
+
+    expect(stored).toMatchObject({sizeBytes: 6, publicUrl: null});
+    await expect(readFile(target, 'utf8')).resolves.toBe('cached');
   });
 });

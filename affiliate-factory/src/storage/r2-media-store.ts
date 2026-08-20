@@ -1,5 +1,7 @@
-import {createReadStream} from 'node:fs';
-import {stat} from 'node:fs/promises';
+import {createReadStream, createWriteStream} from 'node:fs';
+import {mkdir, stat, writeFile} from 'node:fs/promises';
+import {dirname} from 'node:path';
+import {pipeline} from 'node:stream/promises';
 import {
   GetObjectCommand,
   HeadObjectCommand,
@@ -131,6 +133,41 @@ export class R2MediaStore implements MediaStore {
       ContentType: contentType
     }), 'PUT_PRIVATE');
     return {key, sizeBytes, etag: result.ETag as string | undefined, publicUrl: null};
+  }
+
+  public async getPrivateFile(
+    key: PrivateObjectKey,
+    destination: string
+  ): Promise<StoredObject | null> {
+    let result: Record<string, unknown>;
+    try {
+      result = await this.#send(new GetObjectCommand({
+        Bucket: this.options.privateBucket,
+        Key: key
+      }), 'GET_PRIVATE');
+    } catch (error) {
+      if ((error as Error).message === 'OBJECT_NOT_FOUND') return null;
+      throw error;
+    }
+    await mkdir(dirname(destination), {recursive: true});
+    const body = result.Body as {
+      pipe?: (...args: unknown[]) => unknown;
+      transformToByteArray?: () => Promise<Uint8Array>;
+    } | undefined;
+    if (body?.pipe) {
+      await pipeline(body as NodeJS.ReadableStream, createWriteStream(destination));
+    } else if (body?.transformToByteArray) {
+      await writeFile(destination, await body.transformToByteArray());
+    } else {
+      throw new Error('R2_GET_PRIVATE_INVALID_BODY');
+    }
+    const sizeBytes = (await stat(destination)).size;
+    return {
+      key,
+      sizeBytes,
+      etag: result.ETag as string | undefined,
+      publicUrl: null
+    };
   }
 
   public async putPublicFile(

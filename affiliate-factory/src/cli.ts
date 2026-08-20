@@ -4,7 +4,7 @@ import {z} from 'zod';
 import {loadConfig, formatConfigError, type ConfigMode} from './config.js';
 import {createBaseCreativePlan} from './creative/base-plan.js';
 import {createTikTokVariant} from './creative/tiktok-variant.js';
-import {createContentHash, createVideoId} from './identity/content-identity.js';
+import {createBundleContentHash, createVideoId} from './identity/content-identity.js';
 import {loadManualBundle} from './intake/manual-bundle.js';
 import {runPipeline, type PipelineDependencies} from './pipeline/runner.js';
 import {BufferPublisher} from './publish/buffer-publisher.js';
@@ -25,7 +25,8 @@ export type CliCommand =
   | {command: 'validate'; bundleDir: string}
   | {command: 'render'; bundleDir: string; outputPath: string}
   | {command: 'run'; bundleDir: string; mode: ConfigMode; publish: boolean}
-  | {command: 'telegram-poll'; outputDir: string};
+  | {command: 'telegram-poll'; outputDir: string}
+  | {command: 'telegram-commit'; offset: number};
 
 function flags(args: string[]): Map<string, string | true> {
   const result = new Map<string, string | true>();
@@ -62,7 +63,8 @@ export function parseCliArgs(args: string[]): CliCommand {
     validate: ['--bundle'],
     render: ['--bundle', '--output'],
     run: ['--bundle', '--mode', '--publish'],
-    'telegram-poll': ['--output']
+    'telegram-poll': ['--output'],
+    'telegram-commit': ['--offset']
   };
   const allowed = command ? allowedByCommand[command] : undefined;
   if (allowed) {
@@ -99,6 +101,12 @@ export function parseCliArgs(args: string[]): CliCommand {
     rejectUnknown(values, ['--output']);
     return {command, outputDir: stringFlag(values, '--output', 'OUTPUT_REQUIRED')};
   }
+  if (command === 'telegram-commit') {
+    rejectUnknown(values, ['--offset']);
+    const value = Number(stringFlag(values, '--offset', 'OFFSET_REQUIRED'));
+    if (!Number.isInteger(value) || value < 0) throw new Error('OFFSET_INVALID');
+    return {command, offset: value};
+  }
   throw new Error('COMMAND_INVALID');
 }
 
@@ -120,7 +128,7 @@ function makeRenderer(): RemotionRenderer {
 
 async function renderCommand(bundleDir: string, outputPath: string): Promise<void> {
   const manifest = await loadManualBundle(bundleDir);
-  const contentHash = createContentHash(manifest);
+  const contentHash = await createBundleContentHash(manifest, bundleDir);
   const videoId = createVideoId({
     productId: manifest.productId, contentHash,
     templateVersion: 'commercial-vertical@1', rendererVersion: 'remotion@4.0.514'
@@ -162,22 +170,42 @@ async function runCommand(command: Extract<CliCommand, {command: 'run'}>): Promi
       apiKey: config.buffer.apiKey,
       organizationId: config.buffer.organizationId
     };
-    publishers.tiktok = new BufferPublisher({
+    const tiktokPublisher = new BufferPublisher({
       ...shared, channel: 'tiktok', expectedService: 'tiktok',
       channelId: config.buffer.tiktokChannelId
     });
-    publishers.x = new BufferPublisher({
+    const xPublisher = new BufferPublisher({
       ...shared, channel: 'x', expectedService: 'twitter',
       channelId: config.buffer.xChannelId
     });
-    publishers.threads = new BufferPublisher({
+    const threadsPublisher = new BufferPublisher({
       ...shared, channel: 'threads', expectedService: 'threads',
       channelId: config.buffer.threadsChannelId
     });
+    if (command.publish) {
+      await Promise.all([
+        tiktokPublisher.validateConnection(),
+        xPublisher.validateConnection(),
+        threadsPublisher.validateConnection()
+      ]);
+    }
+    publishers.tiktok = tiktokPublisher;
+    publishers.x = xPublisher;
+    publishers.threads = threadsPublisher;
   }
   const reporter = config.telegram
     ? new TelegramReporter({token: config.telegram.token, chatId: config.telegram.chatId})
     : undefined;
+  let eventSequence = 0;
+  const recordEvent: NonNullable<PipelineDependencies['recordEvent']> = async (event) => {
+    eventSequence += 1;
+    await mediaStore.putPrivateJson(
+      privateObjectKey(
+        `runs/${event.runId}/events/${String(eventSequence).padStart(4, '0')}-${event.stage}.json`
+      ),
+      event
+    );
+  };
   const summary = await runPipeline({
     bundleDir: resolve(command.bundleDir),
     outputDir: resolve('artifacts'),
@@ -187,6 +215,7 @@ async function runCommand(command: Extract<CliCommand, {command: 'run'}>): Promi
     renderer: makeRenderer(), normalize: normalizeMedia, probe: probeMedia,
     qualityGate: runQualityGate, mediaStore, idempotency, publishers,
     ...(reporter ? {reporter} : {}),
+    recordEvent,
     now: () => new Date()
   });
   process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
@@ -207,8 +236,18 @@ async function telegramPoll(outputDir: string): Promise<void> {
   for (const submission of result.submissions) {
     bundles.push(await intake.materialize(submission, resolve(outputDir)));
   }
-  await store.putPrivateJson(offsetKey, {offset: result.nextOffset});
   process.stdout.write(`${JSON.stringify({bundles, nextOffset: result.nextOffset}, null, 2)}\n`);
+}
+
+async function telegramCommit(offset: number): Promise<void> {
+  const config = loadConfig(process.env, {mode: 'production', publish: false});
+  if (!config.telegram) throw new Error('TELEGRAM_CONFIGURATION_MISSING');
+  const store = r2Store(config);
+  await store.putPrivateJson(
+    privateObjectKey('state/telegram/update-offset.json'),
+    {offset}
+  );
+  process.stdout.write(`${JSON.stringify({committedOffset: offset})}\n`);
 }
 
 export async function main(args = process.argv.slice(2)): Promise<void> {
@@ -220,8 +259,10 @@ export async function main(args = process.argv.slice(2)): Promise<void> {
     await renderCommand(command.bundleDir, command.outputPath);
   } else if (command.command === 'run') {
     await runCommand(command);
-  } else {
+  } else if (command.command === 'telegram-poll') {
     await telegramPoll(command.outputDir);
+  } else {
+    await telegramCommit(command.offset);
   }
 }
 

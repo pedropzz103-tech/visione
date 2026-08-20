@@ -1,7 +1,11 @@
 import {describe, expect, it} from 'vitest';
+import {mkdtemp, mkdir, writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {
   canonicalJson,
   createContentHash,
+  createBundleContentHash,
   createPublicationKey,
   createVideoId,
   sha256Hex
@@ -41,5 +45,20 @@ describe('content identity', () => {
     const base = {videoId: 'vid_123', contentHash: 'abc'};
     expect(createPublicationKey({...base, channel: 'tiktok'}))
       .not.toBe(createPublicationKey({...base, channel: 'tiktok-shop'}));
+  });
+
+  it('changes content identity when operator asset bytes change', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'affiliate-identity-'));
+    await mkdir(join(root, 'assets'));
+    const asset = join(root, 'assets', 'operator-image.jpg');
+    const manifest = makeProductionManifest();
+    await writeFile(asset, Buffer.from('first-image'));
+    const first = await createBundleContentHash(manifest, root);
+
+    await writeFile(asset, Buffer.from('second-image'));
+    const second = await createBundleContentHash(manifest, root);
+
+    expect(first).toMatch(/^[a-f0-9]{64}$/);
+    expect(second).not.toBe(first);
   });
 });

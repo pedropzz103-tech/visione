@@ -6,7 +6,7 @@ const SafePathSchema = z.string().min(1).refine(
 );
 
 const PrivateObjectKeySchema = SafePathSchema.refine(
-  (value) => /^(state|runs|diagnostics|bundles)\//.test(value),
+  (value) => /^(state|runs|diagnostics|bundles|input|temporary|rejected)\//.test(value),
   'Private object key must use a private prefix'
 ).brand<'PrivateObjectKey'>();
 
@@ -42,6 +42,7 @@ export interface MediaStore {
   putPrivateJsonIfAbsent(key: PrivateObjectKey, value: unknown): Promise<StoredObject>;
   getPrivateJson<T>(key: PrivateObjectKey, schema: ZodType<T>): Promise<T | null>;
   putPrivateFile(key: PrivateObjectKey, file: string, contentType: string): Promise<StoredObject>;
+  getPrivateFile(key: PrivateObjectKey, destination: string): Promise<StoredObject | null>;
   putPublicFile(
     key: PublicationObjectKey,
     file: string,

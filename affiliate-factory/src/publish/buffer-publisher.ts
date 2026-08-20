@@ -43,10 +43,22 @@ export type BufferPublisherOptions = {
 };
 
 function postText(request: PublishRequest): string {
-  const base = request.caption.trim();
-  return base.includes(request.affiliateUrl)
-    ? base
-    : `${base}\n\n${request.affiliateUrl}`;
+  const maximum = request.channel === 'x' ? 280
+    : request.channel === 'threads' ? 500 : 2200;
+  const disclosure = '#publicidade';
+  const suffix = `\n\n${request.affiliateUrl}`;
+  const factualText = request.caption
+    .replace(/#publicidade\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const available = maximum - disclosure.length - 1 - suffix.length;
+  if (available < 1) {
+    throw new Error('AFFILIATE_URL_TOO_LONG_FOR_CHANNEL');
+  }
+  const clipped = factualText.length <= available
+    ? factualText
+    : factualText.slice(0, Math.max(1, available - 1)).trimEnd() + '…';
+  return `${disclosure} ${clipped}${suffix}`;
 }
 
 function receipt(

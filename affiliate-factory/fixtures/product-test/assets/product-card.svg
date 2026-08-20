@@ -24,7 +24,4 @@
     <path d="M780 450v320L540 915V585z" fill="#F5F2FA"/>
     <path d="m540 320 95 52-240 135-95-57z" fill="#FF8A69"/>
   </g>
-  <text x="540" y="1080" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="3">PRODUTO DEMONSTRATIVO</text>
-  <rect x="315" y="1140" width="450" height="94" rx="47" fill="#0D0D12" opacity="0.88"/>
-  <text x="540" y="1204" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="2">NAO PUBLICAR</text>
 </svg>

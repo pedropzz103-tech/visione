@@ -65,6 +65,22 @@ describe('BufferPublisher', () => {
     expect(receipt.channel).toBe(channel);
   });
 
+  it('keeps an X post within 280 characters without losing disclosure or link', async () => {
+    const calls: BufferCall[] = [];
+    const request = {...makePublishRequest('x'), caption: `${'descrição factual '.repeat(30)}#publicidade`};
+    const publisher = new BufferPublisher({
+      apiKey: 'secret', channelId: 'x-1', organizationId: 'org-1',
+      channel: 'x', expectedService: 'twitter', fetchFn: successFetch(calls)
+    });
+
+    await publisher.publish(request);
+    const text = JSON.parse(String(calls[0]?.init.body)).variables.input.text as string;
+
+    expect(text.length).toBeLessThanOrEqual(280);
+    expect(text).toContain('#publicidade');
+    expect(text).toContain(request.affiliateUrl);
+  });
+
   it('validates that the configured Buffer channel is connected and unpaused', async () => {
     const fetchFn = vi.fn(async () => Response.json({data: {channels: [
       {id: 'x-1', name: 'Affiliate X', service: 'twitter', isQueuePaused: false}

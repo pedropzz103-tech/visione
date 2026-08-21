@@ -1,11 +1,21 @@
-const IMAGE_PARTS = { 'work-01': 4, 'work-02': 3, 'work-03': 3, 'a110-front': 8 };
+const BUILD_ID = '20260822-001';
+const IMAGE_FILES = {
+  'work-01': ['work-01-01.b64','work-01-02.b64','work-01-03.b64','work-01-04.b64'],
+  'work-02': ['work-02-01.b64','work-02-02.b64','work-02-03.b64'],
+  'work-03': ['work-03-01.b64','work-03-02.b64','work-03-03.b64'],
+  'a110-front': [
+    'a110-front-01.b64','a110-front-02.b64',
+    'a110-front-03a.b64','a110-front-03b.b64','a110-front-03c.b64','a110-front-03d.b64',
+    'a110-front-04.b64','a110-front-05.b64','a110-front-06.b64','a110-front-07.b64','a110-front-08.b64'
+  ]
+};
 
 async function loadImageData(key) {
-  const count = IMAGE_PARTS[key];
-  if (!count) throw new Error(`Unknown image key: ${key}`);
-  const parts = await Promise.all(Array.from({ length: count }, (_, index) =>
-    fetch(`./assets/${key}-${String(index + 1).padStart(2, '0')}.b64`).then(response => {
-      if (!response.ok) throw new Error(`Unable to load ${key} part ${index + 1}`);
+  const files = IMAGE_FILES[key];
+  if (!files) throw new Error(`Unknown image key: ${key}`);
+  const parts = await Promise.all(files.map(file =>
+    fetch(`./assets/${file}?v=${BUILD_ID}`, { cache: 'no-store' }).then(response => {
+      if (!response.ok) throw new Error(`Unable to load ${file}`);
       return response.text();
     })
   ));

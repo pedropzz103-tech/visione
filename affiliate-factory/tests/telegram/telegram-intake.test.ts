@@ -37,6 +37,64 @@ describe('TelegramIntake', () => {
     });
   });
 
+  it('pairs a product text message with the next operator photo', async () => {
+    const textOnly = `/produto
+nome: Camisa polo
+preco: R$ 49,90
+beneficios: Algodao informado | Envio nacional
+link: https://s.shopee.com.br/operator-link
+cta: Conferir oferta
+legenda: #publicidade Camisa polo informada pelo operador`;
+    const fetchFn = vi.fn(async () => Response.json({ok: true, result: [
+      {update_id: 300, message: {message_id: 10, chat: {id: 42}, text: textOnly}},
+      {update_id: 301, message: {message_id: 11, chat: {id: 42},
+        photo: [{file_id: 'small'}, {file_id: 'large'}]}}
+    ]})) as typeof fetch;
+    const intake = new TelegramIntake({token: 'bot-secret', allowedChatId: '42', fetchFn});
+
+    const result = await intake.poll(300);
+
+    expect(result.nextOffset).toBe(302);
+    expect(result.submissions).toHaveLength(1);
+    expect(result.submissions[0]).toMatchObject({
+      sourceId: 'message-11', updateIds: [300, 301], fileIds: ['large']
+    });
+    expect(result.submissions[0]?.manifest).toMatchObject({
+      productName: 'Camisa polo',
+      currentPriceMinor: 4990,
+      caption: '#publicidade Camisa polo informada pelo operador'
+    });
+  });
+
+  it('accepts flexible Portuguese field names and comma-separated benefits', async () => {
+    const flexibleCaption = `/produto
+produto Camisa social
+valor R$ 89,90
+de R$ 119,90
+vantagens tecido informado, corte informado
+url https://s.shopee.com.br/operator-link
+chamada Oferta do dia
+botao Ver na Shopee
+texto #publicidade Camisa social informada pelo operador`;
+    const fetchFn = vi.fn(async () => Response.json({ok: true, result: [
+      {update_id: 400, message: {message_id: 12, chat: {id: 42}, caption: flexibleCaption,
+        photo: [{file_id: 'large'}]}}
+    ]})) as typeof fetch;
+    const intake = new TelegramIntake({token: 'bot-secret', allowedChatId: '42', fetchFn});
+
+    const result = await intake.poll(400);
+
+    expect(result.submissions[0]?.manifest).toMatchObject({
+      productName: 'Camisa social',
+      currentPriceMinor: 8990,
+      previousPriceMinor: 11990,
+      headline: 'Oferta do dia',
+      cta: 'Ver na Shopee',
+      caption: '#publicidade Camisa social informada pelo operador',
+      benefits: ['tecido informado', 'corte informado']
+    });
+  });
+
   it('downloads operator photos and writes a valid manual bundle', async () => {
     const fetchFn = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
       const target = String(url);

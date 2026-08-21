@@ -6,8 +6,8 @@ raspa páginas da Shopee, não usa a API da Shopee e não depende da API da Open
 
 ## Rotina diária
 
-Envie ao bot do Telegram uma foto ou álbum por produto. A legenda segue este
-modelo:
+Envie ao bot do Telegram uma foto ou álbum por produto. O caminho mais confiável
+é colocar os dados na legenda da foto:
 
 ```text
 /produto
@@ -29,6 +29,11 @@ Threads, recibos idempotentes e o retorno do MP4 pelo Telegram.
 
 Enviar apenas o link não é suficiente. O operador fornece também nome, preço,
 benefícios factuais, CTA, legenda e as imagens que tem direito de usar.
+
+O intake também aceita um formato mais flexível: o bloco `/produto` pode ser
+enviado como texto separado perto da foto, e campos como `produto`, `valor`,
+`vantagens`, `url`, `chamada`, `botao` e `texto` são normalizados para o manifest.
+Os benefícios podem ser separados por `|`, vírgula ou ponto e vírgula.
 
 ## Desenvolvimento local
 

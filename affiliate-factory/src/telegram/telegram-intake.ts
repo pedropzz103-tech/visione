@@ -11,6 +11,7 @@ type TelegramMessage = {
   chat?: {id?: number | string};
   media_group_id?: string;
   caption?: string;
+  text?: string;
   photo?: TelegramPhoto[];
 };
 type TelegramUpdate = {update_id?: number; message?: TelegramMessage};
@@ -49,13 +50,49 @@ function parseMoney(value: string, field: string): number {
 
 function captionFields(caption: string): Map<string, string> {
   const fields = new Map<string, string>();
+  const aliases = new Map([
+    ['produto', 'nome'],
+    ['nome', 'nome'],
+    ['valor', 'preco'],
+    ['preco', 'preco'],
+    ['preço', 'preco'],
+    ['de', 'preco_anterior'],
+    ['preco_anterior', 'preco_anterior'],
+    ['preço_anterior', 'preco_anterior'],
+    ['beneficios', 'beneficios'],
+    ['benefícios', 'beneficios'],
+    ['vantagens', 'beneficios'],
+    ['link', 'link'],
+    ['url', 'link'],
+    ['headline', 'headline'],
+    ['chamada', 'headline'],
+    ['cta', 'cta'],
+    ['botao', 'cta'],
+    ['botão', 'cta'],
+    ['legenda', 'legenda'],
+    ['texto', 'legenda']
+  ]);
   for (const line of caption.split(/\r?\n/)) {
-    const match = /^([a-z_]+)\s*:\s*(.+)$/i.exec(line.trim());
+    const trimmed = line.trim();
+    const match = /^([a-z_çãõéíóú]+)\s*:?\s+(.+)$/i.exec(trimmed);
     if (match?.[1] && match[2]) {
-      fields.set(match[1].toLowerCase(), match[2].trim());
+      const key = aliases.get(match[1].toLowerCase());
+      if (key) fields.set(key, match[2].trim());
     }
   }
   return fields;
+}
+
+function isProductText(value: string | undefined): value is string {
+  return Boolean(value?.trim().startsWith('/produto'));
+}
+
+function splitBenefits(value: string): string[] {
+  return value
+    .split(/[|,;]/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .slice(0, 3);
 }
 
 function required(fields: Map<string, string>, name: string): string {
@@ -79,8 +116,7 @@ export class TelegramIntake {
 
   public parseSubmission(raw: TelegramRawSubmission): TelegramSubmission {
     const fields = captionFields(raw.caption);
-    const benefits = required(fields, 'beneficios')
-      .split('|').map((item) => item.trim()).filter(Boolean).slice(0, 3);
+    const benefits = splitBenefits(required(fields, 'beneficios'));
     const previousPrice = fields.get('preco_anterior');
     const productId = `telegram-${raw.sourceId}`
       .replace(/[^A-Za-z0-9_-]/g, '-').slice(0, 100);
@@ -129,29 +165,54 @@ export class TelegramIntake {
       offset - 1
     );
     const groups = new Map<string, TelegramRawSubmission>();
+    let pendingText: {caption: string; updateId: number} | undefined;
+    let latestCaptionlessSourceId: string | undefined;
     for (const update of payload.result) {
       const message = update.message;
       const updateId = update.update_id;
       const chatId = message?.chat?.id === undefined ? '' : String(message.chat.id);
+      if (!message || chatId !== this.options.allowedChatId || updateId === undefined) {
+        continue;
+      }
+      if (isProductText(message.text)) {
+        if (latestCaptionlessSourceId) {
+          const current = groups.get(latestCaptionlessSourceId);
+          if (current && !current.caption) {
+            current.caption = message.text;
+            current.updateIds.unshift(updateId);
+            pendingText = undefined;
+            continue;
+          }
+        }
+        pendingText = {caption: message.text, updateId};
+        continue;
+      }
       const photos = message?.photo;
       const fileId = photos?.[photos.length - 1]?.file_id;
-      if (!message || chatId !== this.options.allowedChatId || updateId === undefined || !fileId) {
+      if (!fileId) {
         continue;
       }
       const sourceId = message.media_group_id ?? `message-${message.message_id ?? updateId}`;
       const current = groups.get(sourceId) ?? {
         sourceId, updateIds: [], chatId, caption: '', fileIds: []
       };
+      if (!current.caption && pendingText) {
+        current.caption = pendingText.caption;
+        current.updateIds.push(pendingText.updateId);
+        pendingText = undefined;
+      }
       current.updateIds.push(updateId);
       current.fileIds.push(fileId);
       if (message.caption) {
         current.caption = message.caption;
       }
       groups.set(sourceId, current);
+      if (!current.caption) latestCaptionlessSourceId = sourceId;
     }
     return {
       nextOffset: highest + 1,
       submissions: [...groups.values()]
+        .filter((raw) => raw.caption)
         .sort((left, right) => left.updateIds[0]! - right.updateIds[0]!)
         .map((raw) => this.parseSubmission(raw))
     };

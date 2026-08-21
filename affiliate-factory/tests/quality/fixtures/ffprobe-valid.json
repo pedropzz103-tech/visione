@@ -1,0 +1,21 @@
+{
+  "streams": [
+    {
+      "codec_type": "video",
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1920,
+      "avg_frame_rate": "30000/1000",
+      "duration": "15.000000"
+    },
+    {
+      "codec_type": "audio",
+      "codec_name": "aac",
+      "duration": "15.000000"
+    }
+  ],
+  "format": {
+    "duration": "15.000000",
+    "size": "2048000"
+  }
+}

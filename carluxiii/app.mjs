@@ -2,11 +2,17 @@ const root = document.documentElement;
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
+let galleryObjectUrl = null;
+
 async function loadGallery() {
   const response = await fetch('./assets/gallery-atlas.b64', { cache: 'no-store' });
   if (!response.ok) throw new Error(`Gallery asset failed: ${response.status}`);
-  const encoded = (await response.text()).trim();
-  root.style.setProperty('--gallery-atlas', `url("data:image/webp;base64,${encoded}")`);
+
+  const bytes = await response.arrayBuffer();
+  const imageBlob = new Blob([bytes], { type: 'image/webp' });
+  galleryObjectUrl = URL.createObjectURL(imageBlob);
+
+  root.style.setProperty('--gallery-atlas', `url("${galleryObjectUrl}")`);
   root.classList.add('images-ready');
 }
 

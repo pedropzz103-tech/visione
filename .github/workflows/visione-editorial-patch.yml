@@ -33,7 +33,7 @@ jobs:
           s = re.sub(r'\d+ reports · Aug 24, 2026', '22 reports · Aug 24, 2026', s, count=1)
           card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Official Call of Duty Modern Warfare 4 multiplayer screenshot" loading="lazy"></div><div class="story-copy"><p class="eyebrow">GAMING / CALL OF DUTY / BETA</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 24, 2026 · VISIONE Wire</div></div></a></article>'
           marker = '<div class="news-grid news-grid-expanded">'
-          if f'href="news/{slug}"' not in s:
+          if 'GAMING / CALL OF DUTY / BETA' not in s:
               s = s.replace(marker, marker + card, 1)
           p.write_text(s, encoding='utf-8')
 

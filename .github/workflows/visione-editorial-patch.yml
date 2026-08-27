@@ -20,52 +20,52 @@ jobs:
           import re
           from pathlib import Path
 
-          slug = 'modern-warfare-4-beta-movement-maps-open-beta-august-28.html'
+          slug = 'nvidia-q2-fy2027-earnings-august-26-ai-market-test.html'
           url = 'https://visione.one/news/' + slug
-          image = 'https://xboxwire.thesourcemediaassets.com/sites/2/2026/08/MW4_BETA_CP_Meltdown_01-e939d69c113ff8f1eb73-1600x900.jpg'
-          title = 'Modern Warfare 4 beta: new movement, maps and open beta dates'
-          desc = "Infinity Ward is testing a faster, more fluid version of grounded Call of Duty multiplayer before the public open beta begins August 28."
+          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Palit%20GeForce%20RTX%205090%20Gamerock%2020250530%20HOF3913%20RAW-Export.png?width=1280'
+          title = 'Nvidia Q2 revenue hits $96.2 billion as data center sales double'
+          desc = "Nvidia's fiscal Q2 revenue rose 106% year over year, Data Center reached $89.0 billion and Q3 guidance is $108 billion plus or minus 2%."
+          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="GeForce RTX 5090 graphics card representing Nvidia GPU hardware" loading="lazy"></div><div class="story-copy"><p class="eyebrow">TECHNOLOGY / AI / MARKETS · UPDATED TODAY</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">Updated August 27, 2026 · VISIONE Wire</div></div></a></article>'
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>{title}</strong><a href="news/{slug}">Read story →</a></div>'
+          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>{title}</strong><a href="news/{slug}">Read the story →</a></div>'
           s = re.sub(r'<div class="ticker" aria-label="Top story">.*?</div>', ticker, s, count=1, flags=re.S)
-          s = re.sub(r'\d+ reports · Aug 24, 2026', '22 reports · Aug 24, 2026', s, count=1)
-          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Official Call of Duty Modern Warfare 4 multiplayer screenshot" loading="lazy"></div><div class="story-copy"><p class="eyebrow">GAMING / CALL OF DUTY / BETA</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 24, 2026 · VISIONE Wire</div></div></a></article>'
+          s = re.sub(r'29 reports · Aug 26, 2026', '29 reports · Aug 27, 2026', s, count=1)
+          s = re.sub(r'<article class="story-card"><a href="news/' + re.escape(slug) + r'">.*?</article>', '', s, flags=re.S)
           marker = '<div class="news-grid news-grid-expanded">'
-          if 'GAMING / CALL OF DUTY / BETA' not in s:
-              s = s.replace(marker, marker + card, 1)
+          s = s.replace(marker, marker + card, 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('sitemap.xml')
           s = p.read_text(encoding='utf-8')
-          if url not in s:
-              entry = f'<url><loc>{url}</loc><lastmod>2026-08-24</lastmod></url>'
-              s = s.replace('</urlset>', entry + '</urlset>', 1)
-              p.write_text(s, encoding='utf-8')
+          s = re.sub(r'(<url><loc>' + re.escape(url) + r'</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-08-27\g<2>', s)
+          s = re.sub(r'(<url><loc>https://visione.one/</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-08-27\g<2>', s)
+          p.write_text(s, encoding='utf-8')
 
           p = Path('news/news-sitemap.xml')
           s = p.read_text(encoding='utf-8')
-          if url not in s:
-              entry = f'<url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-24T20:01:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>'
-              s = s.replace('</urlset>', entry + '</urlset>', 1)
-              p.write_text(s, encoding='utf-8')
+          s = re.sub(r'<url><loc>' + re.escape(url) + r'</loc>.*?</url>', '', s, flags=re.S)
+          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-22T12:00:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
+          s = s.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + entry, 1)
+          p.write_text(s, encoding='utf-8')
 
           p = Path('news/feed.xml')
           s = p.read_text(encoding='utf-8')
-          if url not in s:
-              item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Mon, 24 Aug 2026 18:01:00 GMT</pubDate><description>{desc}</description></item>'
-              first = s.find('<item>')
-              if first != -1:
-                  s = s[:first] + item + s[first:]
-              else:
-                  s = s.replace('</channel>', item + '</channel>', 1)
-              p.write_text(s, encoding='utf-8')
+          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Thu, 27 Aug 2026 06:12:00 GMT</lastBuildDate>', s, count=1)
+          s = re.sub(r'<item><title>[^<]*Nvidia[^<]*</title><link>' + re.escape(url) + r'</link>.*?</item>', '', s, flags=re.S|re.I)
+          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Thu, 27 Aug 2026 06:12:00 GMT</pubDate><description>Updated August 27: {desc}</description></item>\n'
+          first = s.find('<item>')
+          if first != -1:
+              s = s[:first] + item + s[first:]
+          else:
+              s = s.replace('</channel>', item + '</channel>', 1)
+          p.write_text(s, encoding='utf-8')
       - name: Commit editorial sync
         run: |
           git config user.name "VISIONE Wire Bot"
           git config user.email "actions@users.noreply.github.com"
           git add index.html sitemap.xml news/news-sitemap.xml news/feed.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "wire: feature Modern Warfare 4 beta"
+          git commit -m "wire: feature Nvidia Q2 FY27 results"
           git push

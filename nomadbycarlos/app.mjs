@@ -2,34 +2,76 @@ const root = document.documentElement;
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-let galleryUrl = null;
+const PARTS = [
+  './assets/gallery-01.b64',
+  './assets/gallery-02.b64',
+  './assets/gallery-03.b64',
+  './assets/gallery-04.b64',
+  './assets/gallery-05.b64'
+];
+const TILE_W = 360;
+const TILE_H = 540;
+const objectUrls = [];
 
-async function loadGallery() {
-  const response = await fetch('/carluxiii/assets/gallery-atlas.b64', { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Gallery asset failed: ${response.status}`);
-
-  const base64 = (await response.text()).replace(/\s+/g, '');
-  const binary = atob(base64);
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
-
-  const blob = new Blob([bytes], { type: 'image/webp' });
-  galleryUrl = URL.createObjectURL(blob);
-
-  await new Promise((resolve, reject) => {
+async function loadImage(src) {
+  return new Promise((resolve, reject) => {
     const image = new Image();
-    image.onload = resolve;
-    image.onerror = () => reject(new Error('Decoded gallery image could not be rendered'));
-    image.src = galleryUrl;
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error('Gallery image could not be decoded'));
+    image.src = src;
   });
+}
 
-  root.style.setProperty('--atlas', `url("${galleryUrl}")`);
+async function canvasBlob(canvas) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Unable to create gallery crop')), 'image/webp', .94);
+  });
+}
+
+async function hydrateGallery() {
+  const parts = await Promise.all(PARTS.map(async path => {
+    const response = await fetch(path, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Gallery asset failed: ${path} (${response.status})`);
+    return (await response.text()).replace(/\s+/g, '');
+  }));
+
+  const atlas = await loadImage(`data:image/webp;base64,${parts.join('')}`);
+  if (atlas.naturalWidth !== TILE_W * 3 || atlas.naturalHeight !== TILE_H * 3) {
+    throw new Error(`Unexpected gallery dimensions: ${atlas.naturalWidth}x${atlas.naturalHeight}`);
+  }
+
+  const urls = new Map();
+  for (let index = 0; index < 9; index += 1) {
+    const canvas = document.createElement('canvas');
+    canvas.width = TILE_W;
+    canvas.height = TILE_H;
+    const context = canvas.getContext('2d', { alpha: false });
+    if (!context) throw new Error('Canvas is unavailable');
+    context.drawImage(
+      atlas,
+      (index % 3) * TILE_W,
+      Math.floor(index / 3) * TILE_H,
+      TILE_W,
+      TILE_H,
+      0,
+      0,
+      TILE_W,
+      TILE_H
+    );
+    const blob = await canvasBlob(canvas);
+    const url = URL.createObjectURL(blob);
+    objectUrls.push(url);
+    urls.set(String(index + 1), url);
+  }
+
+  const images = [...document.querySelectorAll('[data-photo]')];
+  images.forEach(image => { image.src = urls.get(image.dataset.photo) || ''; });
+  await Promise.all(images.map(image => image.decode().catch(() => {})));
   root.classList.add('images-ready');
 }
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const reveals = document.querySelectorAll('.reveal');
-
 if (reducedMotion || !('IntersectionObserver' in window)) {
   reveals.forEach(node => node.classList.add('visible'));
 } else {
@@ -39,7 +81,7 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+  }, { threshold: .1, rootMargin: '0px 0px -5% 0px' });
   reveals.forEach(node => observer.observe(node));
 }
 
@@ -56,11 +98,9 @@ addEventListener('scroll', () => {
 }, { passive: true });
 updateHeader();
 
-loadGallery().catch(error => {
+hydrateGallery().catch(error => {
   console.error(error);
   root.classList.add('images-error');
 });
 
-addEventListener('beforeunload', () => {
-  if (galleryUrl) URL.revokeObjectURL(galleryUrl);
-});
+addEventListener('pagehide', () => objectUrls.forEach(URL.revokeObjectURL), { once: true });

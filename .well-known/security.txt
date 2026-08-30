@@ -1,0 +1,5 @@
+Contact: mailto:pedropzz103@gmail.com
+Preferred-Languages: en, pt
+Canonical: https://visione.one/.well-known/security.txt
+Policy: https://visione.one/news/contact.html
+Expires: 2027-08-30T23:59:00Z

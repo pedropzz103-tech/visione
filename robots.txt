@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /carluxiii-preview/
+Disallow: /affiliate-factory/
+Disallow: /drafts/
+Disallow: /tmp/
 
 Sitemap: https://visione.one/sitemap.xml
 Sitemap: https://visione.one/news/news-sitemap.xml

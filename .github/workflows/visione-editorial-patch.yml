@@ -20,18 +20,18 @@ jobs:
           import re
           from pathlib import Path
 
-          slug = 'gamescom-award-2026-nominees-metro-2039-alien-isolation-2.html'
+          slug = 'shein-hong-kong-ipo-26-5-billion-september-1-2026.html'
           url = 'https://visione.one/news/' + slug
-          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Visitors%20at%20Gamescom%202025%20in%20Cologne%2C%20Germany.jpg?width=1280'
-          title = 'Gamescom Award 2026 winners: Witcher 3 and Sega take three awards each'
-          desc = "CD Projekt Red's Witcher 3 presence and Sega's lineup lead the official 19-category results, while Onimusha and Ubisoft take two awards each."
-          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Crowds of visitors inside gamescom in Cologne, Germany" loading="lazy"></div><div class="story-copy"><p class="eyebrow">GAMING / GAMESCOM / AWARDS · UPDATED</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">Updated August 29, 2026 · VISIONE Wire</div></div></a></article>'
+          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Shein%20logo.svg?width=1600'
+          title = "Shein's Hong Kong IPO values the company at about $26.5 billion ahead of September 1 debut"
+          desc = "The fast-fashion group is set to raise roughly $1.7 billion at HK$48.56 a share after years of attempts to reach public markets."
+          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Shein wordmark" loading="lazy"></div><div class="story-copy"><p class="eyebrow">BUSINESS / MARKETS / RETAIL</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 31, 2026 · VISIONE Wire</div></div></a></article>'
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>Gamescom Award 2026 winners: Witcher 3 and Sega lead the final results</strong><a href="news/{slug}">Read the story →</a></div>'
+          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>Shein prices Hong Kong IPO near $26.5 billion before September 1 debut</strong><a href="news/{slug}">Read the story →</a></div>'
           s = re.sub(r'<div class="ticker" aria-label="Top story">.*?</div>', ticker, s, count=1, flags=re.S)
-          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">36 reports · Aug 29, 2026</span>', s, count=1)
+          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">43 reports · Aug 31, 2026</span>', s, count=1)
           s = re.sub(r'<article class="story-card"><a href="news/' + re.escape(slug) + r'">.*?</article>', '', s, flags=re.S)
           marker = '<div class="news-grid news-grid-expanded">'
           s = s.replace(marker, marker + card, 1)
@@ -39,26 +39,24 @@ jobs:
 
           p = Path('sitemap.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'(<url><loc>https://visione.one/</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-08-29\g<2>', s)
-          pat = r'(<url><loc>' + re.escape(url) + r'</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)'
-          if re.search(pat, s):
-              s = re.sub(pat, r'\g<1>2026-08-29\g<2>', s)
-          elif url not in s:
-              s = s.replace('</urlset>', f'  <url><loc>{url}</loc><lastmod>2026-08-29</lastmod></url>\n</urlset>', 1)
+          s = re.sub(r'(<url><loc>https://visione.one/</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-08-31\g<2>', s)
+          if url not in s:
+              s = s.replace('</urlset>', f'  <url><loc>{url}</loc><lastmod>2026-08-31</lastmod></url>\n</urlset>', 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/news-sitemap.xml')
           s = p.read_text(encoding='utf-8')
           s = re.sub(r'<url><loc>' + re.escape(url) + r'</loc>.*?</url>', '', s, flags=re.S)
-          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-29T08:20:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
-          s = s.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n' + entry, 1)
+          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-31T08:00:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
+          marker = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
+          s = s.replace(marker, marker + entry, 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/feed.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Sat, 29 Aug 2026 06:20:00 GMT</lastBuildDate>', s, count=1)
+          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Mon, 31 Aug 2026 06:00:00 GMT</lastBuildDate>', s, count=1)
           s = re.sub(r'<item><title>.*?</title><link>' + re.escape(url) + r'</link>.*?</item>', '', s, flags=re.S|re.I)
-          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Sat, 29 Aug 2026 06:20:00 GMT</pubDate><description>{desc}</description></item>\n'
+          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Mon, 31 Aug 2026 06:00:00 GMT</pubDate><description>{desc}</description></item>\n'
           first = s.find('<item>')
           if first != -1:
               s = s[:first] + item + s[first:]
@@ -71,5 +69,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add index.html sitemap.xml news/news-sitemap.xml news/feed.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "wire: feature gamescom award 2026 winners"
+          git commit -m "wire: publish Shein Hong Kong IPO coverage"
           git push

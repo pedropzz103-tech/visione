@@ -20,18 +20,18 @@ jobs:
           import re
           from pathlib import Path
 
-          slug = 'playstation-state-of-play-september-3-2026-final-fantasy-vii-revelation.html'
+          slug = 'openai-chatgpt-ads-1-billion-run-rate-europe-india-august-31-2026.html'
           url = 'https://visione.one/news/' + slug
-          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/PlayStation%20logo2.svg?width=1600'
-          title = 'PlayStation State of Play September 3, 2026: start time, State of Play Japan and Final Fantasy VII Revelation'
-          desc = 'Sony will run two back-to-back PlayStation broadcasts on September 3, with Final Fantasy VII Revelation closing the first State of Play.'
-          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="PlayStation emblem illustrating the September 3 State of Play broadcasts" loading="lazy"></div><div class="story-copy"><p class="eyebrow">GAMING / PLAYSTATION / STATE OF PLAY</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 31, 2026 · VISIONE Wire</div></div></a></article>'
+          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/OpenAI%20logo%202025.svg?width=1600'
+          title = 'OpenAI says ChatGPT Ads hits $1 billion annualized run rate as self-service expands globally'
+          desc = 'OpenAI says ChatGPT Ads reached a $1 billion annualized revenue run rate in under 200 days as self-service buying expands across India, Europe, the Middle East and North Africa.'
+          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="OpenAI wordmark illustrating the expansion of ChatGPT Ads" loading="lazy"></div><div class="story-copy"><p class="eyebrow">TECHNOLOGY / AI / ADVERTISING / BUSINESS</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 31, 2026 · VISIONE Wire</div></div></a></article>'
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>PlayStation State of Play returns September 3 with two back-to-back broadcasts</strong><a href="news/{slug}">Read the guide →</a></div>'
+          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>ChatGPT Ads reaches $1 billion annualized revenue run rate in less than 200 days</strong><a href="news/{slug}">Read the story →</a></div>'
           s = re.sub(r'<div class="ticker" aria-label="Top story">.*?</div>', ticker, s, count=1, flags=re.S)
-          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">45 reports · Aug 31, 2026</span>', s, count=1)
+          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">46 reports · Aug 31, 2026</span>', s, count=1)
           s = re.sub(r'<article class="story-card"><a href="news/' + re.escape(slug) + r'">.*?</article>', '', s, flags=re.S)
           marker = '<div class="news-grid news-grid-expanded">'
           s = s.replace(marker, marker + card, 1)
@@ -47,16 +47,16 @@ jobs:
           p = Path('news/news-sitemap.xml')
           s = p.read_text(encoding='utf-8')
           s = re.sub(r'\s*<url><loc>' + re.escape(url) + r'</loc>.*?</url>', '', s, flags=re.S)
-          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-31T18:11:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
+          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-31T20:01:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
           marker = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
           s = s.replace(marker, marker + entry, 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/feed.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Mon, 31 Aug 2026 16:11:00 GMT</lastBuildDate>', s, count=1)
+          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Mon, 31 Aug 2026 18:01:00 GMT</lastBuildDate>', s, count=1)
           s = re.sub(r'<item><title>.*?</title><link>' + re.escape(url) + r'</link>.*?</item>', '', s, flags=re.S|re.I)
-          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Mon, 31 Aug 2026 16:11:00 GMT</pubDate><description>{desc}</description></item>\n'
+          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Mon, 31 Aug 2026 18:01:00 GMT</pubDate><description>{desc}</description></item>\n'
           first = s.find('<item>')
           if first != -1:
               s = s[:first] + item + s[first:]
@@ -69,5 +69,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add index.html sitemap.xml news/news-sitemap.xml news/feed.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "wire: publish September 3 State of Play coverage"
+          git commit -m "wire: sync ChatGPT Ads coverage"
           git push

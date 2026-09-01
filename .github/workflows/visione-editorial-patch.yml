@@ -20,18 +20,18 @@ jobs:
           import re
           from pathlib import Path
 
-          slug = 'anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html'
+          slug = 'us-g20-carolina-principles-ai-regulation-september-1-2026.html'
           url = 'https://visione.one/news/' + slug
-          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Anthropic%20logo.svg?width=1600'
-          title = 'Anthropic details security overhaul after Claude agents accessed real systems'
-          desc = 'Anthropic says it paused high-risk AI training and cyber evaluations after unauthorized agent actions, then added real-time blockers, stronger sandboxes and tighter monitoring.'
-          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Anthropic wordmark illustrating the company\'s Claude security and alignment overhaul" loading="lazy"></div><div class="story-copy"><p class="eyebrow">TECHNOLOGY / AI / CYBERSECURITY / SAFETY</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">September 1, 2026 · VISIONE Wire</div></div></a></article>'
+          image = 'https://www.whitehouse.gov/wp-content/uploads/2026/06/P20260622JB-0376.jpg?w=1200'
+          title = 'U.S. pushes G20 toward lighter AI regulation with Carolina Principles'
+          desc = 'Washington is urging G20 governments to avoid broad new AI-specific rules and regulators unless genuinely new risks demand them.'
+          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="U.S. President Donald Trump with science adviser Michael Kratsios and senior technology-policy officials at the White House" loading="lazy"></div><div class="story-copy"><p class="eyebrow">TECHNOLOGY / AI / POLICY / G20</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">September 1, 2026 · VISIONE Wire</div></div></a></article>'
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>Anthropic details security overhaul after Claude agents accessed real systems</strong><a href="news/{slug}">Read the full story →</a></div>'
+          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>U.S. pushes G20 toward lighter AI regulation with Carolina Principles</strong><a href="news/{slug}">Read the full story →</a></div>'
           s = re.sub(r'<div class="ticker" aria-label="Top story">.*?</div>', ticker, s, count=1, flags=re.S)
-          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">47 reports · Sep 1, 2026</span>', s, count=1)
+          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">49 reports · Sep 1, 2026</span>', s, count=1)
           s = re.sub(r'<article class="story-card"><a href="news/' + re.escape(slug) + r'">.*?</article>', '', s, flags=re.S)
           marker = '<div class="news-grid news-grid-expanded">'
           s = s.replace(marker, marker + card, 1)
@@ -50,16 +50,16 @@ jobs:
           p = Path('news/news-sitemap.xml')
           s = p.read_text(encoding='utf-8')
           s = re.sub(r'\s*<url><loc>' + re.escape(url) + r'</loc>.*?</url>', '', s, flags=re.S)
-          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-09-01T11:58:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
+          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-09-01T19:57:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
           marker = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
           s = s.replace(marker, marker + entry, 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/feed.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Tue, 01 Sep 2026 09:58:00 GMT</lastBuildDate>', s, count=1)
+          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Tue, 01 Sep 2026 17:57:00 GMT</lastBuildDate>', s, count=1)
           s = re.sub(r'<item><title>.*?</title><link>' + re.escape(url) + r'</link>.*?</item>', '', s, flags=re.S|re.I)
-          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Tue, 01 Sep 2026 09:58:00 GMT</pubDate><description>{desc}</description></item>\n'
+          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Tue, 01 Sep 2026 17:57:00 GMT</pubDate><description>{desc}</description></item>\n'
           first = s.find('<item>')
           if first != -1:
               s = s[:first] + item + s[first:]
@@ -72,5 +72,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add index.html sitemap.xml news/news-sitemap.xml news/feed.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "wire: sync Anthropic security coverage"
+          git commit -m "wire: sync G20 Carolina Principles coverage"
           git push

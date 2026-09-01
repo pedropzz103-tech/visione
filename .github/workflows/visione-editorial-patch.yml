@@ -20,18 +20,18 @@ jobs:
           import re
           from pathlib import Path
 
-          slug = 'openai-chatgpt-ads-1-billion-run-rate-europe-india-august-31-2026.html'
+          slug = 'shein-hong-kong-ipo-26-5-billion-september-1-2026.html'
           url = 'https://visione.one/news/' + slug
-          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/OpenAI%20logo%202025.svg?width=1600'
-          title = 'OpenAI says ChatGPT Ads hits $1 billion annualized run rate as self-service expands globally'
-          desc = 'OpenAI says ChatGPT Ads reached a $1 billion annualized revenue run rate in under 200 days as self-service buying expands across India, Europe, the Middle East and North Africa.'
-          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="OpenAI wordmark illustrating the expansion of ChatGPT Ads" loading="lazy"></div><div class="story-copy"><p class="eyebrow">TECHNOLOGY / AI / ADVERTISING / BUSINESS</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">August 31, 2026 · VISIONE Wire</div></div></a></article>'
+          image = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Shein%20logo.svg?width=1600'
+          title = 'Shein shares fall 8% in Hong Kong debut as valuation drops to about $24 billion'
+          desc = 'Shein fell about 8% in its first Hong Kong trading session, taking the fast-fashion group to roughly a $24 billion market value after its $1.74 billion IPO.'
+          card = f'<article class="story-card"><a href="news/{slug}"><div class="story-image"><img src="{image}" alt="Shein wordmark illustrating the company\'s Hong Kong stock-market debut" loading="lazy"></div><div class="story-copy"><p class="eyebrow">BUSINESS / MARKETS / RETAIL · UPDATED</p><h3>{title}</h3><p>{desc}</p><div class="story-meta">Updated September 1, 2026 · VISIONE Wire</div></div></a></article>'
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>ChatGPT Ads reaches $1 billion annualized revenue run rate in less than 200 days</strong><a href="news/{slug}">Read the story →</a></div>'
+          ticker = f'<div class="ticker" aria-label="Top story"><span>JUST IN</span><strong>Shein falls 8% in Hong Kong debut, cutting market value to about $24 billion</strong><a href="news/{slug}">Read the updated story →</a></div>'
           s = re.sub(r'<div class="ticker" aria-label="Top story">.*?</div>', ticker, s, count=1, flags=re.S)
-          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">46 reports · Aug 31, 2026</span>', s, count=1)
+          s = re.sub(r'<span class="live-chip">\d+ reports · [^<]+</span>', '<span class="live-chip">46 reports · Sep 1, 2026</span>', s, count=1)
           s = re.sub(r'<article class="story-card"><a href="news/' + re.escape(slug) + r'">.*?</article>', '', s, flags=re.S)
           marker = '<div class="news-grid news-grid-expanded">'
           s = s.replace(marker, marker + card, 1)
@@ -39,24 +39,23 @@ jobs:
 
           p = Path('sitemap.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'(<url><loc>https://visione.one/</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-08-31\g<2>', s)
-          s = re.sub(r'\s*<url><loc>' + re.escape(url) + r'</loc><lastmod>.*?</lastmod></url>', '', s)
-          s = s.replace('</urlset>', f'  <url><loc>{url}</loc><lastmod>2026-08-31</lastmod></url>\n</urlset>', 1)
+          s = re.sub(r'(<url><loc>https://visione.one/</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-09-01\g<2>', s)
+          s = re.sub(r'(<url><loc>' + re.escape(url) + r'</loc><lastmod>)\d{4}-\d{2}-\d{2}(</lastmod></url>)', r'\g<1>2026-09-01\g<2>', s)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/news-sitemap.xml')
           s = p.read_text(encoding='utf-8')
           s = re.sub(r'\s*<url><loc>' + re.escape(url) + r'</loc>.*?</url>', '', s, flags=re.S)
-          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-31T20:01:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
+          entry = f'  <url><loc>{url}</loc><news:news><news:publication><news:name>VISIONE Wire</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-08-31T08:00:00+02:00</news:publication_date><news:title>{title}</news:title></news:news></url>\n'
           marker = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
           s = s.replace(marker, marker + entry, 1)
           p.write_text(s, encoding='utf-8')
 
           p = Path('news/feed.xml')
           s = p.read_text(encoding='utf-8')
-          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Mon, 31 Aug 2026 18:01:00 GMT</lastBuildDate>', s, count=1)
+          s = re.sub(r'<lastBuildDate>.*?</lastBuildDate>', '<lastBuildDate>Tue, 01 Sep 2026 05:55:00 GMT</lastBuildDate>', s, count=1)
           s = re.sub(r'<item><title>.*?</title><link>' + re.escape(url) + r'</link>.*?</item>', '', s, flags=re.S|re.I)
-          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Mon, 31 Aug 2026 18:01:00 GMT</pubDate><description>{desc}</description></item>\n'
+          item = f'<item><title>{title}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>Tue, 01 Sep 2026 05:55:00 GMT</pubDate><description>{desc}</description></item>\n'
           first = s.find('<item>')
           if first != -1:
               s = s[:first] + item + s[first:]
@@ -69,5 +68,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add index.html sitemap.xml news/news-sitemap.xml news/feed.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "wire: sync ChatGPT Ads coverage"
+          git commit -m "wire: sync Shein debut update"
           git push

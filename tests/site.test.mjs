@@ -8,8 +8,8 @@ const css = await readFile(new URL("../styles.css", import.meta.url), "utf8");
 test("presents VISIONE as a technology company", () => {
   assert.match(html, /<title>VISIONE — Digital Products & Technology<\/title>/);
   assert.match(html, /id="services"/);
-  assert.match(html, /id="approach"/);
-  assert.match(html, /id="about"/);
+  assert.match(html, /id="projects"/);
+  assert.match(html, /id="studio"/);
   assert.match(html, /id="contact"/);
 });
 
@@ -41,8 +41,17 @@ test("showcases VISIONE projects with honest development stages", () => {
   assert.match(html, /id="projects"/);
   assert.match(html, />Ivi</);
   assert.match(html, />SDKPOS</);
-  assert.match(html, />VISIONE Social</);
+  assert.match(html, /VISIONE Social/);
   assert.doesNotMatch(html, /A Cana Chegou/i);
   assert.match(html, /In development/);
   assert.match(html, /Concept stage/);
+});
+
+test("uses the approved editorial case-study composition", () => {
+  assert.match(html, /class="case case-ivi"/);
+  assert.match(html, /class="case case-sdkpos"/);
+  assert.match(html, /class="case case-social"/);
+  assert.match(html, /class="capability-row"/);
+  assert.match(html, /class="product-ui/);
+  assert.doesNotMatch(html, /hero-system|service-card|project-card|orbit-one/);
 });

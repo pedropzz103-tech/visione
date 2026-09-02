@@ -36,3 +36,13 @@ test("uses an accessible responsive light visual system", () => {
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
   assert.doesNotMatch(css, /\byellow\b|#ffd700\b|#facc15\b|#ffcc00\b/i);
 });
+
+test("showcases VISIONE projects with honest development stages", () => {
+  assert.match(html, /id="projects"/);
+  assert.match(html, />Ivi</);
+  assert.match(html, />SDKPOS</);
+  assert.match(html, />VISIONE Social</);
+  assert.doesNotMatch(html, /A Cana Chegou/i);
+  assert.match(html, /In development/);
+  assert.match(html, /Concept stage/);
+});

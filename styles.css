@@ -371,6 +371,21 @@ button { font: inherit; }
   text-transform: uppercase;
   opacity: .65;
 }
+.case-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 34px;
+  padding-bottom: 7px;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid currentColor;
+  font-size: .78rem;
+  font-weight: 600;
+  transition: gap .25s var(--ease), opacity .2s ease;
+}
+.case-link:hover,
+.case-link:focus-visible { gap: 22px; opacity: .68; }
+.case-link:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
 .case-stage {
   display: flex;
   padding: 70px 0 0 64px;

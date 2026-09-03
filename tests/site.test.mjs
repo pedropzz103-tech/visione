@@ -9,19 +9,19 @@ const projectCases = [
   {
     slug: "ivi",
     name: "Ivi",
-    image: "ivi-hero.webp",
+    image: "ivi-context.webp",
     next: "../sdkpos/",
   },
   {
     slug: "sdkpos",
     name: "SDKPOS",
-    image: "sdkpos-hero.webp",
+    image: "sdkpos-context.webp",
     next: "../visione-social/",
   },
   {
     slug: "visione-social",
     name: "VISIONE Social",
-    image: "visione-social-hero.webp",
+    image: "visione-social-context.webp",
     next: "../ivi/",
   },
 ];
@@ -104,12 +104,19 @@ test("showcases VISIONE projects with honest development stages", () => {
   assert.match(html, /Concept stage/);
 });
 
-test("uses the approved editorial case-study composition", () => {
+test("organizes selected projects as one coherent image grid", () => {
+  assert.match(html, /class="case-grid"/);
   assert.match(html, /class="case case-ivi"/);
   assert.match(html, /class="case case-sdkpos"/);
   assert.match(html, /class="case case-social"/);
   assert.match(html, /class="capability-row"/);
-  assert.match(html, /class="product-ui/);
+
+  for (const { image, name } of projectCases) {
+    assert.match(html, new RegExp(`src="projects/assets/${image}"`));
+    assert.match(html, new RegExp(`alt="[^"]*${name.replace(" ", "\\s+")}[^"]*"`, "i"));
+  }
+
+  assert.doesNotMatch(html, /class="product-ui/);
   assert.doesNotMatch(html, /hero-system|service-card|project-card|orbit-one/);
 });
 
@@ -146,6 +153,56 @@ test("keeps project-page navigation and galleries responsive", async () => {
   assert.match(projectCss, /@media\s*\(max-width:\s*760px\)/i);
   assert.match(projectCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
   assert.doesNotMatch(projectCss, /\byellow\b|#ffd700\b|#facc15\b|#ffcc00\b/i);
+});
+
+test("keeps every project image fully visible instead of cropping it", async () => {
+  const projectCss = await readFile(
+    new URL("../projects/project.css", import.meta.url),
+    "utf8",
+  );
+  const coverImageRule = projectCss.match(/\.project-cover img\s*\{([^}]*)\}/)?.[1] ?? "";
+  const mobileRules = projectCss.match(/@media\s*\(max-width:\s*760px\)\s*\{([\s\S]*?)\n\}/i)?.[1] ?? "";
+  const cardImageRule = css.match(/\.case-media img\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(coverImageRule, /object-fit:\s*contain/i);
+  assert.doesNotMatch(coverImageRule, /object-fit:\s*cover/i);
+  assert.match(cardImageRule, /object-fit:\s*contain/i);
+  assert.doesNotMatch(mobileRules, /\.project-cover\s*\{[^}]*min-height:\s*520px/i);
+  assert.doesNotMatch(mobileRules, /\.project-cover\s*\{[^}]*aspect-ratio:\s*auto/i);
+});
+
+test("pairs every context photo with a product-specific interface", async () => {
+  const overlayByProject = {
+    ivi: "cover-ui-ivi",
+    sdkpos: "cover-ui-sdkpos",
+    "visione-social": "cover-ui-social",
+  };
+
+  for (const { slug } of projectCases) {
+    const page = await readFile(
+      new URL(`../projects/${slug}/index.html`, import.meta.url),
+      "utf8",
+    );
+
+    assert.match(page, new RegExp(`class="cover-ui ${overlayByProject[slug]}`));
+  }
+});
+
+test("uses the same VISIONE accent across every project frame", async () => {
+  const projectCss = await readFile(
+    new URL("../projects/project.css", import.meta.url),
+    "utf8",
+  );
+  const accents = ["project-ivi-page", "project-sdkpos-page", "project-social-page"];
+
+  for (const pageClass of accents) {
+    assert.match(
+      projectCss,
+      new RegExp(`\\.${pageClass}\\s*\\{[^}]*--project-accent:\\s*#315cff`, "i"),
+    );
+  }
+
+  assert.doesNotMatch(css, /\.case-(?:ivi|sdkpos|social)\s*\{[^}]*background\s*:/i);
 });
 
 test("makes every project case study discoverable in the sitemap", async () => {

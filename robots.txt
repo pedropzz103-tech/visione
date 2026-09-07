@@ -6,3 +6,4 @@ Disallow: /drafts/
 Disallow: /tmp/
 
 Sitemap: https://visione.one/sitemap.xml
+Sitemap: https://visione.one/news/news-sitemap.xml

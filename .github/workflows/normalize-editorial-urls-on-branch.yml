@@ -1,0 +1,37 @@
+name: Normalize editorial URLs on migration branch
+
+on:
+  push:
+    branches:
+      - visione-wire-main-domain-20260907
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.event.head_commit.message != 'chore: normalize editorial URLs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: visione-wire-main-domain-20260907
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Normalize article URLs and authorship
+        run: node scripts/normalize-editorial-urls.mjs
+      - name: Commit normalized pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "No normalization changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news/*.html
+          git commit -m "chore: normalize editorial URLs"
+          git push origin HEAD:visione-wire-main-domain-20260907

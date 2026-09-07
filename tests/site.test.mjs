@@ -1,17 +1,16 @@
-// VISIONE Wire canonical-domain and editorial-quality gate.
+// VISIONE canonical-domain and editorial-quality gate.
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [home, robots, sitemap, ads, worker, newsIndex, feed, newsSitemap] = await Promise.all([
+const [home, robots, sitemap, ads, newsIndex, feed, newsSitemap] = await Promise.all([
   read("index.html"),
   read("robots.txt"),
   read("sitemap.xml"),
   read("ads.txt"),
-  read("cloudflare/wire-worker.js"),
   read("news/index.html"),
   read("news/feed.xml"),
   read("news/news-sitemap.xml"),
@@ -39,7 +38,7 @@ const highValueArticles = [
   "us-g20-carolina-principles-ai-regulation-september-1-2026.html",
 ];
 
-test("serves VISIONE Wire as the canonical root publication", () => {
+test("serves VISIONE as the canonical root publication", () => {
   assert.match(home, /<title>VISIONE Wire\b/);
   assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
   assert.match(home, /href="\/news\/styles\.css"/);
@@ -71,6 +70,12 @@ test("uses the main domain in robots, RSS and sitemaps", () => {
   assert.doesNotMatch(newsSitemap, /wire\.visione\.one/);
 });
 
+test("does not carry infrastructure for the retired wire subdomain", async () => {
+  await assert.rejects(access(new URL("cloudflare/wire-worker.js", root)), { code: "ENOENT" });
+  await assert.rejects(access(new URL("cloudflare/wrangler.toml", root)), { code: "ENOENT" });
+  await assert.rejects(access(new URL(".github/workflows/deploy-wire-worker.yml", root)), { code: "ENOENT" });
+});
+
 test("makes the general sitemap complete for current editorial inventory", async () => {
   assert.match(sitemap, /<loc>https:\/\/visione\.one\/<\/loc>/);
   for (const page of [...trustPages, "author-pedro.html"]) {
@@ -93,16 +98,6 @@ test("keeps the Google News sitemap limited to genuinely recent stories", () => 
   assert.match(newsSitemap, /openai-automated-research-intern-research-acceleration-september-6-2026\.html/);
   assert.doesNotMatch(newsSitemap, /september-2-2026\.html/);
   assert.doesNotMatch(newsSitemap, /august-31-2026\.html/);
-});
-
-test("legacy Wire is redirect-only and scoped to its own hostname", () => {
-  assert.match(worker, /wire\.visione\.one/);
-  assert.match(worker, /Response\.redirect\(/);
-  assert.match(worker, /301/);
-  assert.match(worker, /https:\/\/visione\.one/);
-  assert.doesNotMatch(worker, /tablet\.visione\.one/);
-  assert.doesNotMatch(worker, /replaceAll\(/);
-  assert.doesNotMatch(worker, /cacheEverything/);
 });
 
 test("current flagship articles use main-domain canonicals and accountable authorship", async () => {

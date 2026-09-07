@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /carluxiii-preview/
 Disallow: /affiliate-factory/
 Disallow: /drafts/
 Disallow: /tmp/

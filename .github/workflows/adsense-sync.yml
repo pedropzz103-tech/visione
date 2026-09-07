@@ -1,9 +1,20 @@
-name: AdSense sync
+name: Editorial inventory sync
 
 on:
   push:
     paths:
       - '.github/workflows/adsense-sync.yml'
+      - 'news/*.html'
+      - 'news/feed.xml'
+      - 'news/news-sitemap.xml'
+      - 'projects/**/*.html'
+      - 'contact/**/*.html'
+      - 'legal/**/*.html'
+      - 'privacy/**/*.html'
+      - 'carluxiii/**/*.html'
+      - 'carluxiii-preview/**/*.html'
+      - 'nomadbycarlos/**/*.html'
+      - 'sitemap.xml'
 
 permissions:
   contents: write
@@ -11,60 +22,209 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Add AdSense to VISIONE Wire pages
+      - name: Normalize editorial inventory and AdSense surface
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
 
           snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054712908852183" crossorigin="anonymous"></script>'
+          ads_pattern = re.compile(r'<script\s+async\s+src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-3054712908852183"\s+crossorigin="anonymous"></script>', re.I)
+          robots_pattern = re.compile(r'<meta\s+name=["\']robots["\'][^>]*>', re.I)
+
+          trust_pages = {
+              'about.html',
+              'coverage.html',
+              'editorial.html',
+              'accountability.html',
+              'advertising.html',
+              'privacy.html',
+              'cookie-policy.html',
+              'contact.html',
+              'author-pedro.html',
+          }
+
+          approved_articles = {
+              'alibaba-hk80-billion-share-placement-ai-investment-2026.html',
+              'anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html',
+              'brazil-ai-supercomputer-23-billion-us-china.html',
+              'broadcom-60-billion-ai-debt-deal-credit-markets.html',
+              'dell-q2-fy2027-ai-server-orders-95-billion-backlog-september-2-2026.html',
+              'europe-lumi-ai-supercomputer-387-8-million-amd-mi430x-2027.html',
+              'gartner-ai-security-market-4-8-billion-2027.html',
+              'google-marvell-12-billion-ai-chip-deal.html',
+              'judge-blocks-pentagon-anthropic-blacklisting-august-28-2026.html',
+              'liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026.html',
+              'nasa-roman-space-telescope-launch-august-30-2026.html',
+              'nvidia-ai-server-price-hike-memory-costs-2027.html',
+              'nvidia-q2-fy2027-earnings-august-26-ai-market-test.html',
+              'openai-anthropic-100-companies-ai-cyber-defense-warning-august-27-2026.html',
+              'openai-astra-critical-cyber-safety-controls.html',
+              'openai-automated-research-intern-research-acceleration-september-6-2026.html',
+              'openai-chatgpt-ads-1-billion-run-rate-europe-india-august-31-2026.html',
+              'openai-cursor-model-access-ends-november-12-spacex-2026.html',
+              'openai-gpt-5-6-sol-price-cut-august-2026.html',
+              'openai-jalapeno-chip-benchmarks-inference-august-25-2026.html',
+              'opera-loses-eu-court-challenge-microsoft-edge-dma-september-2-2026.html',
+              'salesforce-claudeforce-anthropic-37-skills-ai-crm-2026.html',
+              'stability-ai-76-million-series-b-entertainment-investors-august-25-2026.html',
+              'tencent-hy4-preview-770b-open-source-ai-coding-research-august-28-2026.html',
+              'thomson-reuters-thomson-proprietary-ai-model-40-million.html',
+              'us-g20-carolina-principles-ai-regulation-september-1-2026.html',
+              'us-government-backs-openai-nyt-copyright-ai-training-fair-use-september-2-2026.html',
+          }
+
+          def set_robots(text, value):
+              tag = f'<meta name="robots" content="{value}">'
+              if robots_pattern.search(text):
+                  return robots_pattern.sub(tag, text, count=1)
+              viewport = re.search(r'<meta\s+name=["\']viewport["\'][^>]*>', text, flags=re.I)
+              if viewport:
+                  return text[:viewport.end()] + tag + text[viewport.end():]
+              return text.replace('<head>', '<head>' + tag, 1)
+
+          def remove_ads(text):
+              return ads_pattern.sub('', text)
+
+          def ensure_ads(text):
+              if ads_pattern.search(text):
+                  return text
+              viewport = re.search(r'<meta\s+name=["\']viewport["\'][^>]*>', text, flags=re.I)
+              if viewport:
+                  return text[:viewport.end()] + snippet + text[viewport.end():]
+              return text.replace('<head>', '<head>' + snippet, 1)
+
+          def accountable_author(text):
+              text = re.sub(
+                  r'"author":\{"@type":"Organization","name":"VISIONE Wire"(?:,"url":"[^"]+")?\}',
+                  '"author":{"@type":"Person","name":"Pedro","url":"https://visione.one/news/author-pedro.html"}',
+                  text,
+              )
+              text = text.replace(
+                  'href="https://visione.one/news/author-pedro.html"',
+                  'href="/news/author-pedro.html"',
+              )
+              if 'href="/news/author-pedro.html">Pedro</a>' not in text:
+                  text = re.sub(
+                      r'<p class="byline">By (?:VISIONE Wire|Pedro) ·',
+                      '<p class="byline">By <a href="/news/author-pedro.html">Pedro</a> · VISIONE Wire ·',
+                      text,
+                      count=1,
+                  )
+              return text
+
           changed = []
 
+          # News pages: only approved reporting is indexable and monetizable.
           for path in sorted(Path('news').glob('*.html')):
               text = path.read_text(encoding='utf-8')
               original = text
-              if 'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054712908852183' not in text:
-                  m = re.search(r'<meta\s+name=["\']viewport["\'][^>]*>', text, flags=re.I)
-                  if m:
-                      text = text[:m.end()] + snippet + text[m.end():]
-                  else:
-                      text = text.replace('<head>', '<head>' + snippet, 1)
 
-              if path.name == 'privacy.html':
-                  text = text.replace(
-                      'VISIONE Wire is preparing for advertising monetization but does not intentionally activate advertising cookies or personalized advertising until the relevant advertising and consent systems are configured. If Google AdSense or another advertising provider is enabled, this policy will be updated as necessary and a consent-management flow will be used where required.',
-                      'VISIONE Wire uses Google AdSense to support the publication. Google and its advertising partners may use cookies, local storage, device identifiers or similar technologies for ad delivery, fraud prevention, frequency capping, measurement and, where consent permits, personalization.'
-                  )
-                  text = text.replace(
-                      'Where required for visitors in the European Economic Area, the United Kingdom or Switzerland, consent for advertising technologies will be collected through a consent management platform compatible with the requirements of the advertising services in use.',
-                      'For visitors in the European Economic Area, the United Kingdom and Switzerland, VISIONE Wire uses Google’s certified consent management platform to collect and communicate applicable advertising consent choices.'
-                  )
-
-              if path.name == 'cookie-policy.html':
-                  text = text.replace(
-                      'VISIONE Wire is currently a lightweight static publication. We do not intentionally deploy advertising cookies until monetization and the required consent tools are activated.',
-                      'VISIONE Wire uses Google AdSense and related advertising technologies. Cookies or similar technologies may be used for ad delivery, measurement, fraud prevention, frequency capping and, where consent permits, personalization.'
-                  )
-                  text = text.replace(
-                      'If Google AdSense or another advertising service is enabled, cookies or similar technologies may be used for advertising, measurement, fraud prevention and frequency capping. Personalized advertising will only be used where the applicable consent requirements are satisfied.',
-                      'Google AdSense and advertising partners may use cookies or similar technologies for advertising, measurement, fraud prevention and frequency capping. Personalized advertising is used only where the applicable consent requirements are satisfied.'
-                  )
-                  text = text.replace(
-                      'Before personalized advertising is served to users in regions where consent is required, VISIONE Wire intends to use a Google-certified consent management platform integrated with the relevant advertising framework.',
-                      'VISIONE Wire uses Google’s certified consent management platform for applicable European privacy and advertising consent requirements.'
-                  )
+              if path.name == 'index.html':
+                  text = set_robots(text, 'noindex,follow')
+                  text = remove_ads(text)
+              elif path.name in trust_pages:
+                  text = set_robots(text, 'index,follow,max-image-preview:large')
+                  text = remove_ads(text)
+              elif path.name in approved_articles:
+                  text = set_robots(text, 'index,follow,max-image-preview:large')
+                  text = accountable_author(text)
+                  text = ensure_ads(text)
+              else:
+                  text = set_robots(text, 'noindex,follow')
+                  text = remove_ads(text)
 
               if text != original:
                   path.write_text(text, encoding='utf-8')
                   changed.append(str(path))
 
+          missing = sorted(name for name in approved_articles if not (Path('news') / name).exists())
+          if missing:
+              raise SystemExit('Approved article files missing: ' + ', '.join(missing))
+
+          # Retired corporate presentation remains accessible by direct URL but is removed from Search.
+          for root_name in ['projects', 'contact', 'legal', 'privacy', 'carluxiii', 'carluxiii-preview', 'nomadbycarlos']:
+              root = Path(root_name)
+              if not root.exists():
+                  continue
+              for path in sorted(root.rglob('*.html')):
+                  text = path.read_text(encoding='utf-8')
+                  original = text
+                  text = set_robots(text, 'noindex,follow')
+                  text = remove_ads(text)
+                  if text != original:
+                      path.write_text(text, encoding='utf-8')
+                      changed.append(str(path))
+
+          # Build a narrow sitemap from the editorial allowlist instead of every historical page.
+          trust_order = [
+              'about.html', 'coverage.html', 'editorial.html', 'accountability.html',
+              'advertising.html', 'privacy.html', 'cookie-policy.html', 'contact.html',
+              'author-pedro.html',
+          ]
+          lines = [
+              '<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+              '  <url><loc>https://visione.one/</loc><lastmod>2026-09-07</lastmod></url>',
+          ]
+          for name in trust_order:
+              lines.append(f'  <url><loc>https://visione.one/news/{name}</loc><lastmod>2026-09-07</lastmod></url>')
+          for name in sorted(approved_articles):
+              lines.append(f'  <url><loc>https://visione.one/news/{name}</loc></url>')
+          lines.append('</urlset>')
+          sitemap = Path('sitemap.xml')
+          sitemap_text = '\n'.join(lines) + '\n'
+          if sitemap.read_text(encoding='utf-8') != sitemap_text:
+              sitemap.write_text(sitemap_text, encoding='utf-8')
+              changed.append(str(sitemap))
+
+          # Remove any unapproved item from RSS and the Google News sitemap.
+          feed_path = Path('news/feed.xml')
+          feed = feed_path.read_text(encoding='utf-8')
+          new_feed = re.sub(
+              r'<item>.*?</item>',
+              lambda m: m.group(0) if (
+                  (link := re.search(r'<link>https://visione\.one/news/([^<]+)</link>', m.group(0)))
+                  and link.group(1) in approved_articles
+              ) else '',
+              feed,
+              flags=re.S,
+          )
+          if new_feed != feed:
+              feed_path.write_text(new_feed, encoding='utf-8')
+              changed.append(str(feed_path))
+
+          news_sitemap_path = Path('news/news-sitemap.xml')
+          news_sitemap = news_sitemap_path.read_text(encoding='utf-8')
+          new_news_sitemap = re.sub(
+              r'<url>.*?</url>',
+              lambda m: m.group(0) if (
+                  (loc := re.search(r'<loc>https://visione\.one/news/([^<]+)</loc>', m.group(0)))
+                  and loc.group(1) in approved_articles
+              ) else '',
+              news_sitemap,
+              flags=re.S,
+          )
+          if new_news_sitemap != news_sitemap:
+              news_sitemap_path.write_text(new_news_sitemap, encoding='utf-8')
+              changed.append(str(news_sitemap_path))
+
+          # Let crawlers revisit the old corporate preview so its noindex directive can be seen.
+          robots_path = Path('robots.txt')
+          robots = robots_path.read_text(encoding='utf-8')
+          new_robots = robots.replace('Disallow: /carluxiii-preview/\n', '')
+          if new_robots != robots:
+              robots_path.write_text(new_robots, encoding='utf-8')
+              changed.append(str(robots_path))
+
           print('Updated files:')
           print('\n'.join(changed) if changed else 'none')
           PY
 
-      - name: Commit changes
+      - name: Commit normalized inventory
         run: |
           if git diff --quiet; then
             echo "No changes needed"
@@ -72,6 +232,6 @@ jobs:
           fi
           git config user.name "VISIONE automation"
           git config user.email "actions@users.noreply.github.com"
-          git add news/*.html
-          git commit -m "Add AdSense across VISIONE Wire"
-          git push origin HEAD:main
+          git add -A
+          git commit -m "Enforce focused editorial inventory for AdSense"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

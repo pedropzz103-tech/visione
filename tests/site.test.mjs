@@ -1,259 +1,147 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-const css = await readFile(new URL("../styles.css", import.meta.url), "utf8");
+const root = new URL("../", import.meta.url);
+const read = (path) => readFile(new URL(path, root), "utf8");
 
-const projectCases = [
-  {
-    slug: "ivi",
-    name: "Ivi",
-    image: "ivi-context.webp",
-    next: "../sdkpos/",
-  },
-  {
-    slug: "sdkpos",
-    name: "SDKPOS",
-    image: "sdkpos-context.webp",
-    next: "../visione-social/",
-  },
-  {
-    slug: "visione-social",
-    name: "VISIONE Social",
-    image: "visione-social-context.webp",
-    next: "../ivi/",
-  },
+const [home, robots, sitemap, ads, worker, newsIndex, feed, newsSitemap] = await Promise.all([
+  read("index.html"),
+  read("robots.txt"),
+  read("sitemap.xml"),
+  read("ads.txt"),
+  read("cloudflare/wire-worker.js"),
+  read("news/index.html"),
+  read("news/feed.xml"),
+  read("news/news-sitemap.xml"),
+]);
+
+const trustPages = [
+  "about.html",
+  "coverage.html",
+  "editorial.html",
+  "accountability.html",
+  "advertising.html",
+  "privacy.html",
+  "cookie-policy.html",
+  "contact.html",
 ];
 
-function cssColorForSelector(stylesheet, selector) {
-  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const rule = stylesheet.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`))?.[1];
-  const color = rule?.match(/(?:^|;)\s*color:\s*(#[0-9a-f]{6})/i)?.[1];
+const highValueArticles = [
+  "liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026.html",
+  "openai-automated-research-intern-research-acceleration-september-6-2026.html",
+  "us-government-backs-openai-nyt-copyright-ai-training-fair-use-september-2-2026.html",
+  "dell-q2-fy2027-ai-server-orders-95-billion-backlog-september-2-2026.html",
+  "anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html",
+  "europe-lumi-ai-supercomputer-387-8-million-amd-mi430x-2027.html",
+  "opera-loses-eu-court-challenge-microsoft-edge-dma-september-2-2026.html",
+  "us-g20-carolina-principles-ai-regulation-september-1-2026.html",
+];
 
-  assert.ok(color, `Expected a six-digit text color for ${selector}`);
-  return color;
-}
-
-function relativeLuminance(hex) {
-  const channels = hex
-    .slice(1)
-    .match(/.{2}/g)
-    .map((channel) => Number.parseInt(channel, 16) / 255)
-    .map((channel) =>
-      channel <= 0.04045
-        ? channel / 12.92
-        : ((channel + 0.055) / 1.055) ** 2.4,
-    );
-
-  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
-}
-
-function contrastRatio(foreground, background) {
-  const lighter = Math.max(
-    relativeLuminance(foreground),
-    relativeLuminance(background),
-  );
-  const darker = Math.min(
-    relativeLuminance(foreground),
-    relativeLuminance(background),
-  );
-
-  return (lighter + 0.05) / (darker + 0.05);
-}
-
-test("presents VISIONE as a technology company", () => {
-  assert.match(html, /<title>VISIONE — Digital Products & Technology<\/title>/);
-  assert.match(html, /id="services"/);
-  assert.match(html, /id="projects"/);
-  assert.match(html, /id="studio"/);
-  assert.match(html, /id="contact"/);
+test("serves VISIONE Wire as the canonical root publication", () => {
+  assert.match(home, /<title>VISIONE Wire\b/);
+  assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
+  assert.match(home, /href="\/news\/styles\.css"/);
+  assert.match(home, /High-value reads|Signal over noise/i);
+  assert.doesNotMatch(home, /Independent technology studio/i);
+  assert.doesNotMatch(home, /https:\/\/wire\.visione\.one/);
 });
 
-test("preserves the logo and routes editorial visitors to Wire", () => {
-  assert.match(html, /(?:src|href)="visione-logo\.webp"/);
-  assert.match(html, /href="https:\/\/wire\.visione\.one"/);
-  assert.match(html, /href="mailto:contact@visione\.one"/);
+test("puts trust, editorial and author identity one click from the homepage", () => {
+  for (const page of trustPages) {
+    assert.match(home, new RegExp(`href="/news/${page.replaceAll(".", "\\.")}"`));
+  }
+  assert.match(home, /href="\/news\/author-pedro\.html"/);
+  assert.match(home, /Pedro/i);
 });
 
-test("references a logo file that exists in the published root", async () => {
-  const logo = await readFile(new URL("../visione-logo.webp", import.meta.url));
-  assert.ok(logo.byteLength > 0);
+test("keeps the duplicate /news/ homepage out of the index", () => {
+  assert.match(newsIndex, /name="robots" content="noindex,follow"/);
+  assert.match(newsIndex, /rel="canonical" href="https:\/\/visione\.one\/"/);
+  assert.doesNotMatch(newsIndex, /pagead2\.googlesyndication\.com/);
 });
 
-test("removes the temporary coming-soon experience", () => {
-  assert.doesNotMatch(html, /Coming soon/i);
-  assert.doesNotMatch(html, /class="coming-soon"/);
+test("uses the main domain in robots, RSS and sitemaps", () => {
+  assert.match(robots, /Sitemap: https:\/\/visione\.one\/sitemap\.xml/);
+  assert.match(robots, /Sitemap: https:\/\/visione\.one\/news\/news-sitemap\.xml/);
+  assert.match(feed, /<link>https:\/\/visione\.one\/<\/link>/);
+  assert.doesNotMatch(feed, /wire\.visione\.one/);
+  assert.doesNotMatch(sitemap, /wire\.visione\.one/);
+  assert.doesNotMatch(newsSitemap, /wire\.visione\.one/);
 });
 
-test("uses an accessible responsive light visual system", () => {
-  assert.match(html, /name="theme-color" content="#f7f9ff"/);
-  assert.match(css, /--canvas:\s*#f7f9ff/i);
-  assert.match(css, /@media\s*\(max-width:\s*760px\)/i);
-  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
-  assert.doesNotMatch(css, /\byellow\b|#ffd700\b|#facc15\b|#ffcc00\b/i);
-});
-
-test("showcases VISIONE projects with honest development stages", () => {
-  assert.match(html, /id="projects"/);
-  assert.match(html, />Ivi</);
-  assert.match(html, />SDKPOS</);
-  assert.match(html, /VISIONE Social/);
-  assert.doesNotMatch(html, /A Cana Chegou/i);
-  assert.match(html, /In development/);
-  assert.match(html, /Concept stage/);
-});
-
-test("organizes selected projects as one coherent image grid", () => {
-  assert.match(html, /class="case-grid"/);
-  assert.match(html, /class="case case-ivi"/);
-  assert.match(html, /class="case case-sdkpos"/);
-  assert.match(html, /class="case case-social"/);
-  assert.match(html, /class="capability-row"/);
-
-  for (const { image, name } of projectCases) {
-    assert.match(html, new RegExp(`src="projects/assets/${image}"`));
-    assert.match(html, new RegExp(`alt="[^"]*${name.replace(" ", "\\s+")}[^"]*"`, "i"));
+test("makes the general sitemap complete for current editorial inventory", async () => {
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/<\/loc>/);
+  for (const page of [...trustPages, "author-pedro.html"]) {
+    assert.match(sitemap, new RegExp(`<loc>https:\\/\\/visione\\.one\\/news\\/${page.replaceAll(".", "\\.")}</loc>`));
   }
 
-  assert.doesNotMatch(html, /class="product-ui/);
-  assert.doesNotMatch(html, /hero-system|service-card|project-card|orbit-one/);
-});
+  const entries = await readdir(new URL("news/", root), { withFileTypes: true });
+  const articleFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
+    .map((entry) => entry.name)
+    .filter((name) => !["index.html", ...trustPages, "author-pedro.html"].includes(name));
 
-test("links every selected project to its own case-study route", () => {
-  for (const { slug } of projectCases) {
-    assert.match(html, new RegExp(`href="projects/${slug}/"`));
+  for (const article of articleFiles) {
+    assert.match(sitemap, new RegExp(`<loc>https:\\/\\/visione\\.one\\/news\\/${article.replaceAll(".", "\\.")}</loc>`), `Missing ${article} from sitemap.xml`);
   }
 });
 
-test("publishes a complete, image-led page for every selected project", async () => {
-  for (const { slug, name, image, next } of projectCases) {
-    const pageUrl = new URL(`../projects/${slug}/index.html`, import.meta.url);
-    const page = await readFile(pageUrl, "utf8");
+test("keeps the Google News sitemap limited to genuinely recent stories", () => {
+  assert.match(newsSitemap, /liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026\.html/);
+  assert.match(newsSitemap, /openai-automated-research-intern-research-acceleration-september-6-2026\.html/);
+  assert.doesNotMatch(newsSitemap, /september-2-2026\.html/);
+  assert.doesNotMatch(newsSitemap, /august-31-2026\.html/);
+});
 
-    assert.match(page, new RegExp(`<title>${name.replace(" ", "\\s+")} — VISIONE<\\/title>`));
-    assert.match(page, /class="project-hero"/);
-    assert.match(page, /class="project-gallery"/);
-    assert.match(page, new RegExp(`src="../assets/${image}"`));
-    assert.match(page, /alt="[^"]+"/);
-    assert.match(page, /href="\.\.\/\.\.\/#projects"/);
-    assert.match(page, new RegExp(`href="${next.replaceAll("/", "\\/")}"`));
+test("legacy Wire is redirect-only and scoped to its own hostname", () => {
+  assert.match(worker, /wire\.visione\.one/);
+  assert.match(worker, /Response\.redirect\(/);
+  assert.match(worker, /301/);
+  assert.match(worker, /https:\/\/visione\.one/);
+  assert.doesNotMatch(worker, /tablet\.visione\.one/);
+  assert.doesNotMatch(worker, /replaceAll\(/);
+  assert.doesNotMatch(worker, /cacheEverything/);
+});
 
-    await access(new URL(`../projects/assets/${image}`, import.meta.url));
+test("current flagship articles use main-domain canonicals and accountable authorship", async () => {
+  for (const file of highValueArticles) {
+    const article = await read(`news/${file}`);
+    assert.match(article, new RegExp(`rel="canonical" href="https:\\/\\/visione\\.one\\/news\\/${file.replaceAll(".", "\\.")}"`));
+    assert.match(article, /"@type":"NewsArticle"/);
+    assert.match(article, /class="byline"/);
+    assert.match(article, /<section class="sources">/);
+  }
+
+  for (const file of highValueArticles.slice(0, 2)) {
+    const article = await read(`news/${file}`);
+    assert.match(article, /"author":\{"@type":"Person","name":"Pedro"/);
+    assert.match(article, /href="https:\/\/visione\.one\/news\/author-pedro\.html"/);
+    assert.doesNotMatch(article, /wire\.visione\.one/);
   }
 });
 
-test("keeps project-page navigation and galleries responsive", async () => {
-  const projectCss = await readFile(
-    new URL("../projects/project.css", import.meta.url),
-    "utf8",
-  );
+test("publishes a transparent author profile and high-value editorial standard", async () => {
+  const [author, editorial, coverage, accountability] = await Promise.all([
+    read("news/author-pedro.html"),
+    read("news/editorial.html"),
+    read("news/coverage.html"),
+    read("news/accountability.html"),
+  ]);
 
-  assert.match(projectCss, /\.project-gallery\s*\{/);
-  assert.match(projectCss, /@media\s*\(max-width:\s*760px\)/i);
-  assert.match(projectCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
-  assert.doesNotMatch(projectCss, /\byellow\b|#ffd700\b|#facc15\b|#ffcc00\b/i);
+  assert.match(author, /Pedro/);
+  assert.match(author, /Editor|editor/i);
+  assert.match(author, /Editorial Standards/);
+  assert.match(editorial, /original value|original-value/i);
+  assert.match(editorial, /primary source/i);
+  assert.match(editorial, /skip|publish nothing/i);
+  assert.match(coverage, /artificial intelligence|AI/i);
+  assert.match(coverage, /cybersecurity/i);
+  assert.match(coverage, /developer|software/i);
+  assert.doesNotMatch(coverage, /broad by design/i);
+  assert.match(accountability, /Pedro/);
 });
 
-test("keeps every project image fully visible instead of cropping it", async () => {
-  const projectCss = await readFile(
-    new URL("../projects/project.css", import.meta.url),
-    "utf8",
-  );
-  const coverImageRule = projectCss.match(/\.project-cover img\s*\{([^}]*)\}/)?.[1] ?? "";
-  const mobileRules = projectCss.match(/@media\s*\(max-width:\s*760px\)\s*\{([\s\S]*?)\n\}/i)?.[1] ?? "";
-  const cardImageRule = css.match(/\.case-media img\s*\{([^}]*)\}/)?.[1] ?? "";
-
-  assert.match(coverImageRule, /object-fit:\s*contain/i);
-  assert.doesNotMatch(coverImageRule, /object-fit:\s*cover/i);
-  assert.match(cardImageRule, /object-fit:\s*contain/i);
-  assert.doesNotMatch(mobileRules, /\.project-cover\s*\{[^}]*min-height:\s*520px/i);
-  assert.doesNotMatch(mobileRules, /\.project-cover\s*\{[^}]*aspect-ratio:\s*auto/i);
-});
-
-test("pairs every context photo with a product-specific interface", async () => {
-  const overlayByProject = {
-    ivi: "cover-ui-ivi",
-    sdkpos: "cover-ui-sdkpos",
-    "visione-social": "cover-ui-social",
-  };
-
-  for (const { slug } of projectCases) {
-    const page = await readFile(
-      new URL(`../projects/${slug}/index.html`, import.meta.url),
-      "utf8",
-    );
-
-    assert.match(page, new RegExp(`class="cover-ui ${overlayByProject[slug]}`));
-  }
-});
-
-test("uses the same VISIONE accent across every project frame", async () => {
-  const projectCss = await readFile(
-    new URL("../projects/project.css", import.meta.url),
-    "utf8",
-  );
-  const accents = ["project-ivi-page", "project-sdkpos-page", "project-social-page"];
-
-  for (const pageClass of accents) {
-    assert.match(
-      projectCss,
-      new RegExp(`\\.${pageClass}\\s*\\{[^}]*--project-accent:\\s*#315cff`, "i"),
-    );
-  }
-
-  assert.doesNotMatch(css, /\.case-(?:ivi|sdkpos|social)\s*\{[^}]*background\s*:/i);
-});
-
-test("makes every project case study discoverable in the sitemap", async () => {
-  const sitemap = await readFile(new URL("../sitemap.xml", import.meta.url), "utf8");
-
-  for (const { slug } of projectCases) {
-    assert.match(sitemap, new RegExp(`<loc>https:\\/\\/visione\\.one\\/projects\\/${slug}\\/</loc>`));
-  }
-});
-
-test("gives the long SDKPOS hero title an intentional mobile break", async () => {
-  const sdkposPage = await readFile(
-    new URL("../projects/sdkpos/index.html", import.meta.url),
-    "utf8",
-  );
-  const heading = sdkposPage.match(
-    /<h1 id="project-title">([\s\S]*?)<\/h1>/,
-  )?.[1];
-
-  assert.match(
-    heading ?? "",
-    /SDK<br class="mobile-title-break"\s*\/?>\s*<em>POS\.<\/em>/,
-  );
-});
-
-test("keeps small project-page labels at WCAG AA contrast", async () => {
-  const projectCss = await readFile(
-    new URL("../projects/project.css", import.meta.url),
-    "utf8",
-  );
-  const labelSurfaces = [
-    [".project-meta span", "#f7f9ff"],
-    [".project-story > p:first-child", "#ffffff"],
-    [".progress-list span", "#f0f3f9"],
-    [".progress-list em", "#f0f3f9"],
-    [".memory-canvas > span", "#0b0e15"],
-    [".memory-cards span", "#121722"],
-    [".social-discovery .ui-window-head", "#f9f7ff"],
-    [".social-profile-copy p", "#ffffff"],
-    [".next-project span", "#315cff"],
-    [".next-project span", "#4268f4"],
-    [".next-project span", "#7354df"],
-  ];
-
-  for (const [selector, background] of labelSurfaces) {
-    const foreground = cssColorForSelector(projectCss, selector);
-    const ratio = contrastRatio(foreground, background);
-
-    assert.ok(
-      ratio >= 4.5,
-      `${selector} contrast was ${ratio.toFixed(2)}:1; expected at least 4.5:1`,
-    );
-  }
+test("keeps the expected AdSense publisher declaration", () => {
+  assert.equal(ads.trim(), "google.com, pub-3054712908852183, DIRECT, f08c47fec0942fa0");
 });

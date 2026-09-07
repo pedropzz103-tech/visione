@@ -73,6 +73,7 @@ test("serves VISIONE as the canonical root publication", () => {
   assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
   assert.match(home, /href="\/news\/styles\.css"/);
   assert.match(home, /High-value reads|Signal over noise/i);
+  assert.match(home, adsenseScript);
   assert.doesNotMatch(home, /Independent technology studio/i);
   assert.doesNotMatch(home, /https:\/\/wire\.visione\.one/);
 });

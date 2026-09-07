@@ -166,6 +166,7 @@ test("keeps retired corporate presentation pages out of the searchable publicati
     const page = await read(path);
     assert.match(page, /name="robots" content="noindex,follow"/);
     assert.doesNotMatch(page, adsenseScript);
+    assert.doesNotMatch(page, /wire\.visione\.one/);
   }
 });
 

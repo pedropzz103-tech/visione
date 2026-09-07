@@ -6,7 +6,7 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-const [home, robots, sitemap, ads, newsIndex, feed, newsSitemap] = await Promise.all([
+const [home, robots, sitemap, ads, newsIndex, feed, newsSitemap, canonicalSpec] = await Promise.all([
   read("index.html"),
   read("robots.txt"),
   read("sitemap.xml"),
@@ -14,6 +14,7 @@ const [home, robots, sitemap, ads, newsIndex, feed, newsSitemap] = await Promise
   read("news/index.html"),
   read("news/feed.xml"),
   read("news/news-sitemap.xml"),
+  read("docs/superpowers/specs/2026-09-07-visione-wire-main-domain-quality-design.md"),
 ]);
 
 const trustPages = [
@@ -74,6 +75,12 @@ test("does not carry infrastructure for the retired wire subdomain", async () =>
   await assert.rejects(access(new URL("cloudflare/wire-worker.js", root)), { code: "ENOENT" });
   await assert.rejects(access(new URL("cloudflare/wrangler.toml", root)), { code: "ENOENT" });
   await assert.rejects(access(new URL(".github/workflows/deploy-wire-worker.yml", root)), { code: "ENOENT" });
+});
+
+test("removes stale plans that could reintroduce the retired subdomain", async () => {
+  assert.doesNotMatch(canonicalSpec, /wire\.visione\.one/);
+  await assert.rejects(access(new URL("docs/superpowers/plans/2026-09-02-visione-institutional-redesign.md", root)), { code: "ENOENT" });
+  await assert.rejects(access(new URL("docs/superpowers/specs/2026-09-02-visione-institutional-redesign-design.md", root)), { code: "ENOENT" });
 });
 
 test("makes the general sitemap complete for current editorial inventory", async () => {

@@ -1,8 +1,0 @@
-name = "visione-wire-router"
-main = "wire-worker.js"
-compatibility_date = "2026-09-06"
-workers_dev = false
-
-[[routes]]
-pattern = "wire.visione.one/*"
-zone_name = "visione.one"

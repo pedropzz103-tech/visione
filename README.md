@@ -9,7 +9,7 @@ Requires Node.js 22+ and no npm dependencies.
 ```bash
 node streaming/build.mjs
 node streaming/validate.mjs
-node --test tests/site.test.mjs tests/streaming.test.mjs
+node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs
 ```
 
 The build reads normalized cached data from `streaming/data/` and generates:
@@ -19,7 +19,7 @@ The build reads normalized cached data from `streaming/data/` and generates:
 - `data/search-index.json` for client-side search;
 - streaming XML sitemaps.
 
-Ordinary page views do not call a paid entertainment API.
+Ordinary page views do not call a paid entertainment API. The committed discovery pages link to `/data-credits/`, which explains metadata, availability, licensing and attribution rules to users and crawlers.
 
 ## Data and credentials
 
@@ -40,5 +40,7 @@ TMDB, JustWatch or any replacement provider must only be enabled under terms tha
 The data layer is provider-neutral:
 
 `licensed source -> ingestion/cache -> normalized JSON -> static build -> HTML/JSON -> visitor`
+
+The editorial inventory sync also keeps the committed streaming navigation/sitemap surface in sync without overwriting the new product root.
 
 See `docs/superpowers/specs/2026-09-08-visione-streaming-discovery-design.md` for the product specification and `docs/superpowers/plans/2026-09-08-visione-streaming-discovery.md` for the implementation plan.

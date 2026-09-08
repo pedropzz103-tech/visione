@@ -57,7 +57,7 @@
 
 ---
 
-### Task 1: Dependency-free build contract and domain primitives
+### Task 1: Dependency-free build contract and domain primitives ✅
 
 **Files:**
 - Create: `package.json`
@@ -430,4 +430,3 @@ Record exact command outcomes, representative generated routes, data/credential 
 git add -A
 git commit -m "docs: record streaming discovery verification"
 ```
-

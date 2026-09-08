@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://visione.one/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/data-credits/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/news/</loc><lastmod>2026-09-08</lastmod></url>
   <url><loc>https://visione.one/news/about.html</loc><lastmod>2026-09-08</lastmod></url>
   <url><loc>https://visione.one/news/coverage.html</loc><lastmod>2026-09-08</lastmod></url>
   <url><loc>https://visione.one/news/editorial.html</loc><lastmod>2026-09-08</lastmod></url>

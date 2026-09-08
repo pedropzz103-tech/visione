@@ -1,0 +1,94 @@
+[
+  {
+    "id":"movie:157336",
+    "type":"movie",
+    "slug":"interstellar",
+    "titles":{"es":"Interstellar","pt":"Interstellar","br":"Interestelar"},
+    "original_title":"Interstellar",
+    "year":2014,
+    "runtime":169,
+    "overview":{
+      "es":"Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad cuando la Tierra deja de ofrecer un futuro seguro.",
+      "pt":"Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro.",
+      "br":"Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro."
+    },
+    "genres":["Drama","Science Fiction"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"director":"Christopher Nolan","cast":["Matthew McConaughey","Anne Hathaway","Jessica Chastain"]},
+    "related":["dune-part-two"],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-08T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"movie:693134",
+    "type":"movie",
+    "slug":"dune-part-two",
+    "titles":{"es":"Dune: Parte Dos","pt":"Dune: Parte Dois","br":"Duna: Parte Dois"},
+    "original_title":"Dune: Part Two",
+    "year":2024,
+    "runtime":166,
+    "overview":{
+      "es":"Paul Atreides se une a Chani y a los Fremen mientras intenta impedir un futuro terrible y afrontar la guerra por el control de Arrakis.",
+      "pt":"Paul Atreides une-se a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controlo de Arrakis.",
+      "br":"Paul Atreides se une a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controle de Arrakis."
+    },
+    "genres":["Science Fiction","Adventure"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"director":"Denis Villeneuve","cast":["Timothée Chalamet","Zendaya","Rebecca Ferguson"]},
+    "related":["interstellar"],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-08T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"series:100088",
+    "type":"series",
+    "slug":"the-last-of-us",
+    "titles":{"es":"The Last of Us","pt":"The Last of Us","br":"The Last of Us"},
+    "original_title":"The Last of Us",
+    "year":2023,
+    "seasons":2,
+    "overview":{
+      "es":"Joel y Ellie atraviesan un Estados Unidos devastado por una infección mientras su relación se convierte en el centro emocional de un viaje peligroso.",
+      "pt":"Joel e Ellie atravessam uns Estados Unidos devastados por uma infeção enquanto a relação entre ambos se torna o centro emocional de uma viagem perigosa.",
+      "br":"Joel e Ellie atravessam os Estados Unidos devastados por uma infecção enquanto a relação entre os dois vira o centro emocional de uma jornada perigosa."
+    },
+    "genres":["Drama","Science Fiction"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"creators":["Craig Mazin","Neil Druckmann"],"cast":["Pedro Pascal","Bella Ramsey"]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-08T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"movie:129",
+    "type":"movie",
+    "slug":"spirited-away",
+    "titles":{"es":"El viaje de Chihiro","pt":"A Viagem de Chihiro","br":"A Viagem de Chihiro"},
+    "original_title":"千と千尋の神隠し",
+    "year":2001,
+    "runtime":125,
+    "overview":{
+      "es":"Chihiro entra por accidente en un mundo de espíritus y debe encontrar valor, aliados y una forma de salvar a sus padres y regresar a casa.",
+      "pt":"Chihiro entra por acidente num mundo de espíritos e precisa de encontrar coragem, aliados e uma forma de salvar os pais e regressar a casa.",
+      "br":"Chihiro entra por acidente em um mundo de espíritos e precisa encontrar coragem, aliados e uma forma de salvar os pais e voltar para casa."
+    },
+    "genres":["Animation","Fantasy"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"director":"Hayao Miyazaki","cast":[]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-08T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  }
+]

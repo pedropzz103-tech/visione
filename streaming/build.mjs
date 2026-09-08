@@ -17,6 +17,27 @@ async function write(path, content) {
   await writeFile(url, content, "utf8");
 }
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function decorateDiscoveryHtml(html, providers = []) {
+  const creditsLink = '<a href="/data-credits/">Dados & fontes</a>';
+  let output = html;
+  if (!output.includes('href="/data-credits/"')) {
+    output = output.replaceAll('<a href="/news/">Wire</a>', `${creditsLink}<a href="/news/">Wire</a>`);
+  }
+  if (output.includes('<div class="provider-chips"></div>') && providers.length) {
+    const chips = providers.map((provider) => `<span class="provider-chip">${escapeHtml(provider.name)}</span>`).join("");
+    output = output.replace('<div class="provider-chips"></div>', `<div class="provider-chips">${chips}</div>`);
+  }
+  return output;
+}
+
 function xmlUrlset(urls) {
   const rows = [...new Set(urls)].map((url) => `  <url><loc>${url}</loc></url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>\n`;
@@ -34,20 +55,20 @@ export async function buildSite() {
   ]);
   const titles = rawTitles.map(normalizeTitle);
 
-  await write("index.html", renderGlobalHome(titles, providers));
+  await write("index.html", decorateDiscoveryHtml(renderGlobalHome(titles, providers), providers));
 
   const searchRecords = [];
   const sitemapPaths = [];
 
   for (const locale of SUPPORTED_LOCALES) {
     const config = getLocale(locale);
-    await write(`${locale}/index.html`, renderLocaleHome(locale, titles, providers));
+    await write(`${locale}/index.html`, decorateDiscoveryHtml(renderLocaleHome(locale, titles, providers), providers.filter((provider) => provider.markets.includes(config.country))));
 
     const indexableUrls = [absoluteUrl(`/${locale}/`)];
 
     for (const title of titles) {
       const output = `${locale}/${config.titleSegment}/${title.slug}/index.html`;
-      await write(output, renderTitlePage(title, locale, providers));
+      await write(output, decorateDiscoveryHtml(renderTitlePage(title, locale, providers)));
       if (evaluateIndexability(title, locale).indexable) indexableUrls.push(absoluteUrl(titlePath(locale, title.slug)));
 
       searchRecords.push({
@@ -66,7 +87,7 @@ export async function buildSite() {
       const providerTitles = titles.filter((title) => (title.offers[config.country] ?? []).some((offer) => offer.provider === provider.id));
       if (!providerTitles.length) continue;
       const output = `${locale}/${config.providerSegment}/${provider.id}/index.html`;
-      await write(output, renderProviderPage(provider, locale, titles));
+      await write(output, decorateDiscoveryHtml(renderProviderPage(provider, locale, titles)));
       indexableUrls.push(absoluteUrl(providerPath(locale, provider.id)));
     }
 

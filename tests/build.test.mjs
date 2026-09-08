@@ -81,3 +81,26 @@ test("title pages disclose source freshness and legal destination behavior", asy
     assert.doesNotMatch(html, /assistir agora|ver ahora.*VISIONE/i);
   });
 });
+
+test("title pages publish canonical, hreflang, breadcrumbs, and fact-backed schema", async () => {
+  await withBuiltSite(async (root) => {
+    const html = await readBuilt(root, "pt/onde-ver/coda/index.html");
+    assert.match(html, /rel="canonical" href="https:\/\/visione\.one\/pt\/onde-ver\/coda\/"/);
+    assert.match(html, /hreflang="es-ES" href="https:\/\/visione\.one\/es\/donde-ver\/coda\/"/);
+    assert.match(html, /hreflang="pt-PT"/);
+    assert.match(html, /hreflang="pt-BR"/);
+    assert.match(html, /hreflang="x-default"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /"@type":"Movie"/);
+    assert.doesNotMatch(html, /aggregateRating|Review/);
+  });
+});
+
+test("generated sitemap combines editorial and quality-approved discovery URLs", async () => {
+  await withBuiltSite(async (root) => {
+    const sitemap = await readBuilt(root, "sitemap.xml");
+    assert.match(sitemap, /<loc>https:\/\/visione\.one\/news\/about\.html<\/loc>/);
+    assert.match(sitemap, /<loc>https:\/\/visione\.one\/pt\/onde-ver\/coda\/<\/loc>/);
+    assert.match(sitemap, /<loc>https:\/\/visione\.one\/es\/plataformas\/netflix\/<\/loc>/);
+  });
+});

@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://visione.one/</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/about.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/coverage.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/editorial.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/accountability.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/advertising.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/privacy.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/cookie-policy.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/contact.html</loc><lastmod>2026-09-08</lastmod></url>
-  <url><loc>https://visione.one/news/author-pedro.html</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/onde-assistir/coda/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/onde-assistir/stranger-things/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/onde-assistir/the-boys/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/plataformas/apple-tv-plus/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/plataformas/netflix/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/br/plataformas/prime-video/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/credits/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/donde-ver/coda/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/donde-ver/stranger-things/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/donde-ver/the-boys/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/plataformas/apple-tv-plus/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/plataformas/netflix/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/es/plataformas/prime-video/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/news/about.html</loc></url>
+  <url><loc>https://visione.one/news/accountability.html</loc></url>
+  <url><loc>https://visione.one/news/advertising.html</loc></url>
   <url><loc>https://visione.one/news/alibaba-hk80-billion-share-placement-ai-investment-2026.html</loc></url>
   <url><loc>https://visione.one/news/anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html</loc></url>
+  <url><loc>https://visione.one/news/author-pedro.html</loc></url>
   <url><loc>https://visione.one/news/brazil-ai-supercomputer-23-billion-us-china.html</loc></url>
   <url><loc>https://visione.one/news/broadcom-60-billion-ai-debt-deal-credit-markets.html</loc></url>
+  <url><loc>https://visione.one/news/contact.html</loc></url>
+  <url><loc>https://visione.one/news/cookie-policy.html</loc></url>
+  <url><loc>https://visione.one/news/coverage.html</loc></url>
   <url><loc>https://visione.one/news/dell-q2-fy2027-ai-server-orders-95-billion-backlog-september-2-2026.html</loc></url>
+  <url><loc>https://visione.one/news/editorial.html</loc></url>
   <url><loc>https://visione.one/news/europe-lumi-ai-supercomputer-387-8-million-amd-mi430x-2027.html</loc></url>
   <url><loc>https://visione.one/news/gartner-ai-security-market-4-8-billion-2027.html</loc></url>
   <url><loc>https://visione.one/news/google-marvell-12-billion-ai-chip-deal.html</loc></url>
@@ -32,10 +46,18 @@
   <url><loc>https://visione.one/news/openai-gpt-5-6-sol-price-cut-august-2026.html</loc></url>
   <url><loc>https://visione.one/news/openai-jalapeno-chip-benchmarks-inference-august-25-2026.html</loc></url>
   <url><loc>https://visione.one/news/opera-loses-eu-court-challenge-microsoft-edge-dma-september-2-2026.html</loc></url>
+  <url><loc>https://visione.one/news/privacy.html</loc></url>
   <url><loc>https://visione.one/news/salesforce-claudeforce-anthropic-37-skills-ai-crm-2026.html</loc></url>
   <url><loc>https://visione.one/news/stability-ai-76-million-series-b-entertainment-investors-august-25-2026.html</loc></url>
   <url><loc>https://visione.one/news/tencent-hy4-preview-770b-open-source-ai-coding-research-august-28-2026.html</loc></url>
   <url><loc>https://visione.one/news/thomson-reuters-thomson-proprietary-ai-model-40-million.html</loc></url>
   <url><loc>https://visione.one/news/us-g20-carolina-principles-ai-regulation-september-1-2026.html</loc></url>
   <url><loc>https://visione.one/news/us-government-backs-openai-nyt-copyright-ai-training-fair-use-september-2-2026.html</loc></url>
+  <url><loc>https://visione.one/pt/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/onde-ver/coda/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/onde-ver/stranger-things/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/onde-ver/the-boys/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/plataformas/apple-tv-plus/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/plataformas/netflix/</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://visione.one/pt/plataformas/prime-video/</loc><lastmod>2026-09-08</lastmod></url>
 </urlset>

@@ -340,31 +340,31 @@ git commit -m "feat: enforce discovery SEO quality gate"
 - Consumes: `npm run check` and generated static output.
 - Produces: CI that fails on install, lint, interface checks, tests, build, or post-build validation errors.
 
-- [ ] **Step 1: Update failing editorial/root tests**
+- [x] **Step 1: Update failing editorial/root tests**
 
 Replace only the obsolete assertion that root is `VISIONE Wire`; require the new discovery title, search landmark, locale links, and `/news/` navigation. Keep every allowlist, byline, canonical, AdSense, feed, and archived-page assertion.
 
-- [ ] **Step 2: Run the full baseline and confirm only obsolete root expectations fail**
+- [x] **Step 2: Run the full baseline and confirm only obsolete root expectations fail**
 
 Run: `npm test`
 
-- [ ] **Step 3: Harden site-quality CI**
+- [x] **Step 3: Harden site-quality CI**
 
 Use Node 22, `npm ci`, then `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`, and `node scripts/validate.mjs`. Set read-only permissions and a 10-minute timeout.
 
-- [ ] **Step 4: Keep editorial automation compatible**
+- [x] **Step 4: Keep editorial automation compatible**
 
 After its existing normalization, invoke the discovery build so `sitemap.xml` includes both editorial and quality-approved discovery URLs. Preserve the article allowlist and never reactivate editorial scheduling.
 
-- [ ] **Step 5: Add opt-in catalog refresh workflow**
+- [x] **Step 5: Add opt-in catalog refresh workflow**
 
 Allow `workflow_dispatch` and a disabled-by-default schedule guard. Validate `TMDB_READ_ACCESS_TOKEN`, run ingestion/build/check, and open a generated commit only when data changes. Never echo the token and document that production commercial use requires suitable licensing.
 
-- [ ] **Step 6: Document operation and legal boundaries**
+- [x] **Step 6: Document operation and legal boundaries**
 
 README includes local commands, output paths, data flow, required environment variables, cache/fallback behavior, attribution, API licensing, static deployment, analytics hooks, ad/affiliate configuration, privacy, and explicit `tablet.visione.one` exclusion.
 
-- [ ] **Step 7: Run `npm run check`**
+- [x] **Step 7: Run `npm run check`**
 
 Expected: install-independent checks, tests, build, and validation all pass.
 

@@ -1,0 +1,51 @@
+name: Catalog refresh proposal
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 2,5'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    if: github.event_name == 'workflow_dispatch' || vars.ENABLE_CATALOG_REFRESH == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TMDB_READ_ACCESS_TOKEN: ${{ secrets.TMDB_READ_ACCESS_TOKEN }}
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Require the catalog credential
+        run: test -n "$TMDB_READ_ACCESS_TOKEN" || (echo "TMDB_READ_ACCESS_TOKEN is not configured" && exit 1)
+      - name: Refresh and verify the static catalog
+        run: |
+          npm run ingest
+          npm run check
+      - name: Publish a review branch when data changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Catalog is already current"
+            exit 0
+          fi
+          git config user.name "VISIONE catalog automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B automation/catalog-refresh
+          git add data index.html es pt br credits sitemap.xml
+          git commit -m "chore: refresh streaming catalog"
+          git push --force-with-lease origin HEAD:automation/catalog-refresh
+          gh pr view automation/catalog-refresh >/dev/null 2>&1 || gh pr create --base main --head automation/catalog-refresh --title "chore: refresh streaming catalog" --body "Automated build-time catalog refresh. Review source attribution and availability freshness before merging."

@@ -69,22 +69,26 @@ const corporateLegacyPages = [
 
 const adsenseScript = /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/;
 
-test("serves VISIONE as the canonical root publication", () => {
-  assert.match(home, /<title>VISIONE Wire\b/);
+test("serves streaming discovery from the canonical root", () => {
+  assert.match(home, /<title>VISIONE \| Onde ver filmes e séries<\/title>/);
   assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
-  assert.match(home, /href="\/news\/styles\.css"/);
-  assert.match(home, /High-value reads|Signal over noise/i);
-  assert.match(home, adsenseScript);
+  assert.match(home, /href="\/assets\/discovery\.css"/);
+  assert.match(home, /data-search-root/);
+  assert.match(home, /href="\/es\/"/);
+  assert.match(home, /href="\/pt\/"/);
+  assert.match(home, /href="\/br\/"/);
+  assert.match(home, /href="\/news\/"/);
+  assert.doesNotMatch(home, adsenseScript);
   assert.doesNotMatch(home, /Independent technology studio/i);
   assert.doesNotMatch(home, /https:\/\/wire\.visione\.one/);
 });
 
-test("puts trust, editorial and author identity one click from the homepage", () => {
+test("keeps trust, editorial and author identity in the canonical sitemap", () => {
+  assert.match(home, /href="\/news\/"/);
   for (const page of trustPages) {
-    assert.match(home, new RegExp(`href="/news/${page.replaceAll(".", "\\.")}"`));
+    assert.match(sitemap, new RegExp(`<loc>https:\/\/visione\.one\/news\/${page.replaceAll(".", "\\.")}<\/loc>`));
   }
-  assert.match(home, /href="\/news\/author-pedro\.html"/);
-  assert.match(home, /Pedro/i);
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/news\/author-pedro\.html<\/loc>/);
 });
 
 test("keeps the duplicate /news/ homepage out of the index", () => {

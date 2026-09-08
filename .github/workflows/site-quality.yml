@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'visione-wire-*'
+      - 'codex/**'
   pull_request:
     branches:
       - main
@@ -15,7 +15,7 @@ permissions:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -23,5 +23,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run site quality tests
-        run: node --test tests/site.test.mjs
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Check source syntax
+        run: npm run lint
+      - name: Check data interfaces
+        run: npm run typecheck
+      - name: Run test suite
+        run: npm test
+      - name: Build static discovery pages
+        run: npm run build
+      - name: Validate generated site
+        run: node scripts/validate.mjs

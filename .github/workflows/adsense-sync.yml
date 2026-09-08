@@ -25,6 +25,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
       - name: Normalize editorial inventory and AdSense surface
         run: |
           python - <<'PY'
@@ -187,6 +194,12 @@ jobs:
           print('Updated files:')
           print('\n'.join(changed) if changed else 'none')
           PY
+
+      - name: Rebuild combined discovery and editorial sitemap
+        run: npm run build
+
+      - name: Validate combined site
+        run: node scripts/validate.mjs
 
       - name: Commit normalized inventory
         run: |

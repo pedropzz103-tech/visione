@@ -29,21 +29,18 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
           import re
 
           snippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054712908852183" crossorigin="anonymous"></script>'
           ads_pattern = re.compile(r'<script\s+async\s+src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-3054712908852183"\s+crossorigin="anonymous"></script>', re.I)
           robots_pattern = re.compile(r'<meta\s+name=["\']robots["\'][^>]*>', re.I)
+          today = datetime.now(ZoneInfo('Europe/Madrid')).date().isoformat()
 
           trust_pages = {
-              'about.html',
-              'coverage.html',
-              'editorial.html',
-              'accountability.html',
-              'advertising.html',
-              'privacy.html',
-              'cookie-policy.html',
-              'contact.html',
+              'about.html', 'coverage.html', 'editorial.html', 'accountability.html',
+              'advertising.html', 'privacy.html', 'cookie-policy.html', 'contact.html',
               'author-pedro.html',
           }
 
@@ -58,6 +55,7 @@ jobs:
               'google-marvell-12-billion-ai-chip-deal.html',
               'judge-blocks-pentagon-anthropic-blacklisting-august-28-2026.html',
               'liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026.html',
+              'mistral-3-billion-euro-series-d-ai-sovereignty-september-8-2026.html',
               'nasa-roman-space-telescope-launch-august-30-2026.html',
               'nvidia-ai-server-price-hike-memory-costs-2027.html',
               'nvidia-q2-fy2027-earnings-august-26-ai-market-test.html',
@@ -103,10 +101,7 @@ jobs:
                   '"author":{"@type":"Person","name":"Pedro","url":"https://visione.one/news/author-pedro.html"}',
                   text,
               )
-              text = text.replace(
-                  'href="https://visione.one/news/author-pedro.html"',
-                  'href="/news/author-pedro.html"',
-              )
+              text = text.replace('href="https://visione.one/news/author-pedro.html"', 'href="/news/author-pedro.html"')
               if 'href="/news/author-pedro.html">Pedro</a>' not in text:
                   text = re.sub(
                       r'<p class="byline">By (?:VISIONE Wire|Pedro) ·',
@@ -118,11 +113,9 @@ jobs:
 
           changed = []
 
-          # News pages: only approved reporting is indexable and monetizable.
           for path in sorted(Path('news').glob('*.html')):
               text = path.read_text(encoding='utf-8')
               original = text
-
               if path.name == 'index.html':
                   text = set_robots(text, 'noindex,follow')
                   text = remove_ads(text)
@@ -136,7 +129,6 @@ jobs:
               else:
                   text = set_robots(text, 'noindex,follow')
                   text = remove_ads(text)
-
               if text != original:
                   path.write_text(text, encoding='utf-8')
                   changed.append(str(path))
@@ -145,7 +137,6 @@ jobs:
           if missing:
               raise SystemExit('Approved article files missing: ' + ', '.join(missing))
 
-          # Retired corporate presentation remains accessible by direct URL but is removed from Search.
           for root_name in ['projects', 'contact', 'legal', 'privacy', 'carluxiii', 'carluxiii-preview', 'nomadbycarlos']:
               root = Path(root_name)
               if not root.exists():
@@ -159,19 +150,10 @@ jobs:
                       path.write_text(text, encoding='utf-8')
                       changed.append(str(path))
 
-          # Build a narrow sitemap from the editorial allowlist instead of every historical page.
-          trust_order = [
-              'about.html', 'coverage.html', 'editorial.html', 'accountability.html',
-              'advertising.html', 'privacy.html', 'cookie-policy.html', 'contact.html',
-              'author-pedro.html',
-          ]
-          lines = [
-              '<?xml version="1.0" encoding="UTF-8"?>',
-              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-              '  <url><loc>https://visione.one/</loc><lastmod>2026-09-07</lastmod></url>',
-          ]
+          trust_order = ['about.html','coverage.html','editorial.html','accountability.html','advertising.html','privacy.html','cookie-policy.html','contact.html','author-pedro.html']
+          lines = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',f'  <url><loc>https://visione.one/</loc><lastmod>{today}</lastmod></url>']
           for name in trust_order:
-              lines.append(f'  <url><loc>https://visione.one/news/{name}</loc><lastmod>2026-09-07</lastmod></url>')
+              lines.append(f'  <url><loc>https://visione.one/news/{name}</loc><lastmod>{today}</lastmod></url>')
           for name in sorted(approved_articles):
               lines.append(f'  <url><loc>https://visione.one/news/{name}</loc></url>')
           lines.append('</urlset>')
@@ -181,38 +163,20 @@ jobs:
               sitemap.write_text(sitemap_text, encoding='utf-8')
               changed.append(str(sitemap))
 
-          # Remove any unapproved item from RSS and the Google News sitemap.
           feed_path = Path('news/feed.xml')
           feed = feed_path.read_text(encoding='utf-8')
-          new_feed = re.sub(
-              r'<item>.*?</item>',
-              lambda m: m.group(0) if (
-                  (link := re.search(r'<link>https://visione\.one/news/([^<]+)</link>', m.group(0)))
-                  and link.group(1) in approved_articles
-              ) else '',
-              feed,
-              flags=re.S,
-          )
+          new_feed = re.sub(r'<item>.*?</item>', lambda m: m.group(0) if ((link := re.search(r'<link>https://visione\.one/news/([^<]+)</link>', m.group(0))) and link.group(1) in approved_articles) else '', feed, flags=re.S)
           if new_feed != feed:
               feed_path.write_text(new_feed, encoding='utf-8')
               changed.append(str(feed_path))
 
           news_sitemap_path = Path('news/news-sitemap.xml')
           news_sitemap = news_sitemap_path.read_text(encoding='utf-8')
-          new_news_sitemap = re.sub(
-              r'<url>.*?</url>',
-              lambda m: m.group(0) if (
-                  (loc := re.search(r'<loc>https://visione\.one/news/([^<]+)</loc>', m.group(0)))
-                  and loc.group(1) in approved_articles
-              ) else '',
-              news_sitemap,
-              flags=re.S,
-          )
+          new_news_sitemap = re.sub(r'<url>.*?</url>', lambda m: m.group(0) if ((loc := re.search(r'<loc>https://visione\.one/news/([^<]+)</loc>', m.group(0))) and loc.group(1) in approved_articles) else '', news_sitemap, flags=re.S)
           if new_news_sitemap != news_sitemap:
               news_sitemap_path.write_text(new_news_sitemap, encoding='utf-8')
               changed.append(str(news_sitemap_path))
 
-          # Let crawlers revisit the old corporate preview so its noindex directive can be seen.
           robots_path = Path('robots.txt')
           robots = robots_path.read_text(encoding='utf-8')
           new_robots = robots.replace('Disallow: /carluxiii-preview/\n', '')

@@ -190,7 +190,7 @@ git commit -m "feat: add sourced catalog ingestion"
 
 ---
 
-### Task 3: Local typo-tolerant search and static discovery pages
+### Task 3: Local typo-tolerant search and static discovery pages ✅
 
 **Files:**
 - Create: `scripts/lib/search.mjs`

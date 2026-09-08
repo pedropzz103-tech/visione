@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'visione-wire-*'
+      - 'feat/visione-streaming-*'
   pull_request:
     branches:
       - main
@@ -15,7 +16,7 @@ permissions:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -23,5 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Build streaming discovery pages
+        run: node streaming/build.mjs
+      - name: Validate generated streaming site
+        run: node streaming/validate.mjs
       - name: Run site quality tests
-        run: node --test tests/site.test.mjs
+        run: node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs

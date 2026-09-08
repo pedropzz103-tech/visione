@@ -69,37 +69,55 @@ const corporateLegacyPages = [
 
 const adsenseScript = /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/;
 
-test("serves VISIONE as the canonical root publication", () => {
-  assert.match(home, /<title>VISIONE Wire\b/);
+test("serves VISIONE streaming discovery from the canonical root", () => {
+  assert.match(home, /<title>VISIONE[^<]*(Onde assistir|filmes e séries)/i);
   assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
-  assert.match(home, /href="\/news\/styles\.css"/);
-  assert.match(home, /High-value reads|Signal over noise/i);
-  assert.match(home, adsenseScript);
-  assert.doesNotMatch(home, /Independent technology studio/i);
+  assert.match(home, /href="\/assets\/streaming\.css"/);
+  assert.match(home, /data-visione-search/);
+  assert.match(home, /href="\/es\/"/);
+  assert.match(home, /href="\/pt\/"/);
+  assert.match(home, /href="\/br\/"/);
+  assert.match(home, /href="\/news\/"/);
+  assert.doesNotMatch(home, /<title>VISIONE Wire\b/);
   assert.doesNotMatch(home, /https:\/\/wire\.visione\.one/);
+  assert.doesNotMatch(home, adsenseScript, "Root discovery page should not carry AdSense until its quality/consent rules are explicit");
 });
 
-test("puts trust, editorial and author identity one click from the homepage", () => {
-  for (const page of trustPages) {
-    assert.match(home, new RegExp(`href="/news/${page.replaceAll(".", "\\.")}"`));
+test("keeps VISIONE Wire as a dedicated self-canonical section", () => {
+  assert.match(newsIndex, /<title>VISIONE Wire\b/);
+  assert.match(newsIndex, /name="robots" content="index,follow/);
+  assert.match(newsIndex, /rel="canonical" href="https:\/\/visione\.one\/news\/"/);
+  assert.match(newsIndex, /href="\/"[^>]*>[^<]*Streaming|href="\/">/i);
+  assert.match(newsIndex, /href="\/news\/editorial\.html"/);
+  assert.match(newsIndex, /href="\/news\/author-pedro\.html"/);
+  assert.doesNotMatch(newsIndex, adsenseScript, "Section landing should remain ad-free");
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/news\/<\/loc>/);
+});
+
+test("keeps trust pages discoverable through the Wire section and indexable", async () => {
+  assert.match(home, /href="\/news\/"/);
+  for (const page of [...trustPages, "author-pedro.html"]) {
+    const content = await read(`news/${page}`);
+    assert.match(content, /name="robots" content="index,follow/);
+    assert.doesNotMatch(content, adsenseScript, `${page} should not carry AdSense code`);
+    assert.match(sitemap, new RegExp(`<loc>https:\\/\\/visione\\.one\\/news\\/${page.replaceAll(".", "\\.")}</loc>`));
   }
-  assert.match(home, /href="\/news\/author-pedro\.html"/);
-  assert.match(home, /Pedro/i);
+  assert.match(newsIndex, /href="\/news\/about\.html"/);
+  assert.match(newsIndex, /href="\/news\/editorial\.html"/);
+  assert.match(newsIndex, /href="\/news\/accountability\.html"/);
 });
 
-test("keeps the duplicate /news/ homepage out of the index", () => {
-  assert.match(newsIndex, /name="robots" content="noindex,follow"/);
-  assert.match(newsIndex, /rel="canonical" href="https:\/\/visione\.one\/"/);
-  assert.doesNotMatch(newsIndex, adsenseScript);
-});
-
-test("uses the main domain in robots, RSS and sitemaps", () => {
+test("uses the main domain in robots, RSS and editorial/streaming sitemaps", () => {
   assert.match(robots, /Sitemap: https:\/\/visione\.one\/sitemap\.xml/);
+  assert.match(robots, /Sitemap: https:\/\/visione\.one\/streaming-sitemap-index\.xml/);
   assert.match(robots, /Sitemap: https:\/\/visione\.one\/news\/news-sitemap\.xml/);
-  assert.match(feed, /<link>https:\/\/visione\.one\/<\/link>/);
+  assert.match(feed, /https:\/\/visione\.one\//);
   assert.doesNotMatch(feed, /wire\.visione\.one/);
   assert.doesNotMatch(sitemap, /wire\.visione\.one/);
   assert.doesNotMatch(newsSitemap, /wire\.visione\.one/);
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/es\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/pt\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/visione\.one\/br\/<\/loc>/);
 });
 
 test("does not carry infrastructure for the retired wire subdomain", async () => {
@@ -112,15 +130,6 @@ test("removes stale plans that could reintroduce the retired subdomain", async (
   assert.doesNotMatch(canonicalSpec, /wire\.visione\.one/);
   await assert.rejects(access(new URL("docs/superpowers/plans/2026-09-02-visione-institutional-redesign.md", root)), { code: "ENOENT" });
   await assert.rejects(access(new URL("docs/superpowers/specs/2026-09-02-visione-institutional-redesign-design.md", root)), { code: "ENOENT" });
-});
-
-test("keeps trust pages indexable but free of ad code", async () => {
-  for (const page of [...trustPages, "author-pedro.html"]) {
-    const content = await read(`news/${page}`);
-    assert.match(content, /name="robots" content="index,follow/);
-    assert.doesNotMatch(content, adsenseScript, `${page} should not carry AdSense code`);
-    assert.match(sitemap, new RegExp(`<loc>https:\\/\\/visione\\.one\\/news\\/${page.replaceAll(".", "\\.")}</loc>`));
-  }
 });
 
 test("limits the index and monetization inventory to explicitly approved reporting", async () => {

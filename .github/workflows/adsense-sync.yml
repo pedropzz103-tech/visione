@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/adsense-sync.yml'
       - 'scripts/editorial_inventory_sync.py'
+      - 'scripts/materialize_streaming_nav.py'
       - 'news/*.html'
       - 'news/feed.xml'
       - 'news/news-sitemap.xml'
@@ -17,6 +18,7 @@ on:
       - 'nomadbycarlos/**/*.html'
       - 'sitemap.xml'
       - 'robots.txt'
+      - 'index.html'
       - 'es/index.html'
       - 'pt/index.html'
       - 'br/index.html'
@@ -33,7 +35,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Normalize editorial inventory and discovery surface
-        run: python3 scripts/editorial_inventory_sync.py
+        run: |
+          python3 scripts/editorial_inventory_sync.py
+          python3 scripts/materialize_streaming_nav.py
       - name: Commit normalized inventory
         run: |
           if git diff --quiet; then
@@ -43,5 +47,5 @@ jobs:
           git config user.name "VISIONE automation"
           git config user.email "actions@users.noreply.github.com"
           git add -A
-          git commit -m "Enforce focused editorial inventory for AdSense"
+          git commit -m "Sync VISIONE editorial and discovery surfaces"
           git push origin "HEAD:${GITHUB_REF_NAME}"

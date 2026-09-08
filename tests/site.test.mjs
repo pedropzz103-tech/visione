@@ -41,6 +41,7 @@ const indexableArticles = [
   "google-marvell-12-billion-ai-chip-deal.html",
   "judge-blocks-pentagon-anthropic-blacklisting-august-28-2026.html",
   "liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026.html",
+  "mistral-3-billion-euro-series-d-ai-sovereignty-september-8-2026.html",
   "nasa-roman-space-telescope-launch-august-30-2026.html",
   "nvidia-ai-server-price-hike-memory-costs-2027.html",
   "nvidia-q2-fy2027-earnings-august-26-ai-market-test.html",
@@ -155,6 +156,7 @@ test("keeps the Google News sitemap limited to approved genuinely recent stories
   for (const match of newsSitemap.matchAll(/<loc>https:\/\/visione\.one\/news\/([^<]+)<\/loc>/g)) {
     assert.ok(indexableArticles.includes(match[1]), `Unapproved article in Google News sitemap: ${match[1]}`);
   }
+  assert.match(newsSitemap, /mistral-3-billion-euro-series-d-ai-sovereignty-september-8-2026\.html/);
   assert.match(newsSitemap, /liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026\.html/);
   assert.match(newsSitemap, /openai-automated-research-intern-research-acceleration-september-6-2026\.html/);
   assert.doesNotMatch(newsSitemap, /september-2-2026\.html/);

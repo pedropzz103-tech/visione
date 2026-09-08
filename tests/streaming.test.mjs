@@ -5,7 +5,8 @@ import { LOCALES, localePath, providerPath, titlePath } from "../streaming/confi
 import { evaluateIndexability, normalizeTitle, rankOffers } from "../streaming/schema.mjs";
 
 const root = new URL("../", import.meta.url);
-const seed = JSON.parse(await readFile(new URL("streaming/data/titles.json", root), "utf8"));
+const read = (path) => readFile(new URL(path, root), "utf8");
+const seed = JSON.parse(await read("streaming/data/titles.json"));
 
 test("defines the three launch markets and localized URL families", () => {
   assert.deepEqual(Object.keys(LOCALES), ["es", "pt", "br"]);
@@ -55,4 +56,59 @@ test("ranks subscription then free then the cheapest rental and purchase", () =>
   ]);
   assert.deepEqual(offers.map((offer) => offer.monetization), ["subscription", "free", "rent", "rent", "buy"]);
   assert.equal(offers[2].provider, "rakuten-tv");
+});
+
+test("generates useful localized discovery homes", async () => {
+  const [home, es, pt, br] = await Promise.all([
+    read("index.html"), read("es/index.html"), read("pt/index.html"), read("br/index.html")
+  ]);
+  assert.match(home, /data-visione-search/);
+  assert.match(home, /href="\/es\/"/);
+  assert.match(home, /href="\/pt\/"/);
+  assert.match(home, /href="\/br\/"/);
+  assert.match(es, /Encuentra dónde ver películas y series/);
+  assert.match(pt, /Descobre onde ver filmes e séries/);
+  assert.match(br, /Descubra onde assistir filmes e séries/);
+  assert.match(es, /hreflang="pt-BR"/);
+  assert.match(pt, /hreflang="es-ES"/);
+  assert.match(br, /hreflang="pt-PT"/);
+});
+
+test("generates a locale-aware search index without runtime API dependency", async () => {
+  const records = JSON.parse(await read("data/search-index.json"));
+  assert.equal(records.length, seed.length * 3);
+  assert.ok(records.some((record) => record.locale === "es" && record.url === "/es/donde-ver/interstellar/"));
+  assert.ok(records.some((record) => record.locale === "pt" && record.url === "/pt/onde-ver/interstellar/"));
+  assert.ok(records.some((record) => record.locale === "br" && record.url === "/br/onde-assistir/interstellar/"));
+  const client = await read("assets/streaming.js");
+  assert.match(client, /\/data\/search-index\.json/);
+  assert.doesNotMatch(client, /api\.themoviedb|justwatch|rapidapi/i);
+});
+
+test("renders title pages with canonical, hreflang, JSON-LD, freshness and safe noindex state", async () => {
+  const page = await read("es/donde-ver/interstellar/index.html");
+  assert.match(page, /rel="canonical" href="https:\/\/visione\.one\/es\/donde-ver\/interstellar\/"/);
+  assert.match(page, /hreflang="es-ES"/);
+  assert.match(page, /hreflang="pt-PT"/);
+  assert.match(page, /hreflang="pt-BR"/);
+  assert.match(page, /"@type":"Movie"/);
+  assert.match(page, /"@type":"BreadcrumbList"/);
+  assert.match(page, /"@type":"FAQPage"/);
+  assert.match(page, /name="robots" content="noindex,follow/);
+  assert.match(page, /Última comprobación/);
+  assert.match(page, /fuente comercial|fuente verificable/i);
+});
+
+test("never places noindex seed title pages in streaming sitemaps", async () => {
+  const [esMap, ptMap, brMap] = await Promise.all([
+    read("streaming-sitemap-es.xml"),
+    read("streaming-sitemap-pt.xml"),
+    read("streaming-sitemap-br.xml")
+  ]);
+  assert.match(esMap, /https:\/\/visione\.one\/es\//);
+  assert.match(ptMap, /https:\/\/visione\.one\/pt\//);
+  assert.match(brMap, /https:\/\/visione\.one\/br\//);
+  assert.doesNotMatch(esMap, /donde-ver\/interstellar/);
+  assert.doesNotMatch(ptMap, /onde-ver\/interstellar/);
+  assert.doesNotMatch(brMap, /onde-assistir\/interstellar/);
 });

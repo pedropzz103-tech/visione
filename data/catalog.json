@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-08T14:00:00Z",
+  "source_mode": "official-provider-seed",
+  "titles": [
+    {
+      "id": "series:netflix-80057281",
+      "type": "series",
+      "slug": "stranger-things",
+      "titles": { "es": "Stranger Things", "pt": "Stranger Things", "br": "Stranger Things" },
+      "original_title": "Stranger Things",
+      "overview": {
+        "es": "Tras la desaparición de un niño, un pueblo descubre experimentos secretos, fuerzas sobrenaturales aterradoras y a una niña muy extraña.",
+        "pt": "Quando um rapaz desaparece, uma pequena vila descobre experiências secretas, forças sobrenaturais assustadoras e uma rapariga muito estranha.",
+        "br": "Quando um garoto desaparece, uma cidade descobre experimentos secretos, forças sobrenaturais assustadoras e uma menina muito estranha."
+      },
+      "year": 2016,
+      "genres": ["Drama", "Ficção científica", "Terror"],
+      "countries": ["US"],
+      "keywords": ["anos 1980", "sobrenatural", "mistério"],
+      "credits": { "creators": ["The Duffer Brothers"], "cast": ["Winona Ryder", "David Harbour", "Millie Bobby Brown"] },
+      "seasons": [{ "number": 1, "name": "Temporada 1", "episode_count": 8 }],
+      "episodes": [
+        { "season": 1, "number": 1, "titles": { "es": "La desaparición de Will Byers", "pt": "O desaparecimento de Will Byers", "br": "O desaparecimento de Will Byers" }, "runtime_minutes": 49 }
+      ],
+      "offers": {
+        "ES": [{ "provider_id": "netflix", "provider_name": "Netflix", "type": "subscription", "price": null, "currency": null, "url": "https://www.netflix.com/es/title/80057281", "source_url": "https://www.netflix.com/es/title/80057281", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Netflix official catalog" }],
+        "PT": [{ "provider_id": "netflix", "provider_name": "Netflix", "type": "subscription", "price": null, "currency": null, "url": "https://www.netflix.com/pt/title/80057281", "source_url": "https://www.netflix.com/pt/title/80057281", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Netflix official catalog" }],
+        "BR": [{ "provider_id": "netflix", "provider_name": "Netflix", "type": "subscription", "price": null, "currency": null, "url": "https://www.netflix.com/br/title/80057281", "source_url": "https://www.netflix.com/br/title/80057281", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Netflix official catalog" }]
+      },
+      "availability_status": { "ES": "confirmed", "PT": "confirmed", "BR": "confirmed" },
+      "source": { "name": "Netflix official catalog", "url": "https://www.netflix.com/title/80057281", "attribution": "Title details and current availability verified against Netflix official catalog pages." },
+      "updated_at": "2026-09-08T14:00:00Z"
+    },
+    {
+      "id": "movie:apple-coda-2021",
+      "type": "movie",
+      "slug": "coda",
+      "titles": { "es": "CODA: Los sonidos del silencio", "pt": "CODA", "br": "No Ritmo do Coração" },
+      "original_title": "CODA",
+      "overview": {
+        "es": "Ruby es la única persona oyente de su familia. Cuando el negocio familiar corre peligro, debe elegir entre sus obligaciones y su amor por la música.",
+        "pt": "Ruby é a única pessoa ouvinte da família. Quando o negócio familiar fica em risco, tem de escolher entre as suas obrigações e o amor pela música.",
+        "br": "Ruby é a única pessoa ouvinte da família. Quando o negócio familiar entra em risco, precisa escolher entre suas obrigações e o amor pela música."
+      },
+      "year": 2021,
+      "runtime_minutes": 111,
+      "genres": ["Drama", "Comédia"],
+      "countries": ["US", "FR", "CA"],
+      "credits": { "directors": ["Siân Heder"], "cast": ["Emilia Jones", "Marlee Matlin", "Eugenio Derbez"] },
+      "offers": {
+        "ES": [{ "provider_id": "apple-tv-plus", "provider_name": "Apple TV+", "type": "subscription", "price": null, "currency": null, "url": "https://tv.apple.com/es/movie/coda-los-sonidos-del-silencio/umc.cmc.3hqkbis4othcpslua41ljnjqu", "source_url": "https://tv.apple.com/es/movie/coda-los-sonidos-del-silencio/umc.cmc.3hqkbis4othcpslua41ljnjqu", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Apple TV official catalog" }],
+        "PT": [{ "provider_id": "apple-tv-plus", "provider_name": "Apple TV+", "type": "subscription", "price": null, "currency": null, "url": "https://tv.apple.com/pt/movie/coda/umc.cmc.3eh9r5iz32ggdm4ccvw5igiir", "source_url": "https://tv.apple.com/pt/movie/coda/umc.cmc.3eh9r5iz32ggdm4ccvw5igiir", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Apple TV official catalog" }],
+        "BR": [{ "provider_id": "apple-tv-plus", "provider_name": "Apple TV+", "type": "subscription", "price": null, "currency": null, "url": "https://tv.apple.com/br/movie/coda/umc.cmc.3hqkbis4othcpslua41ljnjqu", "source_url": "https://tv.apple.com/br/movie/coda/umc.cmc.3hqkbis4othcpslua41ljnjqu", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Apple TV official catalog" }]
+      },
+      "availability_status": { "ES": "confirmed", "PT": "confirmed", "BR": "confirmed" },
+      "source": { "name": "Apple TV official catalog", "url": "https://tv.apple.com/movie/coda/umc.cmc.3hqkbis4othcpslua41ljnjqu", "attribution": "Title details and current availability verified against Apple TV official catalog pages." },
+      "updated_at": "2026-09-08T14:00:00Z"
+    },
+    {
+      "id": "series:prime-the-boys",
+      "type": "series",
+      "slug": "the-boys",
+      "titles": { "es": "The Boys", "pt": "The Boys", "br": "The Boys" },
+      "original_title": "The Boys",
+      "overview": {
+        "es": "Una mirada irreverente a lo que ocurre cuando superhéroes tan influyentes como celebridades abusan de sus poderes en vez de usarlos para el bien.",
+        "pt": "Um olhar irreverente sobre o que acontece quando super-heróis tão influentes como celebridades abusam dos seus poderes em vez de os usar para o bem.",
+        "br": "Um olhar irreverente sobre o que acontece quando super-heróis tão influentes quanto celebridades abusam dos poderes em vez de usá-los para o bem."
+      },
+      "year": 2019,
+      "genres": ["Ação", "Comédia", "Drama"],
+      "countries": ["US"],
+      "credits": { "creators": ["Eric Kripke"], "cast": ["Karl Urban", "Jack Quaid", "Antony Starr"] },
+      "seasons": [{ "number": 1, "name": "Temporada 1", "episode_count": 8 }],
+      "offers": {
+        "ES": [{ "provider_id": "prime-video", "provider_name": "Prime Video", "type": "subscription", "price": null, "currency": null, "url": "https://www.primevideo.com/-/es/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "source_url": "https://www.primevideo.com/-/es/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Prime Video official catalog" }],
+        "PT": [{ "provider_id": "prime-video", "provider_name": "Prime Video", "type": "subscription", "price": null, "currency": null, "url": "https://www.primevideo.com/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "source_url": "https://www.primevideo.com/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Prime Video official catalog" }],
+        "BR": [{ "provider_id": "prime-video", "provider_name": "Prime Video", "type": "subscription", "price": null, "currency": null, "url": "https://www.primevideo.com/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "source_url": "https://www.primevideo.com/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "verified_at": "2026-09-08T14:00:00Z", "attribution": "Prime Video official catalog" }]
+      },
+      "availability_status": { "ES": "confirmed", "PT": "confirmed", "BR": "confirmed" },
+      "source": { "name": "Prime Video official catalog", "url": "https://www.primevideo.com/detail/0S1FYJ3LY9KTL9C7WFFAGA9F6F", "attribution": "Title details and current availability verified against Prime Video official catalog pages." },
+      "updated_at": "2026-09-08T14:00:00Z"
+    }
+  ]
+}

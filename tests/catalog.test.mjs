@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 
 import { titlePath } from "../scripts/lib/config.mjs";
 import {
@@ -8,6 +9,9 @@ import {
   rankOffers,
   validateTitle,
 } from "../scripts/lib/catalog.mjs";
+import { isFresh, mapTmdbTitle } from "../scripts/adapters/tmdb.mjs";
+
+const tmdbFixture = JSON.parse(await readFile(new URL("fixtures/tmdb-title.json", import.meta.url), "utf8"));
 
 const completeTitle = {
   id: "movie:157336",
@@ -99,4 +103,28 @@ test("quality gate accepts sourced pages with confirmed country offers", () => {
 
   assert.equal(result.indexable, true);
   assert.deepEqual(result.reasons, []);
+});
+
+test("maps a documented TMDB shape into country-specific normalized offers", () => {
+  const title = mapTmdbTitle({
+    detail: tmdbFixture.detail,
+    watchProviders: tmdbFixture.watchProviders,
+    mediaType: "movie",
+    translations: { es: tmdbFixture.detail, pt: tmdbFixture.detail, br: tmdbFixture.detail },
+    fetchedAt: "2026-09-08T12:00:00Z",
+  });
+
+  assert.equal(title.id, "movie:157336");
+  assert.equal(title.type, "movie");
+  assert.equal(title.offers.ES[0].provider_id, "8");
+  assert.equal(title.offers.ES[0].type, "subscription");
+  assert.equal(title.offers.ES[0].price, null);
+  assert.equal(title.availability_status.PT, "no_offers");
+  assert.match(title.source.attribution, /TMDB.*JustWatch/i);
+});
+
+test("fresh snapshots avoid unnecessary provider refreshes", () => {
+  assert.equal(isFresh({ updated_at: "2026-09-08T10:00:00Z" }, new Date("2026-09-08T12:00:00Z"), 24), true);
+  assert.equal(isFresh({ updated_at: "2026-09-07T10:00:00Z" }, new Date("2026-09-08T12:00:00Z"), 24), false);
+  assert.equal(isFresh({ updated_at: "not-a-date" }, new Date("2026-09-08T12:00:00Z"), 24), false);
 });

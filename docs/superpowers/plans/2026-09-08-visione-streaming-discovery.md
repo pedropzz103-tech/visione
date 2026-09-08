@@ -130,7 +130,7 @@ git commit -m "feat: define streaming discovery domain"
 
 ---
 
-### Task 2: Sourced seed catalog and optional TMDB ingestion
+### Task 2: Sourced seed catalog and optional TMDB ingestion ✅
 
 **Files:**
 - Create: `data/catalog.seed.json`

@@ -168,7 +168,7 @@ test("keeps the Google News sitemap limited to approved genuinely recent stories
   }
   assert.match(newsSitemap, /amazon-qualcomm-60-billion-ai-chip-deal-september-9-2026\.html/);
   assert.match(newsSitemap, /mistral-3-billion-euro-series-d-ai-sovereignty-september-8-2026\.html/);
-  assert.match(newsSitemap, /liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026\.html/);
+  assert.doesNotMatch(newsSitemap, /liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026\.html/);
   assert.doesNotMatch(newsSitemap, /september-2-2026\.html/);
   assert.doesNotMatch(newsSitemap, /august-31-2026\.html/);
 });

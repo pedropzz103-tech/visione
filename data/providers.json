@@ -1,0 +1,25 @@
+{
+  "providers": [
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "short_name": "N",
+      "accent": "#e50914",
+      "affiliate": { "ES": null, "PT": null, "BR": null }
+    },
+    {
+      "id": "apple-tv-plus",
+      "name": "Apple TV+",
+      "short_name": "A+",
+      "accent": "#f5f5f7",
+      "affiliate": { "ES": null, "PT": null, "BR": null }
+    },
+    {
+      "id": "prime-video",
+      "name": "Prime Video",
+      "short_name": "P",
+      "accent": "#00a8e1",
+      "affiliate": { "ES": null, "PT": null, "BR": null }
+    }
+  ]
+}

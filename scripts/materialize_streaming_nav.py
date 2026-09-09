@@ -12,7 +12,7 @@ for path, label in PAGES.items():
     if not path.exists():
         continue
     text = path.read_text(encoding='utf-8')
-    if 'href="/data-credits/"' in text:
+    if 'href="/data-credits/"' in text or 'href="/credits/"' in text:
         continue
     anchor = '<a href="/news/">Wire</a>'
     replacement = f'<a href="/data-credits/">{label}</a>{anchor}'

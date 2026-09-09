@@ -1,0 +1,17 @@
+{
+  "name": "visione-streaming-discovery",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "ingest": "node scripts/ingest.mjs",
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/validate.mjs --syntax",
+    "typecheck": "node scripts/validate.mjs --interfaces",
+    "test": "node --test tests/*.test.mjs carluxiii-preview/tests/*.test.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build && node scripts/validate.mjs"
+  }
+}

@@ -6,6 +6,7 @@ on:
       - '.github/workflows/adsense-sync.yml'
       - 'scripts/editorial_inventory_sync.py'
       - 'scripts/materialize_streaming_nav.py'
+      - 'scripts/merge_discovery_sitemap.py'
       - 'news/*.html'
       - 'news/feed.xml'
       - 'news/news-sitemap.xml'
@@ -19,9 +20,10 @@ on:
       - 'sitemap.xml'
       - 'robots.txt'
       - 'index.html'
-      - 'es/index.html'
-      - 'pt/index.html'
-      - 'br/index.html'
+      - 'es/**/*.html'
+      - 'pt/**/*.html'
+      - 'br/**/*.html'
+      - 'credits/**/*.html'
       - 'data-credits/index.html'
 
 permissions:
@@ -38,6 +40,7 @@ jobs:
         run: |
           python3 scripts/editorial_inventory_sync.py
           python3 scripts/materialize_streaming_nav.py
+          python3 scripts/merge_discovery_sitemap.py
       - name: Commit normalized inventory
         run: |
           if git diff --quiet; then

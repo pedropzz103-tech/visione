@@ -6,6 +6,7 @@ on:
       - main
       - 'visione-wire-*'
       - 'feat/visione-streaming-*'
+      - 'deploy/**'
   pull_request:
     branches:
       - main
@@ -16,7 +17,7 @@ permissions:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -24,9 +25,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build streaming discovery pages
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build current streaming discovery pages
         run: node streaming/build.mjs
-      - name: Validate generated streaming site
-        run: node streaming/validate.mjs
-      - name: Run site quality tests
+      - name: Run current site quality tests
         run: node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs
+      - name: Validate Codex discovery source contracts
+        run: |
+          npm run lint
+          npm run typecheck
+      - name: Run Codex discovery tests
+        run: node --test tests/build.test.mjs tests/calendar.test.mjs tests/catalog.test.mjs tests/client-i18n.test.mjs tests/search.test.mjs tests/seo.test.mjs tests/validation.test.mjs
+      - name: Build Codex discovery in CI workspace
+        run: npm run build
+      - name: Validate Codex discovery build
+        run: node scripts/validate.mjs

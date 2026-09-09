@@ -1,0 +1,31 @@
+{
+  "detail": {
+    "id": 157336,
+    "title": "Interstellar",
+    "original_title": "Interstellar",
+    "overview": "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
+    "release_date": "2014-11-05",
+    "runtime": 169,
+    "genres": [{ "id": 18, "name": "Drama" }, { "id": 878, "name": "Science Fiction" }],
+    "production_countries": [{ "iso_3166_1": "US", "name": "United States of America" }],
+    "poster_path": "/example-poster.jpg",
+    "backdrop_path": "/example-backdrop.jpg",
+    "credits": {
+      "crew": [{ "job": "Director", "name": "Christopher Nolan" }],
+      "cast": [{ "name": "Matthew McConaughey" }, { "name": "Anne Hathaway" }]
+    },
+    "keywords": { "keywords": [{ "name": "space travel" }] }
+  },
+  "watchProviders": {
+    "id": 157336,
+    "results": {
+      "ES": {
+        "link": "https://www.themoviedb.org/movie/157336/watch?locale=ES",
+        "flatrate": [{ "provider_id": 8, "provider_name": "Netflix", "logo_path": "/logo.jpg" }]
+      },
+      "PT": {
+        "link": "https://www.themoviedb.org/movie/157336/watch?locale=PT"
+      }
+    }
+  }
+}

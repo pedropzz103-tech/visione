@@ -1,0 +1,12 @@
+dist/
+node_modules/
+coverage/
+.cache/
+.tmp/
+artifacts/
+diagnostics/
+*.mp4
+*.log
+.env
+.env.*
+!.env.example

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "fixture",
+  "productId": "fixture-product",
+  "productName": "Produto demonstrativo - nao publicar",
+  "affiliateUrl": "https://s.shopee.com.br/fixture-link",
+  "currency": "BRL",
+  "currentPriceMinor": 0,
+  "benefits": [
+    "Fixture interna sem alegacao comercial"
+  ],
+  "assets": [
+    {
+      "id": "product-card",
+      "kind": "image",
+      "file": "assets/product-card.svg",
+      "provenance": {
+        "sourceType": "repository-created",
+        "source": "affiliate-factory/fixtures/product-test/assets/product-card.svg"
+      }
+    }
+  ],
+  "headline": "DEMONSTRACAO VISUAL",
+  "cta": "Fixture interna - nao publicar",
+  "caption": "TESTE INTERNO - NAO PUBLICAR",
+  "durationSeconds": 12
+}

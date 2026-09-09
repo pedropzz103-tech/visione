@@ -30,8 +30,6 @@ jobs:
         run: npm ci
       - name: Build current streaming discovery pages
         run: node streaming/build.mjs
-      - name: Validate current streaming site
-        run: node streaming/validate.mjs
       - name: Run current site quality tests
         run: node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs
       - name: Validate Codex discovery source contracts

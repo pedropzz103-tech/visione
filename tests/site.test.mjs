@@ -32,6 +32,7 @@ const trustPages = [
 // but must not be indexed, syndicated or monetized until it receives editorial approval.
 const indexableArticles = [
   "alibaba-hk80-billion-share-placement-ai-investment-2026.html",
+  "amazon-qualcomm-60-billion-ai-chip-deal-september-9-2026.html",
   "anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html",
   "brazil-ai-supercomputer-23-billion-us-china.html",
   "broadcom-60-billion-ai-debt-deal-credit-markets.html",
@@ -165,9 +166,9 @@ test("keeps the Google News sitemap limited to approved genuinely recent stories
   for (const match of newsSitemap.matchAll(/<loc>https:\/\/visione\.one\/news\/([^<]+)<\/loc>/g)) {
     assert.ok(indexableArticles.includes(match[1]), `Unapproved article in Google News sitemap: ${match[1]}`);
   }
+  assert.match(newsSitemap, /amazon-qualcomm-60-billion-ai-chip-deal-september-9-2026\.html/);
   assert.match(newsSitemap, /mistral-3-billion-euro-series-d-ai-sovereignty-september-8-2026\.html/);
   assert.match(newsSitemap, /liquid-network-320-million-bitcoin-withdrawal-security-incident-september-7-2026\.html/);
-  assert.match(newsSitemap, /openai-automated-research-intern-research-acceleration-september-6-2026\.html/);
   assert.doesNotMatch(newsSitemap, /september-2-2026\.html/);
   assert.doesNotMatch(newsSitemap, /august-31-2026\.html/);
 });

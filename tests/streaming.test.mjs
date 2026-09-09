@@ -74,6 +74,46 @@ test("generates useful localized discovery homes", async () => {
   assert.match(br, /hreflang="pt-PT"/);
 });
 
+test("keeps navigation and a compact language selector in the upper-right without country cards", async () => {
+  const pages = await Promise.all([
+    read("index.html"), read("es/index.html"), read("pt/index.html"), read("br/index.html")
+  ]);
+
+  for (const page of pages) {
+    const header = page.match(/<header class="stream-header">[\s\S]*?<\/header>/)?.[0];
+    assert.ok(header, "streaming header should be rendered");
+    assert.match(header, /class="stream-header-actions"/);
+    assert.match(header, /class="locale-switcher" aria-label="Idiomas"/);
+    assert.match(header, />ES<\/a>[\s\S]*>PT<\/a>[\s\S]*>BR<\/a>/);
+    assert.doesNotMatch(header, /🇪🇸|🇵🇹|🇧🇷|>España<|>Portugal<|>Brasil</);
+  }
+
+  assert.doesNotMatch(pages[0], /class="market-grid"|class="market-card"|class="mobile-markets"/);
+  assert.doesNotMatch(pages[0].match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "", /ES · PT · BR|España|Portugal|Brasil/i);
+  for (const page of pages.slice(1)) {
+    assert.doesNotMatch(page.match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "", /VISIONE · (ESPAÑA|PORTUGAL|BRASIL)/i);
+  }
+});
+
+test("renders the discovery homes as cinematic search experiences with a horizontal catalog", async () => {
+  const pages = await Promise.all([
+    read("index.html"), read("es/index.html"), read("pt/index.html"), read("br/index.html")
+  ]);
+
+  for (const page of pages) {
+    assert.match(page, /<body class="stream-body discovery-home">/);
+    const hero = page.match(/<section class="(?:global|locale)-hero cinematic-hero">[\s\S]*?<\/section>/)?.[0];
+    assert.ok(hero, "discovery home should render a cinematic hero");
+    assert.match(hero, /class="cinematic-backdrop"/);
+    assert.match(hero, /class="hero-content"/);
+    assert.match(hero, /data-visione-search/);
+    assert.match(page, /class="title-rail cinematic-title-rail"/);
+  }
+
+  assert.match(pages[0], /visione-cinematic-hero-v2\.png/);
+  assert.doesNotMatch(pages[0], /Top 10|#1|data-rank=/i);
+});
+
 test("generates a locale-aware search index without runtime API dependency", async () => {
   const records = JSON.parse(await read("data/search-index.json"));
   assert.equal(records.length, seed.length * 3);

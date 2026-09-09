@@ -1,3 +1,5 @@
+import { clientCopy } from "/assets/discovery-i18n.js?v=20260909-1";
+
 const normalize = (value = "") => String(value).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 function distance(left, right) {
   const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
@@ -30,6 +32,7 @@ for (const root of document.querySelectorAll("[data-search-root]")) {
   let active = -1;
   let timer;
   const locale = root.dataset.locale || "pt";
+  const copy = clientCopy(locale);
   const render = async () => {
     const query = normalize(input.value);
     active = -1;
@@ -39,11 +42,11 @@ for (const root of document.querySelectorAll("[data-search-root]")) {
       const matches = index.map((entry) => ({ entry, score: score(query, entry.searchText) })).filter((item) => item.score >= .58).sort((a, b) => b.score - a.score).slice(0, 8);
       results.innerHTML = matches.length ? matches.map(({ entry }) => {
         const title = entry.titles[locale] || entry.titles.pt || Object.values(entry.titles)[0];
-        return `<a class="search-result" role="option" aria-selected="false" href="${entry.paths[locale] || entry.paths.pt}"><span>${title.slice(0, 2).toUpperCase()}</span><span><strong>${title}</strong><small>${entry.type === "movie" ? "Filme" : "Série"}</small></span><small>${entry.year ?? ""}</small></a>`;
-      }).join("") : '<p class="search-empty">Nenhum resultado neste catálogo verificado.</p>';
+        return `<a class="search-result" role="option" aria-selected="false" href="${entry.paths[locale] || entry.paths.pt}"><span>${title.slice(0, 2).toUpperCase()}</span><span><strong>${title}</strong><small>${entry.type === "movie" ? copy.movie : copy.series}</small></span><small>${entry.year ?? ""}</small></a>`;
+      }).join("") : `<p class="search-empty">${copy.noResults}</p>`;
       results.hidden = false;
     } catch {
-      results.innerHTML = '<p class="search-empty">A pesquisa local está temporariamente indisponível.</p>';
+      results.innerHTML = `<p class="search-empty">${copy.searchUnavailable}</p>`;
       results.hidden = false;
     }
   };

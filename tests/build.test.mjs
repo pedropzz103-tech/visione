@@ -37,7 +37,14 @@ test("build creates a search-first global entry and all locale homes", async () 
     assert.match(global, /href="\/br\/"/);
     assert.match(global, /href="\/news\/"/);
     assert.match(global, /role="search"/);
+    assert.match(global, /class="header-actions"/);
+    assert.match(global, /class="primary-nav"/);
+    assert.match(global, /class="locale-nav"/);
+    assert.doesNotMatch(global, /class="market-grid"/);
+    assert.doesNotMatch(global, /<strong>España<\/strong>|<strong>Portugal<\/strong>|<strong>Brasil<\/strong>/);
     assert.match(es, /Encuentra dónde ver películas y series/);
+    assert.match(es, /discovery-search\.js\?v=[0-9a-z-]+/);
+    assert.match(es, /library\.js\?v=[0-9a-z-]+/);
     assert.match(pt, /Descobre onde ver filmes e séries/);
     assert.match(br, /Descubra onde assistir filmes e séries/);
     for (const html of [es, pt, br]) assert.match(html, /role="search"/);
@@ -79,6 +86,28 @@ test("title pages disclose source freshness and legal destination behavior", asy
     assert.match(html, /Netflix official catalog/);
     assert.match(html, /target="_blank" rel="noopener noreferrer sponsored?"|target="_blank" rel="noopener noreferrer"/);
     assert.doesNotMatch(html, /assistir agora|ver ahora.*VISIONE/i);
+  });
+});
+
+test("localized discovery pages do not leak Portuguese interface copy into Spanish", async () => {
+  await withBuiltSite(async (root) => {
+    const [home, title, provider] = await Promise.all([
+      readBuilt(root, "es/index.html"),
+      readBuilt(root, "es/donde-ver/coda/index.html"),
+      readBuilt(root, "es/plataformas/apple-tv-plus/index.html"),
+    ]);
+
+    for (const html of [home, title, provider]) {
+      assert.match(html, /Saltar al contenido/);
+      assert.doesNotMatch(html, /Saltar para o conteúdo|Descoberta de opções legais/);
+    }
+    assert.match(title, /Opciones confirmadas ahora/);
+    assert.match(title, /REPARTO Y CREACIÓN/);
+    assert.match(title, /Respuestas directas/);
+    assert.match(title, /Datos trazables/);
+    assert.doesNotMatch(title, /Opções confirmadas|Quem dá forma|PERGUNTAS FREQUENTES|Dados rastreáveis|Title details/);
+    assert.match(provider, /Disponibilidad confirmada/i);
+    assert.doesNotMatch(provider, /subscrições|snapshot atual/i);
   });
 });
 

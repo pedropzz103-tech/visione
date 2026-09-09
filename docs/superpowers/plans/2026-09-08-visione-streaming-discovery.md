@@ -387,19 +387,19 @@ git commit -m "ci: verify streaming discovery build"
 - Consumes: generated site served locally.
 - Produces: evidence-backed verification report with commands, results, screenshots/observations, limitations, and remaining credential dependencies.
 
-- [ ] **Step 1: Start a local static server**
+- [x] **Step 1: Start a local static server**
 
 Run: `npx --yes serve . -l 4173` or an installed equivalent that does not modify the repository.
 
-- [ ] **Step 2: Inspect desktop and mobile flows**
+- [x] **Step 2: Inspect desktop and mobile flows**
 
 Verify `/`, `/es/`, `/pt/`, `/br/`, one movie page, one series page, one provider page, credits, `/news/`, and an existing article at roughly 1440×900 and 390×844. Exercise keyboard-only search, locale selection, empty search, watchlist/favorite, provider link, no-image fallback, and missing-data states.
 
-- [ ] **Step 3: Run accessibility and browser console checks**
+- [x] **Step 3: Run accessibility and browser console checks**
 
 Confirm one `<h1>`, landmarks, labels, visible focus, sensible tab order, no horizontal overflow, no uncaught errors, and reduced-motion behavior. Fix reproducible defects and add regression tests when practical.
 
-- [ ] **Step 4: Run final clean verification**
+- [x] **Step 4: Run final clean verification**
 
 Run:
 
@@ -416,15 +416,15 @@ git status --short
 
 Expected: every automated check exits 0; only intentional project files are changed.
 
-- [ ] **Step 5: Audit secrets and protected infrastructure**
+- [x] **Step 5: Audit secrets and protected infrastructure**
 
 Search tracked files for credential patterns and `tablet.visione.one`. Expected: no credential material; the hostname appears only in explicit documentation or safety assertions and no workflow/DNS configuration targets it.
 
-- [ ] **Step 6: Write the verification report**
+- [x] **Step 6: Write the verification report**
 
 Record exact command outcomes, representative generated routes, data/credential limitations, browser observations, and any unverified live-provider/device behavior. Do not claim production data freshness without licensed credentials.
 
-- [ ] **Step 7: Commit verified fixes and report**
+- [x] **Step 7: Commit verified fixes and report**
 
 ```bash
 git add -A

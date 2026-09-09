@@ -1,6 +1,8 @@
 import { buildCalendarEvent } from "/scripts/lib/calendar.mjs";
+import { clientCopy, localeFromLanguage } from "/assets/discovery-i18n.js?v=20260909-1";
 
 const KEY = "visione-library-v1";
+const copy = clientCopy(localeFromLanguage(document.documentElement.lang));
 const state = (() => {
   try { return JSON.parse(localStorage.getItem(KEY)) ?? { watchlist: [], favorite: [] }; }
   catch { return { watchlist: [], favorite: [] }; }
@@ -18,7 +20,7 @@ for (const root of document.querySelectorAll("[data-library-title]")) {
       state[action] = [...values];
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* Private mode may disallow storage. */ }
       render();
-      status.textContent = values.has(id) ? "Guardado apenas neste dispositivo." : "Removido da lista deste dispositivo.";
+      status.textContent = values.has(id) ? copy.subscriptionSaved : copy.subscriptionRemoved;
     });
   }
   const calendar = root.querySelector("[data-calendar-date]");
@@ -31,7 +33,7 @@ for (const root of document.querySelectorAll("[data-library-title]")) {
       link.download = `${calendar.dataset.calendarDate}-visione.ics`;
       link.click();
       URL.revokeObjectURL(href);
-      status.textContent = "Evento de estreia preparado para o calendário.";
+      status.textContent = copy.calendarReady;
     });
   }
 }

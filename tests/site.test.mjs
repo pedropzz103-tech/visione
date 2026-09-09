@@ -72,7 +72,7 @@ const adsenseScript = /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\
 test("serves streaming discovery from the canonical root", () => {
   assert.match(home, /<title>VISIONE \| Onde ver filmes e séries<\/title>/);
   assert.match(home, /rel="canonical" href="https:\/\/visione\.one\/"/);
-  assert.match(home, /href="\/assets\/discovery\.css"/);
+  assert.match(home, /href="\/assets\/discovery\.css\?v=[0-9a-z-]+"/);
   assert.match(home, /data-search-root/);
   assert.match(home, /href="\/es\/"/);
   assert.match(home, /href="\/pt\/"/);

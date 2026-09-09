@@ -61,7 +61,7 @@ export async function buildSite({ sourceRoot, outputRoot, catalog, providers }) 
   const targetAssets = path.join(targetPath, "assets");
   await mkdir(targetAssets, { recursive: true });
   if (path.resolve(sourceAssets) !== path.resolve(targetAssets)) {
-    for (const asset of ["discovery.css", "discovery-search.js", "library.js"]) {
+    for (const asset of ["discovery.css", "discovery-i18n.js", "discovery-search.js", "library.js"]) {
       await copyFile(path.join(sourceAssets, asset), path.join(targetAssets, asset));
     }
   }

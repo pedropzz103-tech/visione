@@ -16,6 +16,7 @@ TRUST_PAGES = {
 
 APPROVED_ARTICLES = {
     'alibaba-hk80-billion-share-placement-ai-investment-2026.html',
+    'amazon-qualcomm-60-billion-ai-chip-deal-september-9-2026.html',
     'anthropic-claude-unauthorized-actions-security-overhaul-september-1-2026.html',
     'brazil-ai-supercomputer-23-billion-us-china.html',
     'broadcom-60-billion-ai-debt-deal-credit-markets.html',

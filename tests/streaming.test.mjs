@@ -95,6 +95,25 @@ test("keeps navigation and a compact language selector in the upper-right withou
   }
 });
 
+test("renders the discovery homes as cinematic search experiences with a horizontal catalog", async () => {
+  const pages = await Promise.all([
+    read("index.html"), read("es/index.html"), read("pt/index.html"), read("br/index.html")
+  ]);
+
+  for (const page of pages) {
+    assert.match(page, /<body class="stream-body discovery-home">/);
+    const hero = page.match(/<section class="(?:global|locale)-hero cinematic-hero">[\s\S]*?<\/section>/)?.[0];
+    assert.ok(hero, "discovery home should render a cinematic hero");
+    assert.match(hero, /class="cinematic-backdrop"/);
+    assert.match(hero, /class="hero-content"/);
+    assert.match(hero, /data-visione-search/);
+    assert.match(page, /class="title-rail cinematic-title-rail"/);
+  }
+
+  assert.match(pages[0], /visione-cinematic-hero-v2\.png/);
+  assert.doesNotMatch(pages[0], /Top 10|#1|data-rank=/i);
+});
+
 test("generates a locale-aware search index without runtime API dependency", async () => {
   const records = JSON.parse(await read("data/search-index.json"));
   assert.equal(records.length, seed.length * 3);

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 function sampleTitle() {
@@ -12,7 +13,7 @@ function sampleTitle() {
     runtime: 169,
     seasons: null,
     overview: {
-      es: "Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad.",
+      es: "Un antiguo piloto se une a una misión interestelar que busca un novo hogar para la humanidad.",
       pt: "Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade.",
       br: "Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade."
     },
@@ -198,4 +199,21 @@ test("positive official evidence updates only its provider and country and ignor
   assert.deepEqual(merged.offers.PT, []);
   assert.equal(merged.availability_updated_at, "2026-09-11T09:00:00Z");
   assert.match(merged.source.availability, /official-provider-evidence/);
+});
+
+test("catalog helper CLIs exist and official evidence ingestion does not fetch provider pages", async () => {
+  const root = new URL("../", import.meta.url);
+  const [wdqsCli, everyFilmCli, evidenceCli] = await Promise.all([
+    readFile(new URL("streaming/discover-wikidata.mjs", root), "utf8"),
+    readFile(new URL("streaming/sync-everyfilm.mjs", root), "utf8"),
+    readFile(new URL("streaming/ingest-official-availability.mjs", root), "utf8")
+  ]);
+
+  assert.match(wdqsCli, /discoverWikidataFilms/);
+  assert.match(wdqsCli, /--from-year/);
+  assert.match(everyFilmCli, /fetchEveryFilmDetail/);
+  assert.match(everyFilmCli, /--all-known/);
+  assert.match(evidenceCli, /official-availability-evidence\.json/);
+  assert.match(evidenceCli, /mergeOfficialAvailabilityEvidence/);
+  assert.doesNotMatch(evidenceCli, /\bfetch\s*\(/);
 });

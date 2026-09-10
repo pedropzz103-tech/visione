@@ -73,6 +73,15 @@ test("pending provider data does not present metadata freshness as an availabili
   assert.match(page, /Datos pendientes de fuente comercial/);
 });
 
+test("failed ingestion is not rendered as a verified no-offer result", () => {
+  const raw = structuredClone(seed[0]);
+  raw.availability_status.ES = "error";
+  const page = renderTitlePage(normalizeTitle(raw), "es", providers);
+
+  assert.match(page, /Datos temporalmente no disponibles/);
+  assert.doesNotMatch(page, /Sin oferta verificada/);
+});
+
 test("search index contains people from credits and client search consumes those terms", async () => {
   const records = JSON.parse(await read("data/search-index.json"));
   const interstellar = records.find((record) => record.locale === "es" && record.id === "movie:157336");

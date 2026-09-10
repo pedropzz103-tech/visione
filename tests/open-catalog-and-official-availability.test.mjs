@@ -13,7 +13,7 @@ function sampleTitle() {
     runtime: 169,
     seasons: null,
     overview: {
-      es: "Un antiguo piloto se une a una misión interestelar que busca un novo hogar para la humanidad.",
+      es: "Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad.",
       pt: "Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade.",
       br: "Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade."
     },
@@ -210,7 +210,7 @@ test("catalog helper CLIs exist and official evidence ingestion does not fetch p
   ]);
 
   assert.match(wdqsCli, /discoverWikidataFilms/);
-  assert.match(wdqsCli, /--from-year/);
+  assert.match(wdqsCli, /valueArg\("from-year"\)/);
   assert.match(everyFilmCli, /fetchEveryFilmDetail/);
   assert.match(everyFilmCli, /--all-known/);
   assert.match(evidenceCli, /official-availability-evidence\.json/);

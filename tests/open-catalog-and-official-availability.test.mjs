@@ -77,7 +77,11 @@ test("every.film enrichment preserves curated copy and provider availability", a
 
   assert.deepEqual(merged.titles, existing.titles);
   assert.deepEqual(merged.overview, existing.overview);
-  assert.deepEqual(merged.offers, existing.offers);
+  assert.equal(merged.offers.ES.length, 1);
+  assert.equal(merged.offers.ES[0].provider, "prime-video");
+  assert.equal(merged.offers.ES[0].monetization, "rent");
+  assert.equal(merged.offers.ES[0].price, 2.99);
+  assert.equal(merged.offers.ES[0].currency, "EUR");
   assert.deepEqual(merged.availability_status, existing.availability_status);
   assert.equal(merged.availability_updated_at, "2026-09-11T08:00:00Z");
   assert.equal(merged.rating.value, 8.8);
@@ -160,4 +164,38 @@ test("negative or ambiguous official pages never become verified unavailable", a
   assert.equal(result.status, "unknown");
   assert.deepEqual(result.offers, []);
   assert.match(result.reason, /negative|unavailable|ambiguous/i);
+});
+
+test("positive official evidence updates only its provider and country and ignores negative evidence", async () => {
+  const { mergeOfficialAvailabilityEvidence } = await import("../streaming/adapters/official-availability.mjs");
+  const existing = sampleTitle();
+  existing.offers.ES = [{ provider: "netflix", monetization: "subscription", url: "https://www.netflix.com/title/example", attribution: ["existing"] }];
+  existing.availability_status.ES = "available";
+  existing.availability_updated_at = "2026-09-11T07:00:00Z";
+
+  const merged = mergeOfficialAvailabilityEvidence(existing, [
+    {
+      provider: "prime-video",
+      country: "ES",
+      url: "https://www.primevideo.com/-/es/detail/example",
+      expectedTitle: "Interstellar",
+      text: "Interstellar Alquilar UHD 2,99 € Comprar UHD 7,99 €",
+      checked_at: "2026-09-11T09:00:00Z"
+    },
+    {
+      provider: "prime-video",
+      country: "PT",
+      url: "https://www.primevideo.com/-/pt_PT/detail/example",
+      expectedTitle: "Interstellar",
+      text: "Interstellar Já não está disponível na sua região no Prime Video",
+      checked_at: "2026-09-11T09:05:00Z"
+    }
+  ]);
+
+  assert.deepEqual(merged.offers.ES.map((offer) => offer.provider), ["netflix", "prime-video", "prime-video"]);
+  assert.equal(merged.availability_status.ES, "available");
+  assert.equal(merged.availability_status.PT, "unknown");
+  assert.deepEqual(merged.offers.PT, []);
+  assert.equal(merged.availability_updated_at, "2026-09-11T09:00:00Z");
+  assert.match(merged.source.availability, /official-provider-evidence/);
 });

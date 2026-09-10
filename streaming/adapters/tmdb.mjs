@@ -162,7 +162,7 @@ async function tmdbRequest(path, { token, baseUrl, language = null, appendCredit
   return response.json();
 }
 
-export async function fetchTmdbTitle({ id, mediaType, token, baseUrl = "https://api.themoviedb.org/3", fetchedAt = new Date().toISOString() }) {
+export async function fetchTmdbTitle({ id, mediaType, token = process.env.TMDB_READ_ACCESS_TOKEN, baseUrl = "https://api.themoviedb.org/3", fetchedAt = new Date().toISOString() }) {
   if (!token) throw new Error("TMDB_READ_ACCESS_TOKEN is required for TMDB ingestion");
   const resource = mediaType === "series" || mediaType === "tv" ? "tv" : "movie";
   const translations = {};

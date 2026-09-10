@@ -1,9 +1,9 @@
 [
-  {"id":"netflix","name":"Netflix","markets":["ES","PT","BR"],"homepage":"https://www.netflix.com/"},
-  {"id":"prime-video","name":"Prime Video","markets":["ES","PT","BR"],"homepage":"https://www.primevideo.com/"},
-  {"id":"disney-plus","name":"Disney+","markets":["ES","PT","BR"],"homepage":"https://www.disneyplus.com/"},
-  {"id":"max","name":"Max","markets":["ES","PT","BR"],"homepage":"https://www.max.com/"},
-  {"id":"apple-tv","name":"Apple TV","markets":["ES","PT","BR"],"homepage":"https://tv.apple.com/"},
-  {"id":"rakuten-tv","name":"Rakuten TV","markets":["ES","PT"],"homepage":"https://www.rakuten.tv/"},
-  {"id":"pluto-tv","name":"Pluto TV","markets":["ES","PT","BR"],"homepage":"https://pluto.tv/"}
+  {"id":"netflix","name":"Netflix","markets":["ES","PT","BR"],"homepage":"https://www.netflix.com/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Netflix_2015_logo.svg"},
+  {"id":"prime-video","name":"Prime Video","markets":["ES","PT","BR"],"homepage":"https://www.primevideo.com/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Prime_Video_logo_%282024%29.svg"},
+  {"id":"disney-plus","name":"Disney+","markets":["ES","PT","BR"],"homepage":"https://www.disneyplus.com/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Disney%2B_2024.svg"},
+  {"id":"max","name":"Max","markets":["ES","PT","BR"],"homepage":"https://www.max.com/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Max_2025_logo.svg"},
+  {"id":"apple-tv","name":"Apple TV","markets":["ES","PT","BR"],"homepage":"https://tv.apple.com/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Apple_TV_Plus_Logo.svg"},
+  {"id":"rakuten-tv","name":"Rakuten TV","markets":["ES","PT"],"homepage":"https://www.rakuten.tv/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Rakuten_TV_logo.svg"},
+  {"id":"pluto-tv","name":"Pluto TV","markets":["ES","PT","BR"],"homepage":"https://pluto.tv/","logo":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Pluto_TV_logo.svg"}
 ]

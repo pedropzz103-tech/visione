@@ -95,23 +95,81 @@ test("keeps navigation and a compact language selector in the upper-right withou
   }
 });
 
-test("renders the discovery homes as cinematic search experiences with a horizontal catalog", async () => {
+test("renders cinematic discovery homes with the search inside the header", async () => {
   const pages = await Promise.all([
     read("index.html"), read("es/index.html"), read("pt/index.html"), read("br/index.html")
   ]);
 
   for (const page of pages) {
     assert.match(page, /<body class="stream-body discovery-home">/);
+    const header = page.match(/<header class="stream-header">[\s\S]*?<\/header>/)?.[0];
     const hero = page.match(/<section class="(?:global|locale)-hero cinematic-hero">[\s\S]*?<\/section>/)?.[0];
+    assert.ok(header, "discovery home should render a header");
     assert.ok(hero, "discovery home should render a cinematic hero");
+    assert.match(header, /class="header-search"[\s\S]*?data-visione-search/);
     assert.match(hero, /class="cinematic-backdrop"/);
     assert.match(hero, /class="hero-content"/);
-    assert.match(hero, /data-visione-search/);
+    assert.doesNotMatch(hero, /data-visione-search/);
     assert.match(page, /class="title-rail cinematic-title-rail"/);
   }
 
   assert.match(pages[0], /visione-cinematic-hero-v2\.png/);
-  assert.doesNotMatch(pages[0], /Top 10|#1|data-rank=/i);
+});
+
+test("renders five honest discovery collections with rail and mosaic controls", async () => {
+  const home = await read("index.html");
+  const collections = [...home.matchAll(/<section[^>]+data-catalog-section[\s\S]*?<\/section>/g)].map((match) => match[0]);
+
+  assert.equal(collections.length, 5);
+  assert.match(home, /Top 10 hoje/);
+  assert.match(home, /Recomendados hoje/);
+  assert.match(home, /Escolhas da semana/);
+  assert.match(home, /Brevemente nos cinemas/);
+  assert.match(home, /Brevemente no streaming/);
+  const topTen = collections.find((collection) => collection.includes("Top 10 hoje"));
+  assert.ok(topTen);
+  assert.deepEqual([...topTen.matchAll(/data-rank="(\d+)"/g)].map((match) => Number(match[1])), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  assert.equal(new Set([...topTen.matchAll(/href="([^"]+)"/g)].map((match) => match[1])).size, 10);
+
+  for (const collection of collections) {
+    assert.match(collection, /data-catalog-rail/);
+    assert.match(collection, /data-rail-prev/);
+    assert.match(collection, /data-rail-next/);
+    assert.match(collection, /data-rail-view[^>]+aria-expanded="false"/);
+  }
+
+  assert.match(home, /Curadoria VISIONE/);
+  assert.match(home, /Dados de estreia aguardam fonte oficial/);
+});
+
+test("renders every supported platform as a branded visual tile", async () => {
+  const [home, providers] = await Promise.all([
+    read("index.html"),
+    read("streaming/data/providers.json").then(JSON.parse)
+  ]);
+  const providerArea = home.match(/<div class="provider-chips">[\s\S]*?<\/div>/)?.[0];
+
+  assert.ok(providerArea);
+  assert.equal((providerArea.match(/class="provider-logo"/g) ?? []).length, providers.length);
+  for (const provider of providers) {
+    assert.match(provider.logo, /^https:\/\//);
+    assert.match(providerArea, new RegExp(`data-provider="${provider.id}"[\\s\\S]*?alt=""`));
+  }
+});
+
+test("computes bounded catalog rail movement", async () => {
+  let rail;
+  try {
+    rail = await import("../assets/catalog-rails.mjs");
+  } catch {
+    assert.fail("catalog rail behavior module should exist");
+  }
+
+  assert.equal(rail.getRailPageDistance(1000), 840);
+  assert.equal(rail.getRailPageDistance(200), 240);
+  assert.equal(rail.getRailTarget({ scrollLeft: 300, clientWidth: 1000, scrollWidth: 2400 }, 1), 1140);
+  assert.equal(rail.getRailTarget({ scrollLeft: 1800, clientWidth: 1000, scrollWidth: 2400 }, 1), 1400);
+  assert.equal(rail.getRailTarget({ scrollLeft: 100, clientWidth: 1000, scrollWidth: 2400 }, -1), 0);
 });
 
 test("generates a locale-aware search index without runtime API dependency", async () => {

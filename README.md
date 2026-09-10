@@ -27,23 +27,31 @@ Ordinary page views do not call a paid entertainment API. The committed discover
 
 It can ingest show identity, premiere year, runtime, genres, poster, seasons, cast, creators and external IDs. Existing VISIONE ES/PT/BR titles and summaries are preserved during a merge because TVmaze does not provide equivalent localized copy for every market. TVmaze metadata never changes `offers`, `availability_status` or `availability_updated_at`.
 
-To refresh every existing series in the catalog:
-
 ```bash
 node streaming/sync-tvmaze.mjs --all-series
-```
-
-To refresh only one known VISIONE slug:
-
-```bash
 node streaming/sync-tvmaze.mjs --slug=the-last-of-us
 ```
 
-Add `--dry-run` to test matching without writing `streaming/data/titles.json`. On the first sync, VISIONE searches TVmaze and only accepts a unique exact match whose normalized name **and premiere year** agree. The resulting TVmaze ID is cached in `source.tvmaze_id`, so later refreshes can fetch the show directly by ID.
+Add `--dry-run` to test matching without writing `streaming/data/titles.json`. On the first sync, VISIONE searches TVmaze and only accepts a unique exact match whose normalized name and premiere year agree. The resulting TVmaze ID is cached in `source.tvmaze_id`.
 
-The client uses a descriptive User-Agent and backs off/retries HTTP 429 responses. TVmaze documents a free public limit of at least 20 requests per 10 seconds per IP. TVmaze API data is CC BY-SA, so visible attribution and ShareAlike compliance must remain in place. The canonical TVmaze show URL and attribution are stored in each merged record.
+The client uses a descriptive User-Agent and backs off/retries HTTP 429 responses. TVmaze API data is CC BY-SA, so visible attribution and ShareAlike compliance must remain in place. TVmaze's web/streaming schedule is not treated as a country-by-country legal availability feed.
 
-TVmaze's web/streaming schedule is **not** treated as a country-by-country legal availability feed. It must not be used to claim that a title is or is not currently available on Netflix, Prime Video, Disney+, Max or another service in ES/PT/BR.
+## Free movie metadata with Wikidata
+
+`streaming/adapters/wikidata.mjs` integrates Wikidata as an **open metadata source for movies**. No API key or account is required. Wikidata structured data is CC0.
+
+The adapter uses the MediaWiki Action API to search entities and `Special:EntityData` to retrieve the selected entity. It can enrich movie identity, localized labels when available, release year, runtime, genres, director, cast and IMDb ID. Linked entity labels are resolved in batches through `wbgetentities`.
+
+```bash
+node streaming/sync-wikidata.mjs --all-movies
+node streaming/sync-wikidata.mjs --slug=interstellar
+```
+
+Add `--dry-run` to verify matching without writing the catalog. The first sync only accepts a unique exact normalized title + release-year match and then caches the QID in `source.wikidata_id` for later direct refreshes.
+
+Wikidata descriptions are not treated as plot summaries, and the integration does not import artwork. Existing VISIONE ES/PT/BR titles, curated summaries, posters/backdrops and all `offers`, `availability_status` and `availability_updated_at` values are preserved during merge. Wikidata is metadata only and is never interpreted as evidence that a title is available on a streaming provider.
+
+The client follows Wikimedia access etiquette with an identifiable User-Agent, `Accept-Encoding`, `maxlag=5` for Action API calls and retry/backoff for HTTP 429.
 
 ## Data, freshness and credentials
 

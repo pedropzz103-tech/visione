@@ -1,0 +1,39 @@
+name: Materialize streaming build (temporary)
+
+on:
+  push:
+    branches:
+      - 'feat/visione-streaming-finish-20260910'
+    paths:
+      - '.github/workflows/materialize-streaming-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate and validate streaming files
+        run: |
+          node streaming/build.mjs
+          node streaming/validate.mjs
+          node --test tests/*.test.mjs
+      - name: Commit generated static files
+        run: |
+          git add index.html es pt br data/search-index.json streaming-sitemap-es.xml streaming-sitemap-pt.xml streaming-sitemap-br.xml streaming-sitemap-index.xml
+          if git diff --cached --quiet; then
+            echo "Generated files already match source"
+            exit 0
+          fi
+          git config user.name "VISIONE build automation"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "build: materialize streaming discovery [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

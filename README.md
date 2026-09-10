@@ -9,25 +9,33 @@ Requires Node.js 22+ and no npm dependencies.
 ```bash
 node streaming/build.mjs
 node streaming/validate.mjs
-node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs
+node --test tests/*.test.mjs
 ```
 
 The build reads normalized cached data from `streaming/data/` and generates:
 
 - `/es/`, `/pt/`, `/br/` locale landing pages;
 - localized movie/series pages;
-- `data/search-index.json` for client-side search;
+- `data/search-index.json` for client-side search, including title and credited-person search terms;
 - streaming XML sitemaps.
 
 Ordinary page views do not call a paid entertainment API. The committed discovery pages link to `/data-credits/`, which explains metadata, availability, licensing and attribution rules to users and crawlers.
 
-## Data and credentials
+## Data, freshness and credentials
 
 The committed seed catalog contains factual metadata only. It does **not** invent current streaming availability or prices. Until a licensed/authorized availability feed is configured, title pages are generated as `noindex,follow` and explain that provider data is pending.
 
-Future provider credentials must be supplied through environment variables or GitHub Actions secrets. Never commit API keys, bearer tokens or commercial credentials.
+Metadata freshness (`updated_at`) and provider-availability freshness (`availability_updated_at`) are separate. A page cannot become indexable from an available/unavailable provider state unless the availability check has its own valid timestamp. Failed ingestion is rendered as a temporary data failure, never as proof that no legal offer exists.
 
-TMDB, JustWatch or any replacement provider must only be enabled under terms that permit VISIONE's commercial use case, and all required attribution must remain visible in generated pages.
+A current-schema TMDB adapter lives at `streaming/adapters/tmdb.mjs`. It maps TMDB watch-provider results into VISIONE's provider-neutral schema and carries visible `JustWatch via TMDB` availability attribution. It is optional and is not called by visitor page views.
+
+If that adapter is enabled, provide its token only at runtime through:
+
+```bash
+export TMDB_READ_ACCESS_TOKEN="..."
+```
+
+Never commit API keys, bearer tokens or commercial credentials. TMDB, JustWatch or any replacement provider must only be enabled under terms that permit VISIONE's commercial use case, and all required attribution must remain visible in generated pages. Having an API token is not, by itself, proof of commercial licensing.
 
 ## Repository boundaries
 

@@ -80,7 +80,10 @@
       const records = await getIndex();
       const matches = records
         .filter((record) => record.locale === locale)
-        .map((record) => ({ record, haystack: normalize([record.title, ...(record.alternateTitles || [])].join(" ")) }))
+        .map((record) => ({
+          record,
+          haystack: normalize([record.title, ...(record.alternateTitles || []), ...(record.searchTerms || [])].join(" "))
+        }))
         .filter(({ haystack }) => haystack.includes(query))
         .slice(0, 7)
         .map(({ record }) => record);

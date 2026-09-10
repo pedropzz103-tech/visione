@@ -18,22 +18,23 @@
   <h1>Dados, fontes e disponibilidade.</h1>
   <p>A VISIONE é um guia para descobrir onde assistir filmes e séries legalmente. <strong>A VISIONE não hospeda, transmite nem redistribui os vídeos.</strong> Quando existe um link de saída, ele leva ao serviço legal correspondente.</p>
 
-  <div class="credits-panel"><strong>Estado atual do catálogo</strong><p>O catálogo seed incluído no repositório usa apenas metadata factual básica para validar a experiência e a arquitetura. A disponibilidade comercial e os preços ainda não estão conectados a uma fonte licenciada. Por isso essas fichas ficam automaticamente em <code>noindex,follow</code> e não entram nos sitemaps de títulos.</p></div>
+  <div class="credits-panel"><strong>Estado atual do catálogo</strong><p>O catálogo usa metadata factual e pode ser enriquecido com fontes abertas devidamente atribuídas. A disponibilidade comercial e os preços continuam separados e só são publicados quando vêm de uma fonte autorizada. Fichas sem disponibilidade verificada ficam automaticamente em <code>noindex,follow</code> e não entram nos sitemaps de títulos.</p></div>
 
   <h2>Metadata</h2>
   <p>Títulos, ano, tipo, duração, gêneros, sinopses e créditos podem vir de fontes autorizadas ou de dados factuais revisados. O sistema normaliza tudo num formato interno independente do fornecedor para evitar que as páginas dependam da estrutura de uma API específica.</p>
+  <p><strong>TVmaze:</strong> a VISIONE pode usar a API pública da TVmaze para metadata de séries, incluindo ano de estreia, duração, temporadas, gêneros, elenco, criadores, imagens e identificadores externos. Dados provenientes da TVmaze são atribuídos à <a href="https://www.tvmaze.com/" rel="nofollow">TVmaze</a> e utilizados sob a licença CC BY-SA. A integração preserva as sinopses localizadas da VISIONE e não usa a TVmaze como prova de disponibilidade comercial por país.</p>
 
   <h2>Disponibilidade e preços</h2>
   <p>A VISIONE só deve publicar disponibilidade de streaming, aluguel, compra ou preço quando esses dados vierem de uma fonte verificável e permitida para uso comercial. A ausência de uma fonte não é tratada como “não disponível”: a página mostra que os dados estão pendentes.</p>
 
   <h2>Licenças e atribuição</h2>
-  <p>Integrações futuras com TMDB, JustWatch ou outros fornecedores só podem ser ativadas sob termos que permitam o uso comercial da VISIONE. Quando uma licença exigir atribuição, ela deve aparecer visivelmente na página e ser validada durante o build.</p>
+  <p>Fontes abertas ou comerciais são usadas de acordo com os seus próprios termos. A TVmaze exige atribuição e ShareAlike para o uso da API pública. Integrações com TMDB, JustWatch ou outros fornecedores só podem ser ativadas sob termos compatíveis com o uso da VISIONE. Quando uma licença exigir atribuição, ela deve permanecer visível.</p>
 
   <h2>Publicidade e afiliados</h2>
   <p>Uma parceria comercial nunca pode alterar silenciosamente a resposta factual. Links afiliados e posições patrocinadas precisam ser identificados, enquanto a lógica de “melhor opção” continua determinística e baseada nos dados disponíveis.</p>
 
   <h2>Atualização</h2>
-  <p>Os dados de disponibilidade serão atualizados por ingestão programada e cache. Uma consulta externa pode alimentar muitas visitas, em vez de fazer uma requisição paga toda vez que alguém abre uma página.</p>
+  <p>Os dados são atualizados por ingestão programada e cache. Uma consulta externa pode alimentar muitas visitas, em vez de fazer uma requisição externa toda vez que alguém abre uma página.</p>
 
   <p><a href="/">← Voltar para VISIONE</a></p>
 </main>

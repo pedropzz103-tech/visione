@@ -119,3 +119,42 @@ test("title pages expose required upstream availability attribution", async () =
 
   assert.match(page, /JustWatch via TMDB/);
 });
+
+test("TMDB fetch helper defaults to the environment token used by build jobs", async () => {
+  const { fetchTmdbTitle } = await import("../streaming/adapters/tmdb.mjs");
+  const oldFetch = globalThis.fetch;
+  const oldToken = process.env.TMDB_READ_ACCESS_TOKEN;
+  const authHeaders = [];
+
+  process.env.TMDB_READ_ACCESS_TOKEN = "test-env-token";
+  globalThis.fetch = async (url, options = {}) => {
+    authHeaders.push(options.headers?.Authorization);
+    const href = String(url);
+    if (href.includes("/watch/providers")) {
+      return { ok: true, json: async () => ({ results: { ES: {}, PT: {}, BR: {} } }) };
+    }
+    return {
+      ok: true,
+      json: async () => ({
+        id: 157336,
+        title: "Interstellar",
+        original_title: "Interstellar",
+        release_date: "2014-11-05",
+        runtime: 169,
+        overview: "A former pilot joins an interstellar mission seeking a future for humanity.",
+        genres: [],
+        credits: { crew: [], cast: [] }
+      })
+    };
+  };
+
+  try {
+    await fetchTmdbTitle({ id: 157336, mediaType: "movie", baseUrl: "https://example.test" });
+    assert.equal(authHeaders.length, 4);
+    assert.ok(authHeaders.every((value) => value === "Bearer test-env-token"));
+  } finally {
+    globalThis.fetch = oldFetch;
+    if (oldToken === undefined) delete process.env.TMDB_READ_ACCESS_TOKEN;
+    else process.env.TMDB_READ_ACCESS_TOKEN = oldToken;
+  }
+});

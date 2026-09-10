@@ -38,6 +38,15 @@ function decorateDiscoveryHtml(html, providers = []) {
   return output;
 }
 
+function searchTermsFromCredits(credits = {}) {
+  const terms = [];
+  for (const value of Object.values(credits)) {
+    if (typeof value === "string") terms.push(value);
+    else if (Array.isArray(value)) terms.push(...value.filter((item) => typeof item === "string"));
+  }
+  return [...new Set(terms.map((term) => term.trim()).filter(Boolean))];
+}
+
 function xmlUrlset(urls) {
   const rows = [...new Set(urls)].map((url) => `  <url><loc>${url}</loc></url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>\n`;
@@ -76,6 +85,7 @@ export async function buildSite() {
         type: title.type,
         title: title.titles[locale],
         alternateTitles: [...new Set([title.original_title, ...Object.values(title.titles)].filter(Boolean))],
+        searchTerms: searchTermsFromCredits(title.credits),
         year: title.year,
         poster: title.poster,
         url: titlePath(locale, title.slug),

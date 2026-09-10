@@ -44,6 +44,36 @@ function tmdbFixture() {
   };
 }
 
+function tvmazeFixture() {
+  return {
+    id: 53664,
+    name: "The Last of Us",
+    premiered: "2023-01-15",
+    runtime: 60,
+    averageRuntime: 58,
+    genres: ["Drama", "Action", "Horror"],
+    summary: "<p>Joel and Ellie cross a devastated United States.</p>",
+    image: {
+      medium: "https://static.tvmaze.com/uploads/images/medium_portrait/example.jpg",
+      original: "https://static.tvmaze.com/uploads/images/original_untouched/example.jpg"
+    },
+    externals: { imdb: "tt3581920", thetvdb: 392256 },
+    url: "https://www.tvmaze.com/shows/53664/the-last-of-us",
+    _embedded: {
+      seasons: [{ id: 1, number: 1 }, { id: 2, number: 2 }],
+      cast: [
+        { person: { name: "Pedro Pascal" } },
+        { person: { name: "Bella Ramsey" } }
+      ],
+      crew: [
+        { type: "Creator", person: { name: "Craig Mazin" } },
+        { type: "Creator", person: { name: "Neil Druckmann" } }
+      ],
+      akas: [{ name: "The Last of Us", country: { code: "ES" } }]
+    }
+  };
+}
+
 test("verified availability requires its own freshness timestamp", () => {
   const raw = structuredClone(seed[0]);
   raw.availability_status.ES = "unavailable";
@@ -157,4 +187,63 @@ test("TMDB fetch helper defaults to the environment token used by build jobs", a
     if (oldToken === undefined) delete process.env.TMDB_READ_ACCESS_TOKEN;
     else process.env.TMDB_READ_ACCESS_TOKEN = oldToken;
   }
+});
+
+test("TVmaze mapper produces series metadata without claiming streaming availability", async () => {
+  let adapter;
+  try {
+    adapter = await import("../streaming/adapters/tvmaze.mjs");
+  } catch {
+    assert.fail("TVmaze adapter should exist");
+  }
+
+  const record = adapter.mapTvmazeShow(tvmazeFixture(), { fetchedAt: "2026-09-10T22:30:00Z" });
+
+  assert.equal(record.id, "series:tvmaze:53664");
+  assert.equal(record.type, "series");
+  assert.equal(record.year, 2023);
+  assert.equal(record.runtime, 58);
+  assert.equal(record.seasons, 2);
+  assert.deepEqual(record.credits.creators, ["Craig Mazin", "Neil Druckmann"]);
+  assert.deepEqual(record.credits.cast, ["Pedro Pascal", "Bella Ramsey"]);
+  assert.equal(record.poster, tvmazeFixture().image.original);
+  assert.deepEqual(record.offers, { ES: [], PT: [], BR: [] });
+  assert.deepEqual(record.availability_status, { ES: "unknown", PT: "unknown", BR: "unknown" });
+  assert.equal(record.availability_updated_at, null);
+  assert.equal(record.source.metadata, "TVmaze");
+  assert.ok(record.source.attribution.includes("TV metadata: TVmaze (CC BY-SA)"));
+});
+
+test("TVmaze merge enriches an existing localized series without overwriting availability or translations", async () => {
+  const { mapTvmazeShow, mergeTvmazeIntoTitle } = await import("../streaming/adapters/tvmaze.mjs");
+  const existing = structuredClone(seed.find((item) => item.slug === "the-last-of-us"));
+  existing.offers.ES = [{ provider: "max", monetization: "subscription", price: null, currency: null, url: "https://example.test", attribution: [] }];
+  existing.availability_status.ES = "available";
+  existing.availability_updated_at = "2026-09-10T21:00:00Z";
+
+  const mapped = mapTvmazeShow(tvmazeFixture(), { fetchedAt: "2026-09-10T22:30:00Z" });
+  const merged = mergeTvmazeIntoTitle(existing, mapped);
+
+  assert.equal(merged.id, existing.id);
+  assert.equal(merged.slug, existing.slug);
+  assert.deepEqual(merged.titles, existing.titles);
+  assert.deepEqual(merged.overview, existing.overview);
+  assert.equal(merged.poster, tvmazeFixture().image.original);
+  assert.equal(merged.seasons, 2);
+  assert.equal(merged.offers.ES[0].provider, "max");
+  assert.equal(merged.availability_status.ES, "available");
+  assert.equal(merged.availability_updated_at, "2026-09-10T21:00:00Z");
+  assert.equal(merged.source.metadata, "TVmaze");
+});
+
+test("TVmaze candidate matching requires name and premiere year to agree", async () => {
+  const { selectTvmazeCandidate } = await import("../streaming/adapters/tvmaze.mjs");
+  const candidates = [
+    { show: { id: 1, name: "The Last of Us", premiered: "2013-01-01" } },
+    { show: { id: 53664, name: "The Last of Us", premiered: "2023-01-15" } },
+    { show: { id: 3, name: "Last of Us", premiered: "2023-01-15" } }
+  ];
+
+  assert.equal(selectTvmazeCandidate(candidates, { name: "The Last of Us", year: 2023 }).id, 53664);
+  assert.equal(selectTvmazeCandidate(candidates, { name: "The Last of Us", year: 2024 }), null);
 });

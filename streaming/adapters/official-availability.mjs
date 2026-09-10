@@ -152,6 +152,12 @@ export function parseOfficialProviderPage({ provider, country, url, expectedTitl
 
 export function mergeOfficialAvailabilityEvidence(existingRaw, evidenceEntries = []) {
   const existing = normalizeTitle(existingRaw);
+  const acceptedTitles = new Set([
+    existing.original_title,
+    existing.titles?.es,
+    existing.titles?.pt,
+    existing.titles?.br
+  ].map(normalizedName).filter(Boolean));
   const offers = Object.fromEntries(Object.entries(existing.offers).map(([country, values]) => [country, [...values]]));
   const availabilityStatus = { ...existing.availability_status };
   let newestPositiveCheck = existing.availability_updated_at;
@@ -161,6 +167,11 @@ export function mergeOfficialAvailabilityEvidence(existingRaw, evidenceEntries =
     const checkedAt = String(entry?.checked_at ?? "").trim();
     if (!checkedAt || Number.isNaN(Date.parse(checkedAt))) {
       throw new Error("Official availability evidence requires a valid checked_at timestamp");
+    }
+
+    const expectedTitle = normalizedName(entry?.expectedTitle);
+    if (!expectedTitle || !acceptedTitles.has(expectedTitle)) {
+      throw new Error(`Official availability evidence title mismatch for ${existing.slug}`);
     }
 
     const parsed = parseOfficialProviderPage(entry);

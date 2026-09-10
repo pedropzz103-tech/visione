@@ -72,7 +72,7 @@ Queries are bounded to at most 100 rows per call, use film/release-date properti
 For the first pairing, supply the numeric every.film media ID for a known VISIONE slug. The ID is then cached in `source.every_film_id` and can be refreshed later without guessing an undocumented search endpoint.
 
 ```bash
-node streaming/sync-everyfilm.mjs --slug=interstellar --id=70523 --dry-run
+node streaming/sync-everyfilm.mjs --slug=<visione-slug> --id=<every-film-media-id> --dry-run
 node streaming/sync-everyfilm.mjs --all-known
 ```
 

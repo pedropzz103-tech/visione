@@ -2,10 +2,47 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { evaluateIndexability, normalizeTitle } from "../streaming/schema.mjs";
+import { renderTitlePage } from "../streaming/render.mjs";
 
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 const seed = JSON.parse(await read("streaming/data/titles.json"));
+const providers = JSON.parse(await read("streaming/data/providers.json"));
+
+function tmdbFixture() {
+  return {
+    mediaType: "movie",
+    fetchedAt: "2026-09-10T20:00:00Z",
+    detail: {
+      id: 157336,
+      title: "Interstellar",
+      original_title: "Interstellar",
+      release_date: "2014-11-05",
+      runtime: 169,
+      overview: "A former pilot joins an interstellar mission seeking a future for humanity.",
+      genres: [{ name: "Science Fiction" }],
+      credits: {
+        crew: [{ job: "Director", name: "Christopher Nolan" }],
+        cast: [{ name: "Matthew McConaughey" }]
+      }
+    },
+    translations: {
+      es: { title: "Interstellar", overview: "Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad." },
+      pt: { title: "Interstellar", overview: "Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade." },
+      br: { title: "Interestelar", overview: "Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade." }
+    },
+    watchProviders: {
+      results: {
+        ES: {
+          link: "https://www.themoviedb.org/movie/157336/watch",
+          flatrate: [{ provider_name: "Netflix", provider_id: 8 }]
+        },
+        PT: {},
+        BR: {}
+      }
+    }
+  };
+}
 
 test("verified availability requires its own freshness timestamp", () => {
   const raw = structuredClone(seed[0]);
@@ -56,38 +93,7 @@ test("TMDB mapper produces current-schema provider availability with attribution
     assert.fail("current-schema TMDB adapter should exist");
   }
 
-  const record = adapter.mapTmdbTitle({
-    mediaType: "movie",
-    fetchedAt: "2026-09-10T20:00:00Z",
-    detail: {
-      id: 157336,
-      title: "Interstellar",
-      original_title: "Interstellar",
-      release_date: "2014-11-05",
-      runtime: 169,
-      overview: "A former pilot joins an interstellar mission seeking a future for humanity.",
-      genres: [{ name: "Science Fiction" }],
-      credits: {
-        crew: [{ job: "Director", name: "Christopher Nolan" }],
-        cast: [{ name: "Matthew McConaughey" }]
-      }
-    },
-    translations: {
-      es: { title: "Interstellar", overview: "Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad." },
-      pt: { title: "Interstellar", overview: "Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade." },
-      br: { title: "Interestelar", overview: "Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade." }
-    },
-    watchProviders: {
-      results: {
-        ES: {
-          link: "https://www.themoviedb.org/movie/157336/watch",
-          flatrate: [{ provider_name: "Netflix", provider_id: 8 }]
-        },
-        PT: {},
-        BR: {}
-      }
-    }
-  });
+  const record = adapter.mapTmdbTitle(tmdbFixture());
 
   assert.equal(record.offers.ES[0].provider, "netflix");
   assert.equal(record.offers.ES[0].monetization, "subscription");
@@ -95,4 +101,12 @@ test("TMDB mapper produces current-schema provider availability with attribution
   assert.equal(record.availability_status.PT, "unavailable");
   assert.equal(record.availability_updated_at, "2026-09-10T20:00:00Z");
   assert.ok(record.offers.ES[0].attribution.length > 0);
+});
+
+test("title pages expose required upstream availability attribution", async () => {
+  const { mapTmdbTitle } = await import("../streaming/adapters/tmdb.mjs");
+  const record = mapTmdbTitle(tmdbFixture());
+  const page = renderTitlePage(record, "es", providers);
+
+  assert.match(page, /JustWatch via TMDB/);
 });

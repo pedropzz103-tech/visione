@@ -623,19 +623,53 @@
   padding: 8px 13px;
 }
 
-.rail-arrows {
-  display: flex;
-  gap: 5px;
+.rail-stage {
+  position: relative;
 }
 
-.rail-arrows button {
-  width: 40px;
+.rail-edge {
+  position: absolute;
+  top: 43%;
+  z-index: 8;
+  width: 54px;
+  height: 92px;
   padding: 0;
-  font-size: 17px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(191, 207, 255, .28);
+  border-radius: 14px;
+  background: rgba(5, 10, 23, .88);
+  color: #fff;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .56), 0 0 24px rgba(82, 112, 255, .18);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
 }
 
-.rail-arrows button:disabled {
-  opacity: .28;
+.rail-edge span {
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.rail-edge-prev { left: 10px; }
+.rail-edge-next { right: 10px; }
+
+.rail-edge:hover:not(:disabled) {
+  border-color: rgba(151, 174, 255, .82);
+  background: rgba(28, 42, 79, .96);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.rail-edge:focus-visible {
+  outline: 2px solid #9cb0ff;
+  outline-offset: 3px;
+}
+
+.rail-edge:disabled {
+  opacity: .42;
   cursor: default;
 }
 
@@ -643,11 +677,24 @@
   grid-auto-columns: clamp(250px, 25vw, 370px);
   cursor: grab;
   user-select: none;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 148, 224, .72) rgba(22, 30, 50, .55);
 }
 
 .catalog-section .cinematic-title-rail::-webkit-scrollbar {
-  display: none;
+  display: block;
+  height: 9px;
+}
+
+.catalog-section .cinematic-title-rail::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(22, 30, 50, .55);
+}
+
+.catalog-section .cinematic-title-rail::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(22, 30, 50, .55);
+  border-radius: 999px;
+  background: rgba(124, 148, 224, .72);
 }
 
 .catalog-section .cinematic-title-rail.is-dragging {
@@ -664,7 +711,7 @@
   scroll-snap-type: none;
 }
 
-.catalog-section.is-grid .rail-arrows {
+.catalog-section.is-grid .rail-edge {
   display: none;
 }
 
@@ -826,9 +873,15 @@
     font-size: 10px !important;
   }
 
-  .rail-arrows button {
-    width: 34px;
-    min-height: 34px;
+  .rail-edge {
+    top: 39%;
+    width: 44px;
+    height: 72px;
+    border-radius: 12px;
+  }
+
+  .rail-edge span {
+    font-size: 36px;
   }
 
   .catalog-section .cinematic-title-rail {

@@ -8,6 +8,12 @@ export function getRailTarget({ scrollLeft = 0, clientWidth = 0, scrollWidth = 0
   return Math.min(maximum, Math.max(0, target));
 }
 
+export function getRailWheelDelta({ deltaX = 0, deltaY = 0 } = {}) {
+  const horizontal = Number(deltaX) || 0;
+  const vertical = Number(deltaY) || 0;
+  return Math.abs(horizontal) > Math.abs(vertical) ? horizontal : vertical;
+}
+
 function updateRailControls(section) {
   const rail = section.querySelector("[data-catalog-rail]");
   const previous = section.querySelector("[data-rail-prev]");
@@ -54,12 +60,14 @@ function initializeRail(section) {
   });
 
   rail.addEventListener("wheel", (event) => {
-    if (section.classList.contains("is-grid") || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    if (section.classList.contains("is-grid")) return;
+    const delta = getRailWheelDelta(event);
+    if (Math.abs(delta) < 1) return;
     const maximum = Math.max(0, rail.scrollWidth - rail.clientWidth);
-    const canMove = event.deltaY > 0 ? rail.scrollLeft < maximum - 2 : rail.scrollLeft > 2;
+    const canMove = delta > 0 ? rail.scrollLeft < maximum - 2 : rail.scrollLeft > 2;
     if (!canMove) return;
     event.preventDefault();
-    rail.scrollLeft += event.deltaY;
+    rail.scrollLeft = Math.min(maximum, Math.max(0, rail.scrollLeft + delta));
   }, { passive: false });
 
   let dragStart = null;

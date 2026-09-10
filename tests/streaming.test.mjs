@@ -142,6 +142,19 @@ test("renders five honest discovery collections with rail and mosaic controls", 
   assert.match(home, /Dados de estreia aguardam fonte oficial/);
 });
 
+test("places one visible navigation control on each side of every catalog rail", async () => {
+  const home = await read("index.html");
+  const collections = [...home.matchAll(/<section[^>]+data-catalog-section[\s\S]*?<\/section>/g)].map((match) => match[0]);
+
+  for (const collection of collections) {
+    const stage = collection.match(/<div class="rail-stage">[\s\S]*?<\/div><\/section>/)?.[0];
+    assert.ok(stage, "catalog rail should have a dedicated navigation stage");
+    assert.match(stage, /^<div class="rail-stage"><button[^>]+class="rail-edge rail-edge-prev"[^>]+data-rail-prev/);
+    assert.match(stage, /<div class="title-rail cinematic-title-rail"[^>]+data-catalog-rail/);
+    assert.match(stage, /<button[^>]+class="rail-edge rail-edge-next"[^>]+data-rail-next[^>]*><span aria-hidden="true">›<\/span><\/button><\/div><\/section>$/);
+  }
+});
+
 test("renders every supported platform as a branded visual tile", async () => {
   const [home, providers] = await Promise.all([
     read("index.html"),
@@ -170,6 +183,8 @@ test("computes bounded catalog rail movement", async () => {
   assert.equal(rail.getRailTarget({ scrollLeft: 300, clientWidth: 1000, scrollWidth: 2400 }, 1), 1140);
   assert.equal(rail.getRailTarget({ scrollLeft: 1800, clientWidth: 1000, scrollWidth: 2400 }, 1), 1400);
   assert.equal(rail.getRailTarget({ scrollLeft: 100, clientWidth: 1000, scrollWidth: 2400 }, -1), 0);
+  assert.equal(rail.getRailWheelDelta({ deltaX: 0, deltaY: 120 }), 120);
+  assert.equal(rail.getRailWheelDelta({ deltaX: -180, deltaY: 20 }), -180);
 });
 
 test("generates a locale-aware search index without runtime API dependency", async () => {

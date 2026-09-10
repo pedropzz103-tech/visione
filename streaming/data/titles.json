@@ -90,5 +90,143 @@
     "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
     "updated_at":"2026-09-08T00:00:00Z",
     "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"movie:545611",
+    "type":"movie",
+    "slug":"everything-everywhere-all-at-once",
+    "titles":{"es":"Todo a la vez en todas partes","pt":"Tudo em Todo o Lado ao Mesmo Tempo","br":"Tudo em Todo o Lugar ao Mesmo Tempo"},
+    "original_title":"Everything Everywhere All at Once",
+    "year":2022,
+    "runtime":140,
+    "overview":{
+      "es":"Una mujer agotada descubre que debe conectar con versiones alternativas de sí misma para impedir que una fuerza caótica destruya el multiverso.",
+      "pt":"Uma mulher exausta descobre que precisa de se ligar a versões alternativas de si própria para impedir que uma força caótica destrua o multiverso.",
+      "br":"Uma mulher exausta descobre que precisa se conectar a versões alternativas de si mesma para impedir que uma força caótica destrua o multiverso."
+    },
+    "genres":["Science Fiction","Comedy","Drama"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"directors":["Daniel Kwan","Daniel Scheinert"],"cast":["Michelle Yeoh","Ke Huy Quan","Stephanie Hsu"]},
+    "related":["interstellar"],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"movie:496243",
+    "type":"movie",
+    "slug":"parasite",
+    "titles":{"es":"Parásitos","pt":"Parasitas","br":"Parasita"},
+    "original_title":"기생충",
+    "year":2019,
+    "runtime":132,
+    "overview":{
+      "es":"Una familia con dificultades se introduce poco a poco en la vida de un hogar adinerado, desencadenando consecuencias inesperadas.",
+      "pt":"Uma família com dificuldades entra pouco a pouco na vida de uma casa abastada, desencadeando consequências inesperadas.",
+      "br":"Uma família em dificuldades entra aos poucos na vida de uma casa rica, desencadeando consequências inesperadas."
+    },
+    "genres":["Thriller","Drama","Comedy"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"director":"Bong Joon Ho","cast":["Song Kang-ho","Lee Sun-kyun","Cho Yeo-jeong"]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"movie:872585",
+    "type":"movie",
+    "slug":"oppenheimer",
+    "titles":{"es":"Oppenheimer","pt":"Oppenheimer","br":"Oppenheimer"},
+    "original_title":"Oppenheimer",
+    "year":2023,
+    "runtime":181,
+    "overview":{
+      "es":"El físico J. Robert Oppenheimer dirige un proyecto científico que transforma la historia y debe afrontar después sus consecuencias políticas y personales.",
+      "pt":"O físico J. Robert Oppenheimer dirige um projeto científico que transforma a história e enfrenta depois as consequências políticas e pessoais.",
+      "br":"O físico J. Robert Oppenheimer lidera um projeto científico que transforma a história e depois enfrenta suas consequências políticas e pessoais."
+    },
+    "genres":["Drama","History"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"director":"Christopher Nolan","cast":["Cillian Murphy","Emily Blunt","Robert Downey Jr."]},
+    "related":["interstellar"],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"series:94605",
+    "type":"series",
+    "slug":"arcane",
+    "titles":{"es":"Arcane","pt":"Arcane","br":"Arcane"},
+    "original_title":"Arcane",
+    "year":2021,
+    "seasons":2,
+    "overview":{
+      "es":"Dos hermanas quedan en lados opuestos de un conflicto entre una ciudad próspera y su submundo, mientras una nueva tecnología altera el equilibrio.",
+      "pt":"Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e o seu submundo, enquanto uma nova tecnologia altera o equilíbrio.",
+      "br":"Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e seu submundo, enquanto uma nova tecnologia muda o equilíbrio."
+    },
+    "genres":["Animation","Drama","Fantasy"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"creators":["Christian Linke","Alex Yee"],"cast":[]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"series:95396",
+    "type":"series",
+    "slug":"severance",
+    "titles":{"es":"Separación","pt":"Separação","br":"Ruptura"},
+    "original_title":"Severance",
+    "year":2022,
+    "seasons":2,
+    "overview":{
+      "es":"Los empleados de una empresa aceptan separar quirúrgicamente sus recuerdos del trabajo y de la vida personal, pero empiezan a cuestionar el sistema.",
+      "pt":"Os funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema.",
+      "br":"Funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema."
+    },
+    "genres":["Drama","Mystery","Science Fiction"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"creator":"Dan Erickson","cast":["Adam Scott","Britt Lower"]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+  },
+  {
+    "id":"series:136315",
+    "type":"series",
+    "slug":"the-bear",
+    "titles":{"es":"The Bear","pt":"The Bear","br":"O Urso"},
+    "original_title":"The Bear",
+    "year":2022,
+    "seasons":5,
+    "overview":{
+      "es":"Un joven chef regresa a Chicago para dirigir el pequeño restaurante de su familia y descubre que reconstruir el equipo será su mayor desafío.",
+      "pt":"Um jovem chef regressa a Chicago para dirigir o pequeno restaurante da família e descobre que reconstruir a equipa será o seu maior desafio.",
+      "br":"Um jovem chef retorna a Chicago para comandar o pequeno restaurante da família e descobre que reconstruir a equipe será seu maior desafio."
+    },
+    "genres":["Drama","Comedy"],
+    "poster":null,
+    "backdrop":null,
+    "credits":{"creator":"Christopher Storer","cast":["Jeremy Allen White","Ayo Edebiri"]},
+    "related":[],
+    "offers":{"ES":[],"PT":[],"BR":[]},
+    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
+    "updated_at":"2026-09-10T00:00:00Z",
+    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
   }
 ]

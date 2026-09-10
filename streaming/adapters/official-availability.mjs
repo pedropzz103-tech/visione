@@ -1,3 +1,5 @@
+import { normalizeTitle } from "../schema.mjs";
+
 const ALLOWED_COUNTRIES = new Set(["ES", "PT", "BR"]);
 const PROVIDER_HOSTS = Object.freeze({
   "disney-plus": new Set(["disneyplus.com", "www.disneyplus.com"]),
@@ -146,4 +148,48 @@ export function parseOfficialProviderPage({ provider, country, url, expectedTitl
   // authorized machine-readable source exists, do not promote those pages to
   // verified availability automatically.
   return { status: "unknown", offers: [], reason: "provider-not-safe-for-automatic-positive-inference" };
+}
+
+export function mergeOfficialAvailabilityEvidence(existingRaw, evidenceEntries = []) {
+  const existing = normalizeTitle(existingRaw);
+  const offers = Object.fromEntries(Object.entries(existing.offers).map(([country, values]) => [country, [...values]]));
+  const availabilityStatus = { ...existing.availability_status };
+  let newestPositiveCheck = existing.availability_updated_at;
+  let accepted = 0;
+
+  for (const entry of evidenceEntries) {
+    const checkedAt = String(entry?.checked_at ?? "").trim();
+    if (!checkedAt || Number.isNaN(Date.parse(checkedAt))) {
+      throw new Error("Official availability evidence requires a valid checked_at timestamp");
+    }
+
+    const parsed = parseOfficialProviderPage(entry);
+    if (parsed.status !== "available" || parsed.offers.length === 0) continue;
+
+    const country = entry.country;
+    const provider = entry.provider;
+    offers[country] = (offers[country] ?? []).filter((offer) => offer.provider !== provider);
+    offers[country].push(...parsed.offers);
+    availabilityStatus[country] = "available";
+    accepted += 1;
+
+    if (!newestPositiveCheck || Date.parse(checkedAt) > Date.parse(newestPositiveCheck)) {
+      newestPositiveCheck = checkedAt;
+    }
+  }
+
+  if (!accepted) return existing;
+
+  return normalizeTitle({
+    ...existing,
+    offers,
+    availability_status: availabilityStatus,
+    availability_updated_at: newestPositiveCheck,
+    source: {
+      ...existing.source,
+      availability: existing.source?.availability && existing.source.availability !== "unconfigured"
+        ? `${existing.source.availability}+official-provider-evidence`
+        : "official-provider-evidence"
+    }
+  });
 }

@@ -13,6 +13,13 @@ function normalizeTextMap(value) {
   return Object.fromEntries(SUPPORTED_LOCALES.map((locale) => [locale, String(map[locale] ?? "").trim()]));
 }
 
+function normalizeTimestamp(value, label) {
+  const timestamp = String(value ?? "").trim();
+  if (!timestamp) return null;
+  if (Number.isNaN(Date.parse(timestamp))) throw new Error(`Invalid ${label}: ${timestamp}`);
+  return timestamp;
+}
+
 function normalizeOffer(raw) {
   if (!raw || typeof raw !== "object") throw new Error("Offer must be an object");
   const provider = String(raw.provider ?? "").trim();
@@ -61,9 +68,6 @@ export function normalizeTitle(raw) {
     normalizedAvailability[country] = ["available", "unavailable", "unknown", "error"].includes(state) ? state : "unknown";
   }
 
-  const updatedAt = String(raw.updated_at ?? "").trim();
-  if (updatedAt && Number.isNaN(Date.parse(updatedAt))) throw new Error(`Invalid updated_at: ${updatedAt}`);
-
   return {
     id,
     type,
@@ -82,7 +86,8 @@ export function normalizeTitle(raw) {
     related: Array.isArray(raw.related) ? raw.related.map(String) : [],
     offers: normalizedOffers,
     availability_status: normalizedAvailability,
-    updated_at: updatedAt || null,
+    updated_at: normalizeTimestamp(raw.updated_at, "updated_at"),
+    availability_updated_at: normalizeTimestamp(raw.availability_updated_at, "availability_updated_at"),
     source: asObject(raw.source)
   };
 }
@@ -116,7 +121,11 @@ export function evaluateIndexability(title, locale) {
   const offers = title.offers?.[config.country] ?? [];
   const state = title.availability_status?.[config.country] ?? "unknown";
   const usefulAvailability = offers.length > 0 || state === "unavailable";
-  if (!usefulAvailability) reasons.push("availability-not-verified");
+  if (!usefulAvailability) {
+    reasons.push("availability-not-verified");
+  } else if (!title.availability_updated_at || Number.isNaN(Date.parse(title.availability_updated_at))) {
+    reasons.push("missing-availability-freshness");
+  }
 
   if (offers.length > 0) {
     for (const offer of offers) {

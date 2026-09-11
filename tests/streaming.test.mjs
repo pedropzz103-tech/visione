@@ -117,16 +117,15 @@ test("renders cinematic discovery homes with the search inside the header", asyn
   assert.match(pages[0], /visione-cinematic-hero-v2\.png/);
 });
 
-test("renders five honest discovery collections with rail and mosaic controls", async () => {
+test("renders only real discovery collections with rail and mosaic controls", async () => {
   const home = await read("index.html");
   const collections = [...home.matchAll(/<section[^>]+data-catalog-section[\s\S]*?<\/section>/g)].map((match) => match[0]);
 
-  assert.equal(collections.length, 5);
+  assert.equal(collections.length, 3);
   assert.match(home, /Top 10 hoje/);
   assert.match(home, /Recomendados hoje/);
   assert.match(home, /Escolhas da semana/);
-  assert.match(home, /Brevemente nos cinemas/);
-  assert.match(home, /Brevemente no streaming/);
+  assert.doesNotMatch(home, /Brevemente nos cinemas|Brevemente no streaming|data-status="awaiting-source"/i);
   const topTen = collections.find((collection) => collection.includes("Top 10 hoje"));
   assert.ok(topTen);
   assert.deepEqual([...topTen.matchAll(/data-rank="(\d+)"/g)].map((match) => Number(match[1])), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -140,7 +139,6 @@ test("renders five honest discovery collections with rail and mosaic controls", 
   }
 
   assert.match(home, /Curadoria VISIONE/);
-  assert.match(home, /Dados de estreia aguardam fonte oficial/);
 });
 
 test("places one visible navigation control on each side of every catalog rail", async () => {

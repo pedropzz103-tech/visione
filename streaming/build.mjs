@@ -5,7 +5,8 @@ import { absoluteUrl, getLocale, providerPath, SUPPORTED_LOCALES, titlePath } fr
 import { applyAffiliateConfigToCatalog } from "./affiliate.mjs";
 import { isPublicAnywhere, isPublicInMarket } from "./publication.mjs";
 import { evaluateIndexability, normalizeTitle } from "./schema.mjs";
-import { renderGlobalHome, renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.mjs";
+import { renderGlobalHome } from "./render-global-home.mjs";
+import { renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.mjs";
 
 const root = new URL("../", import.meta.url);
 

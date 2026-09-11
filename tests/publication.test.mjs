@@ -15,20 +15,25 @@ function title(overrides = {}) {
     seasons: 1,
     overview: { es: "Serie de prueba con suficiente texto factual para validación.", pt: "Série de teste com texto factual suficiente para validação.", br: "Série de teste com texto factual suficiente para validação." },
     genres: ["Drama"],
-    poster: "https://static.tvmaze.com/test.jpg",
-    artwork: { kind: "source-image", source: "TVmaze", license: "CC BY-SA", source_url: "https://www.tvmaze.com/" },
+    poster: "https://upload.wikimedia.org/example.jpg",
+    artwork: { kind: "source-image", source: "Wikimedia Commons", license: "CC0 1.0", source_url: "https://commons.wikimedia.org/wiki/File:Example.jpg" },
     credits: { cast: ["Example Actor"] },
     offers: { ES: [{ provider: "netflix", monetization: "subscription", url: "https://www.netflix.com/title/example", attribution: ["Official provider page"] }], PT: [], BR: [] },
     availability_status: { ES: "available", PT: "unknown", BR: "unknown" },
     updated_at: "2026-09-11T08:00:00Z",
     availability_updated_at: "2026-09-11T08:00:00Z",
-    source: { metadata: "TVmaze", availability: "official-evidence" },
+    source: { metadata: "Wikidata", availability: "official-evidence" },
     ...overrides
   });
 }
 
-test("source image satisfies the cover gate", () => {
+test("attribution-free reusable source image satisfies the cover gate", () => {
   assert.equal(hasCompleteCover(title()), true);
+});
+
+test("external poster without a safe attribution-free license does not satisfy the cover gate", () => {
+  const record = title({ poster: "https://static.tvmaze.com/test.jpg", artwork: { kind: "source-image", source: "TVmaze", license: "CC BY-SA 4.0" } });
+  assert.equal(hasCompleteCover(record), false);
 });
 
 test("VISIONE editorial cover satisfies the cover gate without a poster URL", () => {

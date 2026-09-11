@@ -6,13 +6,16 @@ function validTimestamp(value) {
   return Boolean(value) && !Number.isNaN(Date.parse(String(value)));
 }
 
+function attributionFreeArtworkLicense(value) {
+  const license = String(value ?? "").trim().toLowerCase();
+  if (!license) return false;
+  return /^(?:public domain(?: mark)?|cc0(?: 1\.0)?)$/.test(license);
+}
+
 export function hasCompleteCover(title) {
   const kind = String(title?.artwork?.kind ?? "").trim();
   if (kind === "editorial-cover") return true;
-  if (kind === "source-image" && String(title?.poster ?? "").trim()) return true;
-  // Backward compatibility for already-synced TVmaze records while artwork
-  // metadata is gradually backfilled.
-  if (String(title?.poster ?? "").trim()) return true;
+  if (kind === "source-image" && String(title?.poster ?? "").trim() && attributionFreeArtworkLicense(title?.artwork?.license)) return true;
   return false;
 }
 

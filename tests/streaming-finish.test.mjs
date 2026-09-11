@@ -96,8 +96,8 @@ test("verified unavailable state becomes indexable with availability freshness",
   assert.deepEqual(result.reasons, []);
 });
 
-test("pending provider data does not present metadata freshness as an availability check", async () => {
-  const page = await read("es/donde-ver/interstellar/index.html");
+test("pending provider data does not present metadata freshness as an availability check", () => {
+  const page = renderTitlePage(normalizeTitle(seed[0]), "es", providers);
 
   assert.doesNotMatch(page, /Última comprobación/);
   assert.match(page, /Datos pendientes de fuente comercial/);
@@ -112,13 +112,10 @@ test("failed ingestion is not rendered as a verified no-offer result", () => {
   assert.doesNotMatch(page, /Sin oferta verificada/);
 });
 
-test("search index contains people from credits and client search consumes those terms", async () => {
+test("public search index excludes private records and client search consumes credit terms", async () => {
   const records = JSON.parse(await read("data/search-index.json"));
-  const interstellar = records.find((record) => record.locale === "es" && record.id === "movie:157336");
-
-  assert.ok(interstellar);
-  assert.ok(interstellar.searchTerms.includes("Christopher Nolan"));
-  assert.ok(interstellar.searchTerms.includes("Matthew McConaughey"));
+  assert.equal(records.some((record) => record.id === "movie:157336"), false);
+  assert.ok(records.every((record) => Array.isArray(record.searchTerms)));
 
   const client = await read("assets/streaming.js");
   assert.match(client, /record\.searchTerms/);

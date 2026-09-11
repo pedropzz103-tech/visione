@@ -70,10 +70,10 @@ export function buildCollections(titles = [], {
   add("week", seededOrder(unique, `week:${weekSeed(date)}`), { size: limit });
   add("featured-movies", scoreOrder(unique.filter((title) => title.type === "movie")), { size: limit });
   add("featured-series", scoreOrder(unique.filter((title) => title.type === "series")), { size: limit });
-  add("sci-fi-fantasy", scoreOrder(unique.filter((title) => matchesGenre(title, ["science fiction", "science-fiction", "sci-fi", "fantasy", "ficção científica", "ficcion"])))), { size: limit });
-  add("drama", scoreOrder(unique.filter((title) => matchesGenre(title, ["drama"])))), { size: limit });
-  add("crime-thriller", scoreOrder(unique.filter((title) => matchesGenre(title, ["crime", "thriller", "suspense", "mystery", "misterio", "mistério"])))), { size: limit });
-  add("animation", scoreOrder(unique.filter((title) => matchesGenre(title, ["animation", "anime", "animação", "animacion"])))), { size: limit });
+  add("sci-fi-fantasy", scoreOrder(unique.filter((title) => matchesGenre(title, ["science fiction", "science-fiction", "sci-fi", "fantasy", "ficção científica", "ficcion"]))), { size: limit });
+  add("drama", scoreOrder(unique.filter((title) => matchesGenre(title, ["drama"]))), { size: limit });
+  add("crime-thriller", scoreOrder(unique.filter((title) => matchesGenre(title, ["crime", "thriller", "suspense", "mystery", "misterio", "mistério"]))), { size: limit });
+  add("animation", scoreOrder(unique.filter((title) => matchesGenre(title, ["animation", "anime", "animação", "animacion"]))), { size: limit });
 
   return output;
 }

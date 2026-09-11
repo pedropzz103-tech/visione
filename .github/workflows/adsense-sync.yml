@@ -44,7 +44,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Sync TVmaze series metadata and artwork
+      - name: Bootstrap curated TV series
+        run: node streaming/bootstrap-curated-series.mjs
+      - name: Bootstrap curated films and free artwork
+        run: node streaming/bootstrap-curated-movies.mjs
+        continue-on-error: true
+      - name: Sync TVmaze series metadata
         run: node streaming/sync-tvmaze.mjs --all-series
       - name: Sync Wikidata movie metadata
         run: node streaming/sync-wikidata.mjs --all-movies
@@ -52,6 +57,8 @@ jobs:
       - name: Refresh already-paired every.film records
         run: node streaming/sync-everyfilm.mjs --all-known
         continue-on-error: true
+      - name: Import curated official availability evidence
+        run: node streaming/ingest-official-availability.mjs
       - name: Build streaming discovery pages
         run: node streaming/build.mjs
       - name: Normalize editorial inventory and discovery surface

@@ -148,15 +148,19 @@ export function mergeTvmazeIntoTitle(existingRaw, tvmazeRaw) {
 
   const existingAttribution = Array.isArray(existing.source?.attribution) ? existing.source.attribution.map(String) : [];
   const tvmazeAttribution = Array.isArray(tvmaze.source?.attribution) ? tvmaze.source.attribution.map(String) : [];
+  const preserveEditorialCover = existing.artwork?.kind === "editorial-cover";
 
   return normalizeTitle({
     ...existing,
     runtime: tvmaze.runtime ?? existing.runtime,
     seasons: tvmaze.seasons ?? existing.seasons,
     genres: tvmaze.genres.length ? tvmaze.genres : existing.genres,
-    poster: tvmaze.poster ?? existing.poster,
+    // TVmaze may expose third-party promotional artwork. Do not overwrite an
+    // intentional VISIONE editorial cover with an image whose reuse rights have
+    // not been independently established.
+    poster: preserveEditorialCover ? existing.poster : (tvmaze.poster ?? existing.poster),
     backdrop: tvmaze.backdrop ?? existing.backdrop,
-    artwork: tvmaze.poster ? tvmaze.artwork : existing.artwork,
+    artwork: preserveEditorialCover ? existing.artwork : (tvmaze.poster ? tvmaze.artwork : existing.artwork),
     rating: tvmaze.rating ?? existing.rating,
     credits: mergeCredits(existing.credits, tvmaze.credits),
     titles: existing.titles,

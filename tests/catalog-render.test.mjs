@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { normalizeTitle } from "../streaming/schema.mjs";
-import { renderGlobalHome, renderTitleCard } from "../streaming/render.mjs";
+import { renderGlobalHome } from "../streaming/render-global-home.mjs";
+import { renderTitleCard } from "../streaming/render.mjs";
 
 function movie(overrides = {}) {
   return normalizeTitle({
@@ -34,8 +35,9 @@ test("editorial cover renders full factual identity instead of a one-letter plac
   assert.doesNotMatch(html, /poster-fallback[^>]*>[\s\S]*?<span>U<\/span>/);
 });
 
-test("global homepage no longer renders fake coming-soon inventory", () => {
+test("data-driven global homepage no longer renders fake coming-soon inventory", () => {
   const html = renderGlobalHome([movie()]);
+  assert.match(html, /Top 10 VISIONE/);
   assert.doesNotMatch(html, /BREVEMENTE/i);
   assert.doesNotMatch(html, /PRÓXIMAMENTE/i);
   assert.doesNotMatch(html, /Brevemente nos cinemas/i);

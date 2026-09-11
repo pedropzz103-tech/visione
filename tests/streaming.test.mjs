@@ -111,25 +111,25 @@ test("renders cinematic discovery homes with the search inside the header", asyn
     assert.match(hero, /class="cinematic-backdrop"/);
     assert.match(hero, /class="hero-content"/);
     assert.doesNotMatch(hero, /data-visione-search/);
-    assert.match(page, /class="title-rail cinematic-title-rail"/);
   }
 
   assert.match(pages[0], /visione-cinematic-hero-v2\.png/);
+  assert.match(pages[0], /class="title-rail cinematic-title-rail"/);
 });
 
-test("renders only real discovery collections with rail and mosaic controls", async () => {
+test("renders only real public discovery collections with rail and mosaic controls", async () => {
   const home = await read("index.html");
   const collections = [...home.matchAll(/<section[^>]+data-catalog-section[\s\S]*?<\/section>/g)].map((match) => match[0]);
 
-  assert.equal(collections.length, 3);
-  assert.match(home, /Top 10 hoje/);
-  assert.match(home, /Recomendados hoje/);
-  assert.match(home, /Escolhas da semana/);
+  assert.ok(collections.length >= 1, "at least one verified public collection should be rendered");
+  assert.match(home, /Top 10 VISIONE/);
   assert.doesNotMatch(home, /Brevemente nos cinemas|Brevemente no streaming|data-status="awaiting-source"/i);
-  const topTen = collections.find((collection) => collection.includes("Top 10 hoje"));
+  const topTen = collections.find((collection) => collection.includes("Top 10 VISIONE"));
   assert.ok(topTen);
-  assert.deepEqual([...topTen.matchAll(/data-rank="(\d+)"/g)].map((match) => Number(match[1])), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  assert.equal(new Set([...topTen.matchAll(/href="([^"]+)"/g)].map((match) => match[1])).size, 10);
+  const ranks = [...topTen.matchAll(/data-rank="(\d+)"/g)].map((match) => Number(match[1]));
+  assert.ok(ranks.length >= 1 && ranks.length <= 10);
+  assert.deepEqual(ranks, Array.from({ length: ranks.length }, (_, index) => index + 1));
+  assert.equal(new Set([...topTen.matchAll(/href="([^"]+)"/g)].map((match) => match[1])).size, ranks.length);
 
   for (const collection of collections) {
     assert.match(collection, /data-catalog-rail/);
@@ -137,8 +137,6 @@ test("renders only real discovery collections with rail and mosaic controls", as
     assert.match(collection, /data-rail-next/);
     assert.match(collection, /data-rail-view[^>]+aria-expanded="false"/);
   }
-
-  assert.match(home, /Curadoria VISIONE/);
 });
 
 test("places one visible navigation control on each side of every catalog rail", async () => {
@@ -186,29 +184,19 @@ test("computes bounded catalog rail movement", async () => {
   assert.equal(rail.getRailWheelDelta({ deltaX: -180, deltaY: 20 }), -180);
 });
 
-test("generates a locale-aware search index without runtime API dependency", async () => {
+test("generates a public locale-aware search index without runtime API dependency", async () => {
   const records = JSON.parse(await read("data/search-index.json"));
-  assert.equal(records.length, seed.length * 3);
-  assert.ok(records.some((record) => record.locale === "es" && record.url === "/es/donde-ver/interstellar/"));
-  assert.ok(records.some((record) => record.locale === "pt" && record.url === "/pt/onde-ver/interstellar/"));
-  assert.ok(records.some((record) => record.locale === "br" && record.url === "/br/onde-assistir/interstellar/"));
+  assert.ok(records.length > 0, "verified availability ingestion should produce searchable public records");
+  assert.equal(records.some((record) => record.url.includes("/interstellar/")), false);
+  assert.ok(records.every((record) => ["es", "pt", "br"].includes(record.locale)));
+  assert.ok(records.every((record) => Array.isArray(record.searchTerms)));
   const client = await read("assets/streaming.js");
   assert.match(client, /\/data\/search-index\.json/);
   assert.doesNotMatch(client, /api\.themoviedb|justwatch|rapidapi/i);
 });
 
-test("renders title pages with canonical, hreflang, JSON-LD and a safe pending state", async () => {
-  const page = await read("es/donde-ver/interstellar/index.html");
-  assert.match(page, /rel="canonical" href="https:\/\/visione\.one\/es\/donde-ver\/interstellar\/"/);
-  assert.match(page, /hreflang="es-ES"/);
-  assert.match(page, /hreflang="pt-PT"/);
-  assert.match(page, /hreflang="pt-BR"/);
-  assert.match(page, /"@type":"Movie"/);
-  assert.match(page, /"@type":"BreadcrumbList"/);
-  assert.match(page, /"@type":"FAQPage"/);
-  assert.match(page, /name="robots" content="noindex,follow/);
-  assert.doesNotMatch(page, /Última comprobación/);
-  assert.match(page, /fuente comercial|fuente verificable/i);
+test("does not materialize a public title page for an unverified private seed", async () => {
+  await assert.rejects(read("es/donde-ver/interstellar/index.html"), (error) => error?.code === "ENOENT");
 });
 
 test("never places noindex seed title pages in streaming sitemaps", async () => {

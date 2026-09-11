@@ -188,7 +188,7 @@ test("generates a public locale-aware search index without runtime API dependenc
   const records = JSON.parse(await read("data/search-index.json"));
   assert.ok(records.length > 0, "verified availability ingestion should produce searchable public records");
   assert.equal(records.some((record) => record.url.includes("/interstellar/")), false);
-  assert.ok(records.every((record) => ["es", "pt", "br"].includes(record.locale)));
+  assert.ok(records.every((record) => ["es", "pt", "br", "en", "fr", "ru", "uk"].includes(record.locale)));
   assert.ok(records.every((record) => Array.isArray(record.searchTerms)));
   const client = await read("assets/streaming.js");
   assert.match(client, /\/data\/search-index\.json/);

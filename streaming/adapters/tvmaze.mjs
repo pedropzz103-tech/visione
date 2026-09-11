@@ -84,7 +84,16 @@ function seasonCount(show) {
   return numbered.length ? new Set(numbered).size : null;
 }
 
-export function mapTvmazeShow(show, { fetchedAt = new Date().toISOString() } = {}) {
+function discoveryScore(show) {
+  const weight = Number(show?.weight) || 0;
+  const rating = Number(show?.rating?.average) || 0;
+  const year = premiereYear(show) || 1900;
+  const recency = Math.max(0, Math.min(20, year - 2006));
+  const image = show?.image?.original || show?.image?.medium ? 20 : 0;
+  return weight + rating * 5 + recency + image;
+}
+
+export function mapTvmazeShow(show, { fetchedAt = new Date().toISOString(), discoveredAt = null, discoveryScore: sourceScore = null } = {}) {
   if (!show?.id) throw new Error("TVmaze show id is required");
   if (!show?.name) throw new Error("TVmaze show name is required");
 
@@ -92,6 +101,7 @@ export function mapTvmazeShow(show, { fetchedAt = new Date().toISOString() } = {
   const summary = plainText(show.summary);
   const sourceUrl = show.url ? String(show.url) : `https://www.tvmaze.com/shows/${show.id}`;
   const runtime = Number(show.averageRuntime ?? show.runtime) || null;
+  const poster = show.image?.original ?? show.image?.medium ?? null;
 
   return normalizeTitle({
     id: `series:tvmaze:${show.id}`,
@@ -102,12 +112,12 @@ export function mapTvmazeShow(show, { fetchedAt = new Date().toISOString() } = {
     year: premiereYear(show),
     runtime,
     seasons: seasonCount(show),
-    // TVmaze does not provide localized summaries. Keep these blank for new records
-    // so locale pages remain noindex until reviewed/localized copy is supplied.
     overview: { es: "", pt: "", br: "" },
     genres: compactStrings(show.genres ?? []),
-    poster: show.image?.original ?? show.image?.medium ?? null,
+    poster,
     backdrop: null,
+    artwork: poster ? { kind: "source-image", source: "TVmaze", license: "CC BY-SA", source_url: sourceUrl } : { kind: "none", source: "TVmaze", license: "CC BY-SA" },
+    discovery: { source: discoveredAt ? "tvmaze-web-schedule" : null, discovered_at: discoveredAt, score: sourceScore ?? discoveryScore(show) },
     rating: show.rating?.average ? { value: Number(show.rating.average), source: "TVmaze" } : null,
     credits: mappedCredits(show),
     related: [],
@@ -134,9 +144,7 @@ export function mapTvmazeShow(show, { fetchedAt = new Date().toISOString() } = {
 export function mergeTvmazeIntoTitle(existingRaw, tvmazeRaw) {
   const existing = normalizeTitle(existingRaw);
   const tvmaze = normalizeTitle(tvmazeRaw);
-  if (existing.type !== "series" || tvmaze.type !== "series") {
-    throw new Error("TVmaze metadata can only be merged into series records");
-  }
+  if (existing.type !== "series" || tvmaze.type !== "series") throw new Error("TVmaze metadata can only be merged into series records");
 
   const existingAttribution = Array.isArray(existing.source?.attribution) ? existing.source.attribution.map(String) : [];
   const tvmazeAttribution = Array.isArray(tvmaze.source?.attribution) ? tvmaze.source.attribution.map(String) : [];
@@ -148,14 +156,15 @@ export function mergeTvmazeIntoTitle(existingRaw, tvmazeRaw) {
     genres: tvmaze.genres.length ? tvmaze.genres : existing.genres,
     poster: tvmaze.poster ?? existing.poster,
     backdrop: tvmaze.backdrop ?? existing.backdrop,
+    artwork: tvmaze.poster ? tvmaze.artwork : existing.artwork,
     rating: tvmaze.rating ?? existing.rating,
     credits: mergeCredits(existing.credits, tvmaze.credits),
-    // Locale copy and all availability data stay under their existing authority.
     titles: existing.titles,
     overview: existing.overview,
     offers: existing.offers,
     availability_status: existing.availability_status,
     availability_updated_at: existing.availability_updated_at,
+    discovery: existing.discovery?.source ? existing.discovery : tvmaze.discovery,
     updated_at: tvmaze.updated_at ?? existing.updated_at,
     source: {
       ...existing.source,
@@ -176,15 +185,24 @@ export function selectTvmazeCandidate(results = [], { name, year } = {}) {
   const exact = shows.filter((show) => normalizedName(show.name) === targetName && premiereYear(show) === targetYear);
   if (exact.length === 1) return exact[0];
   if (exact.length > 1) return null;
-
-  // Some TVmaze records carry a disambiguating suffix in the canonical name,
-  // e.g. "Arcane: League of Legends" while the product title is simply "Arcane".
-  // Accept that only when the year also matches and the prefix result is unique.
-  const prefixed = shows.filter((show) => {
-    const candidateName = normalizedName(show.name);
-    return premiereYear(show) === targetYear && candidateName.startsWith(`${targetName} `);
-  });
+  const prefixed = shows.filter((show) => premiereYear(show) === targetYear && normalizedName(show.name).startsWith(`${targetName} `));
   return prefixed.length === 1 ? prefixed[0] : null;
+}
+
+export function selectTvmazeDiscoveryCandidates(rows = [], { existingIds = new Set(), limit = 10 } = {}) {
+  const known = existingIds instanceof Set ? existingIds : new Set(existingIds ?? []);
+  const byId = new Map();
+  for (const row of rows) {
+    const show = row?._embedded?.show ?? row?.show ?? row;
+    const id = Number(show?.id);
+    if (!Number.isInteger(id) || id <= 0 || known.has(id) || byId.has(id)) continue;
+    if (!show?.name || !premiereYear(show)) continue;
+    if (!(show?.image?.original || show?.image?.medium)) continue;
+    byId.set(id, show);
+  }
+  return [...byId.values()]
+    .sort((a, b) => discoveryScore(b) - discoveryScore(a) || Number(b.id) - Number(a.id))
+    .slice(0, Math.max(0, Math.min(100, Number(limit) || 0)));
 }
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -193,15 +211,12 @@ async function tvmazeRequest(path, {
   baseUrl = "https://api.tvmaze.com",
   userAgent = DEFAULT_USER_AGENT,
   maxRetries = 3,
-  retryDelayMs = 1200
+  retryDelayMs = 1200,
+  fetchImpl = fetch
 } = {}) {
   const url = new URL(path, `${baseUrl.replace(/\/$/, "")}/`);
-
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
-    const response = await fetch(url, {
-      headers: { Accept: "application/json", "User-Agent": userAgent }
-    });
-
+    const response = await fetchImpl(url, { headers: { Accept: "application/json", "User-Agent": userAgent } });
     if (response.status === 404) return null;
     if (response.status === 429 && attempt < maxRetries) {
       const retryAfter = Number(response.headers?.get?.("retry-after"));
@@ -212,7 +227,6 @@ async function tvmazeRequest(path, {
     if (!response.ok) throw new Error(`TVmaze request failed with ${response.status} for ${url.pathname}`);
     return response.json();
   }
-
   throw new Error(`TVmaze rate limit retries exhausted for ${url.pathname}`);
 }
 
@@ -225,10 +239,14 @@ export async function searchTvmazeShows(query, options = {}) {
 export async function fetchTvmazeShow(id, options = {}) {
   const numericId = Number(id);
   if (!Number.isInteger(numericId) || numericId <= 0) throw new Error("A positive TVmaze show id is required");
-  const embeds = ["cast", "crew", "seasons", "akas"]
-    .map((name) => `embed[]=${encodeURIComponent(name)}`)
-    .join("&");
+  const embeds = ["cast", "crew", "seasons", "akas"].map((name) => `embed[]=${encodeURIComponent(name)}`).join("&");
   return tvmazeRequest(`/shows/${numericId}?${embeds}`, options);
+}
+
+export async function fetchTvmazeWebSchedule(date, options = {}) {
+  const value = String(date ?? "").trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) throw new Error("TVmaze web schedule date must use YYYY-MM-DD");
+  return (await tvmazeRequest(`/schedule/web?date=${encodeURIComponent(value)}`, options)) ?? [];
 }
 
 export async function findTvmazeShow({ name, year }, options = {}) {

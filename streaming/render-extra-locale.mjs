@@ -6,6 +6,10 @@ function esc(value = "") {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 }
 
+function jsonLd(value) {
+  return JSON.stringify(value).replaceAll("<", "\\u003c");
+}
+
 function switcher(active) {
   return `<div class="locale-switcher" aria-label="Languages">${SUPPORTED_LOCALES.map((code) => `<a href="${localePath(code)}"${active === code ? ' aria-current="page"' : ""}>${code.toUpperCase()}</a>`).join("")}</div>`;
 }
@@ -31,8 +35,8 @@ function footer(locale) {
   return `<footer class="stream-footer"><div><a class="visione-brand" href="${localePath(locale)}"><img src="/visione-logo.webp" alt="" width="44" height="44"><span>VISIONE</span></a><p>${esc(descriptions[locale])}</p></div><nav><a href="/data-credits/">Data & sources</a><a href="/news/privacy.html">Privacy</a><a href="/news/contact.html">Contact</a><a href="/news/">Wire</a></nav><p class="footer-note">© 2026 VISIONE.</p></footer>`;
 }
 
-function pageHead(locale, { title, description, canonical, robots = "index,follow,max-image-preview:large" }) {
-  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${robots}"><meta name="theme-color" content="#08090c"><link rel="canonical" href="${canonical}"><link rel="icon" href="/visione-logo.webp"><link rel="stylesheet" href="/assets/streaming.css"><link rel="stylesheet" href="/assets/editorial-cover.css"><link rel="stylesheet" href="/assets/streaming-layout.css?v=4">${SUPPORTED_LOCALES.map((code) => `<link rel="alternate" hreflang="${getLocale(code).lang}" href="${absoluteUrl(localePath(code))}">`).join("")}<script src="/assets/streaming.js" defer></script><script type="module" src="/assets/catalog-rails.mjs?v=2"></script>`;
+function pageHead(locale, { title, description, canonical, robots = "index,follow,max-image-preview:large", structuredData = null }) {
+  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="robots" content="${robots}"><meta name="theme-color" content="#08090c"><link rel="canonical" href="${canonical}"><link rel="icon" href="/visione-logo.webp"><link rel="stylesheet" href="/assets/streaming.css"><link rel="stylesheet" href="/assets/editorial-cover.css"><link rel="stylesheet" href="/assets/streaming-layout.css?v=4">${SUPPORTED_LOCALES.map((code) => `<link rel="alternate" hreflang="${getLocale(code).lang}" href="${absoluteUrl(localePath(code))}">`).join("")}${structuredData ? `<script type="application/ld+json">${jsonLd(structuredData)}</script>` : ""}<script src="/assets/streaming.js" defer></script><script type="module" src="/assets/catalog-rails.mjs?v=2"></script>`;
 }
 
 function mediaLabel(title, locale) {
@@ -84,6 +88,7 @@ export function renderExtraTitlePage(title, locale, providers) {
   const c = copyFor(locale);
   const name = localizedName(title, locale);
   const overview = title.overview?.[locale] || "";
+  const canonical = absoluteUrl(titlePath(locale, title.slug));
   const offers = rankOffers(title.offers?.[cfg.country] ?? []);
   const providerMap = new Map(providers.map((provider) => [provider.id, provider]));
   const offerHtml = offers.map((offer) => {
@@ -91,7 +96,16 @@ export function renderExtraTitlePage(title, locale, providers) {
     const href = offer.affiliate_url || offer.url;
     return `<div class="offer-row"><div><strong>${esc(p?.name || offer.provider)}</strong></div><div><span class="offer-type">${esc(offerLabel(offer, locale))}</span>${href ? `<a class="offer-link" href="${esc(href)}" rel="${offer.is_affiliate || offer.sponsored ? "nofollow sponsored" : "nofollow"}">${esc(c.viewOffer)}</a>` : ""}</div></div>`;
   }).join("");
-  return `<!doctype html><html lang="${cfg.lang}"><head>${pageHead(locale, { title: `${name} | VISIONE`, description: overview, canonical: absoluteUrl(titlePath(locale, title.slug)) })}</head><body class="stream-body">${header(locale)}<main class="title-shell"><section class="title-hero"><div class="title-poster">${artwork(title, locale)}</div><div class="title-copy"><p class="eyebrow">${esc(mediaLabel(title, locale))} · ${esc(title.year)}</p><h1>${esc(name)}</h1><p>${esc(overview)}</p><p class="collection-note">${esc(c.marketNote)}</p></div></section><section class="content-section"><p class="eyebrow">${esc(c.where)}</p><h2>${esc(c.verified)}</h2><div class="offer-list">${offerHtml}</div>${title.availability_updated_at ? `<p class="freshness">${esc(c.lastChecked)}: ${esc(title.availability_updated_at.slice(0, 10))}</p>` : ""}</section></main>${footer(locale)}</body></html>`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": title.type === "series" ? "TVSeries" : "Movie",
+    name,
+    url: canonical,
+    ...(title.year ? { datePublished: String(title.year) } : {}),
+    ...(overview ? { description: overview } : {}),
+    ...(title.poster ? { image: title.poster } : {})
+  };
+  return `<!doctype html><html lang="${cfg.lang}"><head>${pageHead(locale, { title: `${name} | VISIONE`, description: overview, canonical, structuredData })}</head><body class="stream-body">${header(locale)}<main class="title-shell"><section class="title-hero"><div class="title-poster">${artwork(title, locale)}</div><div class="title-copy"><p class="eyebrow">${esc(mediaLabel(title, locale))} · ${esc(title.year)}</p><h1>${esc(name)}</h1><p>${esc(overview)}</p><p class="collection-note">${esc(c.marketNote)}</p></div></section><section class="content-section"><p class="eyebrow">${esc(c.where)}</p><h2>${esc(c.verified)}</h2><div class="offer-list">${offerHtml}</div>${title.availability_updated_at ? `<p class="freshness" data-availability-freshness datetime="${esc(title.availability_updated_at)}">${esc(c.lastChecked)}: ${esc(title.availability_updated_at.slice(0, 10))}</p>` : ""}</section></main>${footer(locale)}</body></html>`;
 }
 
 export function renderExtraProviderPage(provider, locale, titles) {

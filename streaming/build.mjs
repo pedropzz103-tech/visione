@@ -9,15 +9,18 @@ import { renderGlobalHome } from "./render-global-home.mjs";
 import { renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.mjs";
 import { isExtraLocale, localizeTitle } from "./i18n.mjs";
 import { renderExtraLocaleHome, renderExtraProviderPage, renderExtraTitlePage } from "./render-extra-locale.mjs";
+import { renderLanguageMenu } from "./language-menu.mjs";
 
 const root = new URL("../", import.meta.url);
 
 async function readJson(path) { return JSON.parse(await readFile(new URL(path, root), "utf8")); }
 async function write(path, content) { const url = new URL(path, root); await mkdir(dirname(fileURLToPath(url)), { recursive: true }); await writeFile(url, content, "utf8"); }
 function escapeHtml(value = "") { return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
-function decorateDiscoveryHtml(html, providers = []) {
+function decorateDiscoveryHtml(html, providers = [], activeLocale = null) {
   const creditsLink = '<a href="/data-credits/">Dados & fontes</a>'; let output = html;
   if (!output.includes('href="/data-credits/"')) output = output.replaceAll('<a href="/news/">Wire</a>', `${creditsLink}<a href="/news/">Wire</a>`);
+  if (!output.includes('/assets/language-menu.css')) output = output.replace('</head>', '<link rel="stylesheet" href="/assets/language-menu.css?v=1"></head>');
+  output = output.replace(/<div class="locale-switcher"[^>]*>[\s\S]*?<\/div>/, renderLanguageMenu(activeLocale));
   if (output.includes('<div class="provider-chips"></div>') && providers.length) {
     const chips = providers.map((provider) => `<span class="provider-chip provider-tile" data-provider="${escapeHtml(provider.id)}"><img class="provider-logo" src="${escapeHtml(provider.logo)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="provider-name">${escapeHtml(provider.name)}</span></span>`).join("");
     output = output.replace('<div class="provider-chips"></div>', `<div class="provider-chips">${chips}</div>`);
@@ -32,7 +35,7 @@ export async function buildSite() {
   const [rawTitles, providers, affiliateConfig] = await Promise.all([readJson("streaming/data/titles.json"), readJson("streaming/data/providers.json"), readJson("streaming/data/affiliate-config.json").catch(() => [])]);
   const internalTitles = applyAffiliateConfigToCatalog(rawTitles.map(normalizeTitle), affiliateConfig);
   const globalTitles = internalTitles.filter(isPublicAnywhere);
-  await write("index.html", decorateDiscoveryHtml(renderGlobalHome(globalTitles, providers), providers));
+  await write("index.html", decorateDiscoveryHtml(renderGlobalHome(globalTitles, providers), providers, null));
   const searchRecords = []; const sitemapPaths = []; const publicCounts = {};
   for (const locale of SUPPORTED_LOCALES) {
     const config = getLocale(locale);
@@ -43,12 +46,12 @@ export async function buildSite() {
     await rm(new URL(`${locale}/${config.providerSegment}/`, root), { recursive: true, force: true });
     const localProviders = providers.filter((provider) => provider.markets.includes(config.country));
     const homeHtml = isExtraLocale(locale) ? renderExtraLocaleHome(locale, titles, localProviders) : renderLocaleHome(locale, titles, providers);
-    await write(`${locale}/index.html`, decorateDiscoveryHtml(homeHtml, localProviders));
+    await write(`${locale}/index.html`, decorateDiscoveryHtml(homeHtml, localProviders, locale));
     const indexableUrls = [absoluteUrl(`/${locale}/`)];
     for (const title of titles) {
       const output = `${locale}/${config.titleSegment}/${title.slug}/index.html`;
       const page = isExtraLocale(locale) ? renderExtraTitlePage(title, locale, providers) : renderTitlePage(title, locale, providers);
-      await write(output, decorateDiscoveryHtml(page));
+      await write(output, decorateDiscoveryHtml(page, [], locale));
       if (evaluateIndexability(title, locale).indexable) indexableUrls.push(absoluteUrl(titlePath(locale, title.slug)));
       searchRecords.push({ id: title.id, type: title.type, title: title.titles[locale], alternateTitles: [...new Set([title.original_title, ...Object.values(title.titles)].filter(Boolean))], searchTerms: searchTermsFromCredits(title), year: title.year, poster: title.poster, artwork: title.artwork, url: titlePath(locale, title.slug), locale });
     }
@@ -57,7 +60,7 @@ export async function buildSite() {
       if (!providerTitles.length) continue;
       const output = `${locale}/${config.providerSegment}/${provider.id}/index.html`;
       const providerHtml = isExtraLocale(locale) ? renderExtraProviderPage(provider, locale, providerTitles) : renderProviderPage(provider, locale, providerTitles);
-      await write(output, decorateDiscoveryHtml(providerHtml));
+      await write(output, decorateDiscoveryHtml(providerHtml, [], locale));
       indexableUrls.push(absoluteUrl(providerPath(locale, provider.id)));
     }
     const sitemapPath = `streaming-sitemap-${locale}.xml`; await write(sitemapPath, xmlUrlset(indexableUrls)); sitemapPaths.push(`/${sitemapPath}`);

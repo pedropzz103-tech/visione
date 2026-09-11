@@ -37,3 +37,17 @@ test("new language pages expose all seven language routes", async () => {
     for (const code of ["es", "pt", "br", "en", "fr", "ru", "uk"]) assert.match(page, new RegExp(`href="/${code}/"`));
   }
 });
+
+test("new localized title pages include media JSON-LD and visible availability freshness", async () => {
+  const pages = await Promise.all([
+    read("en/where-to-watch/silo/index.html"),
+    read("fr/ou-regarder/silo/index.html"),
+    read("ru/gde-smotret/silo/index.html"),
+    read("uk/de-dyvytysia/silo/index.html")
+  ]);
+  for (const page of pages) {
+    assert.match(page, /<script type="application\/ld\+json">/);
+    assert.match(page, /"@type":"TVSeries"/);
+    assert.match(page, /data-availability-freshness/);
+  }
+});

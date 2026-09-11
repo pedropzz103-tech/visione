@@ -14,8 +14,10 @@ test("language selector renders one compact trigger and keeps all seven language
   assert.match(html, /aria-current="page"[^>]*>Українська</);
 });
 
-test("global selector does not dump seven language codes into the header", () => {
+test("global selector does not dump seven language codes into the visible trigger", () => {
   const html = renderLanguageMenu(null);
-  assert.match(html, /<summary[^>]*>[^<]*Idioma/);
-  assert.doesNotMatch(html, /<summary[^>]*>[\s\S]*ES[\s\S]*PT[\s\S]*BR[\s\S]*EN[\s\S]*FR[\s\S]*RU[\s\S]*UK/);
+  const summary = html.match(/<summary[^>]*>([\s\S]*?)<\/summary>/)?.[1] ?? "";
+  assert.match(summary, /Idioma/);
+  assert.doesNotMatch(summary, /ES|PT|BR|EN|FR|RU|UK/);
+  assert.equal((html.match(/class="language-option/g) ?? []).length, 7);
 });

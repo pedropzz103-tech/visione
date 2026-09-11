@@ -28,6 +28,19 @@
     ],
     "poster": null,
     "backdrop": null,
+    "artwork": {
+      "kind": "none",
+      "source": null,
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": null,
     "credits": {
       "director": "Christopher Nolan",
@@ -62,7 +75,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:05.544Z",
+    "updated_at": "2026-09-11T08:14:42.456Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -154,6 +167,19 @@
     ],
     "poster": "https://static.tvmaze.com/uploads/images/original_untouched/563/1409008.jpg",
     "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "legacy",
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": {
       "value": 7.9,
       "source": "TVmaze"
@@ -183,7 +209,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:04.430Z",
+    "updated_at": "2026-09-11T08:14:41.484Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -274,6 +300,19 @@
     ],
     "poster": null,
     "backdrop": null,
+    "artwork": {
+      "kind": "none",
+      "source": null,
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": null,
     "credits": {
       "directors": [
@@ -309,7 +348,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:06.408Z",
+    "updated_at": "2026-09-11T08:14:43.307Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -399,6 +438,19 @@
     ],
     "poster": null,
     "backdrop": null,
+    "artwork": {
+      "kind": "none",
+      "source": null,
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": null,
     "credits": {
       "director": "Christopher Nolan",
@@ -421,7 +473,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:07.263Z",
+    "updated_at": "2026-09-11T08:14:44.091Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -462,6 +514,19 @@
     ],
     "poster": "https://static.tvmaze.com/uploads/images/original_untouched/536/1340287.jpg",
     "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "legacy",
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": {
       "value": 8.5,
       "source": "TVmaze"
@@ -498,7 +563,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:04.535Z",
+    "updated_at": "2026-09-11T08:14:41.607Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -541,6 +606,19 @@
     ],
     "poster": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg",
     "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "legacy",
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": {
       "value": 7.6,
       "source": "TVmaze"
@@ -575,7 +653,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:04.636Z",
+    "updated_at": "2026-09-11T08:14:41.714Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -618,6 +696,19 @@
     ],
     "poster": "https://static.tvmaze.com/uploads/images/original_untouched/629/1574642.jpg",
     "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "legacy",
+      "license": null,
+      "credit": null,
+      "source_url": null
+    },
+    "discovery": {
+      "source": null,
+      "discovered_at": null,
+      "score": 0,
+      "sitelinks": 0
+    },
     "rating": {
       "value": 7.4,
       "source": "TVmaze"
@@ -649,7 +740,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T07:35:04.736Z",
+    "updated_at": "2026-09-11T08:14:41.821Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",

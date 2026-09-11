@@ -1,232 +1,670 @@
 [
   {
-    "id":"movie:157336",
-    "type":"movie",
-    "slug":"interstellar",
-    "titles":{"es":"Interstellar","pt":"Interstellar","br":"Interestelar"},
-    "original_title":"Interstellar",
-    "year":2014,
-    "runtime":169,
-    "overview":{
-      "es":"Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad cuando la Tierra deja de ofrecer un futuro seguro.",
-      "pt":"Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro.",
-      "br":"Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro."
+    "id": "movie:157336",
+    "type": "movie",
+    "slug": "interstellar",
+    "titles": {
+      "es": "Interstellar",
+      "pt": "Interstellar",
+      "br": "Interestelar"
     },
-    "genres":["Drama","Science Fiction"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"director":"Christopher Nolan","cast":["Matthew McConaughey","Anne Hathaway","Jessica Chastain"]},
-    "related":["dune-part-two"],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-08T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Interstellar",
+    "year": 2014,
+    "runtime": 169,
+    "seasons": null,
+    "overview": {
+      "es": "Un antiguo piloto se une a una misión interestelar que busca un nuevo hogar para la humanidad cuando la Tierra deja de ofrecer un futuro seguro.",
+      "pt": "Um antigo piloto junta-se a uma missão interestelar que procura um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro.",
+      "br": "Um ex-piloto entra em uma missão interestelar que busca um novo lar para a humanidade quando a Terra deixa de oferecer um futuro seguro."
+    },
+    "genres": [
+      "science fiction film",
+      "adventure film",
+      "dystopian film",
+      "drama film",
+      "time-travel film",
+      "thriller film",
+      "hard science fiction"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "rating": null,
+    "credits": {
+      "director": "Christopher Nolan",
+      "cast": [
+        "Matthew McConaughey",
+        "Anne Hathaway",
+        "Jessica Chastain",
+        "Michael Caine",
+        "Bill Irwin",
+        "Ellen Burstyn",
+        "Wes Bentley",
+        "Matt Damon",
+        "David Gyasi",
+        "Josh Stewart",
+        "Mackenzie Foy",
+        "Casey Affleck"
+      ],
+      "directors": [
+        "Christopher Nolan"
+      ]
+    },
+    "related": [
+      "dune-part-two"
+    ],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:26.587Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q13417189",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q13417189",
+      "external_ids": {
+        "imdb": "tt0816692"
+      }
+    }
   },
   {
-    "id":"movie:693134",
-    "type":"movie",
-    "slug":"dune-part-two",
-    "titles":{"es":"Dune: Parte Dos","pt":"Dune: Parte Dois","br":"Duna: Parte Dois"},
-    "original_title":"Dune: Part Two",
-    "year":2024,
-    "runtime":166,
-    "overview":{
-      "es":"Paul Atreides se une a Chani y a los Fremen mientras intenta impedir un futuro terrible y afrontar la guerra por el control de Arrakis.",
-      "pt":"Paul Atreides une-se a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controlo de Arrakis.",
-      "br":"Paul Atreides se une a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controle de Arrakis."
+    "id": "movie:693134",
+    "type": "movie",
+    "slug": "dune-part-two",
+    "titles": {
+      "es": "Dune: Parte Dos",
+      "pt": "Dune: Parte Dois",
+      "br": "Duna: Parte Dois"
     },
-    "genres":["Science Fiction","Adventure"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"director":"Denis Villeneuve","cast":["Timothée Chalamet","Zendaya","Rebecca Ferguson"]},
-    "related":["interstellar"],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-08T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Dune: Part Two",
+    "year": 2024,
+    "runtime": 166,
+    "overview": {
+      "es": "Paul Atreides se une a Chani y a los Fremen mientras intenta impedir un futuro terrible y afrontar la guerra por el control de Arrakis.",
+      "pt": "Paul Atreides une-se a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controlo de Arrakis.",
+      "br": "Paul Atreides se une a Chani e aos Fremen enquanto tenta impedir um futuro terrível e enfrenta a guerra pelo controle de Arrakis."
+    },
+    "genres": [
+      "Science Fiction",
+      "Adventure"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "credits": {
+      "director": "Denis Villeneuve",
+      "cast": [
+        "Timothée Chalamet",
+        "Zendaya",
+        "Rebecca Ferguson"
+      ]
+    },
+    "related": [
+      "interstellar"
+    ],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-08T00:00:00Z",
+    "source": {
+      "metadata": "manual factual seed",
+      "availability": "unconfigured",
+      "attribution": []
+    }
   },
   {
-    "id":"series:100088",
-    "type":"series",
-    "slug":"the-last-of-us",
-    "titles":{"es":"The Last of Us","pt":"The Last of Us","br":"The Last of Us"},
-    "original_title":"The Last of Us",
-    "year":2023,
-    "seasons":2,
-    "overview":{
-      "es":"Joel y Ellie atraviesan un Estados Unidos devastado por una infección mientras su relación se convierte en el centro emocional de un viaje peligroso.",
-      "pt":"Joel e Ellie atravessam uns Estados Unidos devastados por uma infeção enquanto a relação entre ambos se torna o centro emocional de uma viagem perigosa.",
-      "br":"Joel e Ellie atravessam os Estados Unidos devastados por uma infecção enquanto a relação entre os dois vira o centro emocional de uma jornada perigosa."
+    "id": "series:100088",
+    "type": "series",
+    "slug": "the-last-of-us",
+    "titles": {
+      "es": "The Last of Us",
+      "pt": "The Last of Us",
+      "br": "The Last of Us"
     },
-    "genres":["Drama","Science Fiction"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"creators":["Craig Mazin","Neil Druckmann"],"cast":["Pedro Pascal","Bella Ramsey"]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-08T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "The Last of Us",
+    "year": 2023,
+    "runtime": 61,
+    "seasons": 3,
+    "overview": {
+      "es": "Joel y Ellie atraviesan un Estados Unidos devastado por una infección mientras su relación se convierte en el centro emocional de un viaje peligroso.",
+      "pt": "Joel e Ellie atravessam uns Estados Unidos devastados por uma infeção enquanto a relação entre ambos se torna o centro emocional de uma viagem perigosa.",
+      "br": "Joel e Ellie atravessam os Estados Unidos devastados por uma infecção enquanto a relação entre os dois vira o centro emocional de uma jornada perigosa."
+    },
+    "genres": [
+      "Drama",
+      "Action",
+      "Horror"
+    ],
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/563/1409008.jpg",
+    "backdrop": null,
+    "rating": {
+      "value": 7.9,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creators": [
+        "Craig Mazin",
+        "Neil Druckmann"
+      ],
+      "cast": [
+        "Bella Ramsey",
+        "Pedro Pascal",
+        "Gabriel Luna",
+        "Isabela Merced",
+        "Young Mazino"
+      ],
+      "creator": "Craig Mazin"
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:25.483Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "unconfigured",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 46562,
+      "tvmaze_url": "https://www.tvmaze.com/shows/46562/the-last-of-us",
+      "external_ids": {
+        "imdb": "tt3581920",
+        "thetvdb": 392256
+      },
+      "source_summary": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope."
+    }
   },
   {
-    "id":"movie:129",
-    "type":"movie",
-    "slug":"spirited-away",
-    "titles":{"es":"El viaje de Chihiro","pt":"A Viagem de Chihiro","br":"A Viagem de Chihiro"},
-    "original_title":"千と千尋の神隠し",
-    "year":2001,
-    "runtime":125,
-    "overview":{
-      "es":"Chihiro entra por accidente en un mundo de espíritus y debe encontrar valor, aliados y una forma de salvar a sus padres y regresar a casa.",
-      "pt":"Chihiro entra por acidente num mundo de espíritos e precisa de encontrar coragem, aliados e uma forma de salvar os pais e regressar a casa.",
-      "br":"Chihiro entra por acidente em um mundo de espíritos e precisa encontrar coragem, aliados e uma forma de salvar os pais e voltar para casa."
+    "id": "movie:129",
+    "type": "movie",
+    "slug": "spirited-away",
+    "titles": {
+      "es": "El viaje de Chihiro",
+      "pt": "A Viagem de Chihiro",
+      "br": "A Viagem de Chihiro"
     },
-    "genres":["Animation","Fantasy"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"director":"Hayao Miyazaki","cast":[]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-08T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "千と千尋の神隠し",
+    "year": 2001,
+    "runtime": 125,
+    "overview": {
+      "es": "Chihiro entra por accidente en un mundo de espíritus y debe encontrar valor, aliados y una forma de salvar a sus padres y regresar a casa.",
+      "pt": "Chihiro entra por acidente num mundo de espíritos e precisa de encontrar coragem, aliados e uma forma de salvar os pais e regressar a casa.",
+      "br": "Chihiro entra por acidente em um mundo de espíritos e precisa encontrar coragem, aliados e uma forma de salvar os pais e voltar para casa."
+    },
+    "genres": [
+      "Animation",
+      "Fantasy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "credits": {
+      "director": "Hayao Miyazaki",
+      "cast": []
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-08T00:00:00Z",
+    "source": {
+      "metadata": "manual factual seed",
+      "availability": "unconfigured",
+      "attribution": []
+    }
   },
   {
-    "id":"movie:545611",
-    "type":"movie",
-    "slug":"everything-everywhere-all-at-once",
-    "titles":{"es":"Todo a la vez en todas partes","pt":"Tudo em Todo o Lado ao Mesmo Tempo","br":"Tudo em Todo o Lugar ao Mesmo Tempo"},
-    "original_title":"Everything Everywhere All at Once",
-    "year":2022,
-    "runtime":140,
-    "overview":{
-      "es":"Una mujer agotada descubre que debe conectar con versiones alternativas de sí misma para impedir que una fuerza caótica destruya el multiverso.",
-      "pt":"Uma mulher exausta descobre que precisa de se ligar a versões alternativas de si própria para impedir que uma força caótica destrua o multiverso.",
-      "br":"Uma mulher exausta descobre que precisa se conectar a versões alternativas de si mesma para impedir que uma força caótica destrua o multiverso."
+    "id": "movie:545611",
+    "type": "movie",
+    "slug": "everything-everywhere-all-at-once",
+    "titles": {
+      "es": "Todo a la vez en todas partes",
+      "pt": "Tudo em Todo o Lado ao Mesmo Tempo",
+      "br": "Tudo em Todo o Lugar ao Mesmo Tempo"
     },
-    "genres":["Science Fiction","Comedy","Drama"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"directors":["Daniel Kwan","Daniel Scheinert"],"cast":["Michelle Yeoh","Ke Huy Quan","Stephanie Hsu"]},
-    "related":["interstellar"],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Everything Everywhere All at Once",
+    "year": 2022,
+    "runtime": 140,
+    "seasons": null,
+    "overview": {
+      "es": "Una mujer agotada descubre que debe conectar con versiones alternativas de sí misma para impedir que una fuerza caótica destruya el multiverso.",
+      "pt": "Uma mulher exausta descobre que precisa de se ligar a versões alternativas de si própria para impedir que uma força caótica destrua o multiverso.",
+      "br": "Uma mulher exausta descobre que precisa se conectar a versões alternativas de si mesma para impedir que uma força caótica destrua o multiverso."
+    },
+    "genres": [
+      "science fiction film",
+      "action film",
+      "comedy drama",
+      "absurdist fiction",
+      "martial arts film",
+      "psychedelic film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "rating": null,
+    "credits": {
+      "directors": [
+        "Dan Kwan",
+        "Daniel Scheinert"
+      ],
+      "cast": [
+        "Michelle Yeoh",
+        "Stephanie Hsu",
+        "James Hong",
+        "Ke Huy Quan",
+        "Jamie Lee Curtis",
+        "Jenny Slate",
+        "Harry Shum",
+        "Andy Le",
+        "Brian Le",
+        "Tallie Medel",
+        "Biff Wiff",
+        "Dan Kwan"
+      ],
+      "director": "Dan Kwan"
+    },
+    "related": [
+      "interstellar"
+    ],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:27.318Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q83808444",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q83808444",
+      "external_ids": {
+        "imdb": "tt6710474"
+      }
+    }
   },
   {
-    "id":"movie:496243",
-    "type":"movie",
-    "slug":"parasite",
-    "titles":{"es":"Parásitos","pt":"Parasitas","br":"Parasita"},
-    "original_title":"기생충",
-    "year":2019,
-    "runtime":132,
-    "overview":{
-      "es":"Una familia con dificultades se introduce poco a poco en la vida de un hogar adinerado, desencadenando consecuencias inesperadas.",
-      "pt":"Uma família com dificuldades entra pouco a pouco na vida de uma casa abastada, desencadeando consequências inesperadas.",
-      "br":"Uma família em dificuldades entra aos poucos na vida de uma casa rica, desencadeando consequências inesperadas."
+    "id": "movie:496243",
+    "type": "movie",
+    "slug": "parasite",
+    "titles": {
+      "es": "Parásitos",
+      "pt": "Parasitas",
+      "br": "Parasita"
     },
-    "genres":["Thriller","Drama","Comedy"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"director":"Bong Joon Ho","cast":["Song Kang-ho","Lee Sun-kyun","Cho Yeo-jeong"]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "기생충",
+    "year": 2019,
+    "runtime": 132,
+    "overview": {
+      "es": "Una familia con dificultades se introduce poco a poco en la vida de un hogar adinerado, desencadenando consecuencias inesperadas.",
+      "pt": "Uma família com dificuldades entra pouco a pouco na vida de uma casa abastada, desencadeando consequências inesperadas.",
+      "br": "Uma família em dificuldades entra aos poucos na vida de uma casa rica, desencadeando consequências inesperadas."
+    },
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "credits": {
+      "director": "Bong Joon Ho",
+      "cast": [
+        "Song Kang-ho",
+        "Lee Sun-kyun",
+        "Cho Yeo-jeong"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-10T00:00:00Z",
+    "source": {
+      "metadata": "manual factual seed",
+      "availability": "unconfigured",
+      "attribution": []
+    }
   },
   {
-    "id":"movie:872585",
-    "type":"movie",
-    "slug":"oppenheimer",
-    "titles":{"es":"Oppenheimer","pt":"Oppenheimer","br":"Oppenheimer"},
-    "original_title":"Oppenheimer",
-    "year":2023,
-    "runtime":181,
-    "overview":{
-      "es":"El físico J. Robert Oppenheimer dirige un proyecto científico que transforma la historia y debe afrontar después sus consecuencias políticas y personales.",
-      "pt":"O físico J. Robert Oppenheimer dirige um projeto científico que transforma a história e enfrenta depois as consequências políticas e pessoais.",
-      "br":"O físico J. Robert Oppenheimer lidera um projeto científico que transforma a história e depois enfrenta suas consequências políticas e pessoais."
+    "id": "movie:872585",
+    "type": "movie",
+    "slug": "oppenheimer",
+    "titles": {
+      "es": "Oppenheimer",
+      "pt": "Oppenheimer",
+      "br": "Oppenheimer"
     },
-    "genres":["Drama","History"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"director":"Christopher Nolan","cast":["Cillian Murphy","Emily Blunt","Robert Downey Jr."]},
-    "related":["interstellar"],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Oppenheimer",
+    "year": 2023,
+    "runtime": 180,
+    "seasons": null,
+    "overview": {
+      "es": "El físico J. Robert Oppenheimer dirige un proyecto científico que transforma la historia y debe afrontar después sus consecuencias políticas y personales.",
+      "pt": "O físico J. Robert Oppenheimer dirige um projeto científico que transforma a história e enfrenta depois as consequências políticas e pessoais.",
+      "br": "O físico J. Robert Oppenheimer lidera um projeto científico que transforma a história e depois enfrenta suas consequências políticas e pessoais."
+    },
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "rating": null,
+    "credits": {
+      "director": "Christopher Nolan",
+      "cast": [
+        "Cillian Murphy",
+        "Emily Blunt",
+        "Robert Downey Jr."
+      ]
+    },
+    "related": [
+      "interstellar"
+    ],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:28.384Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q108839994",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q108839994",
+      "external_ids": {
+        "imdb": "tt15398776"
+      }
+    }
   },
   {
-    "id":"series:94605",
-    "type":"series",
-    "slug":"arcane",
-    "titles":{"es":"Arcane","pt":"Arcane","br":"Arcane"},
-    "original_title":"Arcane",
-    "year":2021,
-    "seasons":2,
-    "overview":{
-      "es":"Dos hermanas quedan en lados opuestos de un conflicto entre una ciudad próspera y su submundo, mientras una nueva tecnología altera el equilibrio.",
-      "pt":"Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e o seu submundo, enquanto uma nova tecnologia altera o equilíbrio.",
-      "br":"Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e seu submundo, enquanto uma nova tecnologia muda o equilíbrio."
+    "id": "series:94605",
+    "type": "series",
+    "slug": "arcane",
+    "titles": {
+      "es": "Arcane",
+      "pt": "Arcane",
+      "br": "Arcane"
     },
-    "genres":["Animation","Drama","Fantasy"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"creators":["Christian Linke","Alex Yee"],"cast":[]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Arcane",
+    "year": 2021,
+    "runtime": 41,
+    "seasons": 2,
+    "overview": {
+      "es": "Dos hermanas quedan en lados opuestos de un conflicto entre una ciudad próspera y su submundo, mientras una nueva tecnología altera el equilibrio.",
+      "pt": "Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e o seu submundo, enquanto uma nova tecnologia altera o equilíbrio.",
+      "br": "Duas irmãs ficam em lados opostos de um conflito entre uma cidade próspera e seu submundo, enquanto uma nova tecnologia muda o equilíbrio."
+    },
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/536/1340287.jpg",
+    "backdrop": null,
+    "rating": {
+      "value": 8.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creators": [
+        "Alex Yee",
+        "Christian Linke"
+      ],
+      "cast": [
+        "Kevin Alejandro",
+        "Hailee Steinfeld",
+        "Harry Lloyd",
+        "Toks Olagundoye",
+        "Katie Leung",
+        "Ella Purnell",
+        "Jason Spisak",
+        "Brett Tucker",
+        "JB Blanc",
+        "Amirah Vann",
+        "Mia Sinclair Jenness",
+        "Mick Wingert"
+      ],
+      "creator": "Alex Yee"
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:25.595Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "unconfigured",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 55138,
+      "tvmaze_url": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends",
+      "external_ids": {
+        "imdb": "tt11126994",
+        "thetvdb": 371028
+      },
+      "source_summary": "Set in utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions — and the power that will tear them apart."
+    }
   },
   {
-    "id":"series:95396",
-    "type":"series",
-    "slug":"severance",
-    "titles":{"es":"Separación","pt":"Separação","br":"Ruptura"},
-    "original_title":"Severance",
-    "year":2022,
-    "seasons":2,
-    "overview":{
-      "es":"Los empleados de una empresa aceptan separar quirúrgicamente sus recuerdos del trabajo y de la vida personal, pero empiezan a cuestionar el sistema.",
-      "pt":"Os funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema.",
-      "br":"Funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema."
+    "id": "series:95396",
+    "type": "series",
+    "slug": "severance",
+    "titles": {
+      "es": "Separación",
+      "pt": "Separação",
+      "br": "Ruptura"
     },
-    "genres":["Drama","Mystery","Science Fiction"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"creator":"Dan Erickson","cast":["Adam Scott","Britt Lower"]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "Severance",
+    "year": 2022,
+    "runtime": 49,
+    "seasons": 3,
+    "overview": {
+      "es": "Los empleados de una empresa aceptan separar quirúrgicamente sus recuerdos del trabajo y de la vida personal, pero empiezan a cuestionar el sistema.",
+      "pt": "Os funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema.",
+      "br": "Funcionários de uma empresa aceitam separar cirurgicamente as memórias do trabalho e da vida pessoal, mas começam a questionar o sistema."
+    },
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg",
+    "backdrop": null,
+    "rating": {
+      "value": 7.6,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Dan Erickson",
+      "cast": [
+        "Adam Scott",
+        "Tramell Tillman",
+        "Britt Lower",
+        "Zach Cherry",
+        "Jen Tullock",
+        "John Turturro",
+        "Patricia Arquette",
+        "Christopher Walken",
+        "Dichen Lachman",
+        "Michael Chernus",
+        "Sarah Bock"
+      ],
+      "creators": [
+        "Dan Erickson"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:25.702Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "unconfigured",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 44933,
+      "tvmaze_url": "https://www.tvmaze.com/shows/44933/severance",
+      "external_ids": {
+        "imdb": "tt11280740",
+        "thetvdb": 371980
+      },
+      "source_summary": "Mark Scout leads a team at Lumon Industries, whose employees have undergone a severance procedure, which surgically divides their memories between their work and personal lives. This daring experiment in \"work-life balance\" is called into question as Mark finds himself at the center of an unraveling mystery that will force him to confront the true nature of his work… and of himself."
+    }
   },
   {
-    "id":"series:136315",
-    "type":"series",
-    "slug":"the-bear",
-    "titles":{"es":"The Bear","pt":"The Bear","br":"O Urso"},
-    "original_title":"The Bear",
-    "year":2022,
-    "seasons":5,
-    "overview":{
-      "es":"Un joven chef regresa a Chicago para dirigir el pequeño restaurante de su familia y descubre que reconstruir el equipo será su mayor desafío.",
-      "pt":"Um jovem chef regressa a Chicago para dirigir o pequeno restaurante da família e descobre que reconstruir a equipa será o seu maior desafio.",
-      "br":"Um jovem chef retorna a Chicago para comandar o pequeno restaurante da família e descobre que reconstruir a equipe será seu maior desafio."
+    "id": "series:136315",
+    "type": "series",
+    "slug": "the-bear",
+    "titles": {
+      "es": "The Bear",
+      "pt": "The Bear",
+      "br": "O Urso"
     },
-    "genres":["Drama","Comedy"],
-    "poster":null,
-    "backdrop":null,
-    "credits":{"creator":"Christopher Storer","cast":["Jeremy Allen White","Ayo Edebiri"]},
-    "related":[],
-    "offers":{"ES":[],"PT":[],"BR":[]},
-    "availability_status":{"ES":"unknown","PT":"unknown","BR":"unknown"},
-    "updated_at":"2026-09-10T00:00:00Z",
-    "source":{"metadata":"manual factual seed","availability":"unconfigured","attribution":[]}
+    "original_title": "The Bear",
+    "year": 2022,
+    "runtime": 35,
+    "seasons": 5,
+    "overview": {
+      "es": "Un joven chef regresa a Chicago para dirigir el pequeño restaurante de su familia y descubre que reconstruir el equipo será su mayor desafío.",
+      "pt": "Um jovem chef regressa a Chicago para dirigir o pequeno restaurante da família e descobre que reconstruir a equipa será o seu maior desafio.",
+      "br": "Um jovem chef retorna a Chicago para comandar o pequeno restaurante da família e descobre que reconstruir a equipe será seu maior desafio."
+    },
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Food"
+    ],
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/629/1574642.jpg",
+    "backdrop": null,
+    "rating": {
+      "value": 7.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Christopher Storer",
+      "cast": [
+        "Ebon Moss-Bachrach",
+        "Jeremy Allen White",
+        "Abby Elliott",
+        "Liza Colón-Zayas",
+        "Matty Matheson",
+        "Ayo Edebiri",
+        "Lionel Boyce",
+        "Edwin Lee Gibson"
+      ],
+      "creators": [
+        "Christopher Storer"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T07:33:25.809Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "unconfigured",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 54198,
+      "tvmaze_url": "https://www.tvmaze.com/shows/54198/the-bear",
+      "external_ids": {
+        "imdb": "tt14452776",
+        "thetvdb": 403294
+      },
+      "source_summary": "Carmy, a young fine-dining chef, comes home to Chicago to run his family sandwich shop. As he fights to transform the shop and himself, he works alongside a rough-around-the-edges crew that ultimately reveal themselves as his chosen family."
+    }
   }
 ]

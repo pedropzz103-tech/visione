@@ -124,3 +124,29 @@ test("Wikidata HTTP helper uses identifiable User-Agent and maxlag", async () =>
     globalThis.fetch = oldFetch;
   }
 });
+
+test("Wikidata label fetch resolves multilingual mul labels instead of leaking QIDs", async () => {
+  const { fetchWikidataLabels } = await import("../streaming/adapters/wikidata.mjs");
+  const oldFetch = globalThis.fetch;
+  let requestedUrl = null;
+  globalThis.fetch = async (url) => {
+    requestedUrl = String(url);
+    return {
+      ok: true,
+      status: 200,
+      headers: { get: () => null },
+      json: async () => ({
+        entities: {
+          Q25191: { id: "Q25191", labels: { mul: { language: "mul", value: "Christopher Nolan" } } }
+        }
+      })
+    };
+  };
+  try {
+    const labels = await fetchWikidataLabels(["Q25191"], { baseUrl: "https://example.test/w/api.php" });
+    assert.match(requestedUrl, /languages=.*mul/i);
+    assert.equal(labels.Q25191, "Christopher Nolan");
+  } finally {
+    globalThis.fetch = oldFetch;
+  }
+});

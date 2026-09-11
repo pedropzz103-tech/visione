@@ -7,6 +7,8 @@ import { isPublicAnywhere, isPublicInMarket } from "./publication.mjs";
 import { evaluateIndexability, normalizeTitle } from "./schema.mjs";
 import { renderGlobalHome } from "./render-global-home.mjs";
 import { renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.mjs";
+import { isExtraLocale, localizeTitle } from "./i18n.mjs";
+import { renderExtraLocaleHome, renderExtraProviderPage, renderExtraTitlePage } from "./render-extra-locale.mjs";
 
 const root = new URL("../", import.meta.url);
 
@@ -77,19 +79,26 @@ export async function buildSite() {
 
   for (const locale of SUPPORTED_LOCALES) {
     const config = getLocale(locale);
-    const titles = internalTitles.filter((title) => isPublicInMarket(title, config.country));
-    publicCounts[config.country] = titles.length;
+    const marketTitles = internalTitles.filter((title) => isPublicInMarket(title, config.country));
+    const titles = isExtraLocale(locale) ? marketTitles.map((title) => localizeTitle(title, locale)) : marketTitles;
+    publicCounts[locale] = titles.length;
 
-    // Remove stale generated title/provider pages before recreating the eligible set.
     await rm(new URL(`${locale}/${config.titleSegment}/`, root), { recursive: true, force: true });
     await rm(new URL(`${locale}/${config.providerSegment}/`, root), { recursive: true, force: true });
 
-    await write(`${locale}/index.html`, decorateDiscoveryHtml(renderLocaleHome(locale, titles, providers), providers.filter((provider) => provider.markets.includes(config.country))));
+    const localProviders = providers.filter((provider) => provider.markets.includes(config.country));
+    const homeHtml = isExtraLocale(locale)
+      ? renderExtraLocaleHome(locale, titles, localProviders)
+      : renderLocaleHome(locale, titles, providers);
+    await write(`${locale}/index.html`, decorateDiscoveryHtml(homeHtml, localProviders));
     const indexableUrls = [absoluteUrl(`/${locale}/`)];
 
     for (const title of titles) {
       const output = `${locale}/${config.titleSegment}/${title.slug}/index.html`;
-      await write(output, decorateDiscoveryHtml(renderTitlePage(title, locale, providers)));
+      const page = isExtraLocale(locale)
+        ? renderExtraTitlePage(title, locale, providers)
+        : renderTitlePage(title, locale, providers);
+      await write(output, decorateDiscoveryHtml(page));
       if (evaluateIndexability(title, locale).indexable) indexableUrls.push(absoluteUrl(titlePath(locale, title.slug)));
       searchRecords.push({
         id: title.id,
@@ -105,11 +114,14 @@ export async function buildSite() {
       });
     }
 
-    for (const provider of providers.filter((item) => item.markets.includes(config.country))) {
+    for (const provider of localProviders) {
       const providerTitles = titles.filter((title) => (title.offers[config.country] ?? []).some((offer) => offer.provider === provider.id));
       if (!providerTitles.length) continue;
       const output = `${locale}/${config.providerSegment}/${provider.id}/index.html`;
-      await write(output, decorateDiscoveryHtml(renderProviderPage(provider, locale, providerTitles)));
+      const providerHtml = isExtraLocale(locale)
+        ? renderExtraProviderPage(provider, locale, providerTitles)
+        : renderProviderPage(provider, locale, providerTitles);
+      await write(output, decorateDiscoveryHtml(providerHtml));
       indexableUrls.push(absoluteUrl(providerPath(locale, provider.id)));
     }
 
@@ -126,5 +138,6 @@ export async function buildSite() {
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const result = await buildSite();
-  console.log(`VISIONE build complete: ${result.titles.length} internal titles; ${result.globalTitles.length} public somewhere; ES=${result.publicCounts.ES ?? 0}, PT=${result.publicCounts.PT ?? 0}, BR=${result.publicCounts.BR ?? 0}; ${result.searchRecords.length} localized search records.`);
+  const counts = SUPPORTED_LOCALES.map((locale) => `${locale.toUpperCase()}=${result.publicCounts[locale] ?? 0}`).join(", ");
+  console.log(`VISIONE build complete: ${result.titles.length} internal titles; ${result.globalTitles.length} public somewhere; ${counts}; ${result.searchRecords.length} localized search records.`);
 }

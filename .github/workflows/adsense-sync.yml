@@ -46,6 +46,8 @@ jobs:
           node-version: '22'
       - name: Bootstrap curated TV series
         run: node streaming/bootstrap-curated-series.mjs
+      - name: Expand verified Apple TV public catalogue
+        run: node streaming/bootstrap-public-apple-series.mjs
       - name: Bootstrap curated films and free artwork
         run: node streaming/bootstrap-curated-movies.mjs
         continue-on-error: true

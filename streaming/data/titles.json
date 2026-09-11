@@ -75,7 +75,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:09.794Z",
+    "updated_at": "2026-09-11T10:09:02.074Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -209,7 +209,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:03.691Z",
+    "updated_at": "2026-09-11T10:08:56.246Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -348,7 +348,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:11.534Z",
+    "updated_at": "2026-09-11T10:09:04.012Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -473,7 +473,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:13.634Z",
+    "updated_at": "2026-09-11T10:09:05.704Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -563,7 +563,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:03.861Z",
+    "updated_at": "2026-09-11T10:08:56.404Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -670,11 +670,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:04.034Z",
+    "updated_at": "2026-09-11T10:08:56.558Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -774,11 +774,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:04.202Z",
+    "updated_at": "2026-09-11T10:08:56.711Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -912,11 +912,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:06:04.361Z",
+    "updated_at": "2026-09-11T10:08:56.864Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1054,11 +1054,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:06:04.521Z",
+    "updated_at": "2026-09-11T10:08:57.017Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1186,11 +1186,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:06:04.680Z",
+    "updated_at": "2026-09-11T10:08:57.169Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1291,11 +1291,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:04.839Z",
+    "updated_at": "2026-09-11T10:08:57.322Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1414,11 +1414,11 @@
       "PT": "available",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:04.998Z",
+    "updated_at": "2026-09-11T10:08:57.476Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1523,11 +1523,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.157Z",
+    "updated_at": "2026-09-11T10:08:57.629Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1632,11 +1632,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.316Z",
+    "updated_at": "2026-09-11T10:08:57.781Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1729,11 +1729,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.474Z",
+    "updated_at": "2026-09-11T10:08:57.933Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1832,11 +1832,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.632Z",
+    "updated_at": "2026-09-11T10:08:58.085Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1936,11 +1936,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.791Z",
+    "updated_at": "2026-09-11T10:08:58.237Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2039,11 +2039,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:05.952Z",
+    "updated_at": "2026-09-11T10:08:58.388Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2143,11 +2143,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:06.111Z",
+    "updated_at": "2026-09-11T10:08:58.540Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2247,11 +2247,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:06.268Z",
+    "updated_at": "2026-09-11T10:08:58.692Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2348,11 +2348,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:06.426Z",
+    "updated_at": "2026-09-11T10:08:58.844Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2456,11 +2456,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:06.584Z",
+    "updated_at": "2026-09-11T10:08:58.996Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2556,11 +2556,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:06.743Z",
+    "updated_at": "2026-09-11T10:08:59.148Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2698,11 +2698,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:06:06.901Z",
+    "updated_at": "2026-09-11T10:08:59.299Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2805,11 +2805,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.059Z",
+    "updated_at": "2026-09-11T10:08:59.452Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2904,11 +2904,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.217Z",
+    "updated_at": "2026-09-11T10:08:59.603Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3010,11 +3010,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.375Z",
+    "updated_at": "2026-09-11T10:08:59.755Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3117,11 +3117,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.533Z",
+    "updated_at": "2026-09-11T10:08:59.906Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3220,11 +3220,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.691Z",
+    "updated_at": "2026-09-11T10:09:00.058Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3327,11 +3327,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:07.850Z",
+    "updated_at": "2026-09-11T10:09:00.211Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3435,11 +3435,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.008Z",
+    "updated_at": "2026-09-11T10:09:00.362Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3535,11 +3535,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.165Z",
+    "updated_at": "2026-09-11T10:09:00.514Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3644,11 +3644,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.323Z",
+    "updated_at": "2026-09-11T10:09:00.666Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3754,11 +3754,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.481Z",
+    "updated_at": "2026-09-11T10:09:00.818Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3862,11 +3862,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.639Z",
+    "updated_at": "2026-09-11T10:09:00.969Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3983,11 +3983,11 @@
       "PT": "unknown",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:06:08.797Z",
+    "updated_at": "2026-09-11T10:09:01.121Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -4084,11 +4084,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:08.955Z",
+    "updated_at": "2026-09-11T10:09:01.273Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -4177,7 +4177,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:14.214Z",
+    "updated_at": "2026-09-11T10:09:06.256Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4270,7 +4270,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:14.765Z",
+    "updated_at": "2026-09-11T10:09:06.708Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4360,7 +4360,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:15.581Z",
+    "updated_at": "2026-09-11T10:09:07.276Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4443,7 +4443,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:16.125Z",
+    "updated_at": "2026-09-11T10:09:07.784Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4534,7 +4534,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:16.631Z",
+    "updated_at": "2026-09-11T10:09:08.457Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4599,7 +4599,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:17.120Z",
+    "updated_at": "2026-09-11T10:09:08.816Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4697,7 +4697,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:17.778Z",
+    "updated_at": "2026-09-11T10:09:09.669Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4784,7 +4784,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:18.361Z",
+    "updated_at": "2026-09-11T10:09:10.323Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4869,7 +4869,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:18.698Z",
+    "updated_at": "2026-09-11T10:09:10.904Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4957,7 +4957,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:19.431Z",
+    "updated_at": "2026-09-11T10:09:11.656Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -5046,7 +5046,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:19.813Z",
+    "updated_at": "2026-09-11T10:09:12.157Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -5132,7 +5132,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:06:20.366Z",
+    "updated_at": "2026-09-11T10:09:13.095Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",

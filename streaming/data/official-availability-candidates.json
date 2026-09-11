@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "the-bear",
+    "provider": "disney-plus",
+    "country": "ES",
+    "url": "https://www.disneyplus.com/es-es/browse/entity-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f",
+    "observed_signal": "Official title page is publicly discoverable and presents a Disney+ subscription CTA.",
+    "discovered_at": "2026-09-10T22:51:01Z",
+    "state": "candidate-only",
+    "blocker": "Direct automated extraction is not enabled because Disney+ terms restrict automated scraping/data extraction."
+  },
+  {
+    "slug": "interstellar",
+    "provider": "prime-video",
+    "country": "ES",
+    "url": "https://www.primevideo.com/-/es/detail/0JSKG1O0EEAOXX5WQA0RN7Y9C1",
+    "observed_signal": "Official title pages expose rental/purchase offers, but multiple listings currently show different price variants.",
+    "discovered_at": "2026-09-10T22:51:01Z",
+    "state": "candidate-only",
+    "blocker": "Needs authoritative listing selection and terms review before evidence is promoted into the availability cache."
+  }
+]

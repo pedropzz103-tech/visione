@@ -9,13 +9,13 @@ async function exists(path) {
   try { await access(join(root, path)); return true; } catch { return false; }
 }
 
-async function collectHtml(dir, prefix = dir) {
+async function collectHtml(dir) {
   const absolute = join(root, dir);
   const entries = await readdir(absolute, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
     const child = join(dir, entry.name);
-    if (entry.isDirectory()) files.push(...await collectHtml(child, join(prefix, entry.name)));
+    if (entry.isDirectory()) files.push(...await collectHtml(child));
     else if (entry.isFile() && extname(entry.name) === ".html") files.push(child.replaceAll("\\", "/"));
   }
   return files;
@@ -79,8 +79,8 @@ export async function validateBuild() {
       if (!html.includes('"@type":"Movie"') && !html.includes('"@type":"TVSeries"')) {
         errors.push(`Missing media JSON-LD: ${file}`);
       }
-      if (!html.includes("Última") && !html.includes("comprobación") && !html.includes("verificação")) {
-        errors.push(`Missing visible freshness information: ${file}`);
+      if (!robots.includes("noindex") && !html.includes("Última") && !html.includes("comprobación") && !html.includes("verificação")) {
+        errors.push(`Indexable title is missing visible availability freshness: ${file}`);
       }
     }
 
@@ -97,8 +97,8 @@ export async function validateBuild() {
     if (!sitemapText[locale]?.includes(`<loc>https://visione.one/${locale}/</loc>`)) errors.push(`Locale home missing from sitemap: ${locale}`);
   }
 
-  const credits = JSON.parse(await readFile(join(root, "streaming/data/titles.json"), "utf8"));
-  for (const raw of credits) {
+  const rawTitles = JSON.parse(await readFile(join(root, "streaming/data/titles.json"), "utf8"));
+  for (const raw of rawTitles) {
     const offers = Object.values(raw.offers ?? {}).flat();
     for (const offer of offers) {
       if (offer.requires_attribution && (!Array.isArray(offer.attribution) || offer.attribution.length === 0)) {

@@ -29,4 +29,4 @@ jobs:
       - name: Validate generated streaming site
         run: node streaming/validate.mjs
       - name: Run site quality tests
-        run: node --test tests/site.test.mjs tests/streaming.test.mjs tests/data-credits.test.mjs
+        run: node --test tests/*.test.mjs

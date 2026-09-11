@@ -37,9 +37,10 @@ test("keeps unverified seed availability out of the index", () => {
   assert.ok(result.reasons.includes("availability-not-verified"));
 });
 
-test("allows a useful explicitly verified unavailable state", () => {
+test("allows a useful explicitly verified unavailable state with availability freshness", () => {
   const raw = structuredClone(seed[0]);
   raw.availability_status.ES = "unavailable";
+  raw.availability_updated_at = "2026-09-10T20:00:00Z";
   const title = normalizeTitle(raw);
   const result = evaluateIndexability(title, "es");
   assert.equal(result.indexable, true);
@@ -198,7 +199,7 @@ test("generates a locale-aware search index without runtime API dependency", asy
   assert.doesNotMatch(client, /api\.themoviedb|justwatch|rapidapi/i);
 });
 
-test("renders title pages with canonical, hreflang, JSON-LD, freshness and safe noindex state", async () => {
+test("renders title pages with canonical, hreflang, JSON-LD and a safe pending state", async () => {
   const page = await read("es/donde-ver/interstellar/index.html");
   assert.match(page, /rel="canonical" href="https:\/\/visione\.one\/es\/donde-ver\/interstellar\/"/);
   assert.match(page, /hreflang="es-ES"/);
@@ -208,7 +209,7 @@ test("renders title pages with canonical, hreflang, JSON-LD, freshness and safe 
   assert.match(page, /"@type":"BreadcrumbList"/);
   assert.match(page, /"@type":"FAQPage"/);
   assert.match(page, /name="robots" content="noindex,follow/);
-  assert.match(page, /Última comprobación/);
+  assert.doesNotMatch(page, /Última comprobación/);
   assert.match(page, /fuente comercial|fuente verificable/i);
 });
 

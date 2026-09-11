@@ -1,7 +1,9 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { absoluteUrl, getLocale, providerPath, SUPPORTED_LOCALES, titlePath } from "./config.mjs";
+import { applyAffiliateConfigToCatalog } from "./affiliate.mjs";
+import { isPublicAnywhere, isPublicInMarket } from "./publication.mjs";
 import { evaluateIndexability, normalizeTitle } from "./schema.mjs";
 import { renderGlobalHome, renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.mjs";
 
@@ -38,9 +40,9 @@ function decorateDiscoveryHtml(html, providers = []) {
   return output;
 }
 
-function searchTermsFromCredits(credits = {}) {
-  const terms = [];
-  for (const value of Object.values(credits)) {
+function searchTermsFromCredits(title) {
+  const terms = [...(title.genres ?? [])];
+  for (const value of Object.values(title.credits ?? {})) {
     if (typeof value === "string") terms.push(value);
     else if (Array.isArray(value)) terms.push(...value.filter((item) => typeof item === "string"));
   }
@@ -58,36 +60,45 @@ function xmlSitemapIndex(paths) {
 }
 
 export async function buildSite() {
-  const [rawTitles, providers] = await Promise.all([
+  const [rawTitles, providers, affiliateConfig] = await Promise.all([
     readJson("streaming/data/titles.json"),
-    readJson("streaming/data/providers.json")
+    readJson("streaming/data/providers.json"),
+    readJson("streaming/data/affiliate-config.json").catch(() => [])
   ]);
-  const titles = rawTitles.map(normalizeTitle);
+  const internalTitles = applyAffiliateConfigToCatalog(rawTitles.map(normalizeTitle), affiliateConfig);
+  const globalTitles = internalTitles.filter(isPublicAnywhere);
 
-  await write("index.html", decorateDiscoveryHtml(renderGlobalHome(titles, providers), providers));
+  await write("index.html", decorateDiscoveryHtml(renderGlobalHome(globalTitles, providers), providers));
 
   const searchRecords = [];
   const sitemapPaths = [];
+  const publicCounts = {};
 
   for (const locale of SUPPORTED_LOCALES) {
     const config = getLocale(locale);
-    await write(`${locale}/index.html`, decorateDiscoveryHtml(renderLocaleHome(locale, titles, providers), providers.filter((provider) => provider.markets.includes(config.country))));
+    const titles = internalTitles.filter((title) => isPublicInMarket(title, config.country));
+    publicCounts[config.country] = titles.length;
 
+    // Remove stale generated title/provider pages before recreating the eligible set.
+    await rm(new URL(`${locale}/${config.titleSegment}/`, root), { recursive: true, force: true });
+    await rm(new URL(`${locale}/${config.providerSegment}/`, root), { recursive: true, force: true });
+
+    await write(`${locale}/index.html`, decorateDiscoveryHtml(renderLocaleHome(locale, titles, providers), providers.filter((provider) => provider.markets.includes(config.country))));
     const indexableUrls = [absoluteUrl(`/${locale}/`)];
 
     for (const title of titles) {
       const output = `${locale}/${config.titleSegment}/${title.slug}/index.html`;
       await write(output, decorateDiscoveryHtml(renderTitlePage(title, locale, providers)));
       if (evaluateIndexability(title, locale).indexable) indexableUrls.push(absoluteUrl(titlePath(locale, title.slug)));
-
       searchRecords.push({
         id: title.id,
         type: title.type,
         title: title.titles[locale],
         alternateTitles: [...new Set([title.original_title, ...Object.values(title.titles)].filter(Boolean))],
-        searchTerms: searchTermsFromCredits(title.credits),
+        searchTerms: searchTermsFromCredits(title),
         year: title.year,
         poster: title.poster,
+        artwork: title.artwork,
         url: titlePath(locale, title.slug),
         locale
       });
@@ -97,7 +108,7 @@ export async function buildSite() {
       const providerTitles = titles.filter((title) => (title.offers[config.country] ?? []).some((offer) => offer.provider === provider.id));
       if (!providerTitles.length) continue;
       const output = `${locale}/${config.providerSegment}/${provider.id}/index.html`;
-      await write(output, decorateDiscoveryHtml(renderProviderPage(provider, locale, titles)));
+      await write(output, decorateDiscoveryHtml(renderProviderPage(provider, locale, providerTitles)));
       indexableUrls.push(absoluteUrl(providerPath(locale, provider.id)));
     }
 
@@ -109,10 +120,10 @@ export async function buildSite() {
   await write("streaming-sitemap-index.xml", xmlSitemapIndex(sitemapPaths));
   await write("data/search-index.json", `${JSON.stringify(searchRecords)}\n`);
 
-  return { titles, providers, searchRecords, sitemapPaths };
+  return { titles: internalTitles, globalTitles, providers, searchRecords, sitemapPaths, publicCounts };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const result = await buildSite();
-  console.log(`VISIONE build complete: ${result.titles.length} titles, ${result.searchRecords.length} localized search records.`);
+  console.log(`VISIONE build complete: ${result.titles.length} internal titles; ${result.globalTitles.length} public somewhere; ES=${result.publicCounts.ES ?? 0}, PT=${result.publicCounts.PT ?? 0}, BR=${result.publicCounts.BR ?? 0}; ${result.searchRecords.length} localized search records.`);
 }

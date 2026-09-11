@@ -75,7 +75,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:14.743Z",
+    "updated_at": "2026-09-11T08:25:23.435Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -169,15 +169,15 @@
     "backdrop": null,
     "artwork": {
       "kind": "source-image",
-      "source": "legacy",
-      "license": null,
+      "source": "TVmaze",
+      "license": "CC BY-SA",
       "credit": null,
-      "source_url": null
+      "source_url": "https://www.tvmaze.com/shows/46562/the-last-of-us"
     },
     "discovery": {
       "source": null,
       "discovered_at": null,
-      "score": 0,
+      "score": 176.5,
       "sitelinks": 0
     },
     "rating": {
@@ -209,7 +209,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:13.678Z",
+    "updated_at": "2026-09-11T08:25:22.506Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -348,7 +348,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:15.553Z",
+    "updated_at": "2026-09-11T08:25:24.306Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -473,7 +473,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:16.462Z",
+    "updated_at": "2026-09-11T08:25:25.369Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -516,15 +516,15 @@
     "backdrop": null,
     "artwork": {
       "kind": "source-image",
-      "source": "legacy",
-      "license": null,
+      "source": "TVmaze",
+      "license": "CC BY-SA",
       "credit": null,
-      "source_url": null
+      "source_url": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends"
     },
     "discovery": {
       "source": null,
       "discovered_at": null,
-      "score": 0,
+      "score": 176.5,
       "sitelinks": 0
     },
     "rating": {
@@ -563,7 +563,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:13.782Z",
+    "updated_at": "2026-09-11T08:25:22.651Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -608,15 +608,15 @@
     "backdrop": null,
     "artwork": {
       "kind": "source-image",
-      "source": "legacy",
-      "license": null,
+      "source": "TVmaze",
+      "license": "CC BY-SA",
       "credit": null,
-      "source_url": null
+      "source_url": "https://www.tvmaze.com/shows/44933/severance"
     },
     "discovery": {
       "source": null,
       "discovered_at": null,
-      "score": 0,
+      "score": 174,
       "sitelinks": 0
     },
     "rating": {
@@ -653,7 +653,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:13.883Z",
+    "updated_at": "2026-09-11T08:25:22.801Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -698,15 +698,15 @@
     "backdrop": null,
     "artwork": {
       "kind": "source-image",
-      "source": "legacy",
-      "license": null,
+      "source": "TVmaze",
+      "license": "CC BY-SA",
       "credit": null,
-      "source_url": null
+      "source_url": "https://www.tvmaze.com/shows/54198/the-bear"
     },
     "discovery": {
       "source": null,
       "discovered_at": null,
-      "score": 0,
+      "score": 173,
       "sitelinks": 0
     },
     "rating": {
@@ -740,7 +740,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:23:13.984Z",
+    "updated_at": "2026-09-11T08:25:22.940Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",

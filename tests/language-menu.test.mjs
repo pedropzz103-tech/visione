@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { renderLanguageMenu } from "../streaming/language-menu.mjs";
+
+const root = new URL("../", import.meta.url);
+const read = (path) => readFile(new URL(path, root), "utf8");
 
 test("language selector renders one compact trigger and keeps all seven languages inside the menu", () => {
   const html = renderLanguageMenu("uk");
@@ -20,4 +24,14 @@ test("global selector does not dump seven language codes into the visible trigge
   assert.match(summary, /Idioma/);
   assert.doesNotMatch(summary, /ES|PT|BR|EN|FR|RU|UK/);
   assert.equal((html.match(/class="language-option/g) ?? []).length, 7);
+});
+
+test("generated home keeps language options inside the dropdown instead of the visible header row", async () => {
+  const home = await read("index.html");
+  const header = home.match(/<header class="stream-header">[\s\S]*?<\/header>/)?.[0] ?? "";
+  const menu = header.match(/<details class="language-menu">[\s\S]*?<\/details>/)?.[0] ?? "";
+  assert.ok(menu);
+  assert.equal((menu.match(/class="language-option/g) ?? []).length, 7);
+  assert.match(menu, /<summary[^>]*>🌐 Idioma ▾<\/summary>/);
+  assert.doesNotMatch(header.replace(menu, ""), />EN<\/a>|>FR<\/a>|>RU<\/a>|>UK<\/a>/);
 });

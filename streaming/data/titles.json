@@ -75,7 +75,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:16.214Z",
+    "updated_at": "2026-09-11T10:06:09.794Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -209,7 +209,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:14.797Z",
+    "updated_at": "2026-09-11T10:06:03.691Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -348,7 +348,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:17.785Z",
+    "updated_at": "2026-09-11T10:06:11.534Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -473,7 +473,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:19.907Z",
+    "updated_at": "2026-09-11T10:06:13.634Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -563,7 +563,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:14.968Z",
+    "updated_at": "2026-09-11T10:06:03.861Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -604,14 +604,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg",
+    "poster": null,
     "backdrop": null,
     "artwork": {
-      "kind": "source-image",
-      "source": "TVmaze",
-      "license": "CC BY-SA",
-      "credit": null,
-      "source_url": "https://www.tvmaze.com/shows/44933/severance"
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
     },
     "discovery": {
       "source": null,
@@ -644,20 +644,37 @@
     },
     "related": [],
     "offers": {
-      "ES": [],
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/separacion/umc.cmc.1srk2goyh2q2zdxcx605w8vtx",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/separacion/umc.cmc.1srk2goyh2q2zdxcx605w8vtx",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
       "PT": [],
       "BR": []
     },
     "availability_status": {
-      "ES": "unknown",
+      "ES": "available",
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:15.123Z",
-    "availability_updated_at": null,
+    "updated_at": "2026-09-11T10:06:04.034Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "unconfigured",
+      "availability": "official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -731,20 +748,37 @@
     },
     "related": [],
     "offers": {
-      "ES": [],
+      "ES": [
+        {
+          "provider": "disney-plus",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://www.disneyplus.com/es-es/browse/entity-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Disney+ public page (ES)"
+          ],
+          "evidence_url": "https://www.disneyplus.com/es-es/browse/entity-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
       "PT": [],
       "BR": []
     },
     "availability_status": {
-      "ES": "unknown",
+      "ES": "available",
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T08:32:15.277Z",
-    "availability_updated_at": null,
+    "updated_at": "2026-09-11T10:06:04.202Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "unconfigured",
+      "availability": "official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -756,6 +790,4362 @@
         "thetvdb": 403294
       },
       "source_summary": "Carmy, a young fine-dining chef, comes home to Chicago to run his family sandwich shop. As he fights to transform the shop and himself, he works alongside a rough-around-the-edges crew that ultimately reveal themselves as his chosen family."
+    }
+  },
+  {
+    "id": "series:tvmaze:44458",
+    "type": "series",
+    "slug": "ted-lasso",
+    "titles": {
+      "es": "Ted Lasso",
+      "pt": "Ted Lasso",
+      "br": "Ted Lasso"
+    },
+    "original_title": "Ted Lasso",
+    "year": 2020,
+    "runtime": 43,
+    "seasons": 4,
+    "overview": {
+      "es": "Ted Lasso es una serie estrenada en 2020, con géneros como drama, comedia, sports. Entre los nombres destacados del reparto están Jason Sudeikis, Brendan Hunt, Hannah Waddingham. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Ted Lasso é uma série estreada em 2020, com géneros como drama, comédia, sports. Entre os nomes de destaque do elenco estão Jason Sudeikis, Brendan Hunt, Hannah Waddingham. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Ted Lasso é uma série lançada em 2020, com gêneros como drama, comédia, sports. Entre os nomes de destaque do elenco estão Jason Sudeikis, Brendan Hunt, Hannah Waddingham. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Sports"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 174.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8.1,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Jason Sudeikis",
+        "Brendan Hunt",
+        "Hannah Waddingham",
+        "Jeremy Swift",
+        "Brett Goldstein",
+        "Juno Temple",
+        "Billy Harris",
+        "Kola Bokinni",
+        "Phil Dunster",
+        "Nick Mohammed",
+        "Toheeb Jimoh",
+        "Cristo Fernández"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/pt/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (PT)"
+          ],
+          "evidence_url": "https://tv.apple.com/pt/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ],
+      "BR": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/br/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (BR)"
+          ],
+          "evidence_url": "https://tv.apple.com/br/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ]
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "available",
+      "BR": "available"
+    },
+    "updated_at": "2026-09-11T10:06:04.361Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 44458,
+      "tvmaze_url": "https://www.tvmaze.com/shows/44458/ted-lasso",
+      "external_ids": {
+        "imdb": "tt10986410",
+        "thetvdb": 383203
+      },
+      "source_summary": "Ted Lasso centers on an idealistic — and clueless — all-American football coach hired to manage an English football club — despite having no soccer coaching experience at all."
+    }
+  },
+  {
+    "id": "series:tvmaze:38052",
+    "type": "series",
+    "slug": "silo",
+    "titles": {
+      "es": "Silo",
+      "pt": "O Silo",
+      "br": "Silo"
+    },
+    "original_title": "Silo",
+    "year": 2023,
+    "runtime": 51,
+    "seasons": 4,
+    "overview": {
+      "es": "Silo es una serie estrenada en 2023, con géneros como drama, ciencia ficción, misterio. Entre los nombres destacados del reparto están Rebecca Ferguson, Tim Robbins, Common. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Silo é uma série estreada em 2023, com géneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Rebecca Ferguson, Tim Robbins, Common. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Silo é uma série lançada em 2023, com gêneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Rebecca Ferguson, Tim Robbins, Common. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 177,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Graham Yost",
+      "creators": [
+        "Graham Yost"
+      ],
+      "cast": [
+        "Rebecca Ferguson",
+        "Tim Robbins",
+        "Common",
+        "Harriet Walter",
+        "Chinaza Uche",
+        "Remmie Milner",
+        "Shane McRae",
+        "Avi Nash",
+        "Billy Postlethwaite",
+        "Alexandria Riley",
+        "Rick Gomez",
+        "Clare Perkins"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/pt/show/o-silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (PT)"
+          ],
+          "evidence_url": "https://tv.apple.com/pt/show/o-silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ],
+      "BR": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/br/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (BR)"
+          ],
+          "evidence_url": "https://tv.apple.com/br/show/silo/umc.cmc.3yksgc857px0k0rqe5zd4jice",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ]
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "available",
+      "BR": "available"
+    },
+    "updated_at": "2026-09-11T10:06:04.521Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 38052,
+      "tvmaze_url": "https://www.tvmaze.com/shows/38052/silo",
+      "external_ids": {
+        "imdb": "tt14688458",
+        "thetvdb": 403245
+      },
+      "source_summary": "Silo depicts a ruined and toxic future, when thousands of people live in a giant silo deep underground. After its sheriff breaks a cardinal rule and residents die mysteriously, engineer Juliette starts to uncover shocking secrets and the truth about the silo."
+    }
+  },
+  {
+    "id": "series:tvmaze:45039",
+    "type": "series",
+    "slug": "slow-horses",
+    "titles": {
+      "es": "Slow Horses",
+      "pt": "Slow Horses",
+      "br": "Slow Horses"
+    },
+    "original_title": "Slow Horses",
+    "year": 2022,
+    "runtime": 46,
+    "seasons": 7,
+    "overview": {
+      "es": "Slow Horses es una serie estrenada en 2022, con géneros como drama, suspense, espionage. Entre los nombres destacados del reparto están Gary Oldman, Jack Lowden, Kristin Scott Thomas. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Slow Horses é uma série estreada em 2022, com géneros como drama, suspense, espionage. Entre os nomes de destaque do elenco estão Gary Oldman, Jack Lowden, Kristin Scott Thomas. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Slow Horses é uma série lançada em 2022, com gêneros como drama, suspense, espionage. Entre os nomes de destaque do elenco estão Gary Oldman, Jack Lowden, Kristin Scott Thomas. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Espionage"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 176.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8.1,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Gary Oldman",
+        "Jack Lowden",
+        "Kristin Scott Thomas",
+        "Jonathan Pryce",
+        "Sophie Okonedo",
+        "Hugo Weaving"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/pt/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (PT)"
+          ],
+          "evidence_url": "https://tv.apple.com/pt/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ],
+      "BR": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/br/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (BR)"
+          ],
+          "evidence_url": "https://tv.apple.com/br/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ]
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "available",
+      "BR": "available"
+    },
+    "updated_at": "2026-09-11T10:06:04.680Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 45039,
+      "tvmaze_url": "https://www.tvmaze.com/shows/45039/slow-horses",
+      "external_ids": {
+        "imdb": "tt5875444",
+        "thetvdb": 372264
+      },
+      "source_summary": "Slow Horses follows the story of a group of British intelligence agents who serve in a dumping ground department of MI5 called Slough House after the big mistakes they've made that resulted in the end of their mainstream careers. This quick-witted spy drama follows a dysfunctional team of MI5 agents—and their obnoxious boss, the notorious Jackson Lamb—as they navigate the espionage world's smoke and mirrors to defend England from sinister forces."
+    }
+  },
+  {
+    "id": "series:tvmaze:41375",
+    "type": "series",
+    "slug": "pachinko",
+    "titles": {
+      "es": "Pachinko",
+      "pt": "Pachinko",
+      "br": "Pachinko"
+    },
+    "original_title": "Pachinko",
+    "year": 2022,
+    "runtime": 53,
+    "seasons": 2,
+    "overview": {
+      "es": "Pachinko es una serie estrenada en 2022, con géneros como drama. Entre los nombres destacados del reparto están Lee Min Ho, Jin Ha, Soji Arai. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Pachinko é uma série estreada em 2022, com géneros como drama. Entre os nomes de destaque do elenco estão Lee Min Ho, Jin Ha, Soji Arai. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Pachinko é uma série lançada em 2022, com gêneros como drama. Entre os nomes de destaque do elenco estão Lee Min Ho, Jin Ha, Soji Arai. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 173.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8.1,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Soo Hugh",
+      "creators": [
+        "Soo Hugh"
+      ],
+      "cast": [
+        "Lee Min Ho",
+        "Jin Ha",
+        "Soji Arai",
+        "Kim Min Ha",
+        "Yoon Yeo Jung",
+        "Jimmi Simpson",
+        "Anna Sawai",
+        "Kaho Minami",
+        "Jung In Ji",
+        "Jeong Eun Chae",
+        "Han Joon Woo"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/pachinko/umc.cmc.17vf6g68dy89kk1l1nnb6min4",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/pachinko/umc.cmc.17vf6g68dy89kk1l1nnb6min4",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:04.839Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 41375,
+      "tvmaze_url": "https://www.tvmaze.com/shows/41375/pachinko",
+      "external_ids": {
+        "imdb": "tt8888462",
+        "thetvdb": 368124
+      },
+      "source_summary": "Told in three different languages: Korean, Japanese and English, Pachinko chronicles the hopes and dreams of four generations of a Korean immigrant family."
+    }
+  },
+  {
+    "id": "series:tvmaze:41524",
+    "type": "series",
+    "slug": "the-morning-show",
+    "titles": {
+      "es": "The Morning Show",
+      "pt": "The Morning Show",
+      "br": "Show da Manhã"
+    },
+    "original_title": "The Morning Show",
+    "year": 2019,
+    "runtime": 54,
+    "seasons": 5,
+    "overview": {
+      "es": "The Morning Show es una serie estrenada en 2019, con géneros como drama. Entre los nombres destacados del reparto están Jennifer Aniston, Mark Duplass, Billy Crudup. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "The Morning Show é uma série estreada em 2019, com géneros como drama. Entre os nomes de destaque do elenco estão Jennifer Aniston, Mark Duplass, Billy Crudup. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "The Morning Show é uma série lançada em 2019, com gêneros como drama. Entre os nomes de destaque do elenco estão Jennifer Aniston, Mark Duplass, Billy Crudup. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 167,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Jay Carson",
+      "creators": [
+        "Jay Carson"
+      ],
+      "cast": [
+        "Jennifer Aniston",
+        "Mark Duplass",
+        "Billy Crudup",
+        "Reese Witherspoon",
+        "Karen Pittman",
+        "Néstor Carbonell",
+        "Greta Lee",
+        "Desean Terry",
+        "Nicole Beharie",
+        "Steve Carell",
+        "Julianna Margulies",
+        "Bel Powley"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/pt/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (PT)"
+          ],
+          "evidence_url": "https://tv.apple.com/pt/show/the-morning-show/umc.cmc.25tn3v8ku4b39tr6ccgb8nl6m",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "available",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:04.998Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 41524,
+      "tvmaze_url": "https://www.tvmaze.com/shows/41524/the-morning-show",
+      "external_ids": {
+        "imdb": "tt7203552",
+        "thetvdb": 361563
+      },
+      "source_summary": "Nominated for three Golden Globes®, this unapologetically candid drama looks at the modern workplace through the lens of the people who help America wake up. Pull back the curtain on early morning TV."
+    }
+  },
+  {
+    "id": "series:tvmaze:41414",
+    "type": "series",
+    "slug": "for-all-mankind",
+    "titles": {
+      "es": "For All Mankind",
+      "pt": "For All Mankind",
+      "br": "For All Mankind"
+    },
+    "original_title": "For All Mankind",
+    "year": 2019,
+    "runtime": 59,
+    "seasons": 6,
+    "overview": {
+      "es": "For All Mankind es una serie estrenada en 2019, con géneros como drama, ciencia ficción. Entre los nombres destacados del reparto están Joel Kinnaman, Wrenn Schmidt, Coral Peña. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "For All Mankind é uma série estreada em 2019, com géneros como drama, ficção científica. Entre os nomes de destaque do elenco estão Joel Kinnaman, Wrenn Schmidt, Coral Peña. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "For All Mankind é uma série lançada em 2019, com gêneros como drama, ficção científica. Entre os nomes de destaque do elenco estão Joel Kinnaman, Wrenn Schmidt, Coral Peña. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Science-Fiction"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 170,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Matt Wolpert",
+      "creators": [
+        "Matt Wolpert",
+        "Ben Nedivi",
+        "Ronald D. Moore"
+      ],
+      "cast": [
+        "Joel Kinnaman",
+        "Wrenn Schmidt",
+        "Coral Peña",
+        "Cynthy Wu",
+        "Krys Marshall",
+        "Shantel VanSanten",
+        "Jodi Balfour",
+        "Casey W. Johnson",
+        "Edi Gathegi",
+        "Michael Dorman",
+        "Sarah Jones",
+        "Toby Kebbell"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/para-toda-la-humanidad/umc.cmc.6wsi780sz5tdbqcf11k76mkp7",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/para-toda-la-humanidad/umc.cmc.6wsi780sz5tdbqcf11k76mkp7",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.157Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 41414,
+      "tvmaze_url": "https://www.tvmaze.com/shows/41414/for-all-mankind",
+      "external_ids": {
+        "imdb": "tt7772588",
+        "thetvdb": 356202
+      },
+      "source_summary": "Imagine a world where the global space race never ended. This thrilling \"what if\" take on history from Ronald D. Moore ( Outlander , Battlestar Galactica ) spotlights the high-stakes lives of NASA astronauts and their families."
+    }
+  },
+  {
+    "id": "series:tvmaze:35951",
+    "type": "series",
+    "slug": "foundation",
+    "titles": {
+      "es": "Foundation",
+      "pt": "Foundation",
+      "br": "Foundation"
+    },
+    "original_title": "Foundation",
+    "year": 2021,
+    "runtime": 53,
+    "seasons": 4,
+    "overview": {
+      "es": "Foundation es una serie estrenada en 2021, con géneros como drama, ciencia ficción, misterio. Entre los nombres destacados del reparto están Lee Pace, Lou Llobell, Laura Birn. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Foundation é uma série estreada em 2021, com géneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Lee Pace, Lou Llobell, Laura Birn. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Foundation é uma série lançada em 2021, com gêneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Lee Pace, Lou Llobell, Laura Birn. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 173,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.6,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "David S. Goyer",
+      "creators": [
+        "David S. Goyer",
+        "Josh Friedman"
+      ],
+      "cast": [
+        "Lee Pace",
+        "Lou Llobell",
+        "Laura Birn",
+        "Terrence Mann",
+        "Jared Harris",
+        "Cassian Bilton",
+        "Leah Harvey",
+        "Pilou Asbæk",
+        "Brandon Bell",
+        "Synnøve Karlsen",
+        "Cody Fern",
+        "Cherry Jones"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/fundacion/umc.cmc.5983fipzqbicvrve6jdfep4x3",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/fundacion/umc.cmc.5983fipzqbicvrve6jdfep4x3",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.316Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 35951,
+      "tvmaze_url": "https://www.tvmaze.com/shows/35951/foundation",
+      "external_ids": {
+        "imdb": "tt0804484",
+        "thetvdb": 366972
+      },
+      "source_summary": "When revolutionary Dr. Hari Seldon predicts the impending fall of the Empire, he and a band of loyal followers venture to the far reaches of the galaxy to establish The Foundation in an attempt to rebuild and preserve the future of civilization. Enraged by Hari's claims, the ruling Cleons – a long line of emperor clones – fear their grasp on the galaxy may be weakening as they're forced to reckon with the potential reality of losing their legacy forever."
+    }
+  },
+  {
+    "id": "series:tvmaze:53147",
+    "type": "series",
+    "slug": "black-bird",
+    "titles": {
+      "es": "Black Bird",
+      "pt": "Black Bird",
+      "br": "Black Bird"
+    },
+    "original_title": "Black Bird",
+    "year": 2022,
+    "runtime": 58,
+    "seasons": 1,
+    "overview": {
+      "es": "Black Bird es una serie estrenada en 2022, con géneros como drama, crimen, suspense. Entre los nombres destacados del reparto están Paul Walter Hauser, Taron Egerton, Ray Liotta. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Black Bird é uma série estreada em 2022, com géneros como drama, crime, suspense. Entre os nomes de destaque do elenco estão Paul Walter Hauser, Taron Egerton, Ray Liotta. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Black Bird é uma série lançada em 2022, com gêneros como drama, crime, suspense. Entre os nomes de destaque do elenco estão Paul Walter Hauser, Taron Egerton, Ray Liotta. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 175,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Paul Walter Hauser",
+        "Taron Egerton",
+        "Ray Liotta",
+        "Greg Kinnear",
+        "Sepideh Moafi"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/encerrado-con-el-diablo/umc.cmc.30gx1y8nwthydkrvhqu156p3",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/encerrado-con-el-diablo/umc.cmc.30gx1y8nwthydkrvhqu156p3",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.474Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 53147,
+      "tvmaze_url": "https://www.tvmaze.com/shows/53147/black-bird",
+      "external_ids": {
+        "imdb": "tt4301160",
+        "thetvdb": 401998
+      },
+      "source_summary": "Inspired by actual events, when high school football hero, decorated policeman's son and convicted drug dealer Jimmy Keene is sentenced to 10 years in a minimum security prison, he is given the choice of a lifetime — enter a maximum-security prison for the criminally insane and befriend suspected serial killer Larry Hall, or stay where he is and serve his full sentence with no possibility of parole. Keene quickly realizes his only way out is to elicit a confession and find out where the bodies of several young girls are buried before Hall's appeal goes through. But is this suspected killer telling the truth? Or is it just another tale from a serial liar?"
+    }
+  },
+  {
+    "id": "series:tvmaze:61315",
+    "type": "series",
+    "slug": "dark-matter",
+    "titles": {
+      "es": "Dark Matter",
+      "pt": "Dark Matter",
+      "br": "Matéria Escura"
+    },
+    "original_title": "Dark Matter",
+    "year": 2024,
+    "runtime": 53,
+    "seasons": 2,
+    "overview": {
+      "es": "Dark Matter es una serie estrenada en 2024, con géneros como ciencia ficción, suspense, misterio. Entre los nombres destacados del reparto están Joel Edgerton, Jennifer Connelly, Oakes Fegley. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Dark Matter é uma série estreada em 2024, com géneros como ficção científica, suspense, mistério. Entre os nomes de destaque do elenco estão Joel Edgerton, Jennifer Connelly, Oakes Fegley. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Dark Matter é uma série lançada em 2024, com gêneros como ficção científica, suspense, mistério. Entre os nomes de destaque do elenco estão Joel Edgerton, Jennifer Connelly, Oakes Fegley. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Science-Fiction",
+      "Thriller",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 175.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Blake Crouch",
+      "creators": [
+        "Blake Crouch"
+      ],
+      "cast": [
+        "Joel Edgerton",
+        "Jennifer Connelly",
+        "Oakes Fegley",
+        "Alice Braga",
+        "Jimmi Simpson",
+        "Dayo Okeniyi",
+        "Amanda Brugel"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/materia-oscura/umc.cmc.4luj45vtqpmjsvb6sc2675oeg",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/materia-oscura/umc.cmc.4luj45vtqpmjsvb6sc2675oeg",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.632Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 61315,
+      "tvmaze_url": "https://www.tvmaze.com/shows/61315/dark-matter",
+      "external_ids": {
+        "imdb": "tt19231492",
+        "thetvdb": 393159
+      },
+      "source_summary": "Hailed as one of the best sci-fi novels of the decade, Dark Matter is a story about the road not taken. The series follows Jason Dessen, a physicist, professor, and family man who – one night while walking home on the streets of Chicago – is abducted into an alternate version of his life. Wonder quickly turns to nightmare when he tries to return to his reality amid the multiverse of lives he could have lived. In this labyrinth of mind-bending realities, he embarks on a harrowing journey to get back to his true family and save them from the most terrifying, unbeatable foe imaginable: himself."
+    }
+  },
+  {
+    "id": "series:tvmaze:58323",
+    "type": "series",
+    "slug": "shrinking",
+    "titles": {
+      "es": "Shrinking",
+      "pt": "Shrinking",
+      "br": "Shrinking"
+    },
+    "original_title": "Shrinking",
+    "year": 2023,
+    "runtime": 34,
+    "seasons": 3,
+    "overview": {
+      "es": "Shrinking es una serie estrenada en 2023, con géneros como comedia. Entre los nombres destacados del reparto están Jason Segel, Harrison Ford, Christa Miller. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Shrinking é uma série estreada em 2023, com géneros como comédia. Entre os nomes de destaque do elenco estão Jason Segel, Harrison Ford, Christa Miller. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Shrinking é uma série lançada em 2023, com gêneros como comédia. Entre os nomes de destaque do elenco estão Jason Segel, Harrison Ford, Christa Miller. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 176.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.9,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Jason Segel",
+      "creators": [
+        "Jason Segel",
+        "Bill Lawrence",
+        "Brett Goldstein"
+      ],
+      "cast": [
+        "Jason Segel",
+        "Harrison Ford",
+        "Christa Miller",
+        "Jessica Williams",
+        "Michael Urie",
+        "Luke Tennie",
+        "Lukita Maxwell",
+        "Ted McGinley"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/terapia-sin-filtro/umc.cmc.apzybj6eqf6pzccd97kev7bs",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/terapia-sin-filtro/umc.cmc.apzybj6eqf6pzccd97kev7bs",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.791Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 58323,
+      "tvmaze_url": "https://www.tvmaze.com/shows/58323/shrinking",
+      "external_ids": {
+        "imdb": "tt15677150",
+        "thetvdb": 411364
+      },
+      "source_summary": "Shrinking follows a grieving therapist who starts to break the rules and tell his clients exactly what he thinks. Ignoring his training and ethics, he finds himself making huge, tumultuous changes to people's lives... including his own."
+    }
+  },
+  {
+    "id": "series:tvmaze:75605",
+    "type": "series",
+    "slug": "the-studio",
+    "titles": {
+      "es": "The Studio",
+      "pt": "The Studio",
+      "br": "The Studio"
+    },
+    "original_title": "The Studio",
+    "year": 2025,
+    "runtime": 30,
+    "seasons": 1,
+    "overview": {
+      "es": "The Studio es una serie estrenada en 2025, con géneros como comedia. Entre los nombres destacados del reparto están Seth Rogen, Ike Barinholtz, Chase Sui Wonders. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "The Studio é uma série estreada em 2025, com géneros como comédia. Entre os nomes de destaque do elenco estão Seth Rogen, Ike Barinholtz, Chase Sui Wonders. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "The Studio é uma série lançada em 2025, com gêneros como comédia. Entre os nomes de destaque do elenco estão Seth Rogen, Ike Barinholtz, Chase Sui Wonders. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 167.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 5.9,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Seth Rogen",
+      "creators": [
+        "Seth Rogen",
+        "Evan Goldberg",
+        "Alex Gregory",
+        "Peter Huyck",
+        "Frida Perez"
+      ],
+      "cast": [
+        "Seth Rogen",
+        "Ike Barinholtz",
+        "Chase Sui Wonders",
+        "Kathryn Hahn",
+        "Catherine O'Hara"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/the-studio/umc.cmc.7518algxc4lsoobtsx30dqb52",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/the-studio/umc.cmc.7518algxc4lsoobtsx30dqb52",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:05.952Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 75605,
+      "tvmaze_url": "https://www.tvmaze.com/shows/75605/the-studio",
+      "external_ids": {
+        "imdb": "tt23649128",
+        "thetvdb": 448147
+      },
+      "source_summary": "As movies struggle to stay alive and relevant, Matt and his core team of infighting executives battle their own insecurities as they wrangle narcissistic artists and craven corporate overlords in the ever-elusive pursuit of making great films. With their power suits masking their never-ending sense of panic, every party, set visit, casting decision, marketing meeting, and award show presents them with an opportunity for glittering success or career-ending catastrophe. As someone who eats, sleeps, and breathes movies, it's the job Matt's been pursuing his whole life, and it may very well destroy him."
+    }
+  },
+  {
+    "id": "series:tvmaze:44388",
+    "type": "series",
+    "slug": "masters-of-the-air",
+    "titles": {
+      "es": "Los amos del aire",
+      "pt": "Masters of the Air",
+      "br": "Mestres do Ar"
+    },
+    "original_title": "Masters of the Air",
+    "year": 2024,
+    "runtime": 57,
+    "seasons": 1,
+    "overview": {
+      "es": "Masters of the Air es una serie estrenada en 2024, con géneros como drama, war, history. Entre los nombres destacados del reparto están Callum Turner, Anthony Boyle, Austin Butler. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Masters of the Air é uma série estreada em 2024, com géneros como drama, war, history. Entre os nomes de destaque do elenco estão Callum Turner, Anthony Boyle, Austin Butler. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Masters of the Air é uma série lançada em 2024, com gêneros como drama, war, history. Entre os nomes de destaque do elenco estão Callum Turner, Anthony Boyle, Austin Butler. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "War",
+      "History"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 175.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.7,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Callum Turner",
+        "Anthony Boyle",
+        "Austin Butler",
+        "Stephen Campbell Moore",
+        "Nate Mann",
+        "James Murray",
+        "Barry Keoghan",
+        "Sawyer Spielberg",
+        "Bel Powley",
+        "Sam Hazeldine",
+        "Branden Cook",
+        "Josiah Cross"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/los-amos-del-aire/umc.cmc.7bxcni0vwgll9kmicq738k5q2",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/los-amos-del-aire/umc.cmc.7bxcni0vwgll9kmicq738k5q2",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:06.111Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 44388,
+      "tvmaze_url": "https://www.tvmaze.com/shows/44388/masters-of-the-air",
+      "external_ids": {
+        "imdb": "tt2640044",
+        "thetvdb": 370853
+      },
+      "source_summary": "Masters of the Air follows the men of the 100th Bomb Group (the \"Bloody Hundredth\") as they conduct perilous bombing raids over Nazi Germany and grapple with the frigid conditions, lack of oxygen and sheer terror of combat conducted at 25,000 feet in the air. Portraying the psychological and emotional price paid by these young men as they helped destroy the horror of Hitler's Third Reich, is at the heart of Masters of the Air . Some were shot down and captured; some were wounded or killed. And some were lucky enough to make it home. Regardless of individual fate, a toll was exacted on them all."
+    }
+  },
+  {
+    "id": "series:tvmaze:61235",
+    "type": "series",
+    "slug": "bad-sisters",
+    "titles": {
+      "es": "Bad Sisters",
+      "pt": "Bad Sisters",
+      "br": "Bad Sisters"
+    },
+    "original_title": "Bad Sisters",
+    "year": 2022,
+    "runtime": 51,
+    "seasons": 2,
+    "overview": {
+      "es": "Bad Sisters es una serie estrenada en 2022, con géneros como drama, comedia, suspense. Entre los nombres destacados del reparto están Sharon Horgan, Eve Hewson, Eva Birthistle. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Bad Sisters é uma série estreada em 2022, com géneros como drama, comédia, suspense. Entre os nomes de destaque do elenco estão Sharon Horgan, Eve Hewson, Eva Birthistle. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Bad Sisters é uma série lançada em 2022, com gêneros como drama, comédia, suspense. Entre os nomes de destaque do elenco estão Sharon Horgan, Eve Hewson, Eva Birthistle. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 169,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Sharon Horgan",
+        "Eve Hewson",
+        "Eva Birthistle",
+        "Saise Ní Chuinn",
+        "Sarah Greene",
+        "Michael Smiley",
+        "Anne-Marie Duff",
+        "Daryl McCormack",
+        "Barry Ward",
+        "Brian Gleeson",
+        "Claes Bang",
+        "Thaddea Graham"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/hermanas-hasta-la-muerte/umc.cmc.14kr4vv65unannh7doqgvlh20",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/hermanas-hasta-la-muerte/umc.cmc.14kr4vv65unannh7doqgvlh20",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:06.268Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 61235,
+      "tvmaze_url": "https://www.tvmaze.com/shows/61235/bad-sisters",
+      "external_ids": {
+        "imdb": "tt15469618",
+        "thetvdb": 418182
+      },
+      "source_summary": "Set in the breath-taking coast of Ireland, Bad Sisters follows the lives of the Garvey sisters, who are bound together by the premature death of their parents and a promise to always protect one another. The tight-knit Garvey sisters have always looked out for each other. When their brother-in-law winds up dead, his life insurers launch an investigation to prove malicious intent - and set their sights on the sisters, all of whom had ample reason to kill him."
+    }
+  },
+  {
+    "id": "series:tvmaze:60090",
+    "type": "series",
+    "slug": "monarch-legacy-of-monsters",
+    "titles": {
+      "es": "Monarch: Legacy of Monsters",
+      "pt": "Monarch: Legacy of Monsters",
+      "br": "Monarch: Legado dos Monstros"
+    },
+    "original_title": "Monarch: Legacy of Monsters",
+    "year": 2023,
+    "runtime": 47,
+    "seasons": 2,
+    "overview": {
+      "es": "Monarch: Legacy of Monsters es una serie estrenada en 2023, con géneros como acción, aventura, ciencia ficción. Entre los nombres destacados del reparto están Wyatt Russell, Kurt Russell, Anna Sawai. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Monarch: Legacy of Monsters é uma série estreada em 2023, com géneros como ação, aventura, ficção científica. Entre os nomes de destaque do elenco estão Wyatt Russell, Kurt Russell, Anna Sawai. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Monarch: Legacy of Monsters é uma série lançada em 2023, com gêneros como ação, aventura, ficção científica. Entre os nomes de destaque do elenco estão Wyatt Russell, Kurt Russell, Anna Sawai. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science-Fiction"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 174,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "cast": [
+        "Wyatt Russell",
+        "Kurt Russell",
+        "Anna Sawai",
+        "Ren Watabe",
+        "Kiersey Clemons",
+        "Joe Tippett",
+        "Mari Yamamoto",
+        "Anders Holm",
+        "Elisa Lasowski"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/monarch-el-legado-de-los-monstruos/umc.cmc.62l8x0ixrhyq3yaqa5y8yo7ew",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/monarch-el-legado-de-los-monstruos/umc.cmc.62l8x0ixrhyq3yaqa5y8yo7ew",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:06.426Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 60090,
+      "tvmaze_url": "https://www.tvmaze.com/shows/60090/monarch-legacy-of-monsters",
+      "external_ids": {
+        "imdb": "tt17220216",
+        "thetvdb": 422598
+      },
+      "source_summary": "After surviving Godzilla's attack on San Francisco, Cate is shaken yet again by a shocking secret. Amid monstrous threats, she embarks on a globetrotting adventure to learn the truth about her family—and the mysterious organization known as Monarch."
+    }
+  },
+  {
+    "id": "series:tvmaze:48888",
+    "type": "series",
+    "slug": "the-afterparty",
+    "titles": {
+      "es": "The Afterparty",
+      "pt": "The Afterparty",
+      "br": "The Afterparty"
+    },
+    "original_title": "The Afterparty",
+    "year": 2022,
+    "runtime": 36,
+    "seasons": 2,
+    "overview": {
+      "es": "The Afterparty es una serie estrenada en 2022, con géneros como comedia, crimen, misterio. Entre los nombres destacados del reparto están Tiffany Haddish, Sam Richardson, Zoë Chao. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "The Afterparty é uma série estreada em 2022, com géneros como comédia, crime, mistério. Entre os nomes de destaque do elenco estão Tiffany Haddish, Sam Richardson, Zoë Chao. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "The Afterparty é uma série lançada em 2022, com gêneros como comédia, crime, mistério. Entre os nomes de destaque do elenco estão Tiffany Haddish, Sam Richardson, Zoë Chao. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 168,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.8,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Christopher Miller",
+      "creators": [
+        "Christopher Miller"
+      ],
+      "cast": [
+        "Tiffany Haddish",
+        "Sam Richardson",
+        "Zoë Chao",
+        "John Cho",
+        "Paul Walter Hauser",
+        "Ken Jeong",
+        "Anna Konkle",
+        "Poppy Liu",
+        "Elizabeth Perkins",
+        "Zach Woods",
+        "Ben Schwartz",
+        "Jamie Demetriou"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/the-afterparty/umc.cmc.5wg8cnigwrkfzbdruaufzb6b0",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/the-afterparty/umc.cmc.5wg8cnigwrkfzbdruaufzb6b0",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:06.584Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 48888,
+      "tvmaze_url": "https://www.tvmaze.com/shows/48888/the-afterparty",
+      "external_ids": {
+        "imdb": "tt12614214",
+        "thetvdb": 384495
+      },
+      "source_summary": "The Afterparty is a murder-mystery comedy set at a high school reunion afterparty. Each of the eight episodes will feature a retelling of the same night told through a different character's perspective, each with its own unique visual format and film genre to match the teller's personality."
+    }
+  },
+  {
+    "id": "series:tvmaze:41531",
+    "type": "series",
+    "slug": "servant",
+    "titles": {
+      "es": "Servant",
+      "pt": "Servant",
+      "br": "Servant"
+    },
+    "original_title": "Servant",
+    "year": 2019,
+    "runtime": 29,
+    "seasons": 4,
+    "overview": {
+      "es": "Servant es una serie estrenada en 2019, con géneros como drama, terror, suspense. Entre los nombres destacados del reparto están Lauren Ambrose, Toby Kebbell, Nell Tiger Free. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Servant é uma série estreada em 2019, com géneros como drama, terror, suspense. Entre os nomes de destaque do elenco estão Lauren Ambrose, Toby Kebbell, Nell Tiger Free. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Servant é uma série lançada em 2019, com gêneros como drama, terror, suspense. Entre os nomes de destaque do elenco estão Lauren Ambrose, Toby Kebbell, Nell Tiger Free. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 164.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.7,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Tony Basgallop",
+      "creators": [
+        "Tony Basgallop"
+      ],
+      "cast": [
+        "Lauren Ambrose",
+        "Toby Kebbell",
+        "Nell Tiger Free",
+        "Rupert Grint"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/servant/umc.cmc.4y25wuby7pck9o6vaubbbk7gb",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/servant/umc.cmc.4y25wuby7pck9o6vaubbbk7gb",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:06.743Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 41531,
+      "tvmaze_url": "https://www.tvmaze.com/shows/41531/servant",
+      "external_ids": {
+        "imdb": "tt8068860",
+        "thetvdb": 368126
+      },
+      "source_summary": "Servant follows a Philadelphia couple in mourning after an unspeakable tragedy creates a rift in their marriage and opens the door for a mysterious force to enter their home."
+    }
+  },
+  {
+    "id": "series:tvmaze:62463",
+    "type": "series",
+    "slug": "sugar",
+    "titles": {
+      "es": "Sugar",
+      "pt": "Sugar",
+      "br": "Sugar"
+    },
+    "original_title": "Sugar",
+    "year": 2024,
+    "runtime": 38,
+    "seasons": 2,
+    "overview": {
+      "es": "Sugar es una serie estrenada en 2024, con géneros como crimen, ciencia ficción, misterio. Entre los nombres destacados del reparto están Colin Farrell, Kirby Howell-Baptiste, Amy Ryan. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Sugar é uma série estreada em 2024, com géneros como crime, ficção científica, mistério. Entre os nomes de destaque do elenco estão Colin Farrell, Kirby Howell-Baptiste, Amy Ryan. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Sugar é uma série lançada em 2024, com gêneros como crime, ficção científica, mistério. Entre os nomes de destaque do elenco estão Colin Farrell, Kirby Howell-Baptiste, Amy Ryan. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Crime",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 175,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Mark Protosevich",
+      "creators": [
+        "Mark Protosevich"
+      ],
+      "cast": [
+        "Colin Farrell",
+        "Kirby Howell-Baptiste",
+        "Amy Ryan",
+        "James Cromwell",
+        "Jin Ha",
+        "Raymond Lee",
+        "Sasha Calle",
+        "Laura Donnelly",
+        "Dennis Boutsikaris",
+        "Tony Dalton",
+        "Nate Corddry",
+        "Shea Whigham"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/pt/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (PT)"
+          ],
+          "evidence_url": "https://tv.apple.com/pt/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ],
+      "BR": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/br/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (BR)"
+          ],
+          "evidence_url": "https://tv.apple.com/br/show/sugar/umc.cmc.4r6q7tdquewehwvb3rzl0k3dt",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ]
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "available",
+      "BR": "available"
+    },
+    "updated_at": "2026-09-11T10:06:06.901Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 62463,
+      "tvmaze_url": "https://www.tvmaze.com/shows/62463/sugar",
+      "external_ids": {
+        "imdb": "tt16418808",
+        "thetvdb": 421070
+      },
+      "source_summary": "John Sugar is an American private investigator on the heels of the mysterious disappearance of Olivia Siegel, the beloved granddaughter of legendary Hollywood producer Jonathan Siegel. As Sugar tries to determine what happened to Olivia, he will also unearth Siegel family secrets; some very recent, others long-buried."
+    }
+  },
+  {
+    "id": "series:tvmaze:61739",
+    "type": "series",
+    "slug": "hijack",
+    "titles": {
+      "es": "Hijack",
+      "pt": "Hijack",
+      "br": "Sequestro no Ar"
+    },
+    "original_title": "Hijack",
+    "year": 2023,
+    "runtime": 47,
+    "seasons": 2,
+    "overview": {
+      "es": "Hijack es una serie estrenada en 2023, con géneros como suspense. Entre los nombres destacados del reparto están Idris Elba, Max Beesley, Christine Adams. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Hijack é uma série estreada em 2023, com géneros como suspense. Entre os nomes de destaque do elenco estão Idris Elba, Max Beesley, Christine Adams. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Hijack é uma série lançada em 2023, com gêneros como suspense. Entre os nomes de destaque do elenco estão Idris Elba, Max Beesley, Christine Adams. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 174.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "George Kay",
+      "creators": [
+        "George Kay",
+        "Jim Field Smith"
+      ],
+      "cast": [
+        "Idris Elba",
+        "Max Beesley",
+        "Christine Adams",
+        "Archie Panjabi",
+        "Neil Maskell",
+        "Ian Burfield",
+        "Christian Näthe",
+        "Clare-Hope Ashitey",
+        "Lisa Vicari",
+        "Dejan Bucin",
+        "Jasmine Bayes",
+        "Ben Miles"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/hijack/umc.cmc.1dg08zn0g3zx52hs8npoj5qe3",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/hijack/umc.cmc.1dg08zn0g3zx52hs8npoj5qe3",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.059Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 61739,
+      "tvmaze_url": "https://www.tvmaze.com/shows/61739/hijack",
+      "external_ids": {
+        "imdb": "tt19854762",
+        "thetvdb": 419254
+      },
+      "source_summary": "Told in real time, Hijack is a tense thriller that follows the journey of a hijacked plane as it makes its way to London over a seven-hour flight, as authorities on the ground scramble for answers. Sam Nelson is an accomplished negotiator in the business world who needs to step up and use all his guile to try and save the lives of the passengers — but his high-risk strategy could be his undoing."
+    }
+  },
+  {
+    "id": "series:tvmaze:53079",
+    "type": "series",
+    "slug": "lessons-in-chemistry",
+    "titles": {
+      "es": "Lessons in Chemistry",
+      "pt": "Lessons in Chemistry",
+      "br": "Lessons in Chemistry"
+    },
+    "original_title": "Lessons in Chemistry",
+    "year": 2023,
+    "runtime": 45,
+    "seasons": 1,
+    "overview": {
+      "es": "Lessons in Chemistry es una serie estrenada en 2023, con géneros como drama. Entre los nombres destacados del reparto están Brie Larson, Aja Naomi King, Lewis Pullman. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Lessons in Chemistry é uma série estreada em 2023, com géneros como drama. Entre os nomes de destaque do elenco estão Brie Larson, Aja Naomi King, Lewis Pullman. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Lessons in Chemistry é uma série lançada em 2023, com gêneros como drama. Entre os nomes de destaque do elenco estão Brie Larson, Aja Naomi King, Lewis Pullman. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 174,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 8,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Lee Eisenberg",
+      "creators": [
+        "Lee Eisenberg"
+      ],
+      "cast": [
+        "Brie Larson",
+        "Aja Naomi King",
+        "Lewis Pullman",
+        "Stephanie Koenig",
+        "Patrick Walker"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/cocina-con-quimica/umc.cmc.40yycssgxelw4zur8m2ilmvyx",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/cocina-con-quimica/umc.cmc.40yycssgxelw4zur8m2ilmvyx",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.217Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 53079,
+      "tvmaze_url": "https://www.tvmaze.com/shows/53079/lessons-in-chemistry",
+      "external_ids": {
+        "imdb": "tt13911628",
+        "thetvdb": 395685
+      },
+      "source_summary": "Set in the early 1950s, Lessons in Chemistry follows Elizabeth Zott, whose dream of being a scientist is put on hold in a society deeming that women belong in the domestic sphere, not the professional one. When Elizabeth finds herself pregnant, alone and fired from her lab, she musters the ingenuity only a single mother has. She accepts a job as a host on a TV cooking show, and sets out to teach a nation of overlooked housewives - and the men who are suddenly listening - a lot more than recipes... all the while craving a return to her true love: science."
+    }
+  },
+  {
+    "id": "series:tvmaze:60310",
+    "type": "series",
+    "slug": "presumed-innocent",
+    "titles": {
+      "es": "Presumed Innocent",
+      "pt": "Presumed Innocent",
+      "br": "Presumed Innocent"
+    },
+    "original_title": "Presumed Innocent",
+    "year": 2024,
+    "runtime": 44,
+    "seasons": 2,
+    "overview": {
+      "es": "Presumed Innocent es una serie estrenada en 2024, con géneros como crimen, suspense, legal. Entre los nombres destacados del reparto están Ruth Negga, Jake Gyllenhaal, Bill Camp. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Presumed Innocent é uma série estreada em 2024, com géneros como crime, suspense, legal. Entre os nomes de destaque do elenco estão Ruth Negga, Jake Gyllenhaal, Bill Camp. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Presumed Innocent é uma série lançada em 2024, com gêneros como crime, suspense, legal. Entre os nomes de destaque do elenco estão Ruth Negga, Jake Gyllenhaal, Bill Camp. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Legal"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 174,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "David E. Kelley",
+      "creators": [
+        "David E. Kelley"
+      ],
+      "cast": [
+        "Ruth Negga",
+        "Jake Gyllenhaal",
+        "Bill Camp",
+        "O.T. Fagbenle",
+        "Chase Infiniti",
+        "Renate Reinsve",
+        "Peter Sarsgaard",
+        "Kingston Rumi Southwick",
+        "Nana Mensah",
+        "Elizabeth Marvel"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/presunto-inocente/umc.cmc.5hnqrhwtzt3esr7rb1wq2ppvn",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/presunto-inocente/umc.cmc.5hnqrhwtzt3esr7rb1wq2ppvn",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.375Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 60310,
+      "tvmaze_url": "https://www.tvmaze.com/shows/60310/presumed-innocent",
+      "external_ids": {
+        "imdb": "tt17677860",
+        "thetvdb": 415738
+      },
+      "source_summary": "The story of a horrific murder that upends the Chicago Prosecuting Attorney's Office when one of its own is suspected of the crime. An exploration of obsession, sex, politics, and the power and limits of love, as the accused fights to hold his family and marriage together."
+    }
+  },
+  {
+    "id": "series:tvmaze:62628",
+    "type": "series",
+    "slug": "criminal-record",
+    "titles": {
+      "es": "Historial delictivo",
+      "pt": "Registo Criminal",
+      "br": "Histórico Criminal"
+    },
+    "original_title": "Criminal Record",
+    "year": 2024,
+    "runtime": 46,
+    "seasons": 2,
+    "overview": {
+      "es": "Criminal Record es una serie estrenada en 2024, con géneros como crimen, suspense. Entre los nombres destacados del reparto están Peter Capaldi, Cush Jumbo, Shaun Dooley. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Criminal Record é uma série estreada em 2024, com géneros como crime, suspense. Entre os nomes de destaque do elenco estão Peter Capaldi, Cush Jumbo, Shaun Dooley. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Criminal Record é uma série lançada em 2024, com gêneros como crime, suspense. Entre os nomes de destaque do elenco estão Peter Capaldi, Cush Jumbo, Shaun Dooley. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 171.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.9,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Paul Rutman",
+      "creators": [
+        "Paul Rutman"
+      ],
+      "cast": [
+        "Peter Capaldi",
+        "Cush Jumbo",
+        "Shaun Dooley",
+        "Stephen Campbell Moore",
+        "Charlie Creed-Miles",
+        "Dustin Demri-Burns",
+        "Luther Ford",
+        "Lyndsey Marshal",
+        "Luke Pasqualino",
+        "Cathy Tyson",
+        "Zoë Wanamaker",
+        "Peter Sullivan"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/historial-delictivo/umc.cmc.1sbjeoma6tvxgda6l0h4bb0x3",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/historial-delictivo/umc.cmc.1sbjeoma6tvxgda6l0h4bb0x3",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.533Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 62628,
+      "tvmaze_url": "https://www.tvmaze.com/shows/62628/criminal-record",
+      "external_ids": {
+        "imdb": "tt21088136",
+        "thetvdb": 421495
+      },
+      "source_summary": "Criminal Record is a powerful, character-driven thriller set in the heart of contemporary London. An anonymous phone call draws two brilliant detectives into a confrontation over an old murder case – one a young woman in the early stages of her career, the other a well-connected man determined to protect his legacy. The series touches on issues of race, institutional failure, and the quest to find common ground in a polarized Britain."
+    }
+  },
+  {
+    "id": "series:tvmaze:38801",
+    "type": "series",
+    "slug": "defending-jacob",
+    "titles": {
+      "es": "Defending Jacob",
+      "pt": "Defending Jacob",
+      "br": "Defending Jacob"
+    },
+    "original_title": "Defending Jacob",
+    "year": 2020,
+    "runtime": 51,
+    "seasons": 1,
+    "overview": {
+      "es": "Defending Jacob es una serie estrenada en 2020, con géneros como drama, suspense, legal. Entre los nombres destacados del reparto están Michelle Dockery, Chris Evans, Jaeden Martell. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Defending Jacob é uma série estreada em 2020, com géneros como drama, suspense, legal. Entre os nomes de destaque do elenco estão Michelle Dockery, Chris Evans, Jaeden Martell. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Defending Jacob é uma série lançada em 2020, com gêneros como drama, suspense, legal. Entre os nomes de destaque do elenco estão Michelle Dockery, Chris Evans, Jaeden Martell. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Legal"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 171,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.8,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Mark Bomback",
+      "creators": [
+        "Mark Bomback"
+      ],
+      "cast": [
+        "Michelle Dockery",
+        "Chris Evans",
+        "Jaeden Martell",
+        "Pablo Schreiber",
+        "Betty Gabriel",
+        "Cherry Jones",
+        "Sakina Jaffrey"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/defending-jacob/umc.cmc.5h5mr0shyyqqahqdv55ywyilr",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/defending-jacob/umc.cmc.5h5mr0shyyqqahqdv55ywyilr",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.691Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 38801,
+      "tvmaze_url": "https://www.tvmaze.com/shows/38801/defending-jacob",
+      "external_ids": {
+        "imdb": "tt2304589",
+        "thetvdb": 368122
+      },
+      "source_summary": "Defending Jacob unfolds around a shocking crime that rocks a small Massachusetts town and one family in particular, forcing an assistant district attorney to choose between his sworn duty to uphold justice and his unconditional love for his son."
+    }
+  },
+  {
+    "id": "series:tvmaze:41530",
+    "type": "series",
+    "slug": "mythic-quest",
+    "titles": {
+      "es": "Mythic Quest",
+      "pt": "Mythic Quest",
+      "br": "Mythic Quest"
+    },
+    "original_title": "Mythic Quest",
+    "year": 2020,
+    "runtime": 27,
+    "seasons": 4,
+    "overview": {
+      "es": "Mythic Quest es una serie estrenada en 2020, con géneros como comedia. Entre los nombres destacados del reparto están Rob McElhenney, Ashly Burch, Charlotte Nicdao. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Mythic Quest é uma série estreada em 2020, com géneros como comédia. Entre os nomes de destaque do elenco estão Rob McElhenney, Ashly Burch, Charlotte Nicdao. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Mythic Quest é uma série lançada em 2020, com gêneros como comédia. Entre os nomes de destaque do elenco estão Rob McElhenney, Ashly Burch, Charlotte Nicdao. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 169.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Megan Ganz",
+      "creators": [
+        "Megan Ganz",
+        "Rob McElhenney",
+        "Charlie Day"
+      ],
+      "cast": [
+        "Rob McElhenney",
+        "Ashly Burch",
+        "Charlotte Nicdao",
+        "Imani Hakim",
+        "David Hornsby",
+        "Danny Pudi",
+        "Jessie Ennis",
+        "Naomi Ekperigin",
+        "F. Murray Abraham",
+        "Jake Johnson",
+        "Cristin Milioti"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/mythic-quest/umc.cmc.1nfdfd5zlk05fo1bwwetzldy3",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/mythic-quest/umc.cmc.1nfdfd5zlk05fo1bwwetzldy3",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:07.850Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 41530,
+      "tvmaze_url": "https://www.tvmaze.com/shows/41530/mythic-quest",
+      "external_ids": {
+        "imdb": "tt8879940",
+        "thetvdb": 362829
+      },
+      "source_summary": "Mythic Quest follows a team of video game developers as they navigate the challenges of running a popular video game."
+    }
+  },
+  {
+    "id": "series:tvmaze:52193",
+    "type": "series",
+    "slug": "acapulco",
+    "titles": {
+      "es": "Acapulco",
+      "pt": "Acapulco",
+      "br": "Acapulco"
+    },
+    "original_title": "Acapulco",
+    "year": 2021,
+    "runtime": 32,
+    "seasons": 4,
+    "overview": {
+      "es": "Acapulco es una serie estrenada en 2021, con géneros como comedia. Entre los nombres destacados del reparto están Eugenio Derbez, Enrique Arrizon, Camila Perez. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Acapulco é uma série estreada em 2021, com géneros como comédia. Entre os nomes de destaque do elenco estão Eugenio Derbez, Enrique Arrizon, Camila Perez. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Acapulco é uma série lançada em 2021, com gêneros como comédia. Entre os nomes de destaque do elenco estão Eugenio Derbez, Enrique Arrizon, Camila Perez. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 163,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.2,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Jason Shuman",
+      "creators": [
+        "Jason Shuman",
+        "Austin Winsberg",
+        "Eduardo Cisneros"
+      ],
+      "cast": [
+        "Eugenio Derbez",
+        "Enrique Arrizon",
+        "Camila Perez",
+        "Fernando Carsa",
+        "Chord Overstreet",
+        "Vanessa Bauche",
+        "Rafael Cebrián",
+        "Regina Reynoso",
+        "Jessica Collins",
+        "Damián Alcázar",
+        "Regina Orozco",
+        "Carlos Corona"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/acapulco/umc.cmc.8xrkg9zywke7g6a9ahmvpr3l",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/acapulco/umc.cmc.8xrkg9zywke7g6a9ahmvpr3l",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.008Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 52193,
+      "tvmaze_url": "https://www.tvmaze.com/shows/52193/acapulco",
+      "external_ids": {
+        "imdb": "tt13567344",
+        "thetvdb": 393155
+      },
+      "source_summary": "In Acapulco , a young Mexican man's dream comes true when he gets the job of a lifetime at the hottest resort in Acapulco. But he soon realizes the job is far more complicated than he ever imagined as all of his beliefs and morals start to be questioned. The show takes place in 1984 with Eugenio Derbez narrating and playing the present-day version of the main character."
+    }
+  },
+  {
+    "id": "series:tvmaze:60527",
+    "type": "series",
+    "slug": "loot",
+    "titles": {
+      "es": "Loot",
+      "pt": "Loot",
+      "br": "Loot"
+    },
+    "original_title": "Loot",
+    "year": 2022,
+    "runtime": 27,
+    "seasons": 3,
+    "overview": {
+      "es": "Loot es una serie estrenada en 2022, con géneros como comedia. Entre los nombres destacados del reparto están Maya Rudolph, Ron Funches, Michaela Jaé Rodriguez. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Loot é uma série estreada em 2022, com géneros como comédia. Entre os nomes de destaque do elenco estão Maya Rudolph, Ron Funches, Michaela Jaé Rodriguez. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Loot é uma série lançada em 2022, com gêneros como comédia. Entre os nomes de destaque do elenco estão Maya Rudolph, Ron Funches, Michaela Jaé Rodriguez. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Comedy"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 166,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.4,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Alan Yang",
+      "creators": [
+        "Alan Yang",
+        "Matt Hubbard"
+      ],
+      "cast": [
+        "Maya Rudolph",
+        "Ron Funches",
+        "Michaela Jaé Rodriguez",
+        "Joel Kim Booster",
+        "Nat Faxon"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/loot/umc.cmc.5erbujil1mpazuerhr1udnk45",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/loot/umc.cmc.5erbujil1mpazuerhr1udnk45",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.165Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 60527,
+      "tvmaze_url": "https://www.tvmaze.com/shows/60527/loot",
+      "external_ids": {
+        "imdb": "tt14271498",
+        "thetvdb": 417559
+      },
+      "source_summary": "In Loot , billionaire Molly Novak has a dream life, complete with private jets, a sprawling mansion and a gigayacht — anything her heart desires. But when her husband of 20 years betrays her, she spirals publicly, becoming fuel for tabloid fodder. She's reaching rock bottom when she learns, to her surprise, that she has a charity foundation run by the no-nonsense Sofia Salinas, who pleads with Molly to stop generating bad press. With her devoted assistant Nicholas by her side, and with the help of Sofia and team — including mild-mannered accountant Arthur and her optimistic, pop-culture-loving cousin Howard — Molly embarks on a journey of self-discovery. Giving back to others might be what she needs to get back to herself."
+    }
+  },
+  {
+    "id": "series:tvmaze:49964",
+    "type": "series",
+    "slug": "invasion",
+    "titles": {
+      "es": "Invasion",
+      "pt": "Invasion",
+      "br": "Invasion"
+    },
+    "original_title": "Invasion",
+    "year": 2021,
+    "runtime": 49,
+    "seasons": 3,
+    "overview": {
+      "es": "Invasion es una serie estrenada en 2021, con géneros como drama, ciencia ficción, misterio. Entre los nombres destacados del reparto están Shioli Kutsuna, Golshifteh Farahani, Shamier Anderson. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Invasion é uma série estreada em 2021, com géneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Shioli Kutsuna, Golshifteh Farahani, Shamier Anderson. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Invasion é uma série lançada em 2021, com gêneros como drama, ficção científica, mistério. Entre os nomes de destaque do elenco estão Shioli Kutsuna, Golshifteh Farahani, Shamier Anderson. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 167.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Simon Kinberg",
+      "creators": [
+        "Simon Kinberg",
+        "David Weil"
+      ],
+      "cast": [
+        "Shioli Kutsuna",
+        "Golshifteh Farahani",
+        "Shamier Anderson",
+        "India Brown",
+        "Azhy Robertson",
+        "Billy Barratt",
+        "Tara Moayedi",
+        "Paddy Holland",
+        "Enver Gjokaj",
+        "Shane Zaza",
+        "Firas Nassar",
+        "Daisuke Tsuji"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/invasion/umc.cmc.70b7z97fv7azfzn5baqnj88p6",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/invasion/umc.cmc.70b7z97fv7azfzn5baqnj88p6",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.323Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 49964,
+      "tvmaze_url": "https://www.tvmaze.com/shows/49964/invasion",
+      "external_ids": {
+        "imdb": "tt9737326",
+        "thetvdb": 404492
+      },
+      "source_summary": "Earth is visited by an alien species that threatens humanity's existence. Events unfold in real time through the eyes of five ordinary people across the globe as they struggle to make sense of the chaos unraveling around them."
+    }
+  },
+  {
+    "id": "series:tvmaze:48362",
+    "type": "series",
+    "slug": "tehran",
+    "titles": {
+      "es": "Tehran",
+      "pt": "Tehran",
+      "br": "Tehran"
+    },
+    "original_title": "Tehran",
+    "year": 2020,
+    "runtime": 45,
+    "seasons": 4,
+    "overview": {
+      "es": "Tehran es una serie estrenada en 2020, con géneros como drama, suspense, espionage. Entre los nombres destacados del reparto están Niv Sultan, Shaun Toub, Shila Ommi. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Tehran é uma série estreada em 2020, com géneros como drama, suspense, espionage. Entre os nomes de destaque do elenco estão Niv Sultan, Shaun Toub, Shila Ommi. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Tehran é uma série lançada em 2020, com gêneros como drama, suspense, espionage. Entre os nomes de destaque do elenco estão Niv Sultan, Shaun Toub, Shila Ommi. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Espionage"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 170.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.5,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Moshe Zonder",
+      "creators": [
+        "Moshe Zonder",
+        "Dana Eden",
+        "Maor Kohn"
+      ],
+      "cast": [
+        "Niv Sultan",
+        "Shaun Toub",
+        "Shila Ommi",
+        "Shervin Alenabi",
+        "Menashe Noy",
+        "Liraz Charhi",
+        "Glenn Close",
+        "Phoenix Raei",
+        "Hugh Laurie",
+        "Darius Homayoun",
+        "Sasson Gabai",
+        "Navid Negahban"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/teheran/umc.cmc.337cdk1ou0bmn6frmzxwm7xqd",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/teheran/umc.cmc.337cdk1ou0bmn6frmzxwm7xqd",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.481Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 48362,
+      "tvmaze_url": "https://www.tvmaze.com/shows/48362/tehran",
+      "external_ids": {
+        "imdb": "tt10577736",
+        "thetvdb": 380010
+      },
+      "source_summary": "A Mossad agent embarks on her first mission as a computer hacker in her home town of Tehran."
+    }
+  },
+  {
+    "id": "series:tvmaze:34345",
+    "type": "series",
+    "slug": "see",
+    "titles": {
+      "es": "See",
+      "pt": "See",
+      "br": "See"
+    },
+    "original_title": "See",
+    "year": 2019,
+    "runtime": 54,
+    "seasons": 3,
+    "overview": {
+      "es": "See es una serie estrenada en 2019, con géneros como drama, acción, ciencia ficción. Entre los nombres destacados del reparto están Jason Momoa, Sylvia Hoeks, Hera Hilmar. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "See é uma série estreada em 2019, com géneros como drama, ação, ficção científica. Entre os nomes de destaque do elenco estão Jason Momoa, Sylvia Hoeks, Hera Hilmar. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "See é uma série lançada em 2019, com gêneros como drama, ação, ficção científica. Entre os nomes de destaque do elenco estão Jason Momoa, Sylvia Hoeks, Hera Hilmar. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Action",
+      "Science-Fiction"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 168.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 7.3,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Steven Knight",
+      "creators": [
+        "Steven Knight"
+      ],
+      "cast": [
+        "Jason Momoa",
+        "Sylvia Hoeks",
+        "Hera Hilmar",
+        "Nesta Cooper",
+        "Christian Camargo",
+        "Archie Madekwe",
+        "Eden Epstein",
+        "Alfre Woodard",
+        "Tom Mison",
+        "Olivia Cheng",
+        "Yadira Guevara-Prip",
+        "David Hewlett"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/see/umc.cmc.3s4mgg2y7h95fks9gnc4pw13m",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/see/umc.cmc.3s4mgg2y7h95fks9gnc4pw13m",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.639Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 34345,
+      "tvmaze_url": "https://www.tvmaze.com/shows/34345/see",
+      "external_ids": {
+        "imdb": "tt7949218",
+        "thetvdb": 361565
+      },
+      "source_summary": "See is an epic, world-building drama set in the future, when the human race has lost the sense of sight, and society has had to find new ways to interact, to build, to hunt, to survive. All of that is challenged when a set of twins with sight is born."
+    }
+  },
+  {
+    "id": "series:tvmaze:36943",
+    "type": "series",
+    "slug": "dickinson",
+    "titles": {
+      "es": "Dickinson",
+      "pt": "Dickinson",
+      "br": "Dickinson"
+    },
+    "original_title": "Dickinson",
+    "year": 2019,
+    "runtime": 30,
+    "seasons": 3,
+    "overview": {
+      "es": "Dickinson es una serie estrenada en 2019, con géneros como drama, comedia, history. Entre los nombres destacados del reparto están Hailee Steinfeld, Jane Krakowski, Adrian Enscoe. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "Dickinson é uma série estreada em 2019, com géneros como drama, comédia, history. Entre os nomes de destaque do elenco estão Hailee Steinfeld, Jane Krakowski, Adrian Enscoe. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "Dickinson é uma série lançada em 2019, com gêneros como drama, comédia, history. Entre os nomes de destaque do elenco estão Hailee Steinfeld, Jane Krakowski, Adrian Enscoe. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Comedy",
+      "History"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 164,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.6,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Alena Smith",
+      "creators": [
+        "Alena Smith"
+      ],
+      "cast": [
+        "Hailee Steinfeld",
+        "Jane Krakowski",
+        "Adrian Enscoe",
+        "Anna Baryshnikov",
+        "Toby Huss",
+        "Ella Hunt",
+        "Chinaza Uche",
+        "Amanda Warren"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/dickinson/umc.cmc.1ogyy5s2agasxa5qztabrlykn",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/dickinson/umc.cmc.1ogyy5s2agasxa5qztabrlykn",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/br/show/dickinson/umc.cmc.1ogyy5s2agasxa5qztabrlykn",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (BR)"
+          ],
+          "evidence_url": "https://tv.apple.com/br/show/dickinson/umc.cmc.1ogyy5s2agasxa5qztabrlykn",
+          "verified_at": "2026-09-11T09:45:00Z"
+        }
+      ]
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "available"
+    },
+    "updated_at": "2026-09-11T10:06:08.797Z",
+    "availability_updated_at": "2026-09-11T09:45:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 36943,
+      "tvmaze_url": "https://www.tvmaze.com/shows/36943/dickinson",
+      "external_ids": {
+        "imdb": "tt8518136",
+        "thetvdb": 361566
+      },
+      "source_summary": "Dickinson is set during Emily Dickinson's era with a modern sensibility and tone. It takes viewers into the world of Emily, audaciously exploring the constraints of society, gender, and family from the perspective of a budding writer who doesn't fit in to her own time through her imaginative point of view. Dickinson is Emily's coming-of-age story – one woman's fight to get her voice heard."
+    }
+  },
+  {
+    "id": "series:tvmaze:54629",
+    "type": "series",
+    "slug": "the-crowded-room",
+    "titles": {
+      "es": "The Crowded Room",
+      "pt": "The Crowded Room",
+      "br": "The Crowded Room"
+    },
+    "original_title": "The Crowded Room",
+    "year": 2023,
+    "runtime": 47,
+    "seasons": 1,
+    "overview": {
+      "es": "The Crowded Room es una serie estrenada en 2023, con géneros como drama, suspense. Entre los nombres destacados del reparto están Tom Holland, Amanda Seyfried, Emmy Rossum. VISIONE muestra su disponibilidad legal verificada por mercado.",
+      "pt": "The Crowded Room é uma série estreada em 2023, com géneros como drama, suspense. Entre os nomes de destaque do elenco estão Tom Holland, Amanda Seyfried, Emmy Rossum. A VISIONE mostra a disponibilidade legal verificada por mercado.",
+      "br": "The Crowded Room é uma série lançada em 2023, com gêneros como drama, suspense. Entre os nomes de destaque do elenco estão Tom Holland, Amanda Seyfried, Emmy Rossum. A VISIONE mostra a disponibilidade legal verificada por mercado."
+    },
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "tvmaze-web-schedule",
+      "discovered_at": "2026-09-11T10:05:21.918Z",
+      "score": 166.5,
+      "sitelinks": 0
+    },
+    "rating": {
+      "value": 6.3,
+      "source": "TVmaze"
+    },
+    "credits": {
+      "creator": "Akiva Goldsman",
+      "creators": [
+        "Akiva Goldsman"
+      ],
+      "cast": [
+        "Tom Holland",
+        "Amanda Seyfried",
+        "Emmy Rossum",
+        "Will Chase",
+        "Sasha Lane",
+        "Lior Raz"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [
+        {
+          "provider": "apple-tv",
+          "monetization": "subscription",
+          "price": null,
+          "currency": null,
+          "url": "https://tv.apple.com/es/show/the-crowded-room/umc.cmc.495pmjg441gg3j70j3x2yufx9",
+          "quality": null,
+          "affiliate_url": null,
+          "is_affiliate": false,
+          "sponsored": false,
+          "attribution": [
+            "Availability evidence: official Apple TV public page (ES)"
+          ],
+          "evidence_url": "https://tv.apple.com/es/show/the-crowded-room/umc.cmc.495pmjg441gg3j70j3x2yufx9",
+          "verified_at": "2026-09-11T08:35:00Z"
+        }
+      ],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "available",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:08.955Z",
+    "availability_updated_at": "2026-09-11T08:35:00Z",
+    "source": {
+      "metadata": "TVmaze",
+      "availability": "official-provider-evidence",
+      "attribution": [
+        "TV metadata: TVmaze (CC BY-SA)"
+      ],
+      "license": "CC BY-SA",
+      "tvmaze_id": 54629,
+      "tvmaze_url": "https://www.tvmaze.com/shows/54629/the-crowded-room",
+      "external_ids": {
+        "imdb": "tt14417718",
+        "thetvdb": 400723
+      },
+      "source_summary": "The Crowded Room follows Danny Sullivan, a man who is arrested following his involvement in a shooting in New York City in 1979. A captivating thriller told through a series of interviews with curious interrogator Rya Goodwin, Danny's life story unfolds, revealing elements of the mysterious past that shaped him, and the twists and turns that will lead him to a life-altering revelation."
+    }
+  },
+  {
+    "id": "movie:wikidata:Q25188",
+    "type": "movie",
+    "slug": "inception",
+    "titles": {
+      "es": "Inception",
+      "pt": "A Origem",
+      "br": "A Origem"
+    },
+    "original_title": "Inception",
+    "year": 2010,
+    "runtime": 148,
+    "seasons": null,
+    "overview": {
+      "es": "Inception es una película de 2010 con géneros como heist, ciencia ficción, suspense. Dirigida por Christopher Nolan. El reparto incluye a Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Inception é um filme de 2010 com géneros como heist, ficção científica, suspense. Realizado por Christopher Nolan. O elenco inclui Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Inception é um filme de 2010 com gêneros como heist, ficção científica, suspense. Dirigido por Christopher Nolan. O elenco inclui Leonardo DiCaprio, Ken Watanabe, Joseph Gordon-Levitt. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "heist film",
+      "science fiction film",
+      "thriller film",
+      "science fiction action film",
+      "adventure film",
+      "drama film",
+      "mystery film",
+      "action film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Christopher Nolan",
+      "directors": [
+        "Christopher Nolan"
+      ],
+      "cast": [
+        "Leonardo DiCaprio",
+        "Ken Watanabe",
+        "Joseph Gordon-Levitt",
+        "Marion Cotillard",
+        "Elliot Page",
+        "Tom Hardy",
+        "Cillian Murphy",
+        "Tom Berenger",
+        "Michael Caine",
+        "Dileep Rao",
+        "Pete Postlethwaite",
+        "Lukas Haas"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:14.214Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q25188",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q25188",
+      "external_ids": {
+        "imdb": "tt1375666"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q83495",
+    "type": "movie",
+    "slug": "the-matrix",
+    "titles": {
+      "es": "The Matrix",
+      "pt": "Matrix",
+      "br": "Matrix"
+    },
+    "original_title": "The Matrix",
+    "year": 1999,
+    "runtime": 136,
+    "seasons": null,
+    "overview": {
+      "es": "The Matrix es una película de 1999 con géneros como suspense, dystopian, cyberpunk. Dirigida por Lana Wachowski. El reparto incluye a Laurence Fishburne, Carrie-Anne Moss, Joe Pantoliano. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "The Matrix é um filme de 1999 com géneros como suspense, dystopian, cyberpunk. Realizado por Lana Wachowski. O elenco inclui Laurence Fishburne, Carrie-Anne Moss, Joe Pantoliano. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "The Matrix é um filme de 1999 com gêneros como suspense, dystopian, cyberpunk. Dirigido por Lana Wachowski. O elenco inclui Laurence Fishburne, Carrie-Anne Moss, Joe Pantoliano. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "thriller film",
+      "dystopian film",
+      "cyberpunk",
+      "action thriller",
+      "post-apocalyptic film",
+      "science fiction film",
+      "action film",
+      "film noir",
+      "superhero film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Lana Wachowski",
+      "directors": [
+        "Lana Wachowski",
+        "Lilly Wachowski"
+      ],
+      "cast": [
+        "Laurence Fishburne",
+        "Carrie-Anne Moss",
+        "Joe Pantoliano",
+        "Hugo Weaving",
+        "Keanu Reeves",
+        "Gloria Foster",
+        "Julian Arahanga",
+        "Anthony Ray Parker",
+        "Marcus Chong",
+        "Matt Doran",
+        "Belinda McClory",
+        "Paul Goddard"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:14.765Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q83495",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q83495",
+      "external_ids": {
+        "imdb": "tt0133093"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q163872",
+    "type": "movie",
+    "slug": "the-dark-knight",
+    "titles": {
+      "es": "The Dark Knight",
+      "pt": "The Dark Knight",
+      "br": "The Dark Knight"
+    },
+    "original_title": "The Dark Knight",
+    "year": 2008,
+    "runtime": 153,
+    "seasons": null,
+    "overview": {
+      "es": "The Dark Knight es una película de 2008 con géneros como acción, neo-noir, crime thriller. Dirigida por Christopher Nolan. El reparto incluye a Christian Bale, Michael Caine, Heath Ledger. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "The Dark Knight é um filme de 2008 com géneros como ação, neo-noir, crime thriller. Realizado por Christopher Nolan. O elenco inclui Christian Bale, Michael Caine, Heath Ledger. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "The Dark Knight é um filme de 2008 com gêneros como ação, neo-noir, crime thriller. Dirigido por Christopher Nolan. O elenco inclui Christian Bale, Michael Caine, Heath Ledger. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "action film",
+      "neo-noir",
+      "crime thriller film",
+      "crime film",
+      "superhero film",
+      "drama film",
+      "thriller film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Christopher Nolan",
+      "directors": [
+        "Christopher Nolan"
+      ],
+      "cast": [
+        "Christian Bale",
+        "Michael Caine",
+        "Heath Ledger",
+        "Gary Oldman",
+        "Aaron Eckhart",
+        "Maggie Gyllenhaal",
+        "Morgan Freeman",
+        "Eric Roberts",
+        "Colin McFarlane",
+        "Chin Han",
+        "Anthony Michael Hall",
+        "Melinda McGraw"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:15.581Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q163872",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q163872",
+      "external_ids": {
+        "imdb": "tt0468569"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q20382729",
+    "type": "movie",
+    "slug": "la-llegada",
+    "titles": {
+      "es": "La Llegada",
+      "pt": "Arrival",
+      "br": "A Chegada"
+    },
+    "original_title": "Arrival",
+    "year": 2016,
+    "runtime": 116,
+    "seasons": null,
+    "overview": {
+      "es": "Arrival es una película de 2016 con géneros como drama, ciencia ficción, suspense. Dirigida por Denis Villeneuve. El reparto incluye a Amy Adams, Jeremy Renner, Forest Whitaker. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Arrival é um filme de 2016 com géneros como drama, ficção científica, suspense. Realizado por Denis Villeneuve. O elenco inclui Amy Adams, Jeremy Renner, Forest Whitaker. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Arrival é um filme de 2016 com gêneros como drama, ficção científica, suspense. Dirigido por Denis Villeneuve. O elenco inclui Amy Adams, Jeremy Renner, Forest Whitaker. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "drama film",
+      "science fiction film",
+      "thriller film",
+      "mystery film"
+    ],
+    "poster": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Arrival_2016_Film.png/960px-Arrival_2016_Film.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "Wikimedia Commons",
+      "license": "Public domain",
+      "credit": "Paramount Pictures",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Arrival_2016_Film.png"
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Denis Villeneuve",
+      "directors": [
+        "Denis Villeneuve"
+      ],
+      "cast": [
+        "Amy Adams",
+        "Jeremy Renner",
+        "Forest Whitaker",
+        "Michael Stuhlbarg",
+        "Tzi Ma",
+        "Sangita Patel",
+        "Mark O'Brien",
+        "Frank Schorpion"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:16.125Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q20382729",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q20382729",
+      "external_ids": {
+        "imdb": "tt2543164"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q21500755",
+    "type": "movie",
+    "slug": "blade-runner-2049",
+    "titles": {
+      "es": "Blade Runner 2049",
+      "pt": "Blade Runner 2049",
+      "br": "Blade Runner 2049"
+    },
+    "original_title": "Blade Runner 2049",
+    "year": 2017,
+    "runtime": 164,
+    "seasons": null,
+    "overview": {
+      "es": "Blade Runner 2049 es una película de 2017 con géneros como ciencia ficción, mystery, cyberpunk. Dirigida por Denis Villeneuve. El reparto incluye a Ryan Gosling, Harrison Ford, Robin Wright. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Blade Runner 2049 é um filme de 2017 com géneros como ficção científica, mystery, cyberpunk. Realizado por Denis Villeneuve. O elenco inclui Ryan Gosling, Harrison Ford, Robin Wright. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Blade Runner 2049 é um filme de 2017 com gêneros como ficção científica, mystery, cyberpunk. Dirigido por Denis Villeneuve. O elenco inclui Ryan Gosling, Harrison Ford, Robin Wright. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "science fiction film",
+      "mystery film",
+      "cyberpunk",
+      "dystopian film",
+      "neo-noir",
+      "thriller film",
+      "drama film",
+      "action film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Denis Villeneuve",
+      "directors": [
+        "Denis Villeneuve"
+      ],
+      "cast": [
+        "Ryan Gosling",
+        "Harrison Ford",
+        "Robin Wright",
+        "Dave Bautista",
+        "Ana de Armas",
+        "Sylvia Hoeks",
+        "Mackenzie Davis",
+        "Barkhad Abdi",
+        "David Dastmalchian",
+        "Hiam Abbass",
+        "Lennie James",
+        "Jared Leto"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:16.631Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q21500755",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q21500755",
+      "external_ids": {
+        "imdb": "tt1856101"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q47703",
+    "type": "movie",
+    "slug": "el-padrino",
+    "titles": {
+      "es": "El padrino",
+      "pt": "The Godfather",
+      "br": "The Godfather"
+    },
+    "original_title": "The Godfather",
+    "year": 1972,
+    "runtime": 175,
+    "seasons": null,
+    "overview": {
+      "es": "The Godfather es una película de 1972. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "The Godfather é um filme de 1972. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "The Godfather é um filme de 1972. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [],
+    "poster": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Godfather_logo.svg/960px-Godfather_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "backdrop": null,
+    "artwork": {
+      "kind": "source-image",
+      "source": "Wikimedia Commons",
+      "license": "Public domain",
+      "credit": "Paramount Pictures",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Godfather_logo.svg"
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "cast": []
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:17.120Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q47703",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q47703",
+      "external_ids": {
+        "imdb": "tt0068646"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q104123",
+    "type": "movie",
+    "slug": "pulp-fiction",
+    "titles": {
+      "es": "Pulp Fiction",
+      "pt": "Pulp Fiction",
+      "br": "Pulp Fiction"
+    },
+    "original_title": "Pulp Fiction",
+    "year": 1994,
+    "runtime": 154,
+    "seasons": null,
+    "overview": {
+      "es": "Pulp Fiction es una película de 1994 con géneros como independent, crimen, crime drama. Dirigida por Quentin Tarantino. El reparto incluye a Bruce Willis, John Travolta, Rosanna Arquette. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Pulp Fiction é um filme de 1994 com géneros como independent, crime, crime drama. Realizado por Quentin Tarantino. O elenco inclui Bruce Willis, John Travolta, Rosanna Arquette. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Pulp Fiction é um filme de 1994 com gêneros como independent, crime, crime drama. Dirigido por Quentin Tarantino. O elenco inclui Bruce Willis, John Travolta, Rosanna Arquette. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "independent film",
+      "crime film",
+      "crime drama film",
+      "drama film",
+      "crime thriller film",
+      "action film",
+      "thriller film",
+      "suspense film",
+      "black comedy film",
+      "crime comedy film",
+      "action thriller",
+      "comedy drama",
+      "comedy film",
+      "neo-noir",
+      "gangster film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Quentin Tarantino",
+      "directors": [
+        "Quentin Tarantino"
+      ],
+      "cast": [
+        "Bruce Willis",
+        "John Travolta",
+        "Rosanna Arquette",
+        "Uma Thurman",
+        "Samuel L. Jackson",
+        "Christopher Walken",
+        "Harvey Keitel",
+        "Tim Roth",
+        "Maria de Medeiros",
+        "Amanda Plummer",
+        "Ving Rhames",
+        "Eric Stoltz"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:17.778Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q104123",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q104123",
+      "external_ids": {
+        "imdb": "tt0110912"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q190050",
+    "type": "movie",
+    "slug": "fight-club",
+    "titles": {
+      "es": "Fight Club",
+      "pt": "Clube de Combate",
+      "br": "Fight Club"
+    },
+    "original_title": "Fight Club",
+    "year": 1999,
+    "runtime": 139,
+    "seasons": null,
+    "overview": {
+      "es": "Fight Club es una película de 1999 con géneros como flashback, drama, suspense. Dirigida por David Fincher. El reparto incluye a Edward Norton, Brad Pitt, Helena Bonham Carter. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Fight Club é um filme de 1999 com géneros como flashback, drama, suspense. Realizado por David Fincher. O elenco inclui Edward Norton, Brad Pitt, Helena Bonham Carter. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Fight Club é um filme de 1999 com gêneros como flashback, drama, suspense. Dirigido por David Fincher. O elenco inclui Edward Norton, Brad Pitt, Helena Bonham Carter. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "flashback film",
+      "drama film",
+      "thriller film",
+      "psychological thriller"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "David Fincher",
+      "directors": [
+        "David Fincher"
+      ],
+      "cast": [
+        "Edward Norton",
+        "Brad Pitt",
+        "Helena Bonham Carter",
+        "Jared Leto",
+        "Meat Loaf",
+        "Zach Grenier",
+        "David Lee Smith",
+        "Eion Bailey",
+        "David Andrews",
+        "Paul Dillon",
+        "Ezra Buzzington",
+        "Tim de Zarn"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:18.361Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q190050",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q190050",
+      "external_ids": {
+        "imdb": "tt0137523"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q15648198",
+    "type": "movie",
+    "slug": "whiplash",
+    "titles": {
+      "es": "Whiplash",
+      "pt": "Whiplash",
+      "br": "Whiplash"
+    },
+    "original_title": "Whiplash",
+    "year": 2014,
+    "runtime": 106,
+    "seasons": null,
+    "overview": {
+      "es": "Whiplash es una película de 2014 con géneros como musical, drama. Dirigida por Damien Chazelle. El reparto incluye a Austin Stowell, J. K. Simmons, Jayson Blair. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Whiplash é um filme de 2014 com géneros como musical, drama. Realizado por Damien Chazelle. O elenco inclui Austin Stowell, J. K. Simmons, Jayson Blair. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Whiplash é um filme de 2014 com gêneros como musical, drama. Dirigido por Damien Chazelle. O elenco inclui Austin Stowell, J. K. Simmons, Jayson Blair. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "musical film",
+      "drama film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Damien Chazelle",
+      "directors": [
+        "Damien Chazelle"
+      ],
+      "cast": [
+        "Austin Stowell",
+        "J. K. Simmons",
+        "Jayson Blair",
+        "Melissa Benoist",
+        "Miles Teller",
+        "Paul Reiser",
+        "Chris Mulkey",
+        "Kofi Siriboe",
+        "Kavita Patil",
+        "Michael Cohen",
+        "Max Kasch",
+        "April Grace"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:18.698Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q15648198",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q15648198",
+      "external_ids": {
+        "imdb": "tt2582802"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q1757288",
+    "type": "movie",
+    "slug": "mad-max-fury-road",
+    "titles": {
+      "es": "Mad Max: Fury Road",
+      "pt": "Mad Max: Estrada da Fúria",
+      "br": "Mad Max: Estrada da Fúria"
+    },
+    "original_title": "Mad Max: Fury Road",
+    "year": 2015,
+    "runtime": 120,
+    "seasons": null,
+    "overview": {
+      "es": "Mad Max: Fury Road es una película de 2015 con géneros como acción, aventura, ciencia ficción. Dirigida por George Miller. El reparto incluye a Tom Hardy, Charlize Theron, Nicholas Hoult. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "Mad Max: Fury Road é um filme de 2015 com géneros como ação, aventura, ficção científica. Realizado por George Miller. O elenco inclui Tom Hardy, Charlize Theron, Nicholas Hoult. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "Mad Max: Fury Road é um filme de 2015 com gêneros como ação, aventura, ficção científica. Dirigido por George Miller. O elenco inclui Tom Hardy, Charlize Theron, Nicholas Hoult. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "action film",
+      "adventure film",
+      "science fiction film",
+      "dystopian film",
+      "post-apocalyptic film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "George Miller",
+      "directors": [
+        "George Miller"
+      ],
+      "cast": [
+        "Tom Hardy",
+        "Charlize Theron",
+        "Nicholas Hoult",
+        "Josh Helman",
+        "Nathan Jones",
+        "Zoë Kravitz",
+        "Rosie Huntington-Whiteley",
+        "Riley Keough",
+        "Hugh Keays-Byrne",
+        "Abbey Lee",
+        "Courtney Eaton",
+        "John Howard"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:19.431Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q1757288",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1757288",
+      "external_ids": {
+        "imdb": "tt1392190"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q20856802",
+    "type": "movie",
+    "slug": "la-la-land",
+    "titles": {
+      "es": "La La Land",
+      "pt": "La La Land",
+      "br": "La La Land"
+    },
+    "original_title": "La La Land",
+    "year": 2017,
+    "runtime": 128,
+    "seasons": null,
+    "overview": {
+      "es": "La La Land es una película de 2017 con géneros como romance, comedy drama, comedia. Dirigida por Damien Chazelle. El reparto incluye a Emma Stone, J. K. Simmons, Finn Wittrock. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "La La Land é um filme de 2017 com géneros como romance, comedy drama, comédia. Realizado por Damien Chazelle. O elenco inclui Emma Stone, J. K. Simmons, Finn Wittrock. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "La La Land é um filme de 2017 com gêneros como romance, comedy drama, comédia. Dirigido por Damien Chazelle. O elenco inclui Emma Stone, J. K. Simmons, Finn Wittrock. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "romance film",
+      "comedy drama",
+      "comedy film",
+      "musical film",
+      "drama film",
+      "dance film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "Damien Chazelle",
+      "directors": [
+        "Damien Chazelle"
+      ],
+      "cast": [
+        "Emma Stone",
+        "J. K. Simmons",
+        "Finn Wittrock",
+        "Rosemarie DeWitt",
+        "Meagen Fay",
+        "John Legend",
+        "Sonoya Mizuno",
+        "Callie Hernandez",
+        "Tom Everett Scott",
+        "Ryan Gosling",
+        "Jason Fuchs",
+        "Candice Coke"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:19.813Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q20856802",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q20856802",
+      "external_ids": {
+        "imdb": "tt3783958"
+      }
+    }
+  },
+  {
+    "id": "movie:wikidata:Q185888",
+    "type": "movie",
+    "slug": "the-social-network",
+    "titles": {
+      "es": "The Social Network",
+      "pt": "A Rede Social",
+      "br": "A Rede Social"
+    },
+    "original_title": "The Social Network",
+    "year": 2010,
+    "runtime": 121,
+    "seasons": null,
+    "overview": {
+      "es": "The Social Network es una película de 2010 con géneros como biographical, trial, drama. Dirigida por David Fincher. El reparto incluye a Jesse Eisenberg, Andrew Garfield, Justin Timberlake. VISIONE publica opciones legales solo cuando la disponibilidad está verificada.",
+      "pt": "The Social Network é um filme de 2010 com géneros como biographical, trial, drama. Realizado por David Fincher. O elenco inclui Jesse Eisenberg, Andrew Garfield, Justin Timberlake. A VISIONE só publica opções legais quando a disponibilidade está verificada.",
+      "br": "The Social Network é um filme de 2010 com gêneros como biographical, trial, drama. Dirigido por David Fincher. O elenco inclui Jesse Eisenberg, Andrew Garfield, Justin Timberlake. A VISIONE só publica opções legais quando a disponibilidade está verificada."
+    },
+    "genres": [
+      "biographical film",
+      "trial film",
+      "drama film"
+    ],
+    "poster": null,
+    "backdrop": null,
+    "artwork": {
+      "kind": "editorial-cover",
+      "source": "VISIONE",
+      "license": null,
+      "credit": "VISIONE editorial cover",
+      "source_url": null
+    },
+    "discovery": {
+      "source": "VISIONE curated Wikidata seed",
+      "discovered_at": "2026-09-11T10:05:40.040Z",
+      "score": 0,
+      "sitelinks": 0
+    },
+    "rating": null,
+    "credits": {
+      "director": "David Fincher",
+      "directors": [
+        "David Fincher"
+      ],
+      "cast": [
+        "Jesse Eisenberg",
+        "Andrew Garfield",
+        "Justin Timberlake",
+        "Armie Hammer",
+        "Brenda Song",
+        "Rooney Mara",
+        "Max Minghella",
+        "Rashida Jones",
+        "Joseph Mazzello",
+        "Dakota Johnson",
+        "Malese Jow",
+        "Trevor Wright"
+      ]
+    },
+    "related": [],
+    "offers": {
+      "ES": [],
+      "PT": [],
+      "BR": []
+    },
+    "availability_status": {
+      "ES": "unknown",
+      "PT": "unknown",
+      "BR": "unknown"
+    },
+    "updated_at": "2026-09-11T10:06:20.366Z",
+    "availability_updated_at": null,
+    "source": {
+      "metadata": "Wikidata",
+      "availability": "unconfigured",
+      "attribution": [
+        "Metadata: Wikidata (CC0)"
+      ],
+      "license": "CC0",
+      "wikidata_id": "Q185888",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q185888",
+      "external_ids": {
+        "imdb": "tt1285016"
+      }
     }
   }
 ]

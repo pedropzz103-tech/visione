@@ -6,6 +6,9 @@ on:
       - '.github/workflows/adsense-sync.yml'
       - 'scripts/editorial_inventory_sync.py'
       - 'scripts/materialize_streaming_nav.py'
+      - 'streaming/**/*.mjs'
+      - 'streaming/data/*.json'
+      - 'tests/*.test.mjs'
       - 'news/*.html'
       - 'news/feed.xml'
       - 'news/news-sitemap.xml'
@@ -23,6 +26,9 @@ on:
       - 'pt/index.html'
       - 'br/index.html'
       - 'data-credits/index.html'
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,15 +36,33 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sync TVmaze series metadata and artwork
+        run: node streaming/sync-tvmaze.mjs --all-series
+      - name: Sync Wikidata movie metadata
+        run: node streaming/sync-wikidata.mjs --all-movies
+        continue-on-error: true
+      - name: Refresh already-paired every.film records
+        run: node streaming/sync-everyfilm.mjs --all-known
+        continue-on-error: true
+      - name: Build streaming discovery pages
+        run: node streaming/build.mjs
       - name: Normalize editorial inventory and discovery surface
         run: |
           python3 scripts/editorial_inventory_sync.py
           python3 scripts/materialize_streaming_nav.py
-      - name: Commit normalized inventory
+      - name: Validate generated streaming site
+        run: node streaming/validate.mjs
+      - name: Run site quality tests
+        run: node --test tests/*.test.mjs
+      - name: Commit synchronized catalogue
         run: |
           if git diff --quiet; then
             echo "No changes needed"
@@ -47,5 +71,5 @@ jobs:
           git config user.name "VISIONE automation"
           git config user.email "actions@users.noreply.github.com"
           git add -A
-          git commit -m "Sync VISIONE editorial and discovery surfaces"
+          git commit -m "Sync VISIONE catalog metadata and artwork"
           git push origin "HEAD:${GITHUB_REF_NAME}"

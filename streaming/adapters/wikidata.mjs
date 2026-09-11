@@ -70,6 +70,22 @@ function labelsFor(ids, labels = {}) {
   return compactStrings(ids.map((id) => labels[id]));
 }
 
+function mergeCredits(existing = {}, incoming = {}) {
+  const merged = { ...existing };
+  for (const [key, value] of Object.entries(incoming ?? {})) {
+    if (Array.isArray(value)) {
+      if (value.length) merged[key] = value;
+      continue;
+    }
+    if (typeof value === "string") {
+      if (value.trim()) merged[key] = value;
+      continue;
+    }
+    if (value !== undefined && value !== null) merged[key] = value;
+  }
+  return merged;
+}
+
 export function mapWikidataFilm(entity, linkedLabels = {}, { fetchedAt = new Date().toISOString() } = {}) {
   if (!/^Q\d+$/.test(String(entity?.id ?? ""))) throw new Error("Wikidata QID is required");
   if (!claimEntityIds(entity, "P31").includes(FILM_QID)) throw new Error(`${entity.id} is not directly identified as a film`);
@@ -131,7 +147,7 @@ export function mergeWikidataIntoTitle(existingRaw, wikidataRaw) {
     ...existing,
     runtime: wikidata.runtime ?? existing.runtime,
     genres: wikidata.genres.length ? wikidata.genres : existing.genres,
-    credits: Object.keys(wikidata.credits).length ? wikidata.credits : existing.credits,
+    credits: mergeCredits(existing.credits, wikidata.credits),
     // Never replace curated locale copy, artwork, or provider availability here.
     titles: existing.titles,
     overview: existing.overview,

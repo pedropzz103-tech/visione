@@ -4,6 +4,7 @@ const ALLOWED_COUNTRIES = new Set(["ES", "PT", "BR"]);
 const PROVIDER_HOSTS = Object.freeze({
   "disney-plus": new Set(["disneyplus.com", "www.disneyplus.com"]),
   "prime-video": new Set(["primevideo.com", "www.primevideo.com"]),
+  "apple-tv": new Set(["tv.apple.com"]),
   netflix: new Set(["netflix.com", "www.netflix.com"]),
   max: new Set(["max.com", "www.max.com", "help.max.com"])
 });
@@ -30,7 +31,7 @@ function normalizedName(value = "") {
     .trim();
 }
 
-function makeOffer({ provider, monetization, price = null, currency = null, url, attribution }) {
+function makeOffer({ provider, monetization, price = null, currency = null, url, attribution, verifiedAt = null }) {
   return {
     provider,
     monetization,
@@ -41,7 +42,9 @@ function makeOffer({ provider, monetization, price = null, currency = null, url,
     affiliate_url: null,
     is_affiliate: false,
     sponsored: false,
-    attribution: [attribution]
+    attribution: [attribution],
+    evidence_url: url,
+    verified_at: verifiedAt
   };
 }
 
@@ -49,6 +52,7 @@ function hasNegativeAvailabilityEvidence(text) {
   const patterns = [
     /isn['’]?t available to watch in your country/i,
     /not available to watch in your country/i,
+    /not available in your region/i,
     /currently isn['’]?t available/i,
     /ya no est[aá] disponible/i,
     /no est[aá] disponible (?:en|para)/i,
@@ -95,7 +99,7 @@ function validateSource(provider, country, url) {
   }
 }
 
-function parseDisneyPlus({ country, url, text }) {
+function parseDisneyPlus({ country, url, text, checkedAt }) {
   const positive = /(CONSEGUIR|GET|ASSINAR|ADERIR(?: AO)?|SUBSCRIBE TO)\s+(?:O\s+)?DISNEY\+/i.test(text);
   if (!positive) return { status: "unknown", offers: [], reason: "ambiguous-page-evidence" };
   return {
@@ -104,30 +108,47 @@ function parseDisneyPlus({ country, url, text }) {
       provider: "disney-plus",
       monetization: "subscription",
       url,
+      verifiedAt: checkedAt,
       attribution: `Availability evidence: official Disney+ public page (${country})`
     })],
     reason: null
   };
 }
 
-function parsePrimeVideo({ country, url, text }) {
+function parsePrimeVideo({ country, url, text, checkedAt }) {
   const offers = [];
   const attribution = `Availability evidence: official Prime Video public page (${country})`;
   const rent = priceAfterLabel(text, ["Alquilar(?:\\s+en)?(?:\\s+UHD|\\s+HD)?", "Alugar(?:\\s+em)?(?:\\s+UHD|\\s+HD)?", "Rent(?:\\s+UHD|\\s+HD)?"]);
   const buy = priceAfterLabel(text, ["Comprar(?:\\s+em)?(?:\\s+UHD|\\s+HD)?", "Buy(?:\\s+UHD|\\s+HD)?"]);
 
-  if (rent) offers.push(makeOffer({ provider: "prime-video", monetization: "rent", ...rent, url, attribution }));
-  if (buy) offers.push(makeOffer({ provider: "prime-video", monetization: "buy", ...buy, url, attribution }));
+  if (rent) offers.push(makeOffer({ provider: "prime-video", monetization: "rent", ...rent, url, verifiedAt: checkedAt, attribution }));
+  if (buy) offers.push(makeOffer({ provider: "prime-video", monetization: "buy", ...buy, url, verifiedAt: checkedAt, attribution }));
 
-  const subscription = /(Suscr[ií]bete a Prime|Aderir ao Prime|Subscreva Prime|Assine (?:o )?Prime|Subscribe to Prime)/i.test(text);
-  if (subscription) offers.unshift(makeOffer({ provider: "prime-video", monetization: "subscription", url, attribution }));
+  const subscription = /(Suscr[ií]bete a Prime|Suscribirse a Prime|Aderir ao Prime|Subscreva Prime|Assine (?:o )?Prime|Subscribe to Prime)/i.test(text);
+  if (subscription) offers.unshift(makeOffer({ provider: "prime-video", monetization: "subscription", url, verifiedAt: checkedAt, attribution }));
 
   return offers.length
     ? { status: "available", offers, reason: null }
     : { status: "unknown", offers: [], reason: "ambiguous-page-evidence" };
 }
 
-export function parseOfficialProviderPage({ provider, country, url, expectedTitle, text }) {
+function parseAppleTv({ country, url, text, checkedAt }) {
+  const positive = /(Accept Free Trial|Aceptar prueba gratuita|Aceitar (?:teste|per[ií]odo)|Come[cç]ar (?:teste|avalia[cç][aã]o)|Start Free Trial|7\s+(?:days|d[ií]as)\s+(?:free|gratis|gr[aá]tis)|How to Watch)/i.test(text);
+  if (!positive) return { status: "unknown", offers: [], reason: "ambiguous-page-evidence" };
+  return {
+    status: "available",
+    offers: [makeOffer({
+      provider: "apple-tv",
+      monetization: "subscription",
+      url,
+      verifiedAt: checkedAt,
+      attribution: `Availability evidence: official Apple TV public page (${country})`
+    })],
+    reason: null
+  };
+}
+
+export function parseOfficialProviderPage({ provider, country, url, expectedTitle, text, checked_at = null }) {
   validateSource(provider, country, url);
   const clean = normalizeText(text);
   const expected = normalizedName(expectedTitle);
@@ -140,13 +161,13 @@ export function parseOfficialProviderPage({ provider, country, url, expectedTitl
     return { status: "unknown", offers: [], reason: "negative-or-unavailable-page-evidence" };
   }
 
-  if (provider === "disney-plus") return parseDisneyPlus({ country, url, text: clean });
-  if (provider === "prime-video") return parsePrimeVideo({ country, url, text: clean });
+  if (provider === "disney-plus") return parseDisneyPlus({ country, url, text: clean, checkedAt: checked_at });
+  if (provider === "prime-video") return parsePrimeVideo({ country, url, text: clean, checkedAt: checked_at });
+  if (provider === "apple-tv") return parseAppleTv({ country, url, text: clean, checkedAt: checked_at });
 
   // Netflix title pages may remain public even when a title is unavailable, and
-  // Max help/marketing pages are not a reliable current catalog feed. Until an
-  // authorized machine-readable source exists, do not promote those pages to
-  // verified availability automatically.
+  // Max marketing pages are not a sufficiently reliable current catalog feed.
+  // Keep these as research candidates unless stronger authorized evidence exists.
   return { status: "unknown", offers: [], reason: "provider-not-safe-for-automatic-positive-inference" };
 }
 
@@ -180,7 +201,7 @@ export function mergeOfficialAvailabilityEvidence(existingRaw, evidenceEntries =
     const country = entry.country;
     const provider = entry.provider;
     offers[country] = (offers[country] ?? []).filter((offer) => offer.provider !== provider);
-    offers[country].push(...parsed.offers);
+    offers[country].push(...parsed.offers.map((offer) => ({ ...offer, verified_at: checkedAt, evidence_url: entry.url })));
     availabilityStatus[country] = "available";
     accepted += 1;
 

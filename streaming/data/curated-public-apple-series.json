@@ -1,0 +1,785 @@
+[
+  {
+    "name": "Schmigadoon!",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/schmigadoon/umc.cmc.1tqmf2znhr4oui4vo69ircyui",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Schmigadoon! 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Physical",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/physical/umc.cmc.6gdc6v4vwyaab7klocftv2s10",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Physical 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Truth Be Told",
+    "year": 2019,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/truth-be-told/umc.cmc.6hegr60w8pjyfcblgocjek7oo",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Truth Be Told 2019. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Shantaram",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/shantaram/umc.cmc.atxsrive40xli3zh3uxjimut",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Shantaram 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Liaison",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/liaison/umc.cmc.62t13xacr3mxnit5a40g8tkla?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Liaison 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "City on Fire",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/city-on-fire/umc.cmc.r6vntb5r9wwbjwtt58xmyuz9?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "City on Fire 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "High Desert",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/high-desert/umc.cmc.1c4fnxk415p7l3eumcqholxn8",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "High Desert 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Echo 3",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/echo-3/umc.cmc.mzqa5sj4m2i80g51cgu04i3j",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Echo 3 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Extrapolations",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/extrapolations/umc.cmc.4uoqxmxlnipm9zsc88bkjyjx4?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Extrapolations 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Big Door Prize",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-big-door-prize/umc.cmc.2rjxcljdjz4h47vjdxnytcn23?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Big Door Prize 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Trying",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/trying/umc.cmc.6muy4la7lj1omu5nci4bt2m66",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Trying 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Suspicion",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/suspicion/umc.cmc.64yj71dmrdihhmo96h0lgjmw5?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Suspicion 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Surface",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/surface/umc.cmc.dzqzvmbvizbedk91cvrq5pvw?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Surface 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Dear Edward",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/dear-edward/umc.cmc.2rp99884b0rpc42alv86h960b?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Dear Edward 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Manhunt",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/manhunt-la-caza-del-asesino/umc.cmc.3uqhvdplroersd5p2l72udkal",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Manhunt 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Palm Royale",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/palm-royale/umc.cmc.6vwg3ce7ovsexa3a6r7f6qk49?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Palm Royale 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Sunny",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/sunny/umc.cmc.7c5t9dde8dxoaxwyl5rkuw38p",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Sunny 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Constellation",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/constellation/umc.cmc.3lvo8a7ezxpysdy3gou3fsns0?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Constellation 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Lady in the Lake",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/lady-in-the-lake/umc.cmc.2j4grqjj59olekp9vdrmjtodq?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Lady in the Lake 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Before",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/before/umc.cmc.4uwoba1ftlsr5da94wc98ilsc",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Before 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Disclaimer",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/disclaimer/umc.cmc.1cbgkx1fenkjtrha0n1a6fkc3",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Disclaimer 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Prime Target",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/prime-target/umc.cmc.5hje8i3v25dzow2olljxetnus",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Prime Target 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Your Friends & Neighbors",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/your-friends--neighbors/umc.cmc.74o37kzay0yuuub8iumddjsg?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Your Friends & Neighbors 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Buccaneers",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-buccaneers-aristocratas-por-amor/umc.cmc.g28hcpusm23xbs9zwvnwn9re",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Buccaneers 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Changeling",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-changeling/umc.cmc.161vwm570k49vsn7xjtzvnwex",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Changeling 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Drops of God",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/drops-of-god/umc.cmc.497ttx33nudgzywis3i2bnvuk?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Drops of God 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "WeCrashed",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/wecrashed/umc.cmc.6qw605uv2rwbzutk2p2fsgvq9",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "WeCrashed 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Roar",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/roar/umc.cmc.2os8kmimhw58fqxcu7xcmx8hd",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Roar 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Swagger",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/swagger/umc.cmc.63e208601mwndrxpmguc5stbo?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Swagger 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Calls",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/calls/umc.cmc.7hp8sparfsxo0l4f712f3mf2r?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Calls 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Lisey's Story",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/liseys-story/umc.cmc.34uwnqvp7211b9fl3vb25vled?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Lisey's Story 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Shining Girls",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/shining-girls/umc.cmc.22xs4xobsimzy5qqdif0rhmdy?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Shining Girls 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Little America",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/little-america/umc.cmc.2ice8mlcn1zrtxf81e5ktwg8p",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Little America 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Little Voice",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/little-voice/umc.cmc.4x932osv992wjjdq7ce12za2r",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Little Voice 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Platonic",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/platonic/umc.cmc.y7bc18x7co813l8i2tlsyb4l?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Platonic 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Murderbot",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/murderbot/umc.cmc.5owrzntj9v1gpg31wshflud03?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Murderbot 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Government Cheese",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/government-cheese/umc.cmc.1pgdmfreds5kuzmeo3xii0746",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Government Cheese 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Pluribus",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/pluribus/umc.cmc.37axgovs2yozlyh3c2cmwzlza",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Pluribus 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Smoke",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/smoke/umc.cmc.4lplbt076d3um4tenis7k58e3",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Smoke 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Last Frontier",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-last-frontier-conspiracion-en-alaska/umc.cmc.6kmzwhcm9cj30piuuiymr4u7m",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Last Frontier 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Chief of War",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/chief-of-war/umc.cmc.6ag0zq020ielwv7m83v8r4dkw?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Chief of War 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Dynasty: New England Patriots",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-dynasty-new-england-patriots/umc.cmc.e399kebej378s053scn8nghf?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Dynasty: New England Patriots 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Messi Meets America",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/messi-meets-america/umc.cmc.es6c1ptzxayqb3njj21diwhm?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Messi Meets America 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Home",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/home/umc.cmc.5xjrgoblr5l5i1ypamtayuhe9?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Home 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "WondLa",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/wondla/umc.cmc.2ghd8ombh4fd37rfs27ivfa94",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "WondLa 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Wolfboy and the Everything Factory",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/wolfboy-and-the-everything-factory/umc.cmc.6f1xxgn2dg52deawakawg20r9?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Wolfboy and the Everything Factory 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Camp Snoopy",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/camp-snoopy/umc.cmc.4erhnrmkf9vgeojl3uryxsc0j?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Camp Snoopy 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Stillwater",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/stillwater/umc.cmc.3czcagetjq31vvbgkkyp1xiao?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Stillwater 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Snoopy in Space",
+    "year": 2019,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/snoopy-in-space-the-search-for-life/umc.cmc.12l86ri6vfjlimw2m8b8dzszs",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Snoopy in Space 2019. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Eva the Owlet",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/eva-the-owlet/umc.cmc.49ts9z2smhboe9tweoygj8gv2",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Eva the Owlet 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Shape Island",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/shape-island/umc.cmc.40xdlw2jijoj95c3a6y2m3738",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Shape Island 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Pinecone & Pony",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/pinecone--pony/umc.cmc.2jwlalsi34m25fcfljpvk990r",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Pinecone & Pony 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Surfside Girls",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/surfside-girls/umc.cmc.4371g2xacdr0wfs071dm3q30x",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Surfside Girls 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Life by Ella",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/life-by-ella/umc.cmc.1suiyueh1ntwjtsstcwldofno",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Life by Ella 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Best Foot Forward",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/best-foot-forward/umc.cmc.2jx8ltni2dnxa5rxx7ip1mesm",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Best Foot Forward 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Lovely Little Farm",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/lovely-little-farm/umc.cmc.iajaormpogjbe142ssfirdys",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Lovely Little Farm 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Five Days at Memorial",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/five-days-at-memorial/umc.cmc.50agn5zbvuj7z70teq1p0pixn?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Five Days at Memorial 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The New Look",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-new-look/umc.cmc.6m0i5dcn60uzl206qq6ibomeh?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The New Look 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Amazing Stories",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/amazing-stories/umc.cmc.15p55n2osur6c56uam2gxhye3?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Amazing Stories 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Completely Made-Up Adventures of Dick Turpin",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-completely-made-up-adventures-of-dick-turpin/umc.cmc.37r7vskzmm8hk2pfbzaxlcwzg?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Completely Made-Up Adventures of Dick Turpin 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Shrink Next Door",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-shrink-next-door/umc.cmc.jov1gljmqnux0i15rbqsoyfk",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Shrink Next Door 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Now and Then",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/now-and-then/umc.cmc.1w3e47nmnt4o304oaauh4k2rm",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Now and Then 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Wanted: The Escape of Carlos Ghosn",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/wanted-the-escape-of-carlos-ghosn/umc.cmc.34nvp6vc5in9logmjc7hezp52?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Wanted: The Escape of Carlos Ghosn 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Prehistoric Planet",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/prehistoric-planet/umc.cmc.4lh4bmztauvkooqz400akxav?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Prehistoric Planet 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Watch the Sound with Mark Ronson",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/watch-the-sound-with-mark-ronson/umc.cmc.56ka6i8ccv7tsatj6nd1uo808?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Watch the Sound with Mark Ronson 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Cowboy Cartel",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/cowboy-cartel/umc.cmc.2vru12c9n7324q0tdk324i0f",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Cowboy Cartel 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Essex Serpent",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-essex-serpent/umc.cmc.1vyhx06lta7a21tshl8qitota?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Essex Serpent 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Bad Monkey",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/carl-hiaasens-bad-monkey/umc.cmc.2qoep59s6qukjonprttysfs8x?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Bad Monkey 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Mosquito Coast",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-mosquito-coast/umc.cmc.5nghmxp88xe0qxhtlhfiu5r2h?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Mosquito Coast 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Women in Blue",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/women-in-blue/umc.cmc.73wmdmkfpta5ul1vbwckmme39?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Women in Blue 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Still Up",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/still-up/umc.cmc.4sn9yh0gys8gpb0yei0h443a1?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Still Up 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Me You Can't See",
+    "year": 2021,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-me-you-cant-see/umc.cmc.4amwght1qtt8ioilwr0mgnf6d?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Me You Can't See 2021. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Last Thing He Told Me",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-last-thing-he-told-me/umc.cmc.5dkcy23fuhcdhw1zcmqn10rc5?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Last Thing He Told Me 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Lucky",
+    "year": 2026,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/lucky/umc.cmc.5qo7t3nngb2vj0m9dxkwebw1o?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Lucky 2026. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Dope Thief",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/dope-thief/umc.cmc.2prcvu6fnh4bue7d9iaswpsw7?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Dope Thief 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Super Models",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-super-models/umc.cmc.1jvelve41wn4nv2fl4v2u8rgj?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Super Models 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Home Before Dark",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/home-before-dark/umc.cmc.5yqy2wv4w7l0v4x5mn3le8l1y?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Home Before Dark 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "La Maison",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/la-maison/umc.cmc.gs1b84yx68istiomnshllt1i?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "La Maison 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Carême",
+    "year": 2025,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/careme/umc.cmc.4280po7j44ucyyg09iugnldvo?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Carême 2025. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Omnivore",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/omnivore/umc.cmc.3m567dtk8qcawdjwnagsr1jbs?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Omnivore 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Midnight Family",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/familia-de-medianoche/umc.cmc.1xkd0bjglgv5x1jxiteog2833?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Midnight Family 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "They Call Me Magic",
+    "year": 2022,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/they-call-me-magic/umc.cmc.67518fzfnhcjcajidzbpff8i5?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "They Call Me Magic 2022. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Reluctant Traveler with Eugene Levy",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-reluctant-traveler-with-eugene-levy/umc.cmc.237ur6qdup9h826huv7jg25yu?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Reluctant Traveler with Eugene Levy 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "The Secret Lives of Animals",
+    "year": 2024,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/the-secret-lives-of-animals/umc.cmc.2o8al5w2z01dnm4f9aw11d2w7?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "The Secret Lives of Animals 2024. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Tiny World",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/tiny-world/umc.cmc.1sid6bqjoez4sxonuulq12af7?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Tiny World 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Long Way Up",
+    "year": 2020,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/long-way-up/umc.cmc.1nv0tluok21c2f8549mdjqdnh?l=en",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Long Way Up 2020. 7 days free, then 9,99 €/month. Accept Free Trial."
+  },
+  {
+    "name": "Super League: The War for Football",
+    "year": 2023,
+    "country": "ES",
+    "provider": "apple-tv",
+    "url": "https://tv.apple.com/es/show/la-superliga-guerra-por-el-futbol/umc.cmc.744k10sqewo1m6taxvt8rcnhy?l=en-GB",
+    "checked_at": "2026-09-11T11:55:00Z",
+    "availability_text": "Super League: The War for Football 2023. 7 days free, then 9,99 €/month. Accept Free Trial."
+  }
+]

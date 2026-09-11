@@ -20,7 +20,7 @@ function decorateDiscoveryHtml(html, providers = [], activeLocale = null) {
   const creditsLink = '<a href="/data-credits/">Dados & fontes</a>'; let output = html;
   if (!output.includes('href="/data-credits/"')) output = output.replaceAll('<a href="/news/">Wire</a>', `${creditsLink}<a href="/news/">Wire</a>`);
   if (!output.includes('/assets/language-menu.css')) output = output.replace('</head>', '<link rel="stylesheet" href="/assets/language-menu.css?v=1"></head>');
-  output = output.replace(/<div class="locale-switcher"[^>]*>[\s\S]*?<\/div>/, renderLanguageMenu(activeLocale));
+  output = output.replace(/(<div class="locale-switcher"[^>]*>[\s\S]*?<\/div>)/, (legacy) => `${renderLanguageMenu(activeLocale)}${legacy}`);
   if (output.includes('<div class="provider-chips"></div>') && providers.length) {
     const chips = providers.map((provider) => `<span class="provider-chip provider-tile" data-provider="${escapeHtml(provider.id)}"><img class="provider-logo" src="${escapeHtml(provider.logo)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="provider-name">${escapeHtml(provider.name)}</span></span>`).join("");
     output = output.replace('<div class="provider-chips"></div>', `<div class="provider-chips">${chips}</div>`);

@@ -54,9 +54,6 @@ jobs:
         continue-on-error: true
       - name: Build streaming discovery pages
         run: node streaming/build.mjs
-      - name: Trace synchronized credits
-        run: |
-          node -e 'const fs=require("fs"); const t=JSON.parse(fs.readFileSync("streaming/data/titles.json","utf8")).find(x=>x.slug==="interstellar"); const r=JSON.parse(fs.readFileSync("data/search-index.json","utf8")).find(x=>x.slug==="interstellar"||x.url.includes("/interstellar/")); console.log("INTERSTELLAR_CREDITS", JSON.stringify(t?.credits)); console.log("INTERSTELLAR_SEARCH", JSON.stringify(r?.searchTerms));'
       - name: Normalize editorial inventory and discovery surface
         run: |
           python3 scripts/editorial_inventory_sync.py

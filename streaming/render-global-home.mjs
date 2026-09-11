@@ -1,5 +1,5 @@
 import { buildCollections } from "./catalog-selection.mjs";
-import { localePath } from "./config.mjs";
+import { localePath, SUPPORTED_LOCALES } from "./config.mjs";
 import { publicMarkets } from "./publication.mjs";
 import { escapeHtml, renderTitleCard } from "./render.mjs";
 
@@ -20,8 +20,12 @@ function search() {
   return `<div class="search-module search-compact" data-visione-search data-locale="pt"><form role="search" action="/" class="search-form"><label class="sr-only" for="search-global">Procura um filme, série ou ator</label><span class="search-icon" aria-hidden="true">⌕</span><input id="search-global" data-search-input type="search" autocomplete="off" placeholder="Procura um filme, série ou ator"><button type="submit">Buscar</button></form><div class="search-results" data-search-results hidden></div></div>`;
 }
 
+function languageSwitcher() {
+  return `<div class="locale-switcher" aria-label="Idiomas">${SUPPORTED_LOCALES.map((locale) => `<a href="${localePath(locale)}">${locale.toUpperCase()}</a>`).join("")}</div>`;
+}
+
 function header() {
-  return `<header class="stream-header"><div class="stream-header-inner"><a class="visione-brand" href="/" aria-label="VISIONE"><img src="/visione-logo.webp" alt="" width="44" height="44"><span>VISIONE</span></a><div class="header-search">${search()}</div><div class="stream-header-actions"><nav aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="/data-credits/">Dados & fontes</a><a href="/news/">Wire</a></nav><div class="locale-switcher" aria-label="Idiomas"><a href="${localePath("es")}">ES</a><a href="${localePath("pt")}">PT</a><a href="${localePath("br")}">BR</a></div></div></div></header>`;
+  return `<header class="stream-header"><div class="stream-header-inner"><a class="visione-brand" href="/" aria-label="VISIONE"><img src="/visione-logo.webp" alt="" width="44" height="44"><span>VISIONE</span></a><div class="header-search">${search()}</div><div class="stream-header-actions"><nav aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="/data-credits/">Dados & fontes</a><a href="/news/">Wire</a></nav>${languageSwitcher()}</div></div></header>`;
 }
 
 function footer() {

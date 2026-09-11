@@ -26,12 +26,13 @@ test("global selector does not dump seven language codes into the visible trigge
   assert.equal((html.match(/class="language-option/g) ?? []).length, 7);
 });
 
-test("generated home keeps language options inside the dropdown instead of the visible header row", async () => {
-  const home = await read("index.html");
+test("generated home shows one dropdown trigger while legacy flat locale markup stays hidden", async () => {
+  const [home, css] = await Promise.all([read("index.html"), read("assets/language-menu.css")]);
   const header = home.match(/<header class="stream-header">[\s\S]*?<\/header>/)?.[0] ?? "";
   const menu = header.match(/<details class="language-menu">[\s\S]*?<\/details>/)?.[0] ?? "";
   assert.ok(menu);
   assert.equal((menu.match(/class="language-option/g) ?? []).length, 7);
   assert.match(menu, /<summary[^>]*>🌐 Idioma ▾<\/summary>/);
-  assert.doesNotMatch(header.replace(menu, ""), />EN<\/a>|>FR<\/a>|>RU<\/a>|>UK<\/a>/);
+  assert.match(home, /\/assets\/language-menu\.css\?v=1/);
+  assert.match(css, /\.locale-switcher\{display:none!important\}/);
 });

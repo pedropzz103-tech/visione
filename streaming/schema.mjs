@@ -43,7 +43,34 @@ function normalizeOffer(raw) {
     affiliate_url: raw.affiliate_url ? String(raw.affiliate_url) : null,
     is_affiliate: Boolean(raw.is_affiliate),
     sponsored: Boolean(raw.sponsored),
-    attribution: Array.isArray(raw.attribution) ? raw.attribution.map(String) : []
+    attribution: Array.isArray(raw.attribution) ? raw.attribution.map(String) : [],
+    evidence_url: raw.evidence_url ? String(raw.evidence_url) : null,
+    verified_at: normalizeTimestamp(raw.verified_at, "offer.verified_at")
+  };
+}
+
+function normalizeArtwork(raw, poster) {
+  const artwork = asObject(raw);
+  const kind = String(artwork.kind ?? (poster ? "source-image" : "none")).trim();
+  const allowedKinds = new Set(["source-image", "editorial-cover", "none"]);
+  return {
+    kind: allowedKinds.has(kind) ? kind : "none",
+    source: artwork.source ? String(artwork.source) : (poster ? "legacy" : null),
+    license: artwork.license ? String(artwork.license) : null,
+    credit: artwork.credit ? String(artwork.credit) : null,
+    source_url: artwork.source_url ? String(artwork.source_url) : null
+  };
+}
+
+function normalizeDiscovery(raw) {
+  const discovery = asObject(raw);
+  const score = Number(discovery.score);
+  const sitelinks = Number(discovery.sitelinks);
+  return {
+    source: discovery.source ? String(discovery.source) : null,
+    discovered_at: normalizeTimestamp(discovery.discovered_at, "discovery.discovered_at"),
+    score: Number.isFinite(score) ? score : 0,
+    sitelinks: Number.isFinite(sitelinks) && sitelinks >= 0 ? sitelinks : 0
   };
 }
 
@@ -68,6 +95,8 @@ export function normalizeTitle(raw) {
     normalizedAvailability[country] = ["available", "unavailable", "unknown", "error"].includes(state) ? state : "unknown";
   }
 
+  const poster = raw.poster ? String(raw.poster) : null;
+
   return {
     id,
     type,
@@ -79,8 +108,10 @@ export function normalizeTitle(raw) {
     seasons: raw.seasons == null ? null : Number(raw.seasons) || null,
     overview: normalizeTextMap(raw.overview),
     genres: Array.isArray(raw.genres) ? raw.genres.map(String).filter(Boolean) : [],
-    poster: raw.poster ? String(raw.poster) : null,
+    poster,
     backdrop: raw.backdrop ? String(raw.backdrop) : null,
+    artwork: normalizeArtwork(raw.artwork, poster),
+    discovery: normalizeDiscovery(raw.discovery),
     rating: raw.rating && typeof raw.rating === "object" ? { value: Number(raw.rating.value) || null, source: String(raw.rating.source ?? "") } : null,
     credits: asObject(raw.credits),
     related: Array.isArray(raw.related) ? raw.related.map(String) : [],

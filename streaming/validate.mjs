@@ -37,6 +37,13 @@ function localHrefToFile(href) {
   return clean.slice(1);
 }
 
+function hasVisibleAvailabilityFreshness(html) {
+  return html.includes("data-availability-freshness")
+    || html.includes("Última")
+    || html.includes("comprobación")
+    || html.includes("verificação");
+}
+
 export async function validateBuild() {
   const errors = [];
   const canonicals = new Map();
@@ -79,7 +86,7 @@ export async function validateBuild() {
       if (!html.includes('"@type":"Movie"') && !html.includes('"@type":"TVSeries"')) {
         errors.push(`Missing media JSON-LD: ${file}`);
       }
-      if (!robots.includes("noindex") && !html.includes("Última") && !html.includes("comprobación") && !html.includes("verificação")) {
+      if (!robots.includes("noindex") && !hasVisibleAvailabilityFreshness(html)) {
         errors.push(`Indexable title is missing visible availability freshness: ${file}`);
       }
     }

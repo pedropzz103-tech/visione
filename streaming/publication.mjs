@@ -1,6 +1,6 @@
-import { getLocale, SUPPORTED_LOCALES } from "./config.mjs";
+import { getLocale, MARKET_LOCALES } from "./config.mjs";
 
-const LAUNCH_MARKETS = Object.freeze(SUPPORTED_LOCALES.map((locale) => getLocale(locale).country));
+const LAUNCH_MARKETS = Object.freeze([...new Set(MARKET_LOCALES.map((locale) => getLocale(locale).country))]);
 
 function validTimestamp(value) {
   return Boolean(value) && !Number.isNaN(Date.parse(String(value)));

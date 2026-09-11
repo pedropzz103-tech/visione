@@ -12,10 +12,24 @@ function attributionFreeArtworkLicense(value) {
   return /^(?:public domain(?: mark)?|cc0(?: 1\.0)?)$/.test(license);
 }
 
+function tvmazeAttributedArtwork(title) {
+  const source = String(title?.artwork?.source ?? "").trim().toLowerCase();
+  const license = String(title?.artwork?.license ?? "").trim().toLowerCase();
+  const sourceUrl = String(title?.source?.tvmaze_url ?? "").trim();
+  const poster = String(title?.poster ?? "").trim();
+  return source === "tvmaze"
+    && /^cc by-sa(?:\s*[0-9.]+)?$/.test(license)
+    && /^https:\/\/www\.tvmaze\.com\/shows\//i.test(sourceUrl)
+    && /^https:\/\/static\.tvmaze\.com\/uploads\/images\//i.test(poster);
+}
+
 export function hasCompleteCover(title) {
   const kind = String(title?.artwork?.kind ?? "").trim();
   if (kind === "editorial-cover") return true;
-  if (kind === "source-image" && String(title?.poster ?? "").trim() && attributionFreeArtworkLicense(title?.artwork?.license)) return true;
+  if (kind === "source-image" && String(title?.poster ?? "").trim()) {
+    if (attributionFreeArtworkLicense(title?.artwork?.license)) return true;
+    if (tvmazeAttributedArtwork(title)) return true;
+  }
   return false;
 }
 

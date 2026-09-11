@@ -75,7 +75,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:02.074Z",
+    "updated_at": "2026-09-11T10:22:52.856Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -209,7 +209,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:56.246Z",
+    "updated_at": "2026-09-11T10:22:46.983Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -348,7 +348,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:04.012Z",
+    "updated_at": "2026-09-11T10:22:54.132Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -473,7 +473,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:05.704Z",
+    "updated_at": "2026-09-11T10:22:55.492Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -563,7 +563,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:56.404Z",
+    "updated_at": "2026-09-11T10:22:47.147Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "TVmaze",
@@ -604,14 +604,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/44933/severance"
     },
     "discovery": {
       "source": null,
@@ -670,11 +670,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:56.558Z",
+    "updated_at": "2026-09-11T10:22:47.309Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -774,11 +774,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:56.711Z",
+    "updated_at": "2026-09-11T10:22:47.470Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -815,14 +815,14 @@
       "Comedy",
       "Sports"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/634/1585930.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/44458/ted-lasso"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -912,11 +912,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:08:56.864Z",
+    "updated_at": "2026-09-11T10:22:47.632Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -953,14 +953,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/631/1577677.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/38052/silo"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1054,11 +1054,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:08:57.017Z",
+    "updated_at": "2026-09-11T10:22:47.794Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1095,14 +1095,14 @@
       "Thriller",
       "Espionage"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/637/1593462.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/45039/slow-horses"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1186,11 +1186,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:08:57.169Z",
+    "updated_at": "2026-09-11T10:22:47.955Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1225,14 +1225,14 @@
     "genres": [
       "Drama"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/532/1330795.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/41375/pachinko"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1291,11 +1291,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:57.322Z",
+    "updated_at": "2026-09-11T10:22:48.116Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1330,14 +1330,14 @@
     "genres": [
       "Drama"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/594/1485135.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/41524/the-morning-show"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1414,11 +1414,11 @@
       "PT": "available",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:57.476Z",
+    "updated_at": "2026-09-11T10:22:48.278Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1454,14 +1454,14 @@
       "Drama",
       "Science-Fiction"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/616/1541416.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/41414/for-all-mankind"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1523,11 +1523,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:57.629Z",
+    "updated_at": "2026-09-11T10:22:48.440Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1564,14 +1564,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/573/1433544.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/35951/foundation"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1632,11 +1632,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:57.781Z",
+    "updated_at": "2026-09-11T10:22:48.601Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1673,14 +1673,14 @@
       "Crime",
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/501/1254750.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/53147/black-bird"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1729,11 +1729,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:57.933Z",
+    "updated_at": "2026-09-11T10:22:48.762Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1770,14 +1770,14 @@
       "Thriller",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/633/1584721.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/61315/dark-matter"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1832,11 +1832,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.085Z",
+    "updated_at": "2026-09-11T10:22:48.922Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1871,14 +1871,14 @@
     "genres": [
       "Comedy"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/610/1527402.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/58323/shrinking"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -1936,11 +1936,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.237Z",
+    "updated_at": "2026-09-11T10:22:49.082Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -1975,14 +1975,14 @@
     "genres": [
       "Comedy"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/569/1424520.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/75605/the-studio"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2039,11 +2039,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.388Z",
+    "updated_at": "2026-09-11T10:22:49.242Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2080,14 +2080,14 @@
       "War",
       "History"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/501/1253902.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/44388/masters-of-the-air"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2143,11 +2143,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.540Z",
+    "updated_at": "2026-09-11T10:22:49.403Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2184,14 +2184,14 @@
       "Comedy",
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/540/1351090.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/61235/bad-sisters"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2247,11 +2247,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.692Z",
+    "updated_at": "2026-09-11T10:22:49.564Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2288,14 +2288,14 @@
       "Adventure",
       "Science-Fiction"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/612/1530034.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/60090/monarch-legacy-of-monsters"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2348,11 +2348,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.844Z",
+    "updated_at": "2026-09-11T10:22:49.724Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2389,14 +2389,14 @@
       "Crime",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/488/1220528.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/48888/the-afterparty"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2456,11 +2456,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:58.996Z",
+    "updated_at": "2026-09-11T10:22:49.884Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2497,14 +2497,14 @@
       "Horror",
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/498/1245487.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/41531/servant"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2556,11 +2556,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:59.148Z",
+    "updated_at": "2026-09-11T10:22:50.044Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2597,14 +2597,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/629/1574176.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/62463/sugar"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2698,11 +2698,11 @@
       "PT": "available",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:08:59.299Z",
+    "updated_at": "2026-09-11T10:22:50.204Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2737,14 +2737,14 @@
     "genres": [
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/608/1521070.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/61739/hijack"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2805,11 +2805,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:59.452Z",
+    "updated_at": "2026-09-11T10:22:50.365Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2844,14 +2844,14 @@
     "genres": [
       "Drama"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/480/1202302.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/53079/lessons-in-chemistry"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -2904,11 +2904,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:59.603Z",
+    "updated_at": "2026-09-11T10:22:50.525Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -2945,14 +2945,14 @@
       "Thriller",
       "Legal"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/520/1301035.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/60310/presumed-innocent"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3010,11 +3010,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:59.755Z",
+    "updated_at": "2026-09-11T10:22:50.685Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3050,14 +3050,14 @@
       "Crime",
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/622/1556570.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/62628/criminal-record"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3117,11 +3117,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:08:59.906Z",
+    "updated_at": "2026-09-11T10:22:50.846Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3158,14 +3158,14 @@
       "Thriller",
       "Legal"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/248/620716.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/38801/defending-jacob"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3220,11 +3220,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.058Z",
+    "updated_at": "2026-09-11T10:22:51.006Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3259,14 +3259,14 @@
     "genres": [
       "Comedy"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/564/1412475.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/41530/mythic-quest"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3327,11 +3327,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.211Z",
+    "updated_at": "2026-09-11T10:22:51.168Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3366,14 +3366,14 @@
     "genres": [
       "Comedy"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/589/1474829.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/52193/acapulco"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3435,11 +3435,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.362Z",
+    "updated_at": "2026-09-11T10:22:51.328Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3474,14 +3474,14 @@
     "genres": [
       "Comedy"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/594/1485065.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/60527/loot"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3535,11 +3535,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.514Z",
+    "updated_at": "2026-09-11T10:22:51.488Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3576,14 +3576,14 @@
       "Science-Fiction",
       "Mystery"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/589/1473271.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/49964/invasion"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3644,11 +3644,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.666Z",
+    "updated_at": "2026-09-11T10:22:51.648Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3685,14 +3685,14 @@
       "Thriller",
       "Espionage"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/607/1518736.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/48362/tehran"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3754,11 +3754,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.818Z",
+    "updated_at": "2026-09-11T10:22:51.809Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3795,14 +3795,14 @@
       "Action",
       "Science-Fiction"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/416/1042167.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/34345/see"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3862,11 +3862,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:00.969Z",
+    "updated_at": "2026-09-11T10:22:51.969Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -3903,14 +3903,14 @@
       "Comedy",
       "History"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/366/916623.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/36943/dickinson"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -3983,11 +3983,11 @@
       "PT": "unknown",
       "BR": "available"
     },
-    "updated_at": "2026-09-11T10:09:01.121Z",
+    "updated_at": "2026-09-11T10:22:52.129Z",
     "availability_updated_at": "2026-09-11T09:45:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -4023,14 +4023,14 @@
       "Drama",
       "Thriller"
     ],
-    "poster": null,
+    "poster": "https://static.tvmaze.com/uploads/images/original_untouched/463/1159187.jpg",
     "backdrop": null,
     "artwork": {
-      "kind": "editorial-cover",
-      "source": "VISIONE",
-      "license": null,
-      "credit": "VISIONE editorial cover",
-      "source_url": null
+      "kind": "source-image",
+      "source": "TVmaze",
+      "license": "CC BY-SA",
+      "credit": null,
+      "source_url": "https://www.tvmaze.com/shows/54629/the-crowded-room"
     },
     "discovery": {
       "source": "tvmaze-web-schedule",
@@ -4084,11 +4084,11 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:01.273Z",
+    "updated_at": "2026-09-11T10:22:52.289Z",
     "availability_updated_at": "2026-09-11T08:35:00Z",
     "source": {
       "metadata": "TVmaze",
-      "availability": "official-provider-evidence+official-provider-evidence",
+      "availability": "official-provider-evidence+official-provider-evidence+official-provider-evidence",
       "attribution": [
         "TV metadata: TVmaze (CC BY-SA)"
       ],
@@ -4177,7 +4177,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:06.256Z",
+    "updated_at": "2026-09-11T10:22:56.038Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4270,7 +4270,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:06.708Z",
+    "updated_at": "2026-09-11T10:22:56.428Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4360,7 +4360,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:07.276Z",
+    "updated_at": "2026-09-11T10:22:57.094Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4443,7 +4443,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:07.784Z",
+    "updated_at": "2026-09-11T10:22:57.436Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4534,7 +4534,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:08.457Z",
+    "updated_at": "2026-09-11T10:22:58.011Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4599,7 +4599,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:08.816Z",
+    "updated_at": "2026-09-11T10:22:58.414Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4697,7 +4697,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:09.669Z",
+    "updated_at": "2026-09-11T10:22:58.938Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4784,7 +4784,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:10.323Z",
+    "updated_at": "2026-09-11T10:22:59.448Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4869,7 +4869,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:10.904Z",
+    "updated_at": "2026-09-11T10:22:59.793Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -4957,7 +4957,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:11.656Z",
+    "updated_at": "2026-09-11T10:23:00.197Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -5046,7 +5046,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:12.157Z",
+    "updated_at": "2026-09-11T10:23:00.606Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",
@@ -5132,7 +5132,7 @@
       "PT": "unknown",
       "BR": "unknown"
     },
-    "updated_at": "2026-09-11T10:09:13.095Z",
+    "updated_at": "2026-09-11T10:23:01.300Z",
     "availability_updated_at": null,
     "source": {
       "metadata": "Wikidata",

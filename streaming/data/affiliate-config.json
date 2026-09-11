@@ -1,0 +1,10 @@
+[
+  {"provider":"prime-video","market":"ES","status":"pending","network":"Amazon Associates ES","template":null},
+  {"provider":"prime-video","market":"BR","status":"pending","network":"Amazon Associates BR","template":null},
+  {"provider":"disney-plus","market":"ES","status":"pending","network":"Impact","template":null},
+  {"provider":"disney-plus","market":"PT","status":"pending","network":"Impact","template":null},
+  {"provider":"disney-plus","market":"BR","status":"pending","network":"Impact","template":null},
+  {"provider":"apple-tv","market":"ES","status":"pending","network":"Apple Services Performance Partners","template":null},
+  {"provider":"apple-tv","market":"PT","status":"pending","network":"Apple Services Performance Partners","template":null},
+  {"provider":"apple-tv","market":"BR","status":"pending","network":"Apple Services Performance Partners","template":null}
+]

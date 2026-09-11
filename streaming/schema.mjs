@@ -1,4 +1,4 @@
-import { getLocale, SUPPORTED_LOCALES } from "./config.mjs";
+import { getLocale, MARKET_LOCALES } from "./config.mjs";
 
 const VALID_TYPES = new Set(["movie", "series"]);
 const VALID_MONETIZATION = new Set(["subscription", "free", "rent", "buy"]);
@@ -10,7 +10,7 @@ function asObject(value) {
 
 function normalizeTextMap(value) {
   const map = asObject(value);
-  return Object.fromEntries(SUPPORTED_LOCALES.map((locale) => [locale, String(map[locale] ?? "").trim()]));
+  return Object.fromEntries(MARKET_LOCALES.map((locale) => [locale, String(map[locale] ?? "").trim()]));
 }
 
 function normalizeTimestamp(value, label) {
@@ -88,7 +88,7 @@ export function normalizeTitle(raw) {
   const normalizedOffers = {};
   const normalizedAvailability = {};
 
-  for (const locale of SUPPORTED_LOCALES) {
+  for (const locale of MARKET_LOCALES) {
     const { country } = getLocale(locale);
     normalizedOffers[country] = Array.isArray(offers[country]) ? offers[country].map(normalizeOffer) : [];
     const state = String(availabilityStatus[country] ?? "unknown");

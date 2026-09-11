@@ -57,12 +57,22 @@ function label(entity, language) {
   return String(entity?.labels?.[language]?.value ?? "").trim();
 }
 
+function bestLabel(entity, language = "en") {
+  return label(entity, language)
+    || label(entity, "en")
+    || label(entity, "mul")
+    || label(entity, "es")
+    || label(entity, "pt")
+    || label(entity, "pt-br")
+    || "";
+}
+
 function localizedTitles(entity) {
-  const fallback = label(entity, "en") || label(entity, "es") || label(entity, "pt") || entity.id;
+  const fallback = bestLabel(entity, "en") || entity.id;
   return {
-    es: label(entity, "es") || fallback,
-    pt: label(entity, "pt") || fallback,
-    br: label(entity, "pt-br") || label(entity, "pt") || fallback
+    es: label(entity, "es") || label(entity, "mul") || fallback,
+    pt: label(entity, "pt") || label(entity, "mul") || fallback,
+    br: label(entity, "pt-br") || label(entity, "pt") || label(entity, "mul") || fallback
   };
 }
 
@@ -101,7 +111,7 @@ export function mapWikidataFilm(entity, linkedLabels = {}, { fetchedAt = new Dat
     type: "movie",
     slug: slugify(titles.es || titles.pt || titles.br),
     titles,
-    original_title: label(entity, "en") || titles.es,
+    original_title: bestLabel(entity, "en") || titles.es,
     year: releaseYear(entity),
     runtime: runtimeMinutes(entity),
     seasons: null,
@@ -245,14 +255,14 @@ export async function fetchWikidataLabels(ids = [], {
   url.searchParams.set("action", "wbgetentities");
   url.searchParams.set("ids", qids.join("|"));
   url.searchParams.set("props", "labels");
-  url.searchParams.set("languages", `${language}|es|pt|pt-br|en`);
+  url.searchParams.set("languages", `${language}|en|mul|es|pt|pt-br`);
   url.searchParams.set("format", "json");
   url.searchParams.set("origin", "*");
   url.searchParams.set("maxlag", "5");
   const data = await wikidataRequest(url, requestOptions);
   return Object.fromEntries(Object.entries(data?.entities ?? {}).map(([id, entity]) => [
     id,
-    label(entity, language) || label(entity, "en") || label(entity, "es") || label(entity, "pt") || id
+    bestLabel(entity, language)
   ]));
 }
 

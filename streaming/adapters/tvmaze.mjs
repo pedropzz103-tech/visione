@@ -61,6 +61,22 @@ function mappedCredits(show) {
   };
 }
 
+function mergeCredits(existing = {}, incoming = {}) {
+  const merged = { ...existing };
+  for (const [key, value] of Object.entries(incoming ?? {})) {
+    if (Array.isArray(value)) {
+      if (value.length) merged[key] = value;
+      continue;
+    }
+    if (typeof value === "string") {
+      if (value.trim()) merged[key] = value;
+      continue;
+    }
+    if (value !== undefined && value !== null) merged[key] = value;
+  }
+  return merged;
+}
+
 function seasonCount(show) {
   const numbered = (show?._embedded?.seasons ?? [])
     .map((season) => Number(season?.number))
@@ -133,7 +149,7 @@ export function mergeTvmazeIntoTitle(existingRaw, tvmazeRaw) {
     poster: tvmaze.poster ?? existing.poster,
     backdrop: tvmaze.backdrop ?? existing.backdrop,
     rating: tvmaze.rating ?? existing.rating,
-    credits: Object.keys(tvmaze.credits).length ? tvmaze.credits : existing.credits,
+    credits: mergeCredits(existing.credits, tvmaze.credits),
     // Locale copy and all availability data stay under their existing authority.
     titles: existing.titles,
     overview: existing.overview,
@@ -156,12 +172,19 @@ export function selectTvmazeCandidate(results = [], { name, year } = {}) {
   const targetYear = Number(year) || null;
   if (!targetName || !targetYear) return null;
 
-  const exact = results
-    .map((entry) => entry?.show ?? entry)
-    .filter(Boolean)
-    .filter((show) => normalizedName(show.name) === targetName && premiereYear(show) === targetYear);
+  const shows = results.map((entry) => entry?.show ?? entry).filter(Boolean);
+  const exact = shows.filter((show) => normalizedName(show.name) === targetName && premiereYear(show) === targetYear);
+  if (exact.length === 1) return exact[0];
+  if (exact.length > 1) return null;
 
-  return exact.length === 1 ? exact[0] : null;
+  // Some TVmaze records carry a disambiguating suffix in the canonical name,
+  // e.g. "Arcane: League of Legends" while the product title is simply "Arcane".
+  // Accept that only when the year also matches and the prefix result is unique.
+  const prefixed = shows.filter((show) => {
+    const candidateName = normalizedName(show.name);
+    return premiereYear(show) === targetYear && candidateName.startsWith(`${targetName} `);
+  });
+  return prefixed.length === 1 ? prefixed[0] : null;
 }
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

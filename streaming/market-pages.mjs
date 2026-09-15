@@ -1,4 +1,4 @@
-import { absoluteUrl, getLocale, localePath } from "./config.mjs";
+import { absoluteUrl, localePath } from "./config.mjs";
 import { renderLocaleHome } from "./render.mjs";
 
 const MARKET_CATALOGS = Object.freeze({
@@ -32,6 +32,21 @@ const CATALOG_META = Object.freeze({
   })
 });
 
+const CATALOG_HERO = Object.freeze({
+  es: Object.freeze({
+    movie: Object.freeze({ eyebrow: "PELÍCULAS", title: "Películas", lead: "Encuentra películas y llega a la plataforma legal correcta.", note: "Solo mostramos disponibilidad verificada por mercado." }),
+    series: Object.freeze({ eyebrow: "SERIES", title: "Series", lead: "Encuentra series y llega a la plataforma legal correcta.", note: "Solo mostramos disponibilidad verificada por mercado." })
+  }),
+  pt: Object.freeze({
+    movie: Object.freeze({ eyebrow: "FILMES", title: "Filmes", lead: "Encontra filmes e chega à plataforma legal certa.", note: "Mostramos apenas disponibilidade verificada por mercado." }),
+    series: Object.freeze({ eyebrow: "SÉRIES", title: "Séries", lead: "Encontra séries e chega à plataforma legal certa.", note: "Mostramos apenas disponibilidade verificada por mercado." })
+  }),
+  br: Object.freeze({
+    movie: Object.freeze({ eyebrow: "FILMES", title: "Filmes", lead: "Encontre filmes e chegue à plataforma legal certa.", note: "Mostramos apenas disponibilidade verificada por mercado." }),
+    series: Object.freeze({ eyebrow: "SÉRIES", title: "Séries", lead: "Encontre séries e chegue à plataforma legal certa.", note: "Mostramos apenas disponibilidade verificada por mercado." })
+  })
+});
+
 export function dataCreditsLabel(locale) {
   return DATA_CREDITS[locale] || DATA_CREDITS.pt;
 }
@@ -44,6 +59,11 @@ export function catalogPath(locale, type) {
 
 function replaceHeadValue(html, tagPattern, replacement) {
   return html.replace(tagPattern, replacement);
+}
+
+function renderCatalogHero(locale, type) {
+  const hero = CATALOG_HERO[locale][type];
+  return `<div class="hero-content"><p class="eyebrow">${hero.eyebrow}</p><h1>${hero.title}</h1><p class="hero-lead">${hero.lead}</p><p class="hero-note">${hero.note}</p></div></section>`;
 }
 
 export function renderMarketCatalogPage(locale, type, titles, providers) {
@@ -62,6 +82,7 @@ export function renderMarketCatalogPage(locale, type, titles, providers) {
   html = replaceHeadValue(html, /<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${meta.title}">`);
   html = replaceHeadValue(html, /<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${meta.description}">`);
   html = replaceHeadValue(html, /<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${canonical}">`);
+  html = html.replace(/<div class="hero-content">[\s\S]*?<\/div><\/section>/, renderCatalogHero(locale, type));
   html = html.replace('<body class="stream-body discovery-home">', `<body class="stream-body discovery-home media-catalog-page" data-catalog-type="${type}">`);
   html = html.replaceAll('<article class="title-card', `<article data-media-type="${type}" class="title-card`);
 
@@ -96,19 +117,7 @@ export function localizeGeneratedMarketHtml(html, locale) {
   return output;
 }
 
-export function marketCatalogSitemapUrls(locale) {
-  if (!MARKET_CATALOGS[locale]) return [];
-  return ["movie", "series"].map((type) => absoluteUrl(catalogPath(locale, type)));
-}
-
 export function marketCatalogOutputPath(locale, type) {
   const path = catalogPath(locale, type);
   return `${path.slice(1)}index.html`;
-}
-
-export function marketCatalogLabel(locale, type) {
-  const config = getLocale(locale);
-  if (locale === "es") return type === "movie" ? "Películas" : "Series";
-  if (locale === "br") return type === "movie" ? "Filmes" : "Séries";
-  return type === "movie" ? "Filmes" : "Séries";
 }

@@ -27,6 +27,8 @@ test("Spanish navigation uses dedicated movie and series catalog pages", async (
   assert.match(home, /href="\/es\/series\/"[^>]*>Series<\/a>/);
   assert.match(movies, /data-catalog-type="movie"/);
   assert.match(series, /data-catalog-type="series"/);
+  assert.match(movies, /<h1>Películas<\/h1>/);
+  assert.match(series, /<h1>Series<\/h1>/);
   assert.doesNotMatch(movies, /data-media-type="series"/);
   assert.doesNotMatch(series, /data-media-type="movie"/);
   assert.match(movies, /<link rel="canonical" href="https:\/\/visione\.one\/es\/peliculas\/">/);

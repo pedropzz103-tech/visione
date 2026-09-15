@@ -10,6 +10,7 @@ import { renderLocaleHome, renderProviderPage, renderTitlePage } from "./render.
 import { isExtraLocale, localizeTitle } from "./i18n.mjs";
 import { renderExtraLocaleHome, renderExtraProviderPage, renderExtraTitlePage } from "./render-extra-locale.mjs";
 import { renderLanguageMenu } from "./language-menu.mjs";
+import { catalogPath, dataCreditsLabel, localizeGeneratedMarketHtml, marketCatalogOutputPath, renderMarketCatalogPage } from "./market-pages.mjs";
 
 const root = new URL("../", import.meta.url);
 
@@ -17,7 +18,9 @@ async function readJson(path) { return JSON.parse(await readFile(new URL(path, r
 async function write(path, content) { const url = new URL(path, root); await mkdir(dirname(fileURLToPath(url)), { recursive: true }); await writeFile(url, content, "utf8"); }
 function escapeHtml(value = "") { return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
 function decorateDiscoveryHtml(html, providers = [], activeLocale = null) {
-  const creditsLink = '<a href="/data-credits/">Dados & fontes</a>'; let output = html;
+  const creditsLabel = activeLocale ? dataCreditsLabel(activeLocale) : "Dados & fontes";
+  const creditsLink = `<a href="/data-credits/">${creditsLabel}</a>`;
+  let output = html;
   if (!output.includes('href="/data-credits/"')) output = output.replaceAll('<a href="/news/">Wire</a>', `${creditsLink}<a href="/news/">Wire</a>`);
   if (!output.includes('/assets/language-menu.css')) output = output.replace('</head>', '<link rel="stylesheet" href="/assets/language-menu.css?v=1"></head>');
   output = output.replace(/(<div class="locale-switcher"[^>]*>[\s\S]*?<\/div>)/, (legacy) => `${renderLanguageMenu(activeLocale)}${legacy}`);
@@ -25,7 +28,7 @@ function decorateDiscoveryHtml(html, providers = [], activeLocale = null) {
     const chips = providers.map((provider) => `<span class="provider-chip provider-tile" data-provider="${escapeHtml(provider.id)}"><img class="provider-logo" src="${escapeHtml(provider.logo)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="provider-name">${escapeHtml(provider.name)}</span></span>`).join("");
     output = output.replace('<div class="provider-chips"></div>', `<div class="provider-chips">${chips}</div>`);
   }
-  return output;
+  return activeLocale ? localizeGeneratedMarketHtml(output, activeLocale) : output;
 }
 function searchTermsFromCredits(title) { const terms = [...(title.genres ?? [])]; for (const value of Object.values(title.credits ?? {})) { if (typeof value === "string") terms.push(value); else if (Array.isArray(value)) terms.push(...value.filter((item) => typeof item === "string")); } return [...new Set(terms.map((term) => term.trim()).filter(Boolean))]; }
 function xmlUrlset(urls) { const rows = [...new Set(urls)].map((url) => `  <url><loc>${url}</loc></url>`).join("\n"); return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>\n`; }
@@ -48,6 +51,18 @@ export async function buildSite() {
     const homeHtml = isExtraLocale(locale) ? renderExtraLocaleHome(locale, titles, localProviders) : renderLocaleHome(locale, titles, providers);
     await write(`${locale}/index.html`, decorateDiscoveryHtml(homeHtml, localProviders, locale));
     const indexableUrls = [absoluteUrl(`/${locale}/`)];
+
+    if (!isExtraLocale(locale)) {
+      for (const mediaType of ["movie", "series"]) {
+        const output = marketCatalogOutputPath(locale, mediaType);
+        const directory = output.slice(0, -"index.html".length);
+        await rm(new URL(directory, root), { recursive: true, force: true });
+        const page = renderMarketCatalogPage(locale, mediaType, titles, providers);
+        await write(output, decorateDiscoveryHtml(page, localProviders, locale));
+        indexableUrls.push(absoluteUrl(catalogPath(locale, mediaType)));
+      }
+    }
+
     for (const title of titles) {
       const output = `${locale}/${config.titleSegment}/${title.slug}/index.html`;
       const page = isExtraLocale(locale) ? renderExtraTitlePage(title, locale, providers) : renderTitlePage(title, locale, providers);

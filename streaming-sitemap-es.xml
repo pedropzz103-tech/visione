@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://visione.one/es/</loc></url>
+  <url><loc>https://visione.one/es/peliculas/</loc></url>
+  <url><loc>https://visione.one/es/series/</loc></url>
   <url><loc>https://visione.one/es/donde-ver/severance/</loc></url>
   <url><loc>https://visione.one/es/donde-ver/the-bear/</loc></url>
   <url><loc>https://visione.one/es/donde-ver/ted-lasso/</loc></url>

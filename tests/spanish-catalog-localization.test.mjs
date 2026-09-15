@@ -46,6 +46,7 @@ test("generated Spanish discovery pages do not leak Portuguese UI copy", async (
     /Publicidade/i,
     /Contato/i,
     /Pôster de/i,
+    /Selecionar idioma/i,
     /quando os dados verificados estiverem disponíveis/i,
     /Títulos verificados disponibles em /i,
     / em España \| VISIONE/i
@@ -61,4 +62,5 @@ test("generated Spanish discovery pages do not leak Portuguese UI copy", async (
   const home = await read("es/index.html");
   assert.match(home, /Datos y fuentes/);
   assert.match(home, /VISIONE indica dónde encontrar películas y series legalmente\./);
+  assert.match(home, /aria-label="Seleccionar idioma"/);
 });

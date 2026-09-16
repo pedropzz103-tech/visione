@@ -22,7 +22,7 @@ test("changing language keeps globally public catalog titles visible and linkabl
     const href = `/${locale}/${config.titleSegment}/${crossMarketTitle.slug}/`;
 
     assert.ok(home.includes(href), `${locale} home should keep ${crossMarketTitle.slug} in the catalog after a language switch`);
-    await access(new URL(`../${locale}/${config.titleSegment}/${crossMarketTitle.slug}/index.html`));
+    await access(new URL(`../${locale}/${config.titleSegment}/${crossMarketTitle.slug}/index.html`, import.meta.url));
   }
 
   assert.ok(checkedLocales > 0, "fixture should include at least one title that is public globally but not verified in a locale market");

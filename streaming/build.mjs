@@ -43,7 +43,7 @@ export async function buildSite() {
   for (const locale of SUPPORTED_LOCALES) {
     const config = getLocale(locale);
     const marketTitles = internalTitles.filter((title) => isPublicInMarket(title, config.country));
-    const titles = isExtraLocale(locale) ? marketTitles.map((title) => localizeTitle(title, locale)) : marketTitles;
+    const titles = isExtraLocale(locale) ? globalTitles.map((title) => localizeTitle(title, locale)) : globalTitles;
     publicCounts[locale] = titles.length;
     await rm(new URL(`${locale}/${config.titleSegment}/`, root), { recursive: true, force: true });
     await rm(new URL(`${locale}/${config.providerSegment}/`, root), { recursive: true, force: true });
@@ -71,10 +71,11 @@ export async function buildSite() {
       searchRecords.push({ id: title.id, type: title.type, title: title.titles[locale], alternateTitles: [...new Set([title.original_title, ...Object.values(title.titles)].filter(Boolean))], searchTerms: searchTermsFromCredits(title), year: title.year, poster: title.poster, artwork: title.artwork, url: titlePath(locale, title.slug), locale });
     }
     for (const provider of localProviders) {
-      const providerTitles = titles.filter((title) => (title.offers[config.country] ?? []).some((offer) => offer.provider === provider.id));
+      const providerTitles = marketTitles.filter((title) => (title.offers[config.country] ?? []).some((offer) => offer.provider === provider.id));
       if (!providerTitles.length) continue;
+      const localizedProviderTitles = isExtraLocale(locale) ? providerTitles.map((title) => localizeTitle(title, locale)) : providerTitles;
       const output = `${locale}/${config.providerSegment}/${provider.id}/index.html`;
-      const providerHtml = isExtraLocale(locale) ? renderExtraProviderPage(provider, locale, providerTitles) : renderProviderPage(provider, locale, providerTitles);
+      const providerHtml = isExtraLocale(locale) ? renderExtraProviderPage(provider, locale, localizedProviderTitles) : renderProviderPage(provider, locale, localizedProviderTitles);
       await write(output, decorateDiscoveryHtml(providerHtml, [], locale));
       indexableUrls.push(absoluteUrl(providerPath(locale, provider.id)));
     }

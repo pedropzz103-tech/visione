@@ -8,6 +8,7 @@ import { normalizeTitle } from "../streaming/schema.mjs";
 const titles = JSON.parse(await readFile(new URL("../streaming/data/titles.json", import.meta.url), "utf8")).map(normalizeTitle);
 const globalTitles = titles.filter(isPublicAnywhere);
 
+// Language changes alter presentation, not the discovery inventory.
 test("changing language keeps globally public catalog titles visible and linkable", async () => {
   let checkedLocales = 0;
 
@@ -21,7 +22,7 @@ test("changing language keeps globally public catalog titles visible and linkabl
     const href = `/${locale}/${config.titleSegment}/${crossMarketTitle.slug}/`;
 
     assert.ok(home.includes(href), `${locale} home should keep ${crossMarketTitle.slug} in the catalog after a language switch`);
-    await access(new URL(`../${locale}/${config.titleSegment}/${crossMarketTitle.slug}/index.html`, import.meta.url));
+    await access(new URL(`../${locale}/${config.titleSegment}/${crossMarketTitle.slug}/index.html`));
   }
 
   assert.ok(checkedLocales > 0, "fixture should include at least one title that is public globally but not verified in a locale market");

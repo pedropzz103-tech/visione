@@ -76,13 +76,16 @@ function initializeRail(section) {
     if (section.classList.contains("is-grid") || event.button !== 0) return;
     dragStart = { x: event.clientX, scrollLeft: rail.scrollLeft };
     dragged = false;
-    rail.classList.add("is-dragging");
-    rail.setPointerCapture(event.pointerId);
   });
   rail.addEventListener("pointermove", (event) => {
     if (!dragStart) return;
     const distance = event.clientX - dragStart.x;
-    if (Math.abs(distance) > 5) dragged = true;
+    if (!dragged && Math.abs(distance) > 5) {
+      dragged = true;
+      rail.classList.add("is-dragging");
+      rail.setPointerCapture(event.pointerId);
+    }
+    if (!dragged) return;
     rail.scrollLeft = dragStart.scrollLeft - distance;
   });
   const endDrag = (event) => {

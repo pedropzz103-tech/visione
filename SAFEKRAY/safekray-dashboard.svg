@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1440" viewBox="0 0 720 1440">
+<rect width="720" height="1440" rx="72" fill="#07111d"/>
+<g font-family="Inter,Arial,sans-serif" fill="#fff">
+<text x="48" y="88" font-size="38" font-weight="900">SAFE<tspan fill="#FFC733">KRAY</tspan></text>
+<text x="48" y="154" font-size="34" font-weight="850">Alerts</text>
+<rect x="40" y="190" width="640" height="210" rx="28" fill="#b9242e"/>
+<circle cx="96" cy="252" r="28" fill="#d84d55"/><text x="88" y="263" font-size="30">!</text>
+<text x="140" y="250" font-size="30" font-weight="850">Air raid alert</text><text x="140" y="282" font-size="18" fill="#ffdfe1">Official alert feed</text>
+<text x="72" y="342" font-size="22">Go to a shelter immediately.</text><text x="72" y="374" font-size="22">Follow official instructions.</text>
+<rect x="40" y="424" width="640" height="60" rx="18" fill="#0d1c2a" stroke="#20374b"/>
+<rect x="44" y="428" width="206" height="52" rx="15" fill="#1683ff"/><text x="148" y="461" font-size="18" text-anchor="middle">All</text><text x="360" y="461" font-size="18" text-anchor="middle" fill="#8da0b2">Nearby</text><text x="570" y="461" font-size="18" text-anchor="middle" fill="#8da0b2">Official</text>
+<g>
+<rect x="40" y="510" width="640" height="112" fill="#0b1927" stroke="#173047"/><circle cx="90" cy="566" r="30" fill="#d7373f"/><text x="82" y="576" font-size="26">✦</text><text x="140" y="556" font-size="22" font-weight="800">Safety report</text><text x="140" y="588" font-size="16" fill="#8497a8">Civilian risk information nearby</text><text x="618" y="556" font-size="14" fill="#8ca0b2">2m</text>
+<rect x="40" y="622" width="640" height="112" fill="#0b1927" stroke="#173047"/><circle cx="90" cy="678" r="30" fill="#d89a1c"/><text x="82" y="688" font-size="26">⚡</text><text x="140" y="668" font-size="22" font-weight="800">Power outage</text><text x="140" y="700" font-size="16" fill="#8497a8">Infrastructure report</text><text x="618" y="668" font-size="14" fill="#8ca0b2">8m</text>
+<rect x="40" y="734" width="640" height="112" fill="#0b1927" stroke="#173047"/><circle cx="90" cy="790" r="30" fill="#2aae68"/><text x="82" y="800" font-size="26">⌂</text><text x="140" y="780" font-size="22" font-weight="800">Shelter available</text><text x="140" y="812" font-size="16" fill="#8497a8">Mapped civilian shelter</text><text x="618" y="780" font-size="14" fill="#8ca0b2">1.2 km</text>
+</g>
+<rect x="40" y="880" width="640" height="74" rx="20" fill="#0d1f30" stroke="#244158"/><text x="360" y="927" text-anchor="middle" font-size="20" font-weight="800">View official sources</text>
+<rect x="40" y="1000" width="640" height="248" rx="28" fill="#0b1927" stroke="#1d3346"/>
+<text x="68" y="1048" font-size="24" font-weight="850">72-Hour Emergency Checklist</text><g font-size="20"><text x="72" y="1100">☑ Water & food</text><text x="72" y="1140">☑ Medicines</text><text x="72" y="1180">☐ Power bank</text><text x="360" y="1100">☑ Documents</text><text x="360" y="1140">☐ Flashlight</text><text x="360" y="1180">☑ Warm clothing</text></g>
+<text x="360" y="1356" text-anchor="middle" font-size="14" fill="#8194a6" letter-spacing="2">FREE · INDEPENDENT · BY VISIONE</text>
+</g></svg>

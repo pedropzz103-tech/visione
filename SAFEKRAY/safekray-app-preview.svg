@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1440" viewBox="0 0 720 1440">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#07131f"/><stop offset="1" stop-color="#091827"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-opacity=".35"/></filter></defs>
+<rect width="720" height="1440" rx="72" fill="url(#bg)"/>
+<g font-family="Inter,Arial,sans-serif" fill="#fff">
+<text x="54" y="92" font-size="42" font-weight="900">SAFE<tspan fill="#FFC733">KRAY</tspan></text>
+<text x="54" y="124" font-size="16" fill="#8da0b2" letter-spacing="3">CIVILIAN SAFETY FOR UKRAINE</text>
+<rect x="42" y="158" width="636" height="72" rx="22" fill="#102235" stroke="#244158"/>
+<text x="82" y="203" font-size="24" fill="#9fb0c0">⌕  Search location</text>
+<rect x="0" y="248" width="720" height="900" fill="#0b1824"/>
+<path d="M0 430 C120 360 190 490 300 420 S510 360 720 470V1148H0Z" fill="#0e2232"/>
+<path d="M20 810 C160 740 260 910 410 830 S600 770 720 860" fill="none" stroke="#153c58" stroke-width="18"/>
+<path d="M120 300 L235 1148 M390 250 L470 1148 M0 640 L720 580" stroke="#163046" stroke-width="5" opacity=".7"/>
+<path d="M430 390 C500 360 610 390 675 470 L650 700 C550 730 470 690 420 620Z" fill="#b6313a" opacity=".42"/>
+<circle cx="510" cy="510" r="18" fill="#e43d49"/><text x="500" y="520" font-size="24">!</text>
+<circle cx="190" cy="690" r="20" fill="#2fb975"/><text x="179" y="700" font-size="22">⌂</text>
+<circle cx="355" cy="790" r="20" fill="#1683ff"/><text x="344" y="800" font-size="22">✚</text>
+<g filter="url(#s)">
+<rect x="42" y="742" width="250" height="304" rx="24" fill="#07131f" stroke="#294052"/>
+<g font-size="19"><circle cx="78" cy="790" r="14" fill="#d7323e"/><text x="106" y="798">Air raid alert</text>
+<circle cx="78" cy="838" r="14" fill="#9d2932"/><text x="106" y="846">High-risk area</text>
+<circle cx="78" cy="886" r="14" fill="#2eaa68"/><text x="106" y="894">Shelter</text>
+<circle cx="78" cy="934" r="14" fill="#1876d6"/><text x="106" y="942">Humanitarian aid</text>
+<circle cx="78" cy="982" r="14" fill="#d29b1d"/><text x="106" y="990">Utilities</text></g>
+</g>
+<circle cx="620" cy="1020" r="42" fill="#f3f7fa"/><text x="600" y="1032" font-size="34" fill="#102030">⌾</text>
+<rect x="0" y="1148" width="720" height="292" fill="#07131f"/>
+<g font-size="20" text-anchor="middle"><text x="90" y="1280" fill="#1683ff">⌖</text><text x="90" y="1315" font-size="16" fill="#1683ff">Map</text><text x="270" y="1280" fill="#7f90a1">♧</text><text x="270" y="1315" font-size="16" fill="#7f90a1">Alerts</text><text x="450" y="1280" fill="#7f90a1">⌂</text><text x="450" y="1315" font-size="16" fill="#7f90a1">Shelters</text><text x="630" y="1280" fill="#7f90a1">☰</text><text x="630" y="1315" font-size="16" fill="#7f90a1">More</text></g>
+</g></svg>

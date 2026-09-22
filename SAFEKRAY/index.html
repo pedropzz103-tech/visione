@@ -1,127 +1,182 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f8fbff">
-<title>SAFEKRAY — Civilian safety for Ukraine by VISIONE</title>
-<meta name="description" content="SAFEKRAY is a free independent civilian-safety app for Ukraine: alerts, risk map, shelters, safer routes, utilities, preparedness and community reporting.">
-<meta property="og:title" content="SAFEKRAY">
-<meta property="og:description" content="Civilian safety for Ukraine. Free, independent, and built by VISIONE.">
+<meta name="theme-color" content="#05080d">
+<title>SAFEKRAY — Real-time civilian safety for Ukraine</title>
+<meta name="description" content="SAFEKRAY is an independent personal civilian-safety project focused on real-time community reporting, collaborative validation and planned location-integrity safeguards.">
+<meta property="og:title" content="SAFEKRAY — Real-time civilian safety">
+<meta property="og:description" content="Real-time civilian communication and community report validation for Ukraine. Stronger location safeguards are in development.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://visione.one/SAFEKRAY/">\n<meta property="og:image" content="https://visione.one/SAFEKRAY/safekray-promo.webp">
+<meta property="og:url" content="https://visione.one/SAFEKRAY/">
+<meta property="og:image" content="https://visione.one/SAFEKRAY/safekray-hero.png">
 <style>
-:root{--blue:#0057b7;--sky:#dff1ff;--yellow:#ffd700;--ink:#101820;--muted:#667789;--line:#dfe8ef;--card:#fff;--green:#0d8b5b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#fff}
-a{text-decoration:none;color:inherit}button,input{font:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,232,239,.82)}
-.navin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em}.brandmark{width:34px;height:34px;border-radius:11px;background:linear-gradient(180deg,var(--blue) 0 50%,var(--yellow) 50%);box-shadow:0 8px 20px rgba(0,87,183,.17)}
-.navlinks{display:flex;align-items:center;gap:16px;font-size:13px;font-weight:700;color:#435262}.lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-weight:800;color:#27333d}
-.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#f7fbff 0,#fff 74%);padding:74px 0 44px}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,rgba(255,215,0,0),rgba(255,215,0,.16));pointer-events:none}
-.herogrid{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center;position:relative;z-index:1}.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #cfe4f7;background:#fff;color:#14588c;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;box-shadow:0 7px 20px rgba(26,70,110,.06)}.dot{width:8px;height:8px;border-radius:50%;background:#20b778}
-h1{font-size:clamp(46px,7vw,86px);line-height:.93;letter-spacing:-.065em;margin:18px 0 18px;max-width:800px}.blue{color:var(--blue)}.yellow{color:#d9ad00}.lead{font-size:clamp(18px,2.1vw,24px);line-height:1.48;color:#506171;max-width:720px}.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:13px 17px;font-weight:850;font-size:14px;border:1px solid var(--line)}.primary{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 12px 28px rgba(0,87,183,.18)}.secondary{background:#fff}
-.micro{margin-top:15px;color:#7a8896;font-size:12px}.phonewrap{display:flex;justify-content:center}.phone{width:min(390px,88vw);border:10px solid #101216;border-radius:48px;background:#111;box-shadow:0 36px 90px rgba(17,35,52,.22);overflow:hidden;transform:rotate(1.2deg)}.phone img{display:block;width:100%;height:auto}
-.field{height:170px;position:relative;overflow:hidden;background:linear-gradient(180deg,#dff1ff 0 44%,#f8db54 44% 100%)}.field:before{content:"";position:absolute;inset:auto 0 0;height:90px;background:repeating-linear-gradient(82deg,transparent 0 22px,rgba(152,113,0,.13) 23px 25px),linear-gradient(#f7dc56,#e9c432)}.wheat{position:absolute;bottom:15px;width:4px;height:76px;background:#b88b12;border-radius:999px;transform-origin:bottom}.wheat:before,.wheat:after{content:"";position:absolute;width:18px;height:7px;border-radius:100% 0;background:#c39b27}.wheat:before{left:-15px;top:17px;transform:rotate(24deg)}.wheat:after{left:2px;top:30px;transform:rotate(160deg)}
-.section{padding:82px 0}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.05em;line-height:1.02;margin:10px 0 14px}.sub{color:var(--muted);font-size:18px;line-height:1.55;max-width:760px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}.feature{border:1px solid var(--line);border-radius:22px;padding:22px;background:#fff;box-shadow:0 10px 32px rgba(24,50,76,.05)}.icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#eef6ff;color:var(--blue);font-size:20px;font-weight:900}.feature h3{margin:15px 0 8px;font-size:18px}.feature p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
-.band{background:#f7fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.trust{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}.trustlist{display:grid;gap:12px}.trustitem{display:flex;gap:12px;align-items:flex-start}.check{width:26px;height:26px;border-radius:9px;background:#e9f8f1;color:var(--green);display:grid;place-items:center;font-weight:900;flex:0 0 auto}.trustitem b{display:block;margin-bottom:3px}.trustitem span{color:var(--muted);line-height:1.45;font-size:14px}
-.screenshot-card{background:#eef6ff;border:1px solid #d7e8f7;border-radius:30px;padding:24px;overflow:hidden}.screenshot-card img{width:100%;display:block;border-radius:22px;box-shadow:0 18px 50px rgba(27,52,75,.16)}
-.partner{background:linear-gradient(135deg,#064e9d,#0067d3 58%,#ffd700 160%);color:#fff;border-radius:32px;padding:44px}.partner .sub{color:#d9ebff}.partner .btn.secondary{border-color:rgba(255,255,255,.26);background:rgba(255,255,255,.12);color:#fff}
-.news{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 14px 40px rgba(24,50,76,.07)}.formrow{display:flex;gap:8px}.form input[type=email]{flex:1;min-width:0;border:1px solid var(--line);border-radius:13px;padding:13px 14px;outline:none}.form input:focus{border-color:#75afe5;box-shadow:0 0 0 4px rgba(0,87,183,.08)}.consent{display:flex;gap:9px;align-items:flex-start;color:#6b7885;font-size:11px;line-height:1.4;margin-top:12px}.consent input{margin-top:2px}.hp{position:absolute;left:-10000px}.status{margin-top:10px;font-size:12px;min-height:18px}.footer{padding:32px 0 42px;border-top:1px solid var(--line);color:#71808e;font-size:12px}.footin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.visioneb{color:#111820;font-weight:900;letter-spacing:.12em}
-@media(max-width:880px){.herogrid,.trust,.news{grid-template-columns:1fr}.hero{padding-top:44px}.phonewrap{order:-1}.phone{width:min(330px,78vw)}.features{grid-template-columns:1fr 1fr}.navlinks a{display:none}}
-@media(max-width:580px){.wrap{width:min(100% - 22px,1180px)}.navin{height:60px}.hero{padding:32px 0}.features{grid-template-columns:1fr}.section{padding:58px 0}.formrow{flex-direction:column}.partner{padding:28px 22px;border-radius:24px}.phone{border-radius:40px}.field{height:125px}}
-
-.field-photo{
-  min-height:clamp(190px,30vw,360px);
-  position:relative;
-  background-image:
-    linear-gradient(180deg,rgba(0,87,183,.08),rgba(255,215,0,.10)),
-    url("https://upload.wikimedia.org/wikipedia/commons/9/99/Blue_sky_over_field.jpg");
-  background-size:cover;
-  background-position:center;
-  border-top:1px solid rgba(0,87,183,.10);
-  border-bottom:1px solid rgba(220,180,0,.18);
+:root{
+  color-scheme:dark;
+  --black:#05080d;
+  --panel:#0b111b;
+  --panel-2:#101827;
+  --gold:#d9a441;
+  --gold-soft:#f1d28d;
+  --blue:#1b73e8;
+  --blue-soft:#77b7ff;
+  --text:#f7f9fc;
+  --muted:#9ba9bd;
+  --line:rgba(255,255,255,.1);
+  --success:#4bd49b;
 }
-.field-credit{
-  position:absolute;right:14px;bottom:12px;
-  background:rgba(255,255,255,.90);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.9);border-radius:999px;
-  padding:7px 10px;font-size:10px;font-weight:750;color:#4e5f6d;
-  box-shadow:0 7px 22px rgba(15,35,55,.10)
-}
-.field-credit a{text-decoration:none;color:inherit}
-.phone img,.screenshot-card img{background:#f2f6f9}\n.promo-showcase{padding:28px 0 58px;background:linear-gradient(180deg,#fff,#07111d 18%,#07111d 82%,#fff)}.promo-frame{width:min(1380px,calc(100% - 24px));margin:auto;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(2,12,22,.36);background:#07111d}.promo-frame img{display:block;width:100%;height:auto}.promo-caption{width:min(1180px,calc(100% - 32px));margin:14px auto 0;color:#9cafc1;font-size:12px;text-align:center}.promo-caption b{color:#fff}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--black)}
+body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:
+  radial-gradient(circle at 82% 8%,rgba(27,115,232,.15),transparent 26rem),
+  radial-gradient(circle at 12% 24%,rgba(217,164,65,.1),transparent 22rem),var(--black)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.nav{position:sticky;top:0;z-index:30;background:rgba(5,8,13,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.navin{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px}.brand-logo{width:38px;height:44px;filter:drop-shadow(0 8px 18px rgba(217,164,65,.22))}.brand-name{font-size:17px;font-weight:900;letter-spacing:.22em}.brand-tag{display:block;margin-top:3px;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.navlinks{display:flex;align-items:center;gap:24px;color:#c6d0df;font-size:13px;font-weight:700}.navlinks a:hover{color:#fff}.lang{border:1px solid rgba(217,164,65,.38);background:rgba(217,164,65,.08);color:var(--gold-soft);border-radius:999px;padding:8px 12px;font-weight:850;cursor:pointer}
+.hero{position:relative;overflow:hidden;padding:76px 0 64px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.025),transparent 36%);pointer-events:none}.herogrid{position:relative;display:grid;grid-template-columns:.88fr 1.12fr;gap:56px;align-items:center}.eyebrow{color:var(--gold-soft);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.status{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(119,183,255,.22);background:rgba(27,115,232,.08);border-radius:999px;padding:9px 12px;color:#cae4ff;font-size:11px;font-weight:800}.status:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 18px var(--success)}
+h1{margin:22px 0 20px;font-size:clamp(54px,7vw,96px);line-height:.9;letter-spacing:-.07em}.safe{color:#fff}.kray{color:var(--gold)}.hero-lead{margin:0;color:#c6d0df;font-size:clamp(18px,2vw,23px);line-height:1.55;max-width:610px}.hero-lead strong{color:#fff}.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:14px;padding:13px 17px;font-size:13px;font-weight:850}.primary{color:#07101c;background:linear-gradient(135deg,var(--gold-soft),var(--gold));box-shadow:0 14px 34px rgba(217,164,65,.16)}.secondary{border:1px solid rgba(119,183,255,.3);background:rgba(27,115,232,.1);color:#d9ebff}.micro{margin-top:18px;color:#7f8ca0;font-size:12px;line-height:1.55}
+.hero-visual{position:relative}.hero-visual:before{content:"";position:absolute;inset:10% -8%;background:radial-gradient(circle,rgba(27,115,232,.2),transparent 60%);filter:blur(18px)}.hero-frame{position:relative;border:1px solid rgba(217,164,65,.24);border-radius:30px;padding:10px;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.02));box-shadow:0 38px 90px rgba(0,0,0,.52)}.hero-art{display:block;width:100%;height:auto;border-radius:22px;background:#07111d}.art-note{display:flex;justify-content:space-between;gap:16px;margin-top:13px;color:#7f8ca0;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.art-note b{color:var(--gold-soft)}
+.signalbar{border-block:1px solid var(--line);background:rgba(255,255,255,.025)}.signals{display:grid;grid-template-columns:repeat(3,1fr)}.signal{padding:23px 26px;border-right:1px solid var(--line)}.signal:last-child{border-right:0}.signal b{display:block;color:#fff;font-size:14px}.signal span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.5}
+.section{padding:92px 0}.section h2{margin:10px 0 16px;font-size:clamp(36px,5vw,62px);line-height:1;letter-spacing:-.055em}.sub{max-width:760px;margin:0;color:var(--muted);font-size:18px;line-height:1.6}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}.card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 52px rgba(0,0,0,.18)}.card:before{content:"";position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(var(--gold),var(--blue));opacity:.8}.step{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:rgba(217,164,65,.12);color:var(--gold-soft);font-weight:900}.card h3{margin:18px 0 9px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.validation{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}.confidence{border:1px solid rgba(119,183,255,.24);border-radius:28px;padding:26px;background:linear-gradient(145deg,rgba(27,115,232,.12),rgba(217,164,65,.06));box-shadow:0 24px 70px rgba(0,0,0,.24)}.confidence-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.confidence-label{color:#dce8f8;font-size:13px;font-weight:850}.confidence-score{color:var(--success);font-size:13px;font-weight:900}.meter{height:9px;margin:14px 0 24px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}.meter span{display:block;width:82%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--success))}.evidence{display:grid;gap:11px}.evidence div{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 13px;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:rgba(0,0,0,.18);color:#cbd5e3;font-size:12px}.evidence b{color:#fff}.positive{color:var(--success)!important}.watch{color:var(--gold-soft)!important}
+.safeguards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}.guard-icon{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(217,164,65,.26);border-radius:14px;color:var(--gold-soft);background:rgba(217,164,65,.08);font-size:19px}.notice{margin-top:34px;border:1px solid rgba(119,183,255,.24);border-radius:22px;padding:22px 24px;background:rgba(27,115,232,.07);display:flex;gap:16px;align-items:flex-start}.notice-mark{width:28px;height:28px;display:grid;place-items:center;flex:0 0 auto;border-radius:9px;background:rgba(119,183,255,.12);color:var(--blue-soft);font-weight:900}.notice b{display:block;margin-bottom:5px}.notice span{color:var(--muted);font-size:13px;line-height:1.55}
+.footer{padding:34px 0 46px;border-top:1px solid var(--line);color:#77869a;font-size:12px}.footin{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footin b{color:#cbd5e3}.ukraine{display:inline-flex;gap:3px;margin-left:7px}.ukraine i{width:13px;height:7px}.ukraine i:first-child{background:#1768d1}.ukraine i:last-child{background:#ffd22e}
+@media(max-width:900px){.herogrid,.validation{grid-template-columns:1fr}.hero{padding-top:48px}.hero-visual{order:-1;max-width:700px;margin:auto}.flow,.safeguards{grid-template-columns:1fr 1fr}.navlinks a{display:none}}
+@media(max-width:620px){.wrap{width:min(100% - 22px,1180px)}.navin{height:66px}.brand-tag{display:none}.hero{padding:32px 0 46px}.hero-frame{border-radius:21px;padding:6px}.hero-art{border-radius:16px}.art-note{font-size:9px;line-height:1.4}h1{font-size:58px}.section{padding:68px 0}.signals,.flow,.safeguards{grid-template-columns:1fr}.signal{border-right:0;border-bottom:1px solid var(--line)}.signal:last-child{border-bottom:0}.notice{padding:19px}.navlinks{gap:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap navin"><a class="brand" href="https://visione.one/"><span class="brandmark"></span><span>VISIONE × SAFEKRAY</span></a><div class="navlinks"><a href="#features" data-t="navFeatures">Функції</a><a href="#partners" data-t="navPartners">Партнерам</a><a href="#newsletter">Newsletter</a><button class="lang" id="langBtn" type="button">EN</button></div></div></nav>
+<nav class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#top" aria-label="SAFEKRAY home">
+      <svg class="brand-logo" viewBox="0 0 48 56" role="img" aria-label="SAFEKRAY shield logo">
+        <path d="M24 2 43 10v16c0 13-8 22-19 28C13 48 5 39 5 26V10L24 2Z" fill="none" stroke="#d9a441" stroke-width="3"/>
+        <path d="m30 15-13 7 13 6-13 9" fill="none" stroke="#f1d28d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span><span class="brand-name">SAFEKRAY</span><span class="brand-tag" data-t="brandTag">Real people. Safer tomorrow.</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="#how" data-t="navHow">How it works</a>
+      <a href="#validation" data-t="navValidation">Validation</a>
+      <a href="#safeguards" data-t="navSafeguards">Safeguards</a>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">UA</button>
+    </div>
+  </div>
+</nav>
 
-<header class="hero"><div class="wrap herogrid">
-<div>
-<span class="badge"><span class="dot"></span><span data-t="badge">100% безкоштовний цивільний застосунок</span></span>
-<h1><span class="blue">SAFE</span><br><span class="yellow">KRAY</span></h1>
-<p class="lead" data-t="heroLead">Один безкоштовний застосунок для цивільної безпеки в Україні: тривоги, зони ризику, укриття, маршрути, транспорт, комунальні аварії, сповіщення поруч і підтримка спільноти.</p>
-<div class="ctas"><a class="btn primary" href="https://github.com/pedropzz103-tech/UALIVESMATTER" target="_blank" rel="noopener" data-t="githubBtn">Відкрити проєкт на GitHub ↗</a><a class="btn secondary" href="#partners" data-t="partnerBtn">Стати партнером поширення</a></div>
-<div class="micro" data-t="micro">Незалежний проєкт VISIONE. SAFEKRAY не пов’язаний з організаціями зі схожими назвами та не є офіційною державною службою оповіщення.</div>
-</div>
-<div class="phonewrap"><div class="phone"><img alt="SAFEKRAY civilian safety app preview" src="/SAFEKRAY/safekray-app-preview.svg"></div></div>
-</div></header>
+<main id="top">
+  <header class="hero">
+    <div class="wrap herogrid">
+      <div class="hero-copy">
+        <span class="status" data-t="status">Independent personal project</span>
+        <h1><span class="safe">SAFE</span><br><span class="kray">KRAY</span></h1>
+        <p class="hero-lead" data-t="heroLead"><strong>Real-time civilian communication</strong> for people on the ground in Ukraine. Report what you hear or see, then let nearby people confirm or challenge it as events unfold.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#how" data-t="seeHow">See how validation works</a>
+          <a class="btn secondary" href="#safeguards" data-t="seeSafeguards">Explore safety safeguards</a>
+        </div>
+        <p class="micro" data-t="micro">Built for civilian awareness. Community information is always kept separate from official emergency alerts.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <img class="hero-art" src="/SAFEKRAY/safekray-hero.png" alt="SAFEKRAY concept artwork showing civilian reports, map and community validation" width="1150" height="1368">
+        </div>
+        <div class="art-note"><span data-t="artNote">Concept artwork · Some safeguards shown are planned</span><b data-t="ukraine">Built for Ukraine</b></div>
+      </div>
+    </div>
+  </header>
 
-<section class="field-photo" aria-label="Wheat field under blue sky">
-  <div class="field-credit"><a href="https://commons.wikimedia.org/wiki/File:Blue_sky_over_field.jpg" target="_blank" rel="noopener">Public-domain photo · Wikimedia Commons ↗</a></div>
-</section>
+  <section class="signalbar" aria-label="Core principles">
+    <div class="wrap signals">
+      <div class="signal"><b data-t="signalOneTitle">Report in real time</b><span data-t="signalOneBody">People nearby can share a structured civilian incident report immediately.</span></div>
+      <div class="signal"><b data-t="signalTwoTitle">Validate together</b><span data-t="signalTwoBody">Others can confirm, challenge or add context without turning the app into a social network.</span></div>
+      <div class="signal"><b data-t="signalThreeTitle">See confidence, not certainty</b><span data-t="signalThreeBody">Every community report carries a changing confidence signal and clear limitations.</span></div>
+    </div>
+  </section>
 
-<section class="section" id="features"><div class="wrap">
-<div class="eyebrow" data-t="eyebrow">Цивільна безпека, без плати</div><h2 data-t="featuresTitle">Все необхідне в одному місці.</h2><p class="sub" data-t="featuresSub">SAFEKRAY поєднує інформацію, спільноту та інструменти швидкої дії. Застосунок створюється як безкоштовний інструмент для людей, гуманітарних організацій і місцевих спільнот.</p>
-<div class="features">
-<div class="feature"><div class="icon">◉</div><h3 data-t="f1t">Повітряні тривоги</h3><p data-t="f1p">Візуальні області активних тривог і швидкий доступ до карти.</p></div>
-<div class="feature"><div class="icon">▲</div><h3 data-t="f2t">Карта цивільного ризику</h3><p data-t="f2p">Червоні, помаранчеві та жовті зони, що допомагають швидко оцінити ситуацію.</p></div>
-<div class="feature"><div class="icon">⌂</div><h3 data-t="f3t">Укриття і безпечні точки</h3><p data-t="f3p">Пошук цивільних укриттів і корисних точок поруч.</p></div>
-<div class="feature"><div class="icon">↗</div><h3 data-t="f4t">Маршрути</h3><p data-t="f4p">Порівняння доступних маршрутів із урахуванням позначених зон ризику. Інформаційно, не як офіційна евакуаційна команда.</p></div>
-<div class="feature"><div class="icon">⌁</div><h3 data-t="f5t">Світло, вода й тепло</h3><p data-t="f5p">Повідомлення про відключення електроенергії, води та опалення.</p></div>
-<div class="feature"><div class="icon">💬</div><h3 data-t="f6t">Спільнота</h3><p data-t="f6p">Загальний чат, регіональні канали, фото, відео, Stories та валідація повідомлень іншими користувачами.</p></div>
-<div class="feature"><div class="icon">🔔</div><h3 data-t="f7t">Сповіщення поруч</h3><p data-t="f7p">Нові події поблизу можуть запускати локальні Android-сповіщення.</p></div>
-<div class="feature"><div class="icon">✓</div><h3 data-t="f8t">Набір 72 години</h3><p data-t="f8p">Редагований персональний чекліст, SOS та екстрені номери.</p></div>
-<div class="feature"><div class="icon">◎</div><h3 data-t="f9t">3 мови</h3><p data-t="f9p">Українська, англійська та російська в застосунку.</p></div>
-</div></div></section>
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="eyebrow" data-t="howEye">Community intelligence, in motion</div>
+      <h2 data-t="howTitle">From a local observation to shared awareness.</h2>
+      <p class="sub" data-t="howSub">If someone hears a drone explosion, sees smoke or finds a blocked road, they can report it at once. Nearby people then help the information become more useful — or stop it from becoming misleading.</p>
+      <div class="flow">
+        <article class="card"><span class="step">01</span><h3 data-t="stepOneTitle">A person reports</h3><p data-t="stepOneBody">A structured category, approximate location and time create a civilian report without exposing sensitive military information.</p></article>
+        <article class="card"><span class="step">02</span><h3 data-t="stepTwoTitle">Others respond</h3><p data-t="stepTwoBody">People in the area confirm or challenge what they also heard or observed, adding fast local context.</p></article>
+        <article class="card"><span class="step">03</span><h3 data-t="stepThreeTitle">Confidence changes</h3><p data-t="stepThreeBody">Confirmations and contradictory votes change the current community status. Proximity and timing are planned checks for stronger location confidence.</p></article>
+      </div>
+    </div>
+  </section>
 
-<section class="section band"><div class="wrap trust">
-<div><div class="eyebrow" data-t="trustEyebrow">Прозорість</div><h2 data-t="trustTitle">Безкоштовний. Незалежний. Для цивільних.</h2><p class="sub" data-t="trustSub">Проєкт не відстежує оперативні військові позиції і не позиціонує себе як офіційна система екстреного оповіщення.</p>
-<div class="trustlist">
-<div class="trustitem"><span class="check">✓</span><div><b data-t="t1t">100% безкоштовно</b><span data-t="t1p">Без плати за завантаження або основні функції.</span></div></div>
-<div class="trustitem"><span class="check">✓</span><div><b data-t="t2t">Цивільна спрямованість</b><span data-t="t2p">Укриття, побутові аварії, SOS, транспорт, комунікація та інформування.</span></div></div>
-<div class="trustitem"><span class="check">✓</span><div><b data-t="t3t">Чіткі обмеження</b><span data-t="t3p">Дані можуть затримуватися. Під час небезпеки користувачам слід дотримуватися офіційних вказівок.</span></div></div>
-</div></div>
-<div class="screenshot-card"><img alt="SAFEKRAY alerts and preparedness interface" src="/SAFEKRAY/safekray-dashboard.svg"></div>
-</div></section>
+  <section class="section" id="validation">
+    <div class="wrap validation">
+      <div>
+        <div class="eyebrow" data-t="validationEye">Transparent community validation</div>
+        <h2 data-t="validationTitle">Trust is a signal, not a label.</h2>
+        <p class="sub" data-t="validationSub">Reports currently become community confirmed after at least three confirmations and more confirmations than rejections. Community information remains visually distinct from official alerts, so users can understand the source and act with appropriate caution.</p>
+      </div>
+      <div class="confidence" aria-label="Illustrative community confidence card">
+        <div class="confidence-head"><span class="confidence-label" data-t="exampleReport">Illustration: explosion heard nearby</span><span class="confidence-score" data-t="confidenceHigh">Community confirmed</span></div>
+        <div class="meter" aria-hidden="true"><span></span></div>
+        <div class="evidence">
+          <div><b data-t="confirmations">Nearby confirmations</b><span class="positive">+8</span></div>
+          <div><b data-t="contradictions">Contradictory feedback</b><span class="watch">1 review</span></div>
+          <div><b data-t="proximity">Proximity and timing</b><span class="watch" data-t="consistent">Planned check</span></div>
+          <div><b data-t="sourceType">Source type</b><span data-t="communitySource">Community · not official</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section" id="partners"><div class="wrap"><div class="partner">
-<div class="eyebrow" style="color:#ffd700" data-t="partnerEye">Для NGO, громад і гуманітарних команд</div><h2 data-t="partnerTitle">Допоможіть донести безкоштовний застосунок до людей, яким він може бути корисним.</h2><p class="sub" data-t="partnerSub">Ми відкриті до пілотного тестування, перевірки джерел, локальних даних про укриття й транспорт, а також партнерського поширення. Жодної плати за користування застосунком.</p>
-<div class="ctas"><a class="btn secondary" href="https://visione.one/contact/" data-t="contactBtn">Зв’язатися з VISIONE</a><a class="btn secondary" href="https://github.com/pedropzz103-tech/UALIVESMATTER" target="_blank" rel="noopener" data-t="techBtn">Технічний репозиторій ↗</a></div>
-</div></div></section>
+  <section class="section" id="safeguards">
+    <div class="wrap">
+      <div class="eyebrow" data-t="guardsEye">Location-integrity safeguards</div>
+      <h2 data-t="guardsTitle">Built to make location abuse harder.</h2>
+      <p class="sub" data-t="guardsSub">Sensitive civilian information needs more than a pin on a map. The current Android app checks the device's reported country. Stronger anti-abuse measures are being designed and are not yet a guarantee.</p>
+      <div class="safeguards">
+        <article class="card"><span class="guard-icon">VPN</span><h3 data-t="vpnTitle">Anti-VPN barriers</h3><p data-t="vpnBody">Planned: evaluate VPN and proxy signals to reduce disguised access and coordinated abuse. This is not yet implemented in the current app.</p></article>
+        <article class="card"><span class="guard-icon">RU</span><h3 data-t="ruTitle">Russian geolocation blocking</h3><p data-t="ruBody">Current Android access gate blocks when the device reports a location in Russia. This device-side check can be bypassed and is not server enforcement.</p></article>
+        <article class="card"><span class="guard-icon">◎</span><h3 data-t="trustTitle">Location confidence checks</h3><p data-t="trustBody">Planned: assess suspicious location inconsistencies before nearby actions count as credible. The current report score does not yet use location confidence.</p></article>
+      </div>
+      <div class="notice"><span class="notice-mark">i</span><div><b data-t="noticeTitle">A support layer — never a replacement for authorities.</b><span data-t="noticeBody">SAFEKRAY does not present community reports as official emergency information. During danger, users should follow official alerts, emergency services and local authorities.</span></div></div>
+    </div>
+  </section>
+</main>
 
-<section class="section band" id="newsletter"><div class="wrap news">
-<div><div class="eyebrow">Newsletter</div><h2 data-t="newsTitle">Оновлення про релізи, нові міста та партнерства.</h2><p class="sub" data-t="newsSub">Підпишіться, щоб отримувати важливі оновлення про SAFEKRAY. Без спаму.</p></div>
-<form class="form" id="newsletterForm">
-<div class="formrow"><input id="email" type="email" required autocomplete="email" placeholder="email@example.com"><button class="btn primary" type="submit" data-t="subscribe">Підписатися</button></div>
-<label class="consent"><input id="consent" type="checkbox" required><span data-t="consent">Я погоджуюся отримувати електронні оновлення про SAFEKRAY. Відписатися можна будь-коли.</span></label>
-<input class="hp" id="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-<div class="status" id="formStatus" role="status"></div>
-</form>
-</div></section>
-
-<footer class="footer"><div class="wrap footin"><span>SAFEKRAY · <span data-t="free">100% безкоштовний застосунок</span></span><span>an app by <a class="visioneb" href="https://visione.one/">VISIONE</a></span></div></footer>
+<footer class="footer">
+  <div class="wrap footin"><span><b>SAFEKRAY</b> · <span data-t="footerProject">Independent personal project</span><span class="ukraine" aria-label="Ukraine"><i></i><i></i></span></span><span data-t="footerCivilian">Free · Civilian-focused · No advertising</span></div>
+</footer>
 
 <script>
 const T={
-uk:{navFeatures:"Функції",navPartners:"Партнерам",badge:"100% безкоштовний цивільний застосунок",heroLead:"Один безкоштовний застосунок для цивільної безпеки в Україні: тривоги, зони ризику, укриття, маршрути, транспорт, комунальні аварії, сповіщення поруч і підтримка спільноти.",githubBtn:"Відкрити проєкт на GitHub ↗",partnerBtn:"Стати партнером поширення",micro:"Незалежний проєкт VISIONE. Не є офіційною державною службою оповіщення.",eyebrow:"Цивільна безпека, без плати",featuresTitle:"Все необхідне в одному місці.",featuresSub:"SAFEKRAY поєднує інформацію, спільноту та інструменти швидкої дії. Застосунок створюється як безкоштовний інструмент для людей, гуманітарних організацій і місцевих спільнот.",f1t:"Повітряні тривоги",f1p:"Візуальні області активних тривог і швидкий доступ до карти.",f2t:"Карта цивільного ризику",f2p:"Червоні, помаранчеві та жовті зони, що допомагають швидко оцінити ситуацію.",f3t:"Укриття і безпечні точки",f3p:"Пошук цивільних укриттів і корисних точок поруч.",f4t:"Маршрути",f4p:"Порівняння доступних маршрутів із урахуванням позначених зон ризику. Інформаційно, не як офіційна евакуаційна команда.",f5t:"Світло, вода й тепло",f5p:"Повідомлення про відключення електроенергії, води та опалення.",f6t:"Спільнота",f6p:"Загальний чат, регіональні канали, фото, відео, Stories та валідація повідомлень іншими користувачами.",f7t:"Сповіщення поруч",f7p:"Нові події поблизу можуть запускати локальні Android-сповіщення.",f8t:"Набір 72 години",f8p:"Редагований персональний чекліст, SOS та екстрені номери.",f9t:"3 мови",f9p:"Українська, англійська та російська в застосунку.",trustEyebrow:"Прозорість",trustTitle:"Безкоштовний. Незалежний. Для цивільних.",trustSub:"Проєкт не відстежує оперативні військові позиції і не позиціонує себе як офіційна система екстреного оповіщення.",t1t:"100% безкоштовно",t1p:"Без плати за завантаження або основні функції.",t2t:"Цивільна спрямованість",t2p:"Укриття, побутові аварії, SOS, транспорт, комунікація та інформування.",t3t:"Чіткі обмеження",t3p:"Дані можуть затримуватися. Під час небезпеки користувачам слід дотримуватися офіційних вказівок.",partnerEye:"Для NGO, громад і гуманітарних команд",partnerTitle:"Допоможіть донести безкоштовний застосунок до людей, яким він може бути корисним.",partnerSub:"Ми відкриті до пілотного тестування, перевірки джерел, локальних даних про укриття й транспорт, а також партнерського поширення. Жодної плати за користування застосунком.",contactBtn:"Зв’язатися з VISIONE",techBtn:"Технічний репозиторій ↗",newsTitle:"Оновлення про релізи, нові міста та партнерства.",newsSub:"Підпишіться, щоб отримувати важливі оновлення про SAFEKRAY. Без спаму.",subscribe:"Підписатися",consent:"Я погоджуюся отримувати електронні оновлення про SAFEKRAY. Відписатися можна будь-коли.",free:"100% безкоштовний застосунок",ok:"Готово! Ви підписані.",err:"Не вдалося підписатися. Спробуйте ще раз."},
-en:{navFeatures:"Features",navPartners:"Partners",badge:"100% free civilian-safety app",heroLead:"One free civilian-safety app for Ukraine: alerts, risk zones, shelters, routes, transport, utility outages, nearby notifications and community support.",githubBtn:"View project on GitHub ↗",partnerBtn:"Become a distribution partner",micro:"Independent VISIONE project. Not an official government emergency-alert service.",eyebrow:"Civilian safety, free to use",featuresTitle:"Everything you need in one place.",featuresSub:"SAFEKRAY combines information, community tools and quick actions. It is being built as a free resource for people, humanitarian organizations and local communities.",f1t:"Air alerts",f1p:"Visual active-alert regions with quick access to the map.",f2t:"Civilian risk map",f2p:"Red, orange and yellow areas designed to make situational awareness faster.",f3t:"Shelters & safer points",f3p:"Find civilian shelters and useful nearby locations.",f4t:"Routes",f4p:"Compare available routes against marked risk areas. Informational only, not an official evacuation order.",f5t:"Power, water & heating",f5p:"Community and provider-ready reports for utility outages.",f6t:"Community",f6p:"General and regional chat, photos, videos, Stories and community validation of reports.",f7t:"Nearby notifications",f7p:"New nearby events can trigger Android notifications.",f8t:"72-hour kit",f8p:"An editable personal checklist, SOS and emergency numbers.",f9t:"3 languages",f9p:"Ukrainian, English and Russian in the app.",trustEyebrow:"Transparency",trustTitle:"Free. Independent. Civilian-focused.",trustSub:"The project does not track live operational military positions and does not present itself as an official emergency-alert system.",t1t:"100% free",t1p:"No charge for download or core functionality.",t2t:"Civilian focus",t2p:"Shelters, utilities, SOS, transport, communication and safety information.",t3t:"Clear limitations",t3p:"Data may be delayed. During danger, users should follow official alerts and local authorities.",partnerEye:"For NGOs, communities and humanitarian teams",partnerTitle:"Help us put a free safety tool in front of people who may benefit from it.",partnerSub:"We welcome pilot testing, source validation, local shelter/transport data and distribution partnerships. There is no user fee.",contactBtn:"Contact VISIONE",techBtn:"Technical repository ↗",newsTitle:"Release, city and partnership updates.",newsSub:"Subscribe for important SAFEKRAY updates. No spam.",subscribe:"Subscribe",consent:"I agree to receive email updates about SAFEKRAY. I can unsubscribe at any time.",free:"100% free app",ok:"You're subscribed. Thank you.",err:"Subscription failed. Please try again."}
+  en:{brandTag:"Real people. Safer tomorrow.",navHow:"How it works",navValidation:"Validation",navSafeguards:"Safeguards",status:"Independent personal project",heroLead:"Real-time civilian communication for people on the ground in Ukraine. Report what you hear or see, then let nearby people confirm or challenge it as events unfold.",seeHow:"See how validation works",seeSafeguards:"Explore safety safeguards",micro:"Built for civilian awareness. Community information is always kept separate from official emergency alerts.",artNote:"Live reports · Map awareness · Community confidence",ukraine:"Built for Ukraine",signalOneTitle:"Report in real time",signalOneBody:"People nearby can share a structured civilian incident report immediately.",signalTwoTitle:"Validate together",signalTwoBody:"Others can confirm, challenge or add context without turning the app into a social network.",signalThreeTitle:"See confidence, not certainty",signalThreeBody:"Every community report carries a changing confidence signal and clear limitations.",howEye:"Community intelligence, in motion",howTitle:"From a local observation to shared awareness.",howSub:"If someone hears a drone explosion, sees smoke or finds a blocked road, they can report it at once. Nearby people then help the information become more useful — or stop it from becoming misleading.",stepOneTitle:"A person reports",stepOneBody:"A structured category, approximate location and time create a civilian report without exposing sensitive military information.",stepTwoTitle:"Others respond",stepTwoBody:"People in the area confirm or challenge what they also heard or observed, adding fast local context.",stepThreeTitle:"Confidence changes",stepThreeBody:"The report gains or loses confidence through confirmations, contradictory feedback, proximity and timing.",validationEye:"Transparent community validation",validationTitle:"Trust is a signal, not a label.",validationSub:"SAFEKRAY shows why a report is gaining or losing confidence. Community-validated information remains visually distinct from official alerts, so users can understand the source and act with appropriate caution.",exampleReport:"Example: explosion heard nearby",confidenceHigh:"High community confidence",confirmations:"Nearby confirmations",contradictions:"Contradictory feedback",proximity:"Proximity and timing",consistent:"Consistent",sourceType:"Source type",communitySource:"Community · not official",guardsEye:"Location-integrity safeguards",guardsTitle:"Built to make location abuse harder.",guardsSub:"Sensitive civilian information needs more than a pin on a map. SAFEKRAY combines multiple barriers to reduce spoofed access and suspicious reporting behavior.",vpnTitle:"Anti-VPN barriers",vpnBody:"Signals associated with VPN and proxy use are evaluated to reduce disguised access and coordinated abuse.",ruTitle:"Russian geolocation blocking",ruBody:"Access associated with Russian geolocation is blocked as part of the project's civilian-safety posture.",trustTitle:"Location confidence checks",trustBody:"Location trust is assessed for suspicious inconsistencies before nearby actions are treated as credible.",noticeTitle:"A support layer — never a replacement for authorities.",noticeBody:"SAFEKRAY does not present community reports as official emergency information. During danger, users should follow official alerts, emergency services and local authorities.",footerProject:"Independent personal project",footerCivilian:"Free · Civilian-focused · No advertising"},
+  uk:{brandTag:"Справжні люди. Безпечніше завтра.",navHow:"Як це працює",navValidation:"Перевірка",navSafeguards:"Захист",status:"Незалежний особистий проєкт",heroLead:"Цивільна комунікація в реальному часі для людей в Україні. Повідомляйте про те, що чуєте або бачите, а люди поруч можуть підтвердити чи спростувати інформацію в міру розвитку подій.",seeHow:"Як працює перевірка",seeSafeguards:"Переглянути заходи захисту",micro:"Створено для цивільної обізнаності. Інформація спільноти завжди відокремлена від офіційних сповіщень.",artNote:"Живі повідомлення · Карта · Довіра спільноти",ukraine:"Створено для України",signalOneTitle:"Повідомляйте в реальному часі",signalOneBody:"Люди поруч можуть одразу подати структуроване повідомлення про цивільний інцидент.",signalTwoTitle:"Перевіряйте разом",signalTwoBody:"Інші можуть підтвердити, спростувати або додати контекст без перетворення застосунку на соцмережу.",signalThreeTitle:"Рівень довіри, а не певність",signalThreeBody:"Кожне повідомлення спільноти має змінний рівень довіри та чіткі обмеження.",howEye:"Інформація спільноти в русі",howTitle:"Від місцевого спостереження до спільної обізнаності.",howSub:"Якщо хтось чує вибух дрона, бачить дим або знаходить перекриту дорогу, він може повідомити про це одразу. Люди поруч допомагають зробити інформацію кориснішою або не дати їй ввести інших в оману.",stepOneTitle:"Людина повідомляє",stepOneBody:"Структурована категорія, приблизне місце й час створюють цивільне повідомлення без розкриття чутливої військової інформації.",stepTwoTitle:"Інші реагують",stepTwoBody:"Люди в районі підтверджують або спростовують те, що також чули чи бачили, додаючи швидкий місцевий контекст.",stepThreeTitle:"Довіра змінюється",stepThreeBody:"Повідомлення набуває або втрачає довіру через підтвердження, суперечливі відгуки, близькість і час.",validationEye:"Прозора перевірка спільнотою",validationTitle:"Довіра — це сигнал, а не ярлик.",validationSub:"SAFEKRAY показує, чому повідомлення набуває або втрачає довіру. Перевірена спільнотою інформація візуально відрізняється від офіційних сповіщень.",exampleReport:"Приклад: поруч чутно вибух",confidenceHigh:"Висока довіра спільноти",confirmations:"Підтвердження поруч",contradictions:"Суперечливі відгуки",proximity:"Близькість і час",consistent:"Збігаються",sourceType:"Тип джерела",communitySource:"Спільнота · не офіційне",guardsEye:"Захист цілісності геолокації",guardsTitle:"Створено, щоб ускладнити зловживання геолокацією.",guardsSub:"Чутлива цивільна інформація потребує більшого, ніж точка на карті. SAFEKRAY поєднує кілька бар'єрів проти підміни доступу й підозрілих повідомлень.",vpnTitle:"Бар'єри проти VPN",vpnBody:"Сигнали використання VPN і проксі оцінюються, щоб зменшити прихований доступ і скоординовані зловживання.",ruTitle:"Блокування геолокації РФ",ruBody:"Доступ, пов'язаний із геолокацією в Росії, блокується як частина цивільної безпеки проєкту.",trustTitle:"Перевірка довіри до місця",trustBody:"Невідповідності геолокації перевіряються до того, як дії поблизу вважатимуться надійними.",noticeTitle:"Допоміжний рівень — не заміна офіційним службам.",noticeBody:"SAFEKRAY не подає повідомлення спільноти як офіційну екстрену інформацію. Під час небезпеки дотримуйтеся офіційних сповіщень і вказівок місцевої влади.",footerProject:"Незалежний особистий проєкт",footerCivilian:"Безкоштовно · Для цивільних · Без реклами"}
 };
-let lang=localStorage.getItem("safekray-web-lang")||((navigator.language||"uk").startsWith("uk")?"uk":"en");
-function apply(){document.documentElement.lang=lang;document.querySelectorAll("[data-t]").forEach(el=>{const k=el.dataset.t;if(T[lang][k])el.textContent=T[lang][k]});document.getElementById("langBtn").textContent=lang==="uk"?"EN":"UA"}
-document.getElementById("langBtn").onclick=()=>{lang=lang==="uk"?"en":"uk";localStorage.setItem("safekray-web-lang",lang);apply()};apply();
-document.getElementById("newsletterForm").addEventListener("submit",async e=>{e.preventDefault();const status=document.getElementById("formStatus");status.textContent="…";try{const r=await fetch("https://gyroebumaqvsimigveqv.supabase.co/functions/v1/newsletter-subscribe",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value,locale:lang,consent:document.getElementById("consent").checked,company:document.getElementById("company").value})});if(!r.ok)throw 0;status.style.color="#0d8b5b";status.textContent=T[lang].ok;e.target.reset()}catch(_){status.style.color="#b3261e";status.textContent=T[lang].err}});
+Object.assign(T.en,{
+  artNote:"Concept artwork · Some safeguards shown are planned",
+  stepThreeBody:"Confirmations and contradictory votes change the current community status. Proximity and timing are planned checks for stronger location confidence.",
+  validationSub:"Reports currently become community confirmed after at least three confirmations and more confirmations than rejections. Community information remains visually distinct from official alerts, so users can understand the source and act with appropriate caution.",
+  exampleReport:"Illustration: explosion heard nearby",confidenceHigh:"Community confirmed",consistent:"Planned check",
+  guardsSub:"Sensitive civilian information needs more than a pin on a map. The current Android app checks the device's reported country. Stronger anti-abuse measures are being designed and are not yet a guarantee.",
+  vpnBody:"Planned: evaluate VPN and proxy signals to reduce disguised access and coordinated abuse. This is not yet implemented in the current app.",
+  ruBody:"Current Android access gate blocks when the device reports a location in Russia. This device-side check can be bypassed and is not server enforcement.",
+  trustBody:"Planned: assess suspicious location inconsistencies before nearby actions count as credible. The current report score does not yet use location confidence."
+});
+Object.assign(T.uk,{
+  artNote:"Концептуальне зображення · Деякі показані заходи захисту заплановані",
+  stepThreeBody:"Підтвердження та суперечливі голоси змінюють поточний статус повідомлення. Перевірки близькості й часу заплановані для сильнішої оцінки місця.",
+  validationSub:"Нині повідомлення отримує статус підтвердженого спільнотою після щонайменше трьох підтверджень, якщо їх більше, ніж заперечень. Інформація спільноти візуально відрізняється від офіційних сповіщень.",
+  exampleReport:"Приклад інтерфейсу: поруч чутно вибух",confidenceHigh:"Підтверджено спільнотою",consistent:"Запланована перевірка",
+  guardsSub:"Чутлива цивільна інформація потребує більшого, ніж точка на карті. Поточний Android-застосунок перевіряє країну, визначену пристроєм. Сильніші заходи проти зловживань ще розробляються.",
+  vpnBody:"Заплановано: оцінювати сигнали VPN і проксі для зменшення прихованого доступу та скоординованих зловживань. У поточному застосунку це ще не реалізовано.",
+  ruBody:"Поточний Android-застосунок блокує доступ, коли пристрій повідомляє про місце в Росії. Цю перевірку на пристрої можна обійти; сервер її не забезпечує.",
+  trustBody:"Заплановано: перевіряти підозрілі невідповідності геолокації, перш ніж вважати дії поблизу надійними. Поточний рейтинг повідомлення ще не використовує довіру до місця."
+});
+let lang=localStorage.getItem("safekray-web-lang")||((navigator.language||"").toLowerCase().startsWith("uk")?"uk":"en");
+function apply(){document.documentElement.lang=lang;document.querySelectorAll("[data-t]").forEach(el=>{const value=T[lang][el.dataset.t];if(value)el.textContent=value});document.getElementById("langBtn").textContent=lang==="en"?"UA":"EN"}
+document.getElementById("langBtn").addEventListener("click",()=>{lang=lang==="en"?"uk":"en";localStorage.setItem("safekray-web-lang",lang);apply()});apply();
 </script>
-</body></html>
+</body>
+</html>

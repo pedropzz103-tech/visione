@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Onde Abastecer",
+    "slug": "onde-abastecer",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "one.visione.ondeabastecer"
+    },
+    "android": {
+      "package": "one.visione.ondeabastecer"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O Onde Abastecer usa sua localização para encontrar os postos e preços mais úteis perto de você."
+        }
+      ]
+    ]
+  }
+}

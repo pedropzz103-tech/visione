@@ -1,4 +1,6 @@
 import { spainAdapter } from "./es";
+import { franceAdapter } from "./fr";
+import { italyAdapter } from "./it";
 import type { CountryAdapter, CountryCode } from "../types";
 
 function planned(
@@ -20,10 +22,10 @@ function planned(
 
 export const adapters: Record<CountryCode, CountryAdapter> = {
   ES: spainAdapter,
-  FR: planned("FR", "planned", "Prix des carburants · Open Data", "https://www.prix-carburants.gouv.fr/rubrique/opendata/"),
+  FR: franceAdapter,
+  IT: italyAdapter,
   DE: planned("DE", "approval_required", "Bundeskartellamt · MTS-K", "https://www.bundeskartellamt.de/"),
   AT: planned("AT", "planned", "E-Control · Spritpreisrechner", "https://www.spritpreisrechner.at/"),
-  IT: planned("IT", "planned", "MIMIT · Osservaprezzi carburanti", "https://carburanti.mise.gov.it/"),
   PT: planned("PT", "licensing_review", "DGEG · Preços dos combustíveis", "https://precoscombustiveis.dgeg.gov.pt/"),
   GR: planned("GR", "planned", "Fuel Prices Observatory", "https://www.fuelprices.gr/"),
   SI: planned("SI", "planned", "Goriva.si", "https://www.goriva.si/"),

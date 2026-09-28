@@ -19,12 +19,21 @@ function decimal(value: unknown): number | undefined {
 }
 
 function fuelPrices(raw: Record<string, unknown>, updatedAt?: string): FuelPrice[] {
-  return (Object.entries(FUEL_KEYS) as Array<[FuelType, string]>)
-    .map(([fuel, key]) => {
-      const price = decimal(raw[key]);
-      return price ? { fuel, price, currency: "EUR" as const, updatedAt } : null;
-    })
-    .filter((value): value is FuelPrice => value !== null);
+  const prices: FuelPrice[] = [];
+
+  for (const [fuel, key] of Object.entries(FUEL_KEYS) as Array<[FuelType, string]>) {
+    const price = decimal(raw[key]);
+    if (price == null) continue;
+
+    prices.push({
+      fuel,
+      price,
+      currency: "EUR",
+      updatedAt
+    });
+  }
+
+  return prices;
 }
 
 export const spainAdapter: CountryAdapter = {
@@ -54,11 +63,14 @@ export const spainAdapter: CountryAdapter = {
       const longitude = decimal(raw["Longitud (WGS84)"]);
       if (latitude == null || longitude == null) return [];
 
-      const km = distanceKm(
-        { latitude: query.latitude, longitude: query.longitude },
-        { latitude, longitude }
-      );
-      if (km > query.radiusKm) return [];
+      if (
+        distanceKm(
+          { latitude: query.latitude, longitude: query.longitude },
+          { latitude, longitude }
+        ) > query.radiusKm
+      ) {
+        return [];
+      }
 
       const prices = fuelPrices(raw, sourceUpdatedAt);
       if (!prices.some((price) => price.fuel === query.fuel)) return [];
@@ -67,13 +79,14 @@ export const spainAdapter: CountryAdapter = {
       const street = String(raw["Dirección"] ?? "").trim();
       const town = String(raw["Municipio"] ?? "").trim();
       const province = String(raw["Provincia"] ?? "").trim();
+      const address = [street, town, province].filter(Boolean).join(", ");
 
       return [{
         id: String(raw["IDEESS"] ?? `${latitude},${longitude}`),
         country: "ES",
         name: brand ?? "Estación de servicio",
         brand,
-        address: [street, town, province].filter(Boolean).join(", "),
+        address,
         latitude,
         longitude,
         prices,

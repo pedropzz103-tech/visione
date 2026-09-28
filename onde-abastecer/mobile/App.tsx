@@ -14,9 +14,9 @@ import * as Location from "expo-location";
 import MapView, { Marker, type Region } from "react-native-maps";
 
 import { getStations } from "./src/api/client";
-import { FUEL_LABELS, FUEL_TYPES } from "./src/config/countries";
+import { FUEL_LABELS, FUEL_TYPES, LAUNCH_COUNTRIES } from "./src/config/countries";
 import { colorForBand, formatPrice } from "./src/lib/pricing";
-import type { FuelType, Station } from "./src/types";
+import type { CountryCode, FuelType, Station } from "./src/types";
 
 const DEFAULT_REGION: Region = {
   latitude: 42.2406,
@@ -25,8 +25,15 @@ const DEFAULT_REGION: Region = {
   longitudeDelta: 0.18
 };
 
+const SUPPORTED_COUNTRIES = new Set<CountryCode>(
+  LAUNCH_COUNTRIES.map((country) => country.code)
+);
+
 export default function App() {
   const mapRef = useRef<MapView>(null);
+  const firstLoadDone = useRef(false);
+
+  const [country, setCountry] = useState<CountryCode>("ES");
   const [fuel, setFuel] = useState<FuelType>("gasoline95");
   const [region, setRegion] = useState<Region>(DEFAULT_REGION);
   const [stations, setStations] = useState<Station[]>([]);
@@ -44,46 +51,73 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!loading) void loadStations(region);
-  }, [fuel]);
+    if (firstLoadDone.current) {
+      void loadStations(region, country);
+    }
+  }, [fuel, country]);
+
+  async function detectCountry(
+    latitude: number,
+    longitude: number
+  ): Promise<CountryCode | undefined> {
+    try {
+      const addresses = await Location.reverseGeocodeAsync({ latitude, longitude });
+      const code = addresses[0]?.isoCountryCode?.toUpperCase() as CountryCode | undefined;
+      return code && SUPPORTED_COUNTRIES.has(code) ? code : undefined;
+    } catch {
+      return undefined;
+    }
+  }
 
   async function locateAndLoad() {
     try {
       const permission = await Location.requestForegroundPermissionsAsync();
+
       if (permission.status === "granted") {
         const location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.Balanced
         });
+
         const nextRegion: Region = {
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           latitudeDelta: 0.18,
           longitudeDelta: 0.18
         };
+
+        const detectedCountry =
+          (await detectCountry(nextRegion.latitude, nextRegion.longitude)) ?? country;
+
         setRegion(nextRegion);
+        setCountry(detectedCountry);
         mapRef.current?.animateToRegion(nextRegion, 500);
-        await loadStations(nextRegion);
+        await loadStations(nextRegion, detectedCountry);
+        firstLoadDone.current = true;
         return;
       }
 
       setBanner("Localização desativada. Você ainda pode explorar o mapa.");
-      await loadStations(DEFAULT_REGION);
+      await loadStations(DEFAULT_REGION, country);
+      firstLoadDone.current = true;
     } catch {
       setBanner("Não conseguimos obter sua localização. Mostrando a região inicial.");
-      await loadStations(DEFAULT_REGION);
+      await loadStations(DEFAULT_REGION, country);
+      firstLoadDone.current = true;
     }
   }
 
-  async function loadStations(target: Region) {
+  async function loadStations(target: Region, requestedCountry: CountryCode) {
     setLoading(true);
+
     try {
       const result = await getStations({
-        country: "ES",
+        country: requestedCountry,
         latitude: target.latitude,
         longitude: target.longitude,
         radiusKm: 30,
         fuel
       });
+
       setStations(result.stations);
       setSelected(null);
       setBanner(
@@ -110,6 +144,7 @@ export default function App() {
       Platform.OS === "ios"
         ? `http://maps.apple.com/?daddr=${destination}&dirflg=d`
         : `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving`;
+
     void Linking.openURL(url);
   }
 
@@ -122,6 +157,30 @@ export default function App() {
         </View>
         {loading ? <ActivityIndicator /> : null}
       </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.countryFilters}
+      >
+        {LAUNCH_COUNTRIES.map((item) => (
+          <Pressable
+            key={item.code}
+            onPress={() => setCountry(item.code)}
+            style={[styles.countryChip, country === item.code && styles.countryChipActive]}
+          >
+            <Text style={styles.countryFlag}>{item.flag}</Text>
+            <Text
+              style={[
+                styles.countryChipText,
+                country === item.code && styles.countryChipTextActive
+              ]}
+            >
+              {item.code}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
 
       <ScrollView
         horizontal
@@ -181,7 +240,10 @@ export default function App() {
           <Text style={styles.legendText}>caro</Text>
         </View>
 
-        <Pressable style={styles.searchHere} onPress={() => void loadStations(region)}>
+        <Pressable
+          style={styles.searchHere}
+          onPress={() => void loadStations(region, country)}
+        >
           <Text style={styles.searchHereText}>Buscar nesta área</Text>
         </Pressable>
 
@@ -199,14 +261,19 @@ export default function App() {
               ) : null}
             </View>
 
-            {selected.isDemo ? <Text style={styles.demo}>DADOS DE DEMONSTRAÇÃO</Text> : null}
+            {selected.isDemo ? (
+              <Text style={styles.demo}>DADOS DE DEMONSTRAÇÃO</Text>
+            ) : null}
 
             <Text style={styles.meta}>
               {selected.openingHours ? `${selected.openingHours} · ` : ""}
               Fonte: {selected.source}
             </Text>
 
-            <Pressable style={styles.routeButton} onPress={() => openNavigation(selected)}>
+            <Pressable
+              style={styles.routeButton}
+              onPress={() => openNavigation(selected)}
+            >
               <Text style={styles.routeButtonText}>Ir para este posto</Text>
             </Pressable>
           </View>
@@ -221,14 +288,48 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 18,
     paddingTop: 8,
-    paddingBottom: 8,
+    paddingBottom: 4,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
   },
   headerCopy: { flex: 1, paddingRight: 12 },
-  brand: { fontSize: 22, fontWeight: "900", letterSpacing: -0.7, color: "#111827" },
+  brand: {
+    fontSize: 22,
+    fontWeight: "900",
+    letterSpacing: -0.7,
+    color: "#111827"
+  },
   subtitle: { marginTop: 3, fontSize: 12, color: "#6B7280" },
+  countryFilters: {
+    paddingHorizontal: 14,
+    paddingTop: 6,
+    paddingBottom: 2,
+    gap: 7
+  },
+  countryChip: {
+    height: 34,
+    paddingHorizontal: 10,
+    borderRadius: 17,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 5,
+    borderWidth: 1,
+    borderColor: "#E5E7EB"
+  },
+  countryChipActive: {
+    borderColor: "#111827",
+    backgroundColor: "#111827"
+  },
+  countryFlag: { fontSize: 15 },
+  countryChipText: {
+    fontSize: 11,
+    fontWeight: "900",
+    color: "#374151"
+  },
+  countryChipTextActive: { color: "#FFFFFF" },
   filters: { paddingHorizontal: 14, paddingVertical: 8, gap: 8 },
   chip: {
     height: 38,
@@ -293,7 +394,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     elevation: 6
   },
-  cardTop: { flexDirection: "row", gap: 12, justifyContent: "space-between" },
+  cardTop: {
+    flexDirection: "row",
+    gap: 12,
+    justifyContent: "space-between"
+  },
   cardTitleWrap: { flex: 1 },
   stationName: { fontSize: 17, fontWeight: "900", color: "#111827" },
   address: { marginTop: 3, fontSize: 12, color: "#6B7280" },

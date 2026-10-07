@@ -24,6 +24,10 @@ test("explains community validation and location-integrity safeguards", () => {
   assert.match(page, /Planned: evaluate VPN and proxy signals/i);
   assert.match(page, /This is not yet implemented in the current app/i);
   assert.match(page, /Current report score does not yet use location confidence/i);
+  assert.match(page, /Kharkiv[^<]*frontline|frontline[^<]*Kharkiv/i);
+  assert.match(page, /GPS interference near frontline areas/i);
+  assert.match(page, /safekray-app-preview\.svg/i);
+  assert.match(page, /safekray-dashboard\.svg/i);
   assert.match(page, /Concept artwork · Some safeguards shown are planned/i);
 });
 

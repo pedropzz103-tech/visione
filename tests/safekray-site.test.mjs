@@ -18,11 +18,11 @@ test("explains community validation and location-integrity safeguards", () => {
   assert.match(page, /confirmations[^<]*contradict/i);
   assert.match(page, /proximity[^<]*timing|timing[^<]*proximity/i);
   assert.match(page, /anti-VPN/i);
-  assert.match(page, /Russian geolocation/i);
+  assert.match(page, /does not hard-block access based only on the country inferred from device geolocation/i);
+  assert.match(page, /GPS interference[^<]*unreliable|unreliable[^<]*GPS/i);
   assert.match(page, /location confidence|location trust/i);
   assert.match(page, /Planned: evaluate VPN and proxy signals/i);
   assert.match(page, /This is not yet implemented in the current app/i);
-  assert.match(page, /device-side check can be bypassed/i);
   assert.match(page, /Current report score does not yet use location confidence/i);
   assert.match(page, /Concept artwork · Some safeguards shown are planned/i);
 });

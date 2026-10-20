@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /affiliate-factory/
-Disallow: /drafts/
-Disallow: /tmp/
-
+Disallow: /es/donde-ver/
+Disallow: /pt/onde-ver/
+Disallow: /br/onde-ver/
+Disallow: /streaming/
+Disallow: /data/
+Disallow: /data-credits/
 Sitemap: https://visione.one/sitemap.xml
-Sitemap: https://visione.one/streaming-sitemap-index.xml
-Sitemap: https://visione.one/news/news-sitemap.xml

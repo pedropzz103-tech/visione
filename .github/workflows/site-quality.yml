@@ -1,32 +1,20 @@
-name: VISIONE site quality
-
+name: VISIONE brand website checks
 on:
   push:
-    branches:
-      - main
-      - 'visione-wire-*'
-      - 'feat/visione-streaming-*'
+    branches: [main]
+    paths: ['index.html', '.github/workflows/site-quality.yml']
   pull_request:
-    branches:
-      - main
-
+    branches: [main]
 permissions:
   contents: read
-
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Build streaming discovery pages
-        run: node streaming/build.mjs
-      - name: Validate generated streaming site
-        run: node streaming/validate.mjs
-      - name: Run site quality tests
-        run: node --test tests/*.test.mjs
+      - uses: actions/checkout@v4
+      - name: Check brand home
+        run: |
+          test -s index.html
+          grep -q "Diseño web, branding" index.html
+          grep -q "contact@visione.one" index.html
+          ! grep -q "Onde assistir filmes" index.html

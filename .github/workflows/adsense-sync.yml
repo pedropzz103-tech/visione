@@ -1,84 +1,14 @@
-name: Editorial inventory sync
-
+name: Archived streaming sync (disabled)
+# Former streaming catalogue automation intentionally retired on 2026-10-20.
+# Source history is preserved in branch backup/streaming-before-branding-2026-10-20.
 on:
-  push:
-    paths:
-      - '.github/workflows/adsense-sync.yml'
-      - 'scripts/editorial_inventory_sync.py'
-      - 'scripts/materialize_streaming_nav.py'
-      - 'streaming/**/*.mjs'
-      - 'streaming/data/*.json'
-      - 'tests/*.test.mjs'
-      - 'news/*.html'
-      - 'news/feed.xml'
-      - 'news/news-sitemap.xml'
-      - 'projects/**/*.html'
-      - 'contact/**/*.html'
-      - 'legal/**/*.html'
-      - 'privacy/**/*.html'
-      - 'carluxiii/**/*.html'
-      - 'carluxiii-preview/**/*.html'
-      - 'nomadbycarlos/**/*.html'
-      - 'sitemap.xml'
-      - 'robots.txt'
-      - 'index.html'
-      - 'es/index.html'
-      - 'pt/index.html'
-      - 'br/index.html'
-      - 'data-credits/index.html'
-  schedule:
-    - cron: '17 4 * * *'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  sync:
+  archived:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Bootstrap curated TV series
-        run: node streaming/bootstrap-curated-series.mjs
-      - name: Expand verified Apple TV public catalogue
-        run: node streaming/bootstrap-public-apple-series.mjs
-      - name: Bootstrap curated films and free artwork
-        run: node streaming/bootstrap-curated-movies.mjs
-        continue-on-error: true
-      - name: Sync TVmaze series metadata
-        run: node streaming/sync-tvmaze.mjs --all-series
-      - name: Sync Wikidata movie metadata
-        run: node streaming/sync-wikidata.mjs --all-movies
-        continue-on-error: true
-      - name: Refresh already-paired every.film records
-        run: node streaming/sync-everyfilm.mjs --all-known
-        continue-on-error: true
-      - name: Import curated official availability evidence
-        run: node streaming/ingest-official-availability.mjs
-      - name: Build streaming discovery pages
-        run: node streaming/build.mjs
-      - name: Normalize editorial inventory and discovery surface
-        run: |
-          python3 scripts/editorial_inventory_sync.py
-          python3 scripts/materialize_streaming_nav.py
-      - name: Validate generated streaming site
-        run: node streaming/validate.mjs
-      - name: Run site quality tests
-        run: node --test tests/*.test.mjs
-      - name: Commit synchronized catalogue
-        run: |
-          if git diff --quiet; then
-            echo "No changes needed"
-            exit 0
-          fi
-          git config user.name "VISIONE automation"
-          git config user.email "actions@users.noreply.github.com"
-          git add -A
-          git commit -m "Sync VISIONE catalog metadata and artwork"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - run: echo "The VISIONE streaming catalogue has been retired. No site files are regenerated."

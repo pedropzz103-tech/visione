@@ -18,7 +18,7 @@ jobs:
           grep -q "Digital solutions & AI automation" index.html
           grep -q "contact@visione.one" index.html
           grep -q 'lang="en"' index.html
-          grep -q 'id="services"' index.html
-          grep -q 'id="pricing"' index.html
+          grep -q 'id="servicios"' index.html
+          grep -q 'id="precios"' index.html
           grep -q "Business automation" index.html
           ! grep -q "Onde assistir filmes" index.html

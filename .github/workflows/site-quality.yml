@@ -21,7 +21,7 @@ jobs:
           grep -q 'id="servicios"' index.html
           grep -q 'id="precios"' index.html
           grep -q "Business automation" index.html
-          grep -q 'class="brand-mark" aria-hidden="true">V</span><span class="brand-name">VISIONE' index.html
+          grep -q 'class="brand-logo" src="/visione-logo.webp" alt="VISIONE"' index.html
           grep -q 'class="hero hero-refined"' index.html
           grep -q '.hero-art{display:none}' index.html
           ! grep -q 'class="preview"' index.html

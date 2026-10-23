@@ -15,12 +15,18 @@ jobs:
       - name: Check global brand home
         run: |
           test -s index.html
-          grep -q "Digital solutions & AI automation" index.html
+          grep -q "Creative digital studio" index.html
           grep -q "contact@visione.one" index.html
           grep -q 'lang="en"' index.html
           grep -q 'id="servicios"' index.html
           grep -q 'id="precios"' index.html
-          grep -q "Business automation" index.html
+          grep -q 'data-t="service2Title">Branding & identity' index.html
+          grep -q 'data-t="service9Title">Integrations & support' index.html
+          test "$(grep -o 'class="service"' index.html | wc -l)" -eq 9
+          grep -q '<strong>$39</strong>' index.html
+          grep -q '<strong>$149</strong>' index.html
+          grep -q '<strong>$99</strong>' index.html
+          ! grep -q '<strong>$490</strong>' index.html
           grep -q 'class="brand-logo" src="/visione-logo.webp" alt="VISIONE"' index.html
           grep -q 'class="hero hero-refined"' index.html
           grep -q '.hero-art{display:none}' index.html

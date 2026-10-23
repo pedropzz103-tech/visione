@@ -12,9 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check brand home
+      - name: Check global brand home
         run: |
           test -s index.html
-          grep -q "Diseño web, branding" index.html
+          grep -q "Digital solutions & AI automation" index.html
           grep -q "contact@visione.one" index.html
+          grep -q 'lang="en"' index.html
+          grep -q 'id="services"' index.html
+          grep -q 'id="pricing"' index.html
+          grep -q "Business automation" index.html
           ! grep -q "Onde assistir filmes" index.html

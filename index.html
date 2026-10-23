@@ -100,11 +100,19 @@
 .hero-overline{font-size:10px;letter-spacing:.14em}
 }
 @media(max-width:350px){.brand-mark{font-size:40px}.brand-name{font-size:17px;letter-spacing:.12em}.hero-refined h1{font-size:44px}}
+
+/* The original approved VISIONE lockup is one complete logo: the V plus its wordmark. */
+.nav .brand-lockup{display:inline-flex;align-items:center;gap:0;flex:0 1 auto;min-width:0}
+.nav .brand-logo{display:block;width:clamp(252px,24vw,315px);max-width:100%;height:auto;max-height:74px;object-fit:contain;object-position:left center;filter:drop-shadow(0 0 14px #78a9ef13)}
+@media(max-width:1060px){.nav .brand-logo{width:clamp(222px,25vw,272px)}}
+@media(max-width:780px){.nav .brand-logo{width:min(62vw,255px);max-height:64px}}
+@media(max-width:440px){.nav .brand-logo{width:min(64vw,232px)}}
+@media(max-width:350px){.nav .brand-logo{width:min(62vw,201px)}}
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in">
-<a class="brand" href="/" aria-label="VISIONE home"><span class="brand-mark" aria-hidden="true">V</span><span class="brand-name">VISIONE</span></a>
+<a class="brand brand-lockup" href="/" aria-label="VISIONE home"><img class="brand-logo" src="/visione-logo.webp" alt="VISIONE" width="900" height="216" fetchpriority="high"></a>
 <nav id="navigation" class="links" aria-label="Main navigation"><a href="#servicios" data-t="navServices">Services</a><a href="#trabajos" data-t="navWork">Concepts</a><a href="#precios" data-t="navPrice">Pricing</a><a href="#proceso" data-t="navProcess">Process</a>
 <div class="lang lang-mobile" aria-label="Choose language"><button type="button" data-lang="es" aria-pressed="false">ES</button><button type="button" data-lang="pt" aria-pressed="false">PT</button><button type="button" data-lang="en" aria-pressed="true">EN</button></div>
 </nav>

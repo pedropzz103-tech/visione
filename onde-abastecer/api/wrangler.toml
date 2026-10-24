@@ -1,0 +1,4 @@
+name = "onde-abastecer-api"
+main = "src/index.ts"
+compatibility_date = "2026-09-28"
+workers_dev = true

@@ -1,0 +1,26 @@
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, copyFileSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const env = { ...process.env, ONDE_ANDROID_PREVIEW: '1', EXPO_NO_TELEMETRY: '1', NODE_ENV: 'production' };
+if (!env.ANDROID_HOME && !env.ANDROID_SDK_ROOT) throw new Error('Set ANDROID_HOME to an installed Android SDK (SDK 36, build-tools 36.0.0, NDK 27.1.12297006).');
+const javac = env.JAVA_HOME ? path.join(env.JAVA_HOME, 'bin', process.platform === 'win32' ? 'javac.exe' : 'javac') : 'javac';
+if ((env.JAVA_HOME && !existsSync(javac)) || spawnSync(javac, ['-version'], { env, stdio: 'ignore' }).status !== 0) throw new Error('A full JDK with javac is required. Install JDK 21 and set JAVA_HOME before building.');
+const packageFile = path.join(root, 'package.json');
+const originalIosScript = JSON.parse(readFileSync(packageFile, 'utf8')).scripts.ios;
+function run(command, args, cwd = root) { const result = spawnSync(command, args, { cwd, env, stdio: 'inherit' }); if (result.error) throw result.error; if (result.status !== 0) process.exit(result.status ?? 1); }
+run(process.execPath, ['scripts/prepare-map.mjs']);
+run('npx', ['expo', 'prebuild', '--platform', 'android', '--no-install']);
+const updatedPackage = JSON.parse(readFileSync(packageFile, 'utf8'));
+updatedPackage.scripts.ios = originalIosScript;
+writeFileSync(packageFile, `${JSON.stringify(updatedPackage, null, 2)}\n`);
+run(process.platform === 'win32' ? 'gradlew.bat' : './gradlew', [':app:assembleRelease', '-PreactNativeArchitectures=arm64-v8a', '--no-daemon', '--console=plain'], path.join(root, 'android'));
+const out = path.resolve(process.env.ONDE_APK_OUTPUT_DIR ?? path.join(root, '../artifacts'));
+mkdirSync(out, { recursive: true });
+const apk = path.join(out, 'onde-abastecer-preview-arm64.apk');
+copyFileSync(path.join(root, 'android/app/build/outputs/apk/release/app-release.apk'), apk);
+const hash = createHash('sha256').update(readFileSync(apk)).digest('hex');
+writeFileSync(`${apk}.sha256`, `${hash}  ${path.basename(apk)}\n`);
+console.log(`Android preview APK: ${apk}\nSHA-256: ${hash}\nTest signature only; not published to any store.`);

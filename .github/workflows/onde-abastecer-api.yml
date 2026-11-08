@@ -1,0 +1,66 @@
+name: Onde Abastecer API
+on:
+  push:
+    branches: [main, 'codex/onde-abastecer-*', feature/onde-abastecer-mvp]
+    paths: ['onde-abastecer/api/**', 'onde-abastecer/shared/**', 'onde-abastecer/tests/**', 'onde-abastecer/package*.json', 'onde-abastecer/eslint.config.mjs', '.github/workflows/onde-abastecer-api.yml']
+  pull_request:
+    paths: ['onde-abastecer/**', '.github/workflows/onde-abastecer-api.yml']
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Explicitly authorize production Worker deployment from main'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: onde-abastecer-api-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: onde-abastecer
+    env:
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            onde-abastecer/package-lock.json
+            onde-abastecer/api/package-lock.json
+      - run: npm ci
+      - run: npm ci --prefix api
+      - run: npm audit --audit-level=high
+      - run: npm run lint
+      - run: npm run typecheck --prefix api
+      - run: npm test
+      - run: npm audit --prefix api --audit-level=high
+      - run: npm run build --prefix api
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment: onde-abastecer-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --prefix onde-abastecer/api
+      - name: Deploy explicitly authorized Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: onde-abastecer/api
+          command: deploy

@@ -1,0 +1,24 @@
+<!doctype html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src https://tile.openstreetmap.org data:; connect-src 'none';"><!-- LEAFLET_LICENSE --><style>/* LEAFLET_CSS */
+html,body,#map{height:100%;width:100%;margin:0;background:#eef2e9}button.pin{color:white;border:2px solid white;border-radius:20px;padding:7px 10px;font-weight:bold;white-space:nowrap;cursor:pointer;min-height:36px;box-shadow:0 2px 5px #0003}.leaflet-control-attribution{font-size:10px}</style></head><body><div id="map" role="application" aria-label="Mapa de postos / Station map"></div><script>/* LEAFLET_JS */</script><script>
+(function(){
+  var map=L.map('map',{worldCopyJump:true}).setView([42.2406,-8.7207],11),markers=L.layerGroup().addTo(map),lastCenter='';
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+  function send(value){if(window.ReactNativeWebView)window.ReactNativeWebView.postMessage(JSON.stringify(value));}
+  map.on('moveend',function(){var c=map.getCenter(),b=map.getBounds();send({type:'region',latitude:c.lat,longitude:((c.lng+180)%360+360)%360-180,latitudeDelta:Math.min(180,b.getNorth()-b.getSouth()),longitudeDelta:Math.min(360,b.getEast()-b.getWest())});});
+  window.oaUpdate=function(input){
+    if(input.centerKey!==lastCenter){
+      lastCenter=input.centerKey;
+      var c=map.getCenter(),b=map.getBounds(),next=input.center;
+      var oaSameBounds=Math.abs(c.lat-next.latitude)<1e-7&&Math.abs(c.lng-next.longitude)<1e-7&&Math.abs(b.getEast()-b.getWest()-next.longitudeDelta)<1e-7&&Math.abs(b.getNorth()-b.getSouth()-next.latitudeDelta)<1e-7;
+      if(!oaSameBounds)map.fitBounds([[next.latitude-next.latitudeDelta/2,next.longitude-next.longitudeDelta/2],[next.latitude+next.latitudeDelta/2,next.longitude+next.longitudeDelta/2]],{animate:false});
+    }
+    markers.clearLayers();
+    input.markers.forEach(function(p){
+      var button=document.createElement('button');button.className='pin';button.textContent=p.label;button.style.backgroundColor=p.color;button.setAttribute('aria-label',p.title);
+      var marker=L.marker([p.latitude,p.longitude],{icon:L.divIcon({html:button,className:'',iconSize:[96,36],iconAnchor:[48,18]})});
+      marker.on('click',function(){if(p.count>1)map.setView([p.latitude,p.longitude],map.getZoom()+2);else send({type:'select',key:p.key});});marker.addTo(markers);
+    });
+  };
+  send({type:'ready'});
+})();
+</script></body></html>

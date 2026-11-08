@@ -1,0 +1,13 @@
+name = "onde-abastecer-api"
+main = "src/index.ts"
+compatibility_date = "2026-09-28"
+workers_dev = true
+
+# Approximate per-client/per-location limit; no persisted location/IP history.
+[[ratelimits]]
+name = "STATION_RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 30, period = 60 }
+
+[observability]
+enabled = false

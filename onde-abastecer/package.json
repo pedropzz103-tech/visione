@@ -1,0 +1,26 @@
+{
+  "name": "onde-abastecer-checks",
+  "private": true,
+  "scripts": {
+    "install:apps": "npm ci --prefix api && npm ci --prefix mobile",
+    "lint": "eslint api/src mobile/App.tsx mobile/src shared tests scripts",
+    "typecheck": "npm run typecheck --prefix api && npm run typecheck --prefix mobile",
+    "test": "tsx --test tests/*.test.ts",
+    "build": "npm run build --prefix api && npm run build --prefix mobile",
+    "smoke:sources": "tsx scripts/smoke-sources.ts",
+    "test:e2e": "playwright test",
+    "dev:api": "tsx scripts/dev-api.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
+    "eslint": "^10.14.0",
+    "tsx": "^4.20.6",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.46.3"
+  },
+  "type": "module",
+  "overrides": {
+    "minimatch": "11.0.5"
+  }
+}

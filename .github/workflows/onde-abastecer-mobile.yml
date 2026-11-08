@@ -1,0 +1,48 @@
+name: Onde Abastecer Mobile
+on:
+  push:
+    branches: [main, 'codex/onde-abastecer-*', feature/onde-abastecer-mvp]
+    paths: ['onde-abastecer/mobile/**', 'onde-abastecer/shared/**', 'onde-abastecer/tests/e2e/**', 'onde-abastecer/playwright.config.ts', 'onde-abastecer/package*.json', '.github/workflows/onde-abastecer-mobile.yml']
+  pull_request:
+    paths: ['onde-abastecer/**', '.github/workflows/onde-abastecer-mobile.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: onde-abastecer-mobile-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: onde-abastecer
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      EXPO_PUBLIC_API_URL: http://127.0.0.1:8787
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            onde-abastecer/package-lock.json
+            onde-abastecer/mobile/package-lock.json
+      - run: npm ci
+      - run: npm ci --prefix mobile
+      - run: npm run typecheck --prefix mobile
+      - run: npm audit --prefix mobile --audit-level=high
+      - run: npm run build --prefix mobile
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Upload failure traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onde-abastecer-test-traces
+          path: onde-abastecer/test-results
+          retention-days: 3
